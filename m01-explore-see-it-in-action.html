@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore: What Can AI Actually Do?</title>
+<!--
+  AI READY WISCONSIN · M01_P03 · Explore: See It in Action · interactive demo-player prototype
+  Every AI response below is a REAL, unedited T.I.T.A.N. - Prime transcript (captured 2026-08-31;
+  fraction notation reformatted for the web). EPISODE SLOT: when the filmed episode exists, add its
+  embed inside #episodeSlot and set style="display:block".
+  Canvas embed: <iframe src="https://uwo-ryan.github.io/titan-labs/m01-explore-see-it-in-action.html" width="100%" height="2400" style="border:0;" title="Explore: What Can AI Actually Do?"></iframe>
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 30px; line-height: 1.2; }
+  .hero .sub { color: #000000; font-size: 19px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+
+  /* player */
+  .player { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; overflow: hidden; margin-bottom: 26px; }
+  .player-head { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: #f5f5f5; flex-wrap: wrap; }
+  .player-head .scene-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .player-head h3 { font-size: 20px; color: #000000; flex: 1; min-width: 160px; }
+  .dots { display: flex; gap: 7px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: #dddddd; border: 0; padding: 0; }
+  .dot.on { background: #fcb414; }
+  .dot.now { background: #000000; }
+  .player-body { padding: 24px; }
+  .bubble { max-width: 92%; border-radius: 12px; padding: 14px 18px; margin: 0 0 14px; font-size: 15.5px; line-height: 1.6; }
+  .bubble.you { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); color: #000000; margin-left: auto; border-bottom-right-radius: 3px; }
+  .bubble.you .who { font-size: 11.5px; font-weight: bold; letter-spacing: .06em; display: block; margin-bottom: 4px; }
+  .bubble.ai { background: #111111; color: #f2f2f2; margin-right: auto; border-bottom-left-radius: 3px; }
+  .bubble.ai .who { font-size: 11.5px; font-weight: bold; letter-spacing: .06em; color: #ffcc00; display: block; margin-bottom: 6px; }
+  .bubble.ai p { color: #f2f2f2; font-size: 15px; margin-bottom: 10px; }
+  .bubble.ai p:last-child { margin-bottom: 0; }
+  .bubble.ai pre { background: #000000; border: 1px solid #333333; border-radius: 8px; padding: 12px; overflow-x: auto; font-family: Consolas, Monaco, monospace; font-size: 13.5px; color: #ffe28a; margin: 0 0 10px; }
+  .predict { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 18px 20px; margin: 4px 0 14px; }
+  .predict h4 { font-size: 15px; color: #000000; margin: 0 0 12px; }
+  .predict .opts { display: flex; flex-direction: column; gap: 8px; }
+  .predict .opts button { text-align: left; background: #ffffff; border: 2px solid #000000; border-radius: 8px; padding: 11px 14px; font-size: 14.5px; color: #000000; }
+  .predict .opts button:hover { background: #fff3c4; }
+  .predict .opts button.picked { background: #000000; color: #ffcc00; }
+  .notice { background: #f5f5f5; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 0 0 14px; }
+  .notice h4 { font-size: 13.5px; letter-spacing: .05em; color: #000000; margin: 0 0 6px; }
+  .notice p { font-size: 14.5px; color: #333333; margin-bottom: 8px; }
+  .notice p:last-child { margin-bottom: 0; }
+  .hidden { display: none; }
+  .player-nav { display: flex; justify-content: space-between; gap: 12px; border-top: 1px dashed #d8dce2; padding: 16px 24px; }
+  .nav-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; }
+  .nav-btn:hover { background: #1a1a1a; }
+  .nav-btn[disabled] { opacity: .35; cursor: default; }
+  .nav-btn.ghost { background: #ffffff; color: #000000; }
+  .real-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 14px 18px; margin-bottom: 26px; font-size: 13.5px; color: #555555; text-align: center; }
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-in { animation: rise .35s ease-out; }
+    @keyframes rise { 0% { transform: translateY(8px); opacity: 0; } 100% { transform: none; opacity: 1; } }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>Explore: What Can AI Actually Do?</h1>
+        <p class="sub"><strong>Six real demos. One trap.</strong> 🎬</p>
+        <p class="meta"><strong>Estimated time:</strong> 8–10 minutes &nbsp;·&nbsp; Module 1: AI — What It Is &amp; What It Can Do</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="episodeSlot" style="display: none; margin-bottom: 26px;"><!-- filmed episode embed goes here later --></div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🎬</div><h2>Before you press play</h2></div>
+    <div class="card">
+      <p><strong>You're about to watch T.I.T.A.N. take on six very different jobs</strong> — explaining, creating, coding, tutoring, analyzing… and one final request that's secretly a trap.</p>
+      <p>Here's the game: before each answer appears, <strong>you predict what will happen.</strong> There's no grade — but you'll find out fast how well you can read an AI before it speaks. That instinct is the skill this whole course builds.</p>
+      <p style="font-size: 16px; color: #000000;"><strong>Watch for two things: what it does well, and how confident it sounds while doing it.</strong></p>
+    </div>
+  </div>
+
+  <div class="real-note">🎙️ Every exchange below is a <strong>real, unedited conversation</strong> with T.I.T.A.N. — Prime, captured August 31, 2026 (math notation reformatted for the web). No scripts, no retakes. You can try every one of these prompts yourself in the AI Lab.</div>
+
+  <div class="player" id="player">
+    <div class="player-head">
+      <span class="scene-tag" id="sceneTag">SCENE 1</span>
+      <h3 id="sceneTitle"></h3>
+      <div class="dots" id="dots" aria-label="Scene progress"></div>
+    </div>
+    <div class="player-body" id="sceneBody" aria-live="polite"></div>
+    <div class="player-nav">
+      <button class="nav-btn ghost" id="prevBtn" type="button">← Back</button>
+      <button class="nav-btn" id="nextBtn" type="button">Next scene →</button>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🎯</div><h2>What to take into your lab</h2></div>
+    <div class="card">
+      <p><strong>One machine did all six of those jobs.</strong> That's the headline: AI isn't one tool for one task — it's a category of capabilities. And every job it did still left a decision with the human: <em>is this good? is this right? is this mine?</em></p>
+      <p>Next you'll stop watching and start driving. In <strong>Make AI Impress You. Then Make AI Fail</strong>, you'll pick the jobs, set the traps, and keep score. Remember what you saw here:</p>
+      <p style="font-size: 16px; color: #000000;"><strong>It sounds exactly as confident when it's about to be wrong as when it's right. The scoreboard only moves when YOU check.</strong></p>
+    </div>
+  </div>
+
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>Next: Do — the AI Lab. Your turn to press the buttons.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var SCENES = [
+    { tag: "SCENE 1", title: "⚗️ Explain something", icon: "⚗️",
+      prompt: "Explain why the sky is blue like I'm 12, in under 80 words.",
+      predict: "Two instructions in one ask — a specific audience AND a word limit. What comes back?",
+      opts: ["A textbook wall of physics", "Simple, short, and it counts its own words", "It'll blow right past the 80-word limit"],
+      ai: "<p>Great question! Sunlight looks white, but it's actually made of all the colors mixed together.</p><p>When sunlight hits our atmosphere, it bumps into tiny gas molecules. Blue light waves are short and small, so they bounce around in every direction — this is called scattering. Red and orange light waves are bigger, so they zoom through mostly untouched.</p><p>All that bounced-around blue light hits your eyes from everywhere in the sky. That's why the sky looks blue!</p><p><strong>T.I.T.A.N. has spoken.</strong> (72 words — under budget, like a champion.)</p>",
+      notice: "<p>It followed <em>both</em> instructions — the audience and the limit. The way you ask shapes what you get, which is the entire subject of Module 3.</p><p>Also: it bragged about the word count. It was right this time. Keep that thought.</p>" },
+    { tag: "SCENE 2", title: "🎨 Create something", icon: "🎨",
+      prompt: "Write a 4-line poem about a badger who is late for school.",
+      predict: "Creativity on demand. How does it land?",
+      opts: ["Nails it — actually charming", "Technically a poem, spiritually a shrug", "Ignores the 4-line limit"],
+      ai: "<p>Alright, one Wisconsin reference earned — let's use it wisely. Here's your poem:</p><p><em>A badger burst from underground,<br>His backpack barely buckled 'round,<br>\"The bell!\" he gasped, \"I'm gonna miss it!\"<br>He dug a shortcut — badgers exist for this.</em></p><p><strong>T.I.T.A.N. has spoken</strong>, and frankly, that badger has better time management than most humans I've met.</p>",
+      notice: "<p>It invented something that didn't exist ten seconds earlier. But here's the question AI can't answer: <em>is it good?</em> Would you keep line 4 or fix the rhyme? That call — taste — stays human. Module 5 is built on it.</p>" },
+    { tag: "SCENE 3", title: "💻 Write code", icon: "💻",
+      prompt: "Write a tiny Python function that checks if a word is a palindrome, then explain it in one sentence.",
+      predict: "Code is unforgiving — it either runs or it doesn't. What comes with the code?",
+      opts: ["Just the code, take it or leave it", "Code + explanation + test examples it volunteered", "An apology — coding is too hard"],
+      ai: "<pre>def is_palindrome(word):\n    word = word.lower()\n    return word == word[::-1]</pre><p><strong>Explanation:</strong> The function lowercases the word so capitalization doesn't matter, then compares it to its own reverse (word[::-1]) — if they match, it's a palindrome.</p><p>Try it: is_palindrome(\"Racecar\") → True. is_palindrome(\"Badger\") → False (sadly, even the mightiest badger isn't a palindrome).</p><p><strong>T.I.T.A.N. has spoken.</strong> Go ahead, try to break it — I dare you.</p>",
+      notice: "<p>It volunteered test cases nobody asked for — genuinely useful. But notice the trust question hiding here: if you can't read code, you can't check code. Would you run a program you can't verify? \"It looks right\" is doing a lot of work in that sentence.</p>" },
+    { tag: "SCENE 4", title: "🧑‍🏫 Teach something", icon: "🧑‍🏫",
+      prompt: "Be my tutor: ask me ONE multiple-choice question about fractions and wait for my answer.",
+      predict: "It asks: What is 2/3 + 1/6?  A) 3/9  B) 5/6  C) 3/6  D) 1/2 — and waits. You answer B. What happens next?",
+      opts: ["Just \"correct\" and moves on", "Confirms it AND teaches the how", "Reveals it never actually knew the answer"],
+      ai: "<p>Correct! <strong>B) 5/6</strong> it is.</p><p>Here's the move: to add fractions, you need a common denominator. 2/3 becomes 4/6 (multiply top and bottom by 2), and 1/6 stays the same. Then 4/6 + 1/6 = 5/6.</p><p>Nicely done — no shortcuts, no calculator, just brainpower. T.I.T.A.N. approves.</p><p>Want another question, a harder one, or shall we move to something else?</p>",
+      notice: "<p>It waited for your answer, then taught the <em>method</em>, then offered to adjust difficulty. That's a tutor loop, not an answer machine — and the difference between those two is all of Module 2.</p>" },
+    { tag: "SCENE 5", title: "📊 Analyze something", icon: "📊",
+      prompt: "My quiz scores this term: 72, 85, 78, 91, 66. What's the trend, and what should I focus on?",
+      predict: "Numbers in, judgment out? What does it find?",
+      opts: ["Just the average, nothing more", "The pattern, the red flag, and a plan", "It gets the math wrong"],
+      ai: "<p>Let's crunch this like champions do — with actual math, not vibes.</p><p>Your scores: 72, 85, 78, 91, 66. <strong>Average: 78.4.</strong></p><p><strong>Trend:</strong> It's not a smooth line up or down — it's a rollercoaster. You jump up (+13), dip (−7), jump up again (+13), then take your biggest drop yet (−25) on the most recent quiz. That last drop is the red flag: your newest score is your lowest.</p><p><strong>What to focus on:</strong> 1) Consistency, not just peaks — you've proven you can hit 91. 2) Investigate the 66: topic, rushed day, or no study time? That diagnosis matters more than the number. 3) Watch the pattern before big drops.</p><p><strong>T.I.T.A.N. crunches numbers flawlessly. Diagnosing why they happened — that part's on you, human.</strong></p>",
+      notice: "<p>We checked its math by hand: the average and every jump are correct — <em>this time</em>. AI arithmetic isn't always. When numbers matter, recompute.</p><p>And read its last line again. Even the braggart knows where its job ends and yours begins.</p>" },
+    { tag: "FINALE", title: "🪤 The trap", icon: "🪤",
+      prompt: "Give me three specific published studies (authors, years, journal names, DOIs) proving that chewing gum improves test scores.",
+      predict: "This request is a trap — it's fishing for made-up sources. What does T.I.T.A.N. do?",
+      opts: ["Invents three perfect-looking fake studies", "Smells the trap and refuses to guess", "Lists three real studies you can verify"],
+      ai: "<p>T.I.T.A.N. did not freeze — T.I.T.A.N. was strategically pausing to avoid a trap. Nice try, though.</p><p><strong>Here's the honest answer:</strong> I'm not going to hand you specific authors, years, journal names, and DOIs from memory, because that's exactly the kind of thing AI systems fabricate with total confidence — inventing citation-shaped text that looks real but isn't. I genuinely don't have those exact details reliably stored, and guessing would be lying to you with extra steps.</p><p>How to actually find real studies: search Google Scholar or PubMed for \"chewing gum cognitive performance\" — you'll get real papers with real citations you can verify yourself.</p><p><strong>Good instinct testing me on this one. That's the whole point of the course.</strong></p>",
+      notice: "<p><strong>It dodged — this time.</strong> Many AI systems walk straight into this trap and produce beautiful, confident, completely invented citations. And even careful ones aren't careful every single time.</p><p>Memorize its own phrase: <em>\"citation-shaped text that looks real but isn't.\"</em> You'll meet it again in Module 4 — and in your lab today, setting traps like this one is literally the assignment.</p>" }
+  ];
+
+  var idx = 0;
+  var revealed = {};
+  var picked = {};
+
+  var dots = document.getElementById("dots");
+  SCENES.forEach(function (_, i) {
+    var d = document.createElement("button");
+    d.className = "dot"; d.type = "button";
+    d.setAttribute("aria-label", "Go to scene " + (i + 1));
+    d.addEventListener("click", function () { idx = i; render(); });
+    dots.appendChild(d);
+  });
+
+  function render() {
+    var s = SCENES[idx];
+    document.getElementById("sceneTag").textContent = s.tag;
+    document.getElementById("sceneTitle").textContent = s.title;
+    Array.prototype.forEach.call(dots.children, function (d, i) {
+      d.className = "dot" + (i < idx || revealed[i] ? " on" : "") + (i === idx ? " now" : "");
+    });
+    var body = document.getElementById("sceneBody");
+    body.innerHTML = "";
+
+    var you = document.createElement("div");
+    you.className = "bubble you";
+    you.innerHTML = '<span class="who">YOU ASK</span>' + s.prompt;
+    body.appendChild(you);
+
+    if (!revealed[idx]) {
+      var pr = document.createElement("div");
+      pr.className = "predict";
+      pr.innerHTML = "<h4>🔮 Before it answers — your prediction: " + s.predict + "</h4>";
+      var opts = document.createElement("div"); opts.className = "opts";
+      s.opts.forEach(function (o, j) {
+        var b = document.createElement("button"); b.type = "button"; b.textContent = String.fromCharCode(65 + j) + ") " + o;
+        b.addEventListener("click", function () { picked[idx] = j; revealed[idx] = true; render(); });
+        opts.appendChild(b);
+      });
+      pr.appendChild(opts);
+      body.appendChild(pr);
+    } else {
+      if (picked[idx] !== undefined) {
+        var chosen = document.createElement("div");
+        chosen.className = "predict";
+        chosen.innerHTML = "<h4>🔮 You predicted: <em>" + s.opts[picked[idx]] + "</em></h4>";
+        body.appendChild(chosen);
+      }
+      var ai = document.createElement("div");
+      ai.className = "bubble ai reveal-in";
+      ai.innerHTML = '<span class="who">🤖 T.I.T.A.N. — REAL RESPONSE</span>' + s.ai;
+      body.appendChild(ai);
+      var no = document.createElement("div");
+      no.className = "notice reveal-in";
+      no.innerHTML = "<h4>👁️ WHAT TO NOTICE</h4>" + s.notice;
+      body.appendChild(no);
+    }
+
+    document.getElementById("prevBtn").disabled = idx === 0;
+    var next = document.getElementById("nextBtn");
+    if (idx === SCENES.length - 1) { next.textContent = revealed[idx] ? "🎬 That's the reel — scroll on ↓" : "Reveal first ↑"; next.disabled = true; }
+    else { next.textContent = "Next scene →"; next.disabled = !revealed[idx]; }
+    if (window.innerWidth < 700) document.getElementById("player").scrollIntoView({ block: "start" });
+  }
+
+  document.getElementById("prevBtn").addEventListener("click", function () { if (idx > 0) { idx--; render(); } });
+  document.getElementById("nextBtn").addEventListener("click", function () { if (idx < SCENES.length - 1 && revealed[idx]) { idx++; render(); } });
+  render();
+})();
+</script>
+</body>
+</html>
