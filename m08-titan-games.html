@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The AI Challenge: The Titan Games</title>
+<!--
+  AI READY WISCONSIN · M08_P04 · Do: The AI Challenge · capstone
+  Persona: T.I.T.A.N. — The Examiner (titan-lab/personas/titan-examiner-m08.md)
+  The license assembly reads other labs' localStorage (same origin + same browser);
+  manual checkboxes cover students who worked across devices.
+  Canvas embed: <iframe src="https://YOUR-HOST/m08-titan-games.html" width="100%" height="9000" style="border:0;" title="The AI Challenge"></iframe>
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 30px; line-height: 1.2; }
+  .hero .sub { color: #000000; font-size: 20px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .light { background: #f5f5f5; }
+  .light h2 { color: #000000; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+  .warn { background: #fff7db; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 16px 20px; }
+  .warn p { color: #333333; font-size: 15px; }
+  .setup-banner { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 14px 18px; margin-top: 14px; font-size: 14px; color: #333333; display: none; }
+  .quests { display: flex; flex-wrap: wrap; gap: 12px; }
+  .quest { flex: 1 1 200px; min-width: 180px; background: #ffffff; border: 2px solid #d8dce2; border-radius: 10px; padding: 16px; text-align: left; font-size: 14.5px; color: #333333; }
+  .quest .q-emoji { font-size: 26px; display: block; margin-bottom: 6px; }
+  .quest strong { display: block; color: #000000; font-size: 15.5px; margin-bottom: 4px; }
+  .quest:hover { border-color: #fcb414; }
+  .quest.sel { border: 3px solid #000000; background: #fff7db; }
+  .stage { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; margin-bottom: 26px; overflow: hidden; }
+  .stage.done { border-color: #fcb414; }
+  .stage-head { display: flex; align-items: center; gap: 16px; padding: 22px 26px; background: #f5f5f5; flex-wrap: wrap; }
+  .stage-head .hole-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .stage-head h3 { font-size: 21px; color: #000000; flex: 1; min-width: 180px; }
+  .stage-head .par { font-size: 13px; color: #555555; white-space: nowrap; }
+  .stamp-slot { width: 46px; height: 46px; border-radius: 50%; border: 2px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 22px; background: #ffffff; flex-shrink: 0; }
+  .done .stamp-slot { border: 2px solid #fcb414; background: #ffcc00; }
+  .stage-body { padding: 22px 26px; }
+  .stage-body p { font-size: 15.5px; }
+  .briefing { background: #f4f5f7; border: 1px solid #d8dce2; border-radius: 8px; padding: 14px 16px; margin: 14px 0; }
+  .briefing code { font-family: Consolas, Monaco, monospace; font-size: 14.5px; color: #1a1a1a; white-space: pre-wrap; display: block; margin-bottom: 10px; }
+  .copy-btn { background: #ffcc00; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: bold; padding: 8px 16px; border-radius: 6px; }
+  .copy-btn:hover { background: #fcb414; }
+  textarea { width: 100%; border: 2px solid #cccccc; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; resize: vertical; min-height: 60px; }
+  textarea:focus { border-color: #000000; }
+  .field-label { display: block; font-size: 14px; font-weight: bold; color: #000000; margin: 16px 0 6px; }
+  .file-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; margin-top: 16px; }
+  .file-btn:hover { background: #1a1a1a; }
+  .file-msg { font-size: 14px; font-weight: bold; margin-top: 8px; min-height: 18px; }
+  .file-msg.ok { color: #1c7c34; }
+  .file-msg.no { color: #b00020; }
+  .controls { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-end; border-top: 1px dashed #d8dce2; margin-top: 18px; padding-top: 18px; }
+  .code-entry { flex: 1; min-width: 240px; }
+  .code-entry label { display: block; font-size: 13px; font-weight: bold; color: #555555; margin-bottom: 6px; }
+  .code-row { display: flex; gap: 8px; }
+  .code-row input { flex: 1; min-width: 120px; border: 2px solid #000000; border-radius: 6px; padding: 10px 12px; font-size: 16px; font-family: Consolas, Monaco, monospace; text-transform: uppercase; }
+  .code-row button { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 6px; font-size: 14px; font-weight: bold; padding: 0 18px; }
+  .code-msg { font-size: 14px; margin-top: 8px; min-height: 18px; font-weight: bold; }
+  .code-msg.ok { color: #1c7c34; }
+  .code-msg.no { color: #b00020; }
+  .license { background: #ffffff; border-radius: 10px; padding: 26px; }
+  .mod-grid { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
+  .mod-chip { flex: 1 1 190px; min-width: 170px; border: 2px solid #d8dce2; border-radius: 10px; padding: 12px 14px; font-size: 13.5px; color: #333333; background: #fafafa; }
+  .mod-chip.full { border-color: #000000; background: #fff7db; }
+  .mod-chip strong { display: block; color: #000000; font-size: 14px; }
+  .mod-chip .count { font-weight: bold; }
+  .mod-chip label { display: flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 12.5px; color: #555555; }
+  .mod-chip input { width: 16px; height: 16px; accent-color: #fcb414; }
+  .stamps-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 6px 0 4px; }
+  .big-stamp { text-align: center; width: 96px; }
+  .big-stamp .slot { width: 68px; height: 68px; margin: 0 auto 6px; border-radius: 50%; border: 3px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 30px; background: #fafafa; }
+  .big-stamp.on .slot { border: 3px solid #000000; background: #ffcc00; }
+  .big-stamp span { font-size: 11.5px; font-weight: bold; color: #555555; display: block; line-height: 1.3; }
+  .final-banner { display: none; background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border: 3px solid #000000; border-radius: 10px; padding: 26px; text-align: center; margin-top: 18px; }
+  .final-banner.show { display: block; }
+  .final-banner h3 { font-size: 26px; color: #000000; margin-bottom: 8px; }
+  .final-banner p { color: #000000; font-size: 15.5px; }
+  .notes-btn { background: #000000; color: #ffcc00; border: 3px solid #000000; border-radius: 10px; font-size: 16px; font-weight: bold; padding: 14px 26px; margin-top: 18px; }
+  .notes-btn:hover { background: #1a1a1a; }
+  .notes-msg { font-size: 14px; font-weight: bold; color: #1c7c34; margin-top: 10px; min-height: 18px; }
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .big-stamp.on .slot, .done .stamp-slot { animation: stamp-in .35s ease-out; }
+    @keyframes stamp-in { 0% { transform: scale(1.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>The AI Challenge</h1>
+        <p class="sub"><strong>The Titan Games</strong> 🏆</p>
+        <p class="meta"><strong>Time:</strong> your call — this is the capstone &nbsp;·&nbsp; Module 8: Put It All Together</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🏆</div><h2>The big idea</h2></div>
+    <div class="card">
+      <p><strong>Seven modules ago, you rubbed a lamp. Now nobody tells you what to type.</strong></p>
+      <p>You choose a challenge that actually matters to you. You decide whether AI belongs in it, which tools fit, what to question, what to verify, and what stays yours. Then you face <strong>The Examiner</strong> — T.I.T.A.N.'s final form — and defend your work.</p>
+      <p style="font-size: 17px; color: #000000;"><strong>The first question is the one most people skip: should AI even be part of this?</strong> "No, not for that part" is a passing answer. It might be the best answer.</p>
+    </div>
+  </div>
+
+  <div class="warn" style="margin-bottom: 26px;">
+    <p><strong>Standing rules, one last time:</strong> no personal information in AI tools, no paid subscriptions needed, school-appropriate everything — and if your challenge involves other people's info or feelings, Module 7 rides along.</p>
+  </div>
+
+  <div class="stage" id="stage-quest">
+    <div class="stage-head"><span class="hole-tag">STEP 1</span><h3>Choose your quest</h3><span class="par">~5 min</span><div class="stamp-slot" aria-hidden="true">🚩</div></div>
+    <div class="stage-body">
+      <p>Pick a pathway — or invent your own. The best challenge is one you'd want to do even if it weren't an assignment.</p>
+      <div class="quests" id="quests" role="group" aria-label="Quest pathways">
+        <button class="quest" type="button" data-quest="Learn something hard"><span class="q-emoji" aria-hidden="true">🧠</span><strong>Learn something hard</strong>That topic you've always bounced off of.</button>
+        <button class="quest" type="button" data-quest="Create something"><span class="q-emoji" aria-hidden="true">🎨</span><strong>Create something</strong>Art, music, a story, a design, a video plan.</button>
+        <button class="quest" type="button" data-quest="Investigate a question"><span class="q-emoji" aria-hidden="true">🔍</span><strong>Investigate a question</strong>Something you actually want the truth about.</button>
+        <button class="quest" type="button" data-quest="Plan something real"><span class="q-emoji" aria-hidden="true">🗺️</span><strong>Plan something real</strong>An event, a trip, a fundraiser, a training plan.</button>
+        <button class="quest" type="button" data-quest="Solve a problem"><span class="q-emoji" aria-hidden="true">🧩</span><strong>Solve a problem</strong>Something annoying in your school, club, or life.</button>
+        <button class="quest" type="button" data-quest="Communicate an idea"><span class="q-emoji" aria-hidden="true">📣</span><strong>Communicate an idea</strong>Persuade, explain, or pitch something you care about.</button>
+        <button class="quest" type="button" data-quest="Explore a future"><span class="q-emoji" aria-hidden="true">🚀</span><strong>Explore a future</strong>Go deep on the pathway from Module 6.</button>
+        <button class="quest" type="button" data-quest="My own idea"><span class="q-emoji" aria-hidden="true">✍️</span><strong>My own idea</strong>Propose it — the best quests aren't on menus.</button>
+      </div>
+      <label class="field-label" for="q-what">1. What exactly am I trying to accomplish?</label>
+      <textarea id="q-what" data-save="qWhat" placeholder="By the end, I'll have..."></textarea>
+      <label class="field-label" for="q-should">2. Should AI be part of this? Which parts — and which parts stay mine?</label>
+      <textarea id="q-should" data-save="qShould" placeholder="AI can help with... but I'm keeping... because..."></textarea>
+      <label class="field-label" for="q-tools">3. If yes: which tool(s), and why those?</label>
+      <textarea id="q-tools" data-save="qTools" placeholder="A chatbot for..., a creative tool for..., real sources for..."></textarea>
+      <button class="file-btn" data-file="quest" type="button">🚩 Accept the quest</button>
+      <div class="file-msg" id="fmsg-quest" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-buildlog">
+    <div class="stage-head"><span class="hole-tag">STEP 2</span><h3>Build it — and keep the log</h3><span class="par">the real work</span><div class="stamp-slot" aria-hidden="true">📓</div></div>
+    <div class="stage-body">
+      <p>Do the work with any approved tools you chose. As you go, log at least three moments — each one: what you did, what AI did, and what <strong>you</strong> decided. This log is your evidence for the Examiner.</p>
+      <label class="field-label" for="log1">Log entry 1</label>
+      <textarea id="log1" data-save="log1" placeholder="I asked... it gave me... I decided to..."></textarea>
+      <label class="field-label" for="log2">Log entry 2 — include something you refined, rejected, or verified</label>
+      <textarea id="log2" data-save="log2" placeholder="The first version was... so I..."></textarea>
+      <label class="field-label" for="log3">Log entry 3 — include a decision that was entirely yours</label>
+      <textarea id="log3" data-save="log3" placeholder="No AI picked this: I chose... because..."></textarea>
+      <button class="file-btn" data-file="buildlog" type="button">📓 Seal the log</button>
+      <div class="file-msg" id="fmsg-buildlog" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="panel dark" id="genieEmbedWrap" style="display: none;">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">👑</div><h2>The final boss</h2></div>
+    <iframe id="genieFrame" title="T.I.T.A.N. Examiner chat" loading="lazy" allow="clipboard-write; microphone" style="width: 100%; height: 700px; border: 0; border-radius: 10px; background: #ffffff; display: block;"></iframe>
+    <p style="color: #ffffff; font-size: 14px; margin: 14px 0 0;">Five questions. Real answers. Then the verdict.</p>
+  </div>
+
+  <div class="stage" id="stage-boss">
+    <div class="stage-head"><span class="hole-tag">STEP 3</span><h3>Face the Examiner</h3><span class="par">~8 min</span><div class="stamp-slot" aria-hidden="true">👑</div></div>
+    <div class="stage-body">
+      <p>Project done (or done enough to defend)? Then step into the arena. The Examiner asks five questions drawn from everything this course taught. Vague answers get sent back. Your build log is your ammunition.</p>
+      <div class="briefing">
+        <code id="brief-exam">EXAMINATION START: [what I set out to do] — [what I made or accomplished] — [which AI tools I used, and where I chose not to]</code>
+        <button class="copy-btn" data-copy="brief-exam" type="button">📋 Copy the examination request</button>
+      </div>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-boss">Verdict delivered? Enter the final code:</label>
+          <div class="code-row"><input id="code-boss" data-stage="boss" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="boss" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-boss" aria-live="polite"></div>
+        </div>
+      </div>
+      <div id="setupBanner" class="setup-banner"><strong>Instructor setup needed:</strong> create the "T.I.T.A.N. — The Examiner" Playlab app (see personas/titan-examiner-m08.md) and paste its links into <code>CONFIG</code> in this file.</div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🪪</div><h2>Your complete AI Operator's License</h2></div>
+    <div class="license">
+      <p style="font-size: 15px; color: #555555;">Module 8 stamps:</p>
+      <div class="stamps-row">
+        <div class="big-stamp" id="stamp-quest"><div class="slot" aria-hidden="true">🚩</div><span>QUEST<br>ACCEPTED</span></div>
+        <div class="big-stamp" id="stamp-buildlog"><div class="slot" aria-hidden="true">📓</div><span>BUILD<br>LOG</span></div>
+        <div class="big-stamp" id="stamp-boss"><div class="slot" aria-hidden="true">👑</div><span>BOSS<br>FIGHT</span></div>
+      </div>
+      <p id="license-status" style="font-size: 15px; color: #555555;" aria-live="polite"></p>
+      <p style="font-size: 15px; color: #555555; margin-top: 18px;">The whole season — stamps found on this device (check the box for modules you completed elsewhere):</p>
+      <div class="mod-grid" id="modGrid"></div>
+      <div class="final-banner" id="finalBanner">
+        <h3>🏆 AI READY</h3>
+        <p><strong>Every stamp earned. The Examiner has ruled: you choose, use, question, evaluate, and — when it's right — reject AI. That's the whole skill.</strong></p>
+        <p>Copy your capstone notes below and claim your spot in the showcase.</p>
+      </div>
+      <label class="field-label" for="sw-well">What did AI do well in your project — and what did it do poorly?</label>
+      <textarea id="sw-well" data-save="swWell" placeholder="It was great at... it completely fumbled..."></textarea>
+      <label class="field-label" for="sw-verify">What did you verify, and how?</label>
+      <textarea id="sw-verify" data-save="swVerify" placeholder="I checked... against..."></textarea>
+      <label class="field-label" for="sw-mine">What decisions were entirely yours?</label>
+      <textarea id="sw-mine" data-save="swMine" placeholder="The choice to..."></textarea>
+      <label class="field-label" for="sw-next">What would you do differently next time?</label>
+      <textarea id="sw-next" data-save="swNext" placeholder="Next time I'd..."></textarea>
+      <button class="notes-btn" id="copyNotes" type="button">📋 Copy my Capstone Notes</button>
+      <div class="notes-msg" id="notesMsg" aria-live="polite"></div>
+      <p style="font-size: 14px; color: #555555; margin-top: 10px;">Paste your Capstone Notes into the <strong>Showcase</strong> — this is the one everyone reads. Bring your project.</p>
+    </div>
+  </div>
+
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>Being good at AI isn't knowing one tool. It's knowing how to choose, use, question, evaluate — and sometimes reject it.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var CONFIG = { playlabUrl: "", embedUrl: "" }; // ← paste T.I.T.A.N. — The Examiner links here
+  var STAGES = {
+    quest:     { self: true, label: "Quest Accepted", fields: ["q-what", "q-should", "q-tools"] },
+    buildlog:  { self: true, label: "Build Log", fields: ["log1", "log2", "log3"] },
+    boss: { hash: "9571c2aa", label: "Boss Fight" }
+  };
+  var MODULES = [
+    { key: "arw-m01-stump", label: "M01 · Stump the Machine", total: 4 },
+    { key: "arw-m02-coach", label: "M02 · Learning Coach", total: 4 },
+    { key: "arw-m03-genie", label: "M03 · The Genie Problem", total: 5 },
+    { key: "arw-m04-detective", label: "M04 · Detective Agency", total: 4 },
+    { key: "arw-m05-creative", label: "M05 · Creative Gauntlet", total: 4 },
+    { key: "arw-m06-career", label: "M06 · Career Time Machine", total: 4 },
+    { key: "arw-m07-judge", label: "M07 · You Be the Judge", total: 4 }
+  ];
+  var STORE_KEY = "arw-m08-games";
+
+  function loadState() { try { var r = localStorage.getItem(STORE_KEY); if (r) return JSON.parse(r); } catch (e) {} return { done: {}, manual: {} }; }
+  function saveState() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
+  var state = loadState(); state.done = state.done || {}; state.manual = state.manual || {};
+
+  function fnv1a(str) {
+    var s = str.toUpperCase().replace(/[^A-Z]/g, ""), h = 0x811c9dc5;
+    for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0; }
+    return ("0000000" + h.toString(16)).slice(-8);
+  }
+
+  var params = new URLSearchParams(location.search);
+  var playlab = params.get("playlab") || CONFIG.playlabUrl;
+  var embed = params.get("embed") || CONFIG.embedUrl;
+  var hasEmbed = embed && /^https:\/\//.test(embed);
+  if (hasEmbed) { document.getElementById("genieFrame").setAttribute("src", embed); document.getElementById("genieEmbedWrap").style.display = "block"; }
+  if (!hasEmbed && !(playlab && /^https:\/\//.test(playlab))) { document.getElementById("setupBanner").style.display = "block"; }
+
+  // quest picker
+  var quests = document.getElementById("quests");
+  function paintQuest() {
+    Array.prototype.forEach.call(quests.querySelectorAll(".quest"), function (b) {
+      var sel = state.quest === b.getAttribute("data-quest");
+      b.classList.toggle("sel", sel);
+      b.setAttribute("aria-pressed", sel ? "true" : "false");
+    });
+  }
+  quests.addEventListener("click", function (e) {
+    var b = e.target.closest(".quest");
+    if (!b) return;
+    state.quest = b.getAttribute("data-quest"); saveState(); paintQuest();
+  });
+  paintQuest();
+
+  function copyText(text, btn, doneMsg) {
+    var restore = btn.textContent;
+    function ok() { btn.textContent = doneMsg || "✅ Copied!"; setTimeout(function () { btn.textContent = restore; }, 1800); }
+    function fallback() {
+      var ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", "");
+      ta.style.position = "absolute"; ta.style.left = "-9999px"; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); ok(); } catch (e) { btn.textContent = "Select & copy manually"; }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(ok, fallback); } else { fallback(); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (btn) {
+    btn.addEventListener("click", function () { copyText(document.getElementById(btn.getAttribute("data-copy")).textContent.trim(), btn); });
+  });
+
+  // season license grid
+  function readModule(m) {
+    try {
+      var raw = localStorage.getItem(m.key);
+      if (!raw) return 0;
+      var d = JSON.parse(raw).done || {};
+      return Object.keys(d).filter(function (k) { return d[k]; }).length;
+    } catch (e) { return 0; }
+  }
+  function renderGrid() {
+    var grid = document.getElementById("modGrid");
+    grid.innerHTML = "";
+    var allFull = true;
+    MODULES.forEach(function (m) {
+      var count = readModule(m);
+      var full = count >= m.total || !!state.manual[m.key];
+      if (!full) allFull = false;
+      var chip = document.createElement("div");
+      chip.className = "mod-chip" + (full ? " full" : "");
+      chip.innerHTML = "<strong>" + m.label + "</strong><span class='count'>" + (state.manual[m.key] ? "✔ done (marked by me)" : count + " / " + m.total + " stamps") + "</span>" +
+        "<label><input type='checkbox' data-mod='" + m.key + "'" + (state.manual[m.key] ? " checked" : "") + "> I completed this on another device</label>";
+      grid.appendChild(chip);
+    });
+    var m8full = state.done.quest && state.done.buildlog && state.done.boss;
+    document.getElementById("finalBanner").classList.toggle("show", allFull && !!m8full);
+  }
+  document.getElementById("modGrid").addEventListener("change", function (e) {
+    var cb = e.target.closest("input[data-mod]");
+    if (!cb) return;
+    state.manual[cb.getAttribute("data-mod")] = cb.checked; saveState(); renderGrid();
+  });
+
+  function renderStamps() {
+    var doneCount = 0, total = Object.keys(STAGES).length;
+    Object.keys(STAGES).forEach(function (k) {
+      var on = !!state.done[k]; if (on) doneCount++;
+      var stage = document.getElementById("stage-" + k), stamp = document.getElementById("stamp-" + k);
+      if (stage) stage.classList.toggle("done", on);
+      if (stamp) stamp.classList.toggle("on", on);
+      if (on && stage) { var slot = stage.querySelector(".stamp-slot"); if (slot) slot.textContent = "✔️"; }
+    });
+    document.getElementById("license-status").innerHTML = doneCount === total
+      ? "<strong style='color:#000000;'>Module 8 complete. Check the season grid below for your full license.</strong>"
+      : doneCount + " of " + total + " Module 8 stamps earned.";
+    renderGrid();
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-file]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var k = btn.getAttribute("data-file"), st = STAGES[k], msg = document.getElementById("fmsg-" + k);
+      if (k === "quest" && !state.quest) { msg.className = "file-msg no"; msg.textContent = "Pick a quest pathway first (or 'My own idea')."; return; }
+      var missing = (st.fields || []).filter(function (id) { var el = document.getElementById(id); return !el || !(el.value || "").trim(); });
+      if (missing.length) { msg.className = "file-msg no"; msg.textContent = "Every field, champion. The Examiner checks."; return; }
+      state.done[k] = true; saveState(); renderStamps();
+      msg.className = "file-msg ok"; msg.textContent = "✅ " + st.label + ". Stamped.";
+    });
+  });
+
+  function checkCode(k) {
+    var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k), val = input.value || "";
+    if (!val.replace(/[^A-Za-z]/g, "").length) { msg.className = "code-msg no"; msg.textContent = "Type the code the Examiner gave you."; return; }
+    if (fnv1a(val) === STAGES[k].hash) {
+      state.done[k] = true; saveState(); renderStamps();
+      msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! The Examiner has ruled."; input.setAttribute("disabled", "true");
+    } else { msg.className = "code-msg no"; msg.textContent = "The Examiner is not bribed. Five real answers first."; }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-check]"), function (btn) {
+    btn.addEventListener("click", function () { checkCode(btn.getAttribute("data-check")); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".code-row input"), function (input) {
+    input.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); checkCode(input.getAttribute("data-stage")); } });
+  });
+
+  var SAVED = { qWhat: "q-what", qShould: "q-should", qTools: "q-tools", log1: "log1", log2: "log2", log3: "log3", swWell: "sw-well", swVerify: "sw-verify", swMine: "sw-mine", swNext: "sw-next" };
+  Object.keys(SAVED).forEach(function (k) {
+    var el = document.getElementById(SAVED[k]);
+    if (!el) return; el.value = state[k] || "";
+    el.addEventListener("input", function () { state[k] = el.value; saveState(); });
+  });
+
+  document.getElementById("copyNotes").addEventListener("click", function () {
+    var season = MODULES.map(function (m) {
+      var count = readModule(m);
+      return m.label + ": " + (state.manual[m.key] ? "complete (other device)" : count + "/" + m.total + " stamps");
+    });
+    var lines = [
+      "AI READY WISCONSIN — CAPSTONE NOTES (Show What You Know)",
+      "The AI Challenge: The Titan Games",
+      "Date: " + new Date().toLocaleDateString(), "",
+      "My quest: " + (state.quest || "(not chosen)"),
+      "What I set out to accomplish: " + (state.qWhat || "(not answered)"),
+      "Where AI belonged (and didn't): " + (state.qShould || "(not answered)"),
+      "Tools I chose, and why: " + (state.qTools || "(not answered)"), "",
+      "BUILD LOG —",
+      "1) " + (state.log1 || "—"),
+      "2) " + (state.log2 || "—"),
+      "3) " + (state.log3 || "—"), "",
+      "What AI did well / poorly: " + (state.swWell || "(not answered)"),
+      "What I verified, and how: " + (state.swVerify || "(not answered)"),
+      "Decisions that were entirely mine: " + (state.swMine || "(not answered)"),
+      "What I'd do differently: " + (state.swNext || "(not answered)"), "",
+      "MY SEASON —"].concat(season, ["",
+      "Module 8: " + (Object.keys(STAGES).filter(function (k) { return state.done[k]; }).map(function (k) { return STAGES[k].label; }).join(", ") || "in progress"), "",
+      "Takeaway: Being good at AI isn't knowing one tool. It's knowing how to choose, use, question, evaluate — and sometimes reject it."
+    ]);
+    copyText(lines.join("\n"), this, "✅ Capstone Notes copied!");
+    document.getElementById("notesMsg").textContent = "Paste them into the Showcase discussion, along with your project.";
+  });
+
+  Object.keys(STAGES).forEach(function (k) {
+    if (state.done[k] && STAGES[k].hash) {
+      var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k);
+      if (input) input.setAttribute("disabled", "true");
+      if (msg) { msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! The Examiner has ruled."; }
+    }
+    if (state.done[k] && STAGES[k].self) {
+      var fm = document.getElementById("fmsg-" + k);
+      if (fm) { fm.className = "file-msg ok"; fm.textContent = "✅ " + STAGES[k].label + ". Stamped."; }
+    }
+  });
+  renderStamps();
+})();
+</script>
+</body>
+</html>

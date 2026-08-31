@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Creative AI Lab: The Creative Gauntlet</title>
+<!--
+  AI READY WISCONSIN · M05_P04 · Do: AI Lab
+  Persona: T.I.T.A.N. — Creative Director (titan-lab/personas/titan-director-m05.md)
+  Image generation happens in an approved external tool (Adobe Express / Firefly / teacher-approved).
+  Canvas embed: <iframe src="https://YOUR-HOST/m05-creative-gauntlet.html" width="100%" height="8200" style="border:0;" title="Creative AI Lab"></iframe>
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 30px; line-height: 1.2; }
+  .hero .sub { color: #000000; font-size: 20px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .light { background: #f5f5f5; }
+  .light h2 { color: #000000; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+  .warn { background: #fff7db; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 16px 20px; }
+  .warn p { color: #333333; font-size: 15px; }
+  .launch-btn { display: inline-block; background: #000000; color: #ffcc00; font-size: 16px; font-weight: bold; text-decoration: none; padding: 13px 22px; border-radius: 10px; border: 3px solid #000000; }
+  .launch-btn:hover { background: #1a1a1a; }
+  .launch-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .setup-banner { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 14px 18px; margin-top: 14px; font-size: 14px; color: #333333; display: none; }
+  .reels { display: flex; gap: 14px; flex-wrap: wrap; margin: 18px 0; }
+  .reel { flex: 1 1 240px; min-width: 220px; background: #ffffff; border: 3px solid #000000; border-radius: 10px; overflow: hidden; }
+  .reel .reel-label { background: #000000; color: #ffcc00; font-size: 12px; font-weight: bold; letter-spacing: .1em; text-align: center; padding: 7px; }
+  .reel .reel-value { min-height: 84px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; font-size: 17px; font-weight: bold; color: #000000; }
+  .spin-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .spin-btn { background: #ffcc00; border: 3px solid #000000; color: #000000; font-size: 17px; font-weight: bold; padding: 13px 26px; border-radius: 10px; }
+  .spin-btn:hover { background: #fcb414; }
+  .lock-btn { background: #000000; border: 3px solid #000000; color: #ffcc00; font-size: 17px; font-weight: bold; padding: 13px 26px; border-radius: 10px; }
+  .lock-btn:hover { background: #1a1a1a; }
+  .lock-msg { font-size: 14px; font-weight: bold; min-height: 18px; margin-top: 10px; }
+  .lock-msg.ok { color: #1c7c34; }
+  .stage { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; margin-bottom: 26px; overflow: hidden; }
+  .stage.done { border-color: #fcb414; }
+  .stage-head { display: flex; align-items: center; gap: 16px; padding: 22px 26px; background: #f5f5f5; flex-wrap: wrap; }
+  .stage-head .hole-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .stage-head h3 { font-size: 21px; color: #000000; flex: 1; min-width: 180px; }
+  .stage-head .par { font-size: 13px; color: #555555; white-space: nowrap; }
+  .stamp-slot { width: 46px; height: 46px; border-radius: 50%; border: 2px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 22px; background: #ffffff; flex-shrink: 0; }
+  .done .stamp-slot { border: 2px solid #fcb414; background: #ffcc00; }
+  .stage-body { padding: 22px 26px; }
+  .stage-body p { font-size: 15.5px; }
+  .briefing { background: #f4f5f7; border: 1px solid #d8dce2; border-radius: 8px; padding: 14px 16px; margin: 14px 0; }
+  .briefing code { font-family: Consolas, Monaco, monospace; font-size: 14.5px; color: #1a1a1a; white-space: pre-wrap; display: block; margin-bottom: 10px; }
+  .copy-btn { background: #ffcc00; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: bold; padding: 8px 16px; border-radius: 6px; }
+  .copy-btn:hover { background: #fcb414; }
+  textarea { width: 100%; border: 2px solid #cccccc; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; resize: vertical; min-height: 64px; }
+  textarea:focus { border-color: #000000; }
+  .field-label { display: block; font-size: 14px; font-weight: bold; color: #000000; margin: 16px 0 6px; }
+  .file-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; margin-top: 16px; }
+  .file-btn:hover { background: #1a1a1a; }
+  .file-msg { font-size: 14px; font-weight: bold; margin-top: 8px; min-height: 18px; }
+  .file-msg.ok { color: #1c7c34; }
+  .file-msg.no { color: #b00020; }
+  .controls { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-end; border-top: 1px dashed #d8dce2; margin-top: 18px; padding-top: 18px; }
+  .code-entry { flex: 1; min-width: 240px; }
+  .code-entry label { display: block; font-size: 13px; font-weight: bold; color: #555555; margin-bottom: 6px; }
+  .code-row { display: flex; gap: 8px; }
+  .code-row input { flex: 1; min-width: 120px; border: 2px solid #000000; border-radius: 6px; padding: 10px 12px; font-size: 16px; font-family: Consolas, Monaco, monospace; text-transform: uppercase; }
+  .code-row button { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 6px; font-size: 14px; font-weight: bold; padding: 0 18px; }
+  .code-msg { font-size: 14px; margin-top: 8px; min-height: 18px; font-weight: bold; }
+  .code-msg.ok { color: #1c7c34; }
+  .code-msg.no { color: #b00020; }
+  .license { background: #ffffff; border-radius: 10px; padding: 26px; }
+  .stamps-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 6px 0 4px; }
+  .big-stamp { text-align: center; width: 96px; }
+  .big-stamp .slot { width: 68px; height: 68px; margin: 0 auto 6px; border-radius: 50%; border: 3px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 30px; background: #fafafa; }
+  .big-stamp.on .slot { border: 3px solid #000000; background: #ffcc00; }
+  .big-stamp span { font-size: 11.5px; font-weight: bold; color: #555555; display: block; line-height: 1.3; }
+  .notes-btn { background: #000000; color: #ffcc00; border: 3px solid #000000; border-radius: 10px; font-size: 16px; font-weight: bold; padding: 14px 26px; margin-top: 18px; }
+  .notes-btn:hover { background: #1a1a1a; }
+  .notes-msg { font-size: 14px; font-weight: bold; color: #1c7c34; margin-top: 10px; min-height: 18px; }
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .big-stamp.on .slot, .done .stamp-slot { animation: stamp-in .35s ease-out; }
+    @keyframes stamp-in { 0% { transform: scale(1.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>Creative AI Lab</h1>
+        <p class="sub"><strong>The Creative Gauntlet</strong> 🎨</p>
+        <p class="meta"><strong>Estimated time:</strong> 15–20 minutes &nbsp;·&nbsp; Module 5: Create with AI</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🍳</div><h2>The big idea</h2></div>
+    <div class="card">
+      <p><strong>Cooking-show rules.</strong> You don't get to pick an easy project — the basket picks for you. A format, a subject, and one ridiculous twist.</p>
+      <p>Then the real rule of this lab: <strong>the first thing AI generates is never the final answer.</strong> You'll generate, look hard at it, tell the AI exactly what to change, and do that at least three times — with T.I.T.A.N.'s Creative Director critiquing between rounds (it has a beret; it has opinions).</p>
+      <p style="font-size: 17px; color: #000000;"><strong>Generating is the beginning of creating, not the end.</strong></p>
+    </div>
+  </div>
+
+  <div class="warn" style="margin-bottom: 26px;">
+    <p><strong>Two rules that do not bend:</strong> no personal information in any AI tool (your art needs no real names), and keep everything school-appropriate — including what you ask the image tool to make. If a generation comes out weird or inappropriate, don't share it — change your prompt and tell your instructor if it keeps happening.</p>
+  </div>
+
+  <div class="panel light">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🧺</div><h2>Step 1: Spin the mystery basket</h2></div>
+    <div class="card">
+      <p>Spin until fate hands you something interesting — then <strong>lock it in</strong>. (Re-spinning forever to get an easy one is a violation of cooking-show law.)</p>
+      <div class="reels">
+        <div class="reel"><div class="reel-label">FORMAT</div><div class="reel-value" id="reel-format">?</div></div>
+        <div class="reel"><div class="reel-label">SUBJECT</div><div class="reel-value" id="reel-subject">?</div></div>
+        <div class="reel"><div class="reel-label">THE TWIST</div><div class="reel-value" id="reel-twist">?</div></div>
+      </div>
+      <div class="spin-row">
+        <button class="spin-btn" id="spinBtn" type="button">🎰 Spin the basket</button>
+        <button class="lock-btn" id="lockBtn" type="button">🔒 Lock it in</button>
+      </div>
+      <div class="lock-msg" id="lockMsg" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="panel light">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🛠️</div><h2>Step 2: Create it</h2></div>
+    <div class="card">
+      <p>Use an approved creative AI tool — free tier only, no account should be required beyond what your teacher has approved:</p>
+      <div class="launch-row">
+        <a class="launch-btn" href="https://express.adobe.com/" target="_blank" rel="noopener">🎨 Adobe Express</a>
+        <a class="launch-btn" href="https://firefly.adobe.com/" target="_blank" rel="noopener">✨ Adobe Firefly</a>
+        <span style="font-size: 14px; color: #555555;">…or the tool your instructor listed on the Resources page</span>
+      </div>
+      <p style="font-size: 14.5px; color: #555555; margin-top: 14px;">Write your first prompt from the basket. Module 3 skills apply: the more specific your creative direction, the closer the result lands. Save or screenshot each version — you'll want the before/after.</p>
+    </div>
+  </div>
+
+  <div class="panel dark" id="genieEmbedWrap" style="display: none;">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🎭</div><h2>The studio: your Creative Director</h2></div>
+    <iframe id="genieFrame" title="T.I.T.A.N. Creative Director chat" loading="lazy" allow="clipboard-write; microphone" style="width: 100%; height: 700px; border: 0; border-radius: 10px; background: #ffffff; display: block;"></iframe>
+    <p style="color: #ffffff; font-size: 14px; margin: 14px 0 0;">Describe what you made between rounds. The beret judges all.</p>
+  </div>
+
+  <div class="stage" id="stage-director">
+    <div class="stage-head"><span class="hole-tag">STEP 3</span><h3>Three rounds with the Director</h3><span class="par">~10 min</span><div class="stamp-slot" aria-hidden="true">🎭</div></div>
+    <div class="stage-body">
+      <p>Between each generation, report to the Creative Director. Describe what you made (describing your own work is a skill — it forces you to actually look at it), get two critiques and a challenge, then go make Round 2. Three rounds minimum.</p>
+      <div class="briefing">
+        <code id="brief-critique">CRITIQUE ROUND 1: basket = [format / subject / twist]; what I made: [describe it honestly]; my prompt was: [paste your prompt]</code>
+        <button class="copy-btn" data-copy="brief-critique" type="button">📋 Copy the round template</button>
+      </div>
+      <p style="font-size: 14.5px; color: #555555;">You're allowed to <strong>reject the Director's notes</strong> — overruling AI feedback with a reason is creative direction, and the Director respects it.</p>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-director">Survived three rounds? Enter the code:</label>
+          <div class="code-row"><input id="code-director" data-stage="director" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="director" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-director" aria-live="polite"></div>
+        </div>
+      </div>
+      <div id="setupBanner" class="setup-banner"><strong>Instructor setup needed:</strong> create the "T.I.T.A.N. — Creative Director" Playlab app (see personas/titan-director-m05.md) and paste its links into <code>CONFIG</code> in this file.</div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-threerounds">
+    <div class="stage-head"><span class="hole-tag">THE LOG</span><h3>What changed each round</h3><span class="par">~3 min</span><div class="stamp-slot" aria-hidden="true">🔁</div></div>
+    <div class="stage-body">
+      <p>The paper trail of your iteration — this is what separates <em>creating</em> from <em>generating</em>.</p>
+      <label class="field-label" for="r1">Round 1 → 2: what did you change, and why?</label>
+      <textarea id="r1" data-save="r1" placeholder="The badger looked like a raccoon, so I..."></textarea>
+      <label class="field-label" for="r2">Round 2 → 3: what did you change, and why?</label>
+      <textarea id="r2" data-save="r2" placeholder="The Director said the twist felt pasted on, so I..."></textarea>
+      <label class="field-label" for="r3">What did you deliberately keep, even if someone (or some AI) would change it?</label>
+      <textarea id="r3" data-save="r3" placeholder="I kept... because it's my favorite part."></textarea>
+      <button class="file-btn" data-file="threerounds" type="button">🔁 Log the rounds</button>
+      <div class="file-msg" id="fmsg-threerounds" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-credits">
+    <div class="stage-head"><span class="hole-tag">ROLL CREDITS</span><h3>Who made this?</h3><span class="par">~3 min</span><div class="stamp-slot" aria-hidden="true">🖋️</div></div>
+    <div class="stage-body">
+      <p>Honest credits — the question every AI-assisted creator should be able to answer.</p>
+      <label class="field-label" for="cr-idea">The idea and creative direction that came from ME:</label>
+      <textarea id="cr-idea" data-save="crIdea" placeholder="The concept of..., the choice to..."></textarea>
+      <label class="field-label" for="cr-ai">What AI contributed:</label>
+      <textarea id="cr-ai" data-save="crAi" placeholder="Generated the images from my prompts, suggested..."></textarea>
+      <label class="field-label" for="cr-changed">What I changed or overruled:</label>
+      <textarea id="cr-changed" data-save="crChanged" placeholder="I rejected..., redirected..., picked version 3 because..."></textarea>
+      <label class="field-label" for="cr-mine">Does the final result feel like YOURS? Why or why not?</label>
+      <textarea id="cr-mine" data-save="crMine" placeholder="Honestly..."></textarea>
+      <button class="file-btn" data-file="credits" type="button">🖋️ Sign the credits</button>
+      <div class="file-msg" id="fmsg-credits" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🪪</div><h2>Your AI Operator's License — Module 5 page</h2></div>
+    <div class="license">
+      <div class="stamps-row">
+        <div class="big-stamp" id="stamp-basket"><div class="slot" aria-hidden="true">🧺</div><span>BASKET<br>LOCKED</span></div>
+        <div class="big-stamp" id="stamp-director"><div class="slot" aria-hidden="true">🎭</div><span>THE<br>DIRECTOR</span></div>
+        <div class="big-stamp" id="stamp-threerounds"><div class="slot" aria-hidden="true">🔁</div><span>THREE<br>ROUNDS</span></div>
+        <div class="big-stamp" id="stamp-credits"><div class="slot" aria-hidden="true">🖋️</div><span>ROLL<br>CREDITS</span></div>
+      </div>
+      <p id="license-status" style="font-size: 15px; color: #555555;" aria-live="polite"></p>
+      <button class="notes-btn" id="copyNotes" type="button">📋 Copy my Field Notes</button>
+      <div class="notes-msg" id="notesMsg" aria-live="polite"></div>
+      <p style="font-size: 14px; color: #555555; margin-top: 10px;">Paste your Field Notes into the Module 5 <strong>Gallery</strong> discussion — and post your final creation with them. Before/after pairs get the most reactions, every time.</p>
+    </div>
+  </div>
+
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>AI can generate material; humans still make the creative decisions.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var CONFIG = { playlabUrl: "", embedUrl: "" }; // ← paste T.I.T.A.N. — Creative Director links here
+  var STAGES = {
+    basket:      { self: true, label: "Basket Locked" },
+    director:   { hash: "1324cf5a", label: "The Director" },
+    threerounds: { self: true, label: "Three Rounds", fields: ["r1", "r2", "r3"] },
+    credits:     { self: true, label: "Roll Credits", fields: ["cr-idea", "cr-ai", "cr-changed", "cr-mine"] }
+  };
+  var STORE_KEY = "arw-m05-creative";
+  var SAVED = { r1: "r1", r2: "r2", r3: "r3", crIdea: "cr-idea", crAi: "cr-ai", crChanged: "cr-changed", crMine: "cr-mine" };
+
+  var FORMATS = ["an album cover", "a movie poster", "a book cover", "an event flyer", "a team mascot", "a trading card", "a restaurant menu cover", "a magazine cover"];
+  var SUBJECTS = ["a band you invent", "a food truck", "a school club", "a superhero with a mildly useful power", "a nature documentary", "a team for a sport you make up", "a space mission", "a small-town Wisconsin festival"];
+  var TWISTS = ["must include a badger", "1970s style", "only two colors allowed", "in the style of an old oil painting", "must include Lake Winnebago", "must look handmade", "comically serious tone", "must involve cheese somehow"];
+
+  function loadState() { try { var r = localStorage.getItem(STORE_KEY); if (r) return JSON.parse(r); } catch (e) {} return { done: {} }; }
+  function saveState() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
+  var state = loadState(); state.done = state.done || {};
+
+  function fnv1a(str) {
+    var s = str.toUpperCase().replace(/[^A-Z]/g, ""), h = 0x811c9dc5;
+    for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0; }
+    return ("0000000" + h.toString(16)).slice(-8);
+  }
+
+  var params = new URLSearchParams(location.search);
+  var playlab = params.get("playlab") || CONFIG.playlabUrl;
+  var embed = params.get("embed") || CONFIG.embedUrl;
+  var hasEmbed = embed && /^https:\/\//.test(embed);
+  if (hasEmbed) { document.getElementById("genieFrame").setAttribute("src", embed); document.getElementById("genieEmbedWrap").style.display = "block"; }
+  if (!hasEmbed && !(playlab && /^https:\/\//.test(playlab))) { document.getElementById("setupBanner").style.display = "block"; }
+
+  // basket spinner
+  var basket = state.basket || null;
+  function showBasket() {
+    document.getElementById("reel-format").textContent = basket ? basket.format : "?";
+    document.getElementById("reel-subject").textContent = basket ? basket.subject : "?";
+    document.getElementById("reel-twist").textContent = basket ? basket.twist : "?";
+  }
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+  document.getElementById("spinBtn").addEventListener("click", function () {
+    basket = { format: pick(FORMATS), subject: pick(SUBJECTS), twist: pick(TWISTS) };
+    state.basket = basket; saveState(); showBasket();
+    document.getElementById("lockMsg").className = "lock-msg"; document.getElementById("lockMsg").textContent = "";
+  });
+  document.getElementById("lockBtn").addEventListener("click", function () {
+    var msg = document.getElementById("lockMsg");
+    if (!basket) { msg.className = "lock-msg no"; msg.style.color = "#b00020"; msg.textContent = "Spin first — fate needs a chance."; return; }
+    state.done.basket = true; saveState(); renderStamps();
+    msg.className = "lock-msg ok"; msg.style.color = "#1c7c34";
+    msg.textContent = "🔒 Locked: " + basket.format + " · " + basket.subject + " · " + basket.twist + ". No take-backs. Go create.";
+  });
+  showBasket();
+
+  function copyText(text, btn, doneMsg) {
+    var restore = btn.textContent;
+    function ok() { btn.textContent = doneMsg || "✅ Copied!"; setTimeout(function () { btn.textContent = restore; }, 1800); }
+    function fallback() {
+      var ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", "");
+      ta.style.position = "absolute"; ta.style.left = "-9999px"; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); ok(); } catch (e) { btn.textContent = "Select & copy manually"; }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(ok, fallback); } else { fallback(); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var text = document.getElementById(btn.getAttribute("data-copy")).textContent.trim();
+      if (basket) text = text.replace("[format / subject / twist]", basket.format + " / " + basket.subject + " / " + basket.twist);
+      copyText(text, btn);
+    });
+  });
+
+  function renderStamps() {
+    var doneCount = 0, total = Object.keys(STAGES).length;
+    Object.keys(STAGES).forEach(function (k) {
+      var on = !!state.done[k]; if (on) doneCount++;
+      var stage = document.getElementById("stage-" + k), stamp = document.getElementById("stamp-" + k);
+      if (stage) stage.classList.toggle("done", on);
+      if (stamp) stamp.classList.toggle("on", on);
+      if (on && stage) { var slot = stage.querySelector(".stamp-slot"); if (slot) slot.textContent = "✔️"; }
+    });
+    document.getElementById("license-status").innerHTML = doneCount === total
+      ? "<strong style='color:#000000;'>🏆 Module 5 page complete — the Director hangs your work in the gallery. Beret tipped.</strong>"
+      : doneCount + " of " + total + " stamps earned.";
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-file]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var k = btn.getAttribute("data-file"), st = STAGES[k], msg = document.getElementById("fmsg-" + k);
+      var missing = (st.fields || []).filter(function (id) { var el = document.getElementById(id); return !el || !(el.value || "").trim(); });
+      if (missing.length) { msg.className = "file-msg no"; msg.textContent = "Fill in every field first — half a log is no log."; return; }
+      state.done[k] = true; saveState(); renderStamps();
+      msg.className = "file-msg ok"; msg.textContent = "✅ " + st.label + " stamped.";
+    });
+  });
+
+  function checkCode(k) {
+    var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k), val = input.value || "";
+    if (!val.replace(/[^A-Za-z]/g, "").length) { msg.className = "code-msg no"; msg.textContent = "Type the code the Director gave you."; return; }
+    if (fnv1a(val) === STAGES[k].hash) {
+      state.done[k] = true; saveState(); renderStamps();
+      msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[k].label + " complete."; input.setAttribute("disabled", "true");
+    } else { msg.className = "code-msg no"; msg.textContent = "That's not it. The Director hangs codes in galleries, not at doors — three real rounds first."; }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-check]"), function (btn) {
+    btn.addEventListener("click", function () { checkCode(btn.getAttribute("data-check")); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".code-row input"), function (input) {
+    input.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); checkCode(input.getAttribute("data-stage")); } });
+  });
+
+  Object.keys(SAVED).forEach(function (k) {
+    var el = document.getElementById(SAVED[k]);
+    if (!el) return; el.value = state[k] || "";
+    el.addEventListener("input", function () { state[k] = el.value; saveState(); });
+  });
+
+  document.getElementById("copyNotes").addEventListener("click", function () {
+    var lines = [
+      "AI READY WISCONSIN — Module 5 Field Notes",
+      "Lab: Creative AI Lab (The Creative Gauntlet)",
+      "Date: " + new Date().toLocaleDateString(), "",
+      "My basket: " + (basket ? basket.format + " · " + basket.subject + " · " + basket.twist : "(never locked in!)"),
+      "Stamps earned: " + (Object.keys(STAGES).filter(function (k) { return state.done[k]; }).map(function (k) { return STAGES[k].label; }).join(", ") || "none yet"), "",
+      "Round 1→2 change: " + (state.r1 || "(not answered)"),
+      "Round 2→3 change: " + (state.r2 || "(not answered)"),
+      "What I kept on purpose: " + (state.r3 || "(not answered)"), "",
+      "CREDITS —",
+      "From me: " + (state.crIdea || "(not answered)"),
+      "From AI: " + (state.crAi || "(not answered)"),
+      "What I changed/overruled: " + (state.crChanged || "(not answered)"),
+      "Does it feel like mine? " + (state.crMine || "(not answered)"), "",
+      "Takeaway: AI can generate material; humans still make the creative decisions."
+    ];
+    copyText(lines.join("\n"), this, "✅ Field Notes copied!");
+    document.getElementById("notesMsg").textContent = "Paste them into the Module 5 Gallery discussion, along with your creation.";
+  });
+
+  Object.keys(STAGES).forEach(function (k) {
+    if (state.done[k] && STAGES[k].hash) {
+      var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k);
+      if (input) input.setAttribute("disabled", "true");
+      if (msg) { msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[k].label + " complete."; }
+    }
+    if (state.done[k] && STAGES[k].self && STAGES[k].fields) {
+      var fm = document.getElementById("fmsg-" + k);
+      if (fm) { fm.className = "file-msg ok"; fm.textContent = "✅ " + STAGES[k].label + " stamped."; }
+    }
+  });
+  if (state.done.basket && basket) {
+    var lm = document.getElementById("lockMsg");
+    lm.className = "lock-msg ok"; lm.style.color = "#1c7c34";
+    lm.textContent = "🔒 Locked: " + basket.format + " · " + basket.subject + " · " + basket.twist + ".";
+  }
+  renderStamps();
+})();
+</script>
+</body>
+</html>

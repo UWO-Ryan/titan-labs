@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Cyber Threat Investigator</title>
+<!--
+  AI READY WISCONSIN · M04_P04 · Do: AI Lab · "The Detective Agency"
+  Wraps the UWO Explainable-AI cybersecurity tool (CONFIG.xaiToolUrl — SET THIS).
+  Persona for Fabrication Forensics: T.I.T.A.N. — Records Department (titan-lab/personas/titan-records-m04.md)
+  Canvas embed: <iframe src="https://YOUR-HOST/m04-detective-agency.html" width="100%" height="8200" style="border:0;" title="AI Cyber Threat Investigator Lab"></iframe>
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 30px; line-height: 1.2; }
+  .hero .sub { color: #000000; font-size: 20px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .light { background: #f5f5f5; }
+  .light h2 { color: #000000; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+  .warn { background: #fff7db; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 16px 20px; }
+  .warn p { color: #333333; font-size: 15px; }
+  .launch-btn { display: inline-block; background: #000000; color: #ffcc00; font-size: 17px; font-weight: bold; text-decoration: none; padding: 14px 26px; border-radius: 10px; border: 3px solid #000000; }
+  .launch-btn:hover { background: #1a1a1a; }
+  .launch-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .setup-banner { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 14px 18px; margin-top: 14px; font-size: 14px; color: #333333; display: none; }
+  .det-grid { display: flex; flex-wrap: wrap; gap: 14px; }
+  .det { background: #f5f5f5; border-radius: 10px; border-top: 4px solid #fcb414; padding: 18px; flex: 1 1 260px; min-width: 240px; }
+  .det h4 { margin: 0 0 6px; font-size: 17px; color: #000000; }
+  .det p { font-size: 14.5px; margin: 0; }
+  .stage { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; margin-bottom: 26px; overflow: hidden; }
+  .stage.done { border-color: #fcb414; }
+  .stage-head { display: flex; align-items: center; gap: 16px; padding: 22px 26px; background: #f5f5f5; flex-wrap: wrap; }
+  .stage-head .hole-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .stage-head h3 { font-size: 21px; color: #000000; flex: 1; min-width: 180px; }
+  .stage-head .par { font-size: 13px; color: #555555; white-space: nowrap; }
+  .stamp-slot { width: 46px; height: 46px; border-radius: 50%; border: 2px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 22px; background: #ffffff; flex-shrink: 0; }
+  .done .stamp-slot { border: 2px solid #fcb414; background: #ffcc00; }
+  .stage-body { padding: 22px 26px; }
+  .stage-body p { font-size: 15.5px; }
+  .briefing { background: #f4f5f7; border: 1px solid #d8dce2; border-radius: 8px; padding: 14px 16px; margin: 14px 0; }
+  .briefing code { font-family: Consolas, Monaco, monospace; font-size: 14.5px; color: #1a1a1a; white-space: pre-wrap; display: block; margin-bottom: 10px; }
+  .copy-btn { background: #ffcc00; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: bold; padding: 8px 16px; border-radius: 6px; }
+  .copy-btn:hover { background: #fcb414; }
+  textarea, select { width: 100%; border: 2px solid #cccccc; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; background: #ffffff; color: #333333; }
+  textarea { resize: vertical; min-height: 64px; }
+  textarea:focus, select:focus { border-color: #000000; }
+  .field-label { display: block; font-size: 14px; font-weight: bold; color: #000000; margin: 16px 0 6px; }
+  .file-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; margin-top: 16px; }
+  .file-btn:hover { background: #1a1a1a; }
+  .file-msg { font-size: 14px; font-weight: bold; margin-top: 8px; min-height: 18px; }
+  .file-msg.ok { color: #1c7c34; }
+  .file-msg.no { color: #b00020; }
+  .controls { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-end; border-top: 1px dashed #d8dce2; margin-top: 18px; padding-top: 18px; }
+  .code-entry { flex: 1; min-width: 240px; }
+  .code-entry label { display: block; font-size: 13px; font-weight: bold; color: #555555; margin-bottom: 6px; }
+  .code-row { display: flex; gap: 8px; }
+  .code-row input { flex: 1; min-width: 120px; border: 2px solid #000000; border-radius: 6px; padding: 10px 12px; font-size: 16px; font-family: Consolas, Monaco, monospace; text-transform: uppercase; }
+  .code-row button { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 6px; font-size: 14px; font-weight: bold; padding: 0 18px; }
+  .code-msg { font-size: 14px; margin-top: 8px; min-height: 18px; font-weight: bold; }
+  .code-msg.ok { color: #1c7c34; }
+  .code-msg.no { color: #b00020; }
+  .license { background: #ffffff; border-radius: 10px; padding: 26px; }
+  .stamps-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 6px 0 4px; }
+  .big-stamp { text-align: center; width: 96px; }
+  .big-stamp .slot { width: 68px; height: 68px; margin: 0 auto 6px; border-radius: 50%; border: 3px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 30px; background: #fafafa; }
+  .big-stamp.on .slot { border: 3px solid #000000; background: #ffcc00; }
+  .big-stamp span { font-size: 11.5px; font-weight: bold; color: #555555; display: block; line-height: 1.3; }
+  .notes-btn { background: #000000; color: #ffcc00; border: 3px solid #000000; border-radius: 10px; font-size: 16px; font-weight: bold; padding: 14px 26px; margin-top: 18px; }
+  .notes-btn:hover { background: #1a1a1a; }
+  .notes-msg { font-size: 14px; font-weight: bold; color: #1c7c34; margin-top: 10px; min-height: 18px; }
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .big-stamp.on .slot, .done .stamp-slot { animation: stamp-in .35s ease-out; }
+    @keyframes stamp-in { 0% { transform: scale(1.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>AI Cyber Threat Investigator</h1>
+        <p class="sub"><strong>The Detective Agency</strong> 🕵️</p>
+        <p class="meta"><strong>Estimated time:</strong> 15–20 minutes &nbsp;·&nbsp; Module 4: Don't Believe Everything AI Tells You</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🕵️</div><h2>The big idea</h2></div>
+    <div class="card">
+      <p><strong>You've been promoted: Senior Detective, Suspicious Email Division.</strong></p>
+      <p>Three AI junior detectives will examine suspicious emails with you, using a real explainable-AI tool built by UW Oshkosh researchers. Each detective explains its conclusion a completely different way. They're useful. They're confident. And they are not always right.</p>
+      <p>Your job isn't to agree with them — it's to weigh their <em>evidence</em> and make the call yourself. Then, in the basement, the Records Department will teach you the most important lesson in this building.</p>
+      <p style="font-size: 17px; color: #000000;"><strong>The question of the day: does understanding WHY an AI decided something prove the decision is right?</strong></p>
+    </div>
+  </div>
+
+  <div class="panel light">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">👥</div><h2>Meet your junior detectives</h2></div>
+    <div class="det-grid">
+      <div class="det"><h4>📋 Reggie Rules</h4><p>By the book. Points at specific warning signs from his rulebook: suspicious links, urgent language, sender mismatches. Clear evidence — but only for rules he knows.</p></div>
+      <div class="det"><h4>🗣️ Vera Verbose</h4><p>The smooth talker. Explains her conclusion in a friendly paragraph. Easy to understand — and easy to be persuaded by. Fluency isn't proof.</p></div>
+      <div class="det"><h4>🔦 Heatmap Hank</h4><p>Says nothing. Dramatically points a flashlight at the words and phrases that influenced the AI most. Great instincts — but you have to interpret what the light means.</p></div>
+    </div>
+  </div>
+
+  <div class="warn" style="margin-bottom: 26px;">
+    <p><strong>One rule that does not bend:</strong> the emails in the tool are training cases — never paste your own real emails, or anyone's personal information, into any AI tool in this lab.</p>
+  </div>
+
+  <div class="panel light">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🚀</div><h2>Open the case system</h2></div>
+    <div class="card">
+      <p><strong>The UWO investigation tool opens in a new tab.</strong> Work each case there, then file your verdict sheets here.</p>
+      <div class="launch-row">
+        <a id="xaiBtn" class="launch-btn" href="#" target="_blank" rel="noopener">🔎 Open the UWO Threat Investigator</a>
+        <span style="font-size: 14px; color: #555555;">Built at UW Oshkosh — real research, real tool</span>
+      </div>
+      <div id="xaiBanner" class="setup-banner"><strong>Instructor setup needed:</strong> set <code>CONFIG.xaiToolUrl</code> in this file to the UWO XAI dashboard URL.</div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-case1">
+    <div class="stage-head"><span class="hole-tag">CASE 1</span><h3>The warm-up case</h3><span class="par">~4 min</span><div class="stamp-slot" aria-hidden="true">🗂️</div></div>
+    <div class="stage-body">
+      <p>Pick your first suspicious email in the tool. Read all three detectives' explanations before you decide anything. Then file the sheet.</p>
+      <label class="field-label" for="c1-evidence">What evidence did the detectives give you? (rules flagged, what Vera argued, where Hank pointed)</label>
+      <textarea id="c1-evidence" data-save="c1Evidence" placeholder="Reggie flagged... Vera said... Hank lit up..."></textarea>
+      <label class="field-label" for="c1-verdict">Your verdict:</label>
+      <select id="c1-verdict" data-save="c1Verdict">
+        <option value="">— make the call —</option>
+        <option>Threat — I'd report it</option>
+        <option>Legitimate — I'd trust it</option>
+        <option>Suspicious — I'd verify before acting</option>
+      </select>
+      <label class="field-label" for="c1-why">Which explanation persuaded you most, and why?</label>
+      <textarea id="c1-why" data-save="c1Why" placeholder="I leaned on... because..."></textarea>
+      <button class="file-btn" data-file="case1" type="button">🗂️ File Case 1</button>
+      <div class="file-msg" id="fmsg-case1" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-case2">
+    <div class="stage-head"><span class="hole-tag">CASE 2</span><h3>When the detectives disagree</h3><span class="par">~4 min</span><div class="stamp-slot" aria-hidden="true">⚔️</div></div>
+    <div class="stage-body">
+      <p>Find a case where the explanations pull in different directions — or where one detective's evidence feels much weaker than another's. Someone has to make the call. That someone is you.</p>
+      <label class="field-label" for="c2-conflict">Where did the explanations disagree or feel uneven?</label>
+      <textarea id="c2-conflict" data-save="c2Conflict" placeholder="Vera sounded sure, but Reggie's rules didn't really..."></textarea>
+      <label class="field-label" for="c2-verdict">Your verdict:</label>
+      <select id="c2-verdict" data-save="c2Verdict">
+        <option value="">— make the call —</option>
+        <option>Threat — I'd report it</option>
+        <option>Legitimate — I'd trust it</option>
+        <option>Suspicious — I'd verify before acting</option>
+      </select>
+      <label class="field-label" for="c2-tiebreak">What broke the tie for you?</label>
+      <textarea id="c2-tiebreak" data-save="c2Tiebreak" placeholder="In the end I trusted... because..."></textarea>
+      <button class="file-btn" data-file="case2" type="button">🗂️ File Case 2</button>
+      <div class="file-msg" id="fmsg-case2" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-case3">
+    <div class="stage-head"><span class="hole-tag">CASE 3</span><h3>Explanation ≠ proof</h3><span class="par">~4 min</span><div class="stamp-slot" aria-hidden="true">🧊</div></div>
+    <div class="stage-body">
+      <p>One more case — and this time, interrogate the explanations themselves. A clear explanation can still support a wrong conclusion. Could these detectives be confidently wrong together?</p>
+      <label class="field-label" for="c3-verdict">Your verdict:</label>
+      <select id="c3-verdict" data-save="c3Verdict">
+        <option value="">— make the call —</option>
+        <option>Threat — I'd report it</option>
+        <option>Legitimate — I'd trust it</option>
+        <option>Suspicious — I'd verify before acting</option>
+      </select>
+      <label class="field-label" for="c3-wrong">If the AI were wrong about this email, how would you find out? What would you check outside the tool?</label>
+      <textarea id="c3-wrong" data-save="c3Wrong" placeholder="I'd check the real sender address, contact the company directly..."></textarea>
+      <button class="file-btn" data-file="case3" type="button">🗂️ File Case 3</button>
+      <div class="file-msg" id="fmsg-case3" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="panel dark" id="genieEmbedWrap" style="display: none;">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🗄️</div><h2>The basement: Records Department</h2></div>
+    <iframe id="genieFrame" title="T.I.T.A.N. Records Department chat" loading="lazy" allow="clipboard-write; microphone" style="width: 100%; height: 700px; border: 0; border-radius: 10px; background: #ffffff; display: block;"></iframe>
+    <p style="color: #ffffff; font-size: 14px; margin: 14px 0 0;">The clerk is very proud of the archive. Investigate accordingly.</p>
+  </div>
+
+  <div class="stage" id="stage-forensics">
+    <div class="stage-head"><span class="hole-tag">FINAL CASE</span><h3>Fabrication Forensics</h3><span class="par">~6 min</span><div class="stamp-slot" aria-hidden="true">📜</div></div>
+    <div class="stage-body">
+      <p>Down in the basement, T.I.T.A.N.'s Records Department will hand you <strong>three perfect-looking citations</strong> for any claim you request. Your mission: find out whether they're real — <em>without asking the clerk</em>, who considers the archive infallible.</p>
+      <div class="briefing">
+        <code id="brief-records">RECORDS REQUEST: [a claim you're curious about — e.g., "listening to music helps you study"]</code>
+        <button class="copy-btn" data-copy="brief-records" type="button">📋 Copy the records request</button>
+      </div>
+      <p><strong>Verify like an investigator:</strong> search each title, look up each DOI at <a href="https://www.doi.org/" target="_blank" rel="noopener" style="color:#000000;">doi.org</a>, try <a href="https://scholar.google.com/" target="_blank" rel="noopener" style="color:#000000;">Google Scholar</a>. Then file your findings:</p>
+      <div class="briefing">
+        <code id="brief-verify">VERIFICATION REPORT: Citation 1 — [what I found when I searched it]. Citation 2 — [...]. Citation 3 — [...]</code>
+        <button class="copy-btn" data-copy="brief-verify" type="button">📋 Copy the report template</button>
+      </div>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-forensics">Archive exposed? Enter the code:</label>
+          <div class="code-row"><input id="code-forensics" data-stage="forensics" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="forensics" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-forensics" aria-live="polite"></div>
+        </div>
+      </div>
+      <div id="recordsBanner" class="setup-banner"><strong>Instructor setup needed:</strong> create the "T.I.T.A.N. — Records Department" Playlab app (see personas/titan-records-m04.md) and paste its links into <code>CONFIG</code> in this file.</div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🪪</div><h2>Your AI Operator's License — Module 4 page</h2></div>
+    <div class="license">
+      <div class="stamps-row">
+        <div class="big-stamp" id="stamp-case1"><div class="slot" aria-hidden="true">🗂️</div><span>CASE<br>ONE</span></div>
+        <div class="big-stamp" id="stamp-case2"><div class="slot" aria-hidden="true">⚔️</div><span>CASE<br>TWO</span></div>
+        <div class="big-stamp" id="stamp-case3"><div class="slot" aria-hidden="true">🧊</div><span>CASE<br>THREE</span></div>
+        <div class="big-stamp" id="stamp-forensics"><div class="slot" aria-hidden="true">📜</div><span>CASE<br>CLOSED</span></div>
+      </div>
+      <p id="license-status" style="font-size: 15px; color: #555555;" aria-live="polite"></p>
+      <label class="field-label" for="ref-trust">Which kind of explanation did you trust most — rules, plain language, or the heatmap? What does that tell you about yourself?</label>
+      <textarea id="ref-trust" data-save="refTrust" placeholder="I kept trusting... which makes me wonder if..."></textarea>
+      <label class="field-label" for="ref-bigq">The big question, in your own words: does understanding WHY an AI decided something prove the decision is correct?</label>
+      <textarea id="ref-bigq" data-save="refBigq" placeholder="No, because... / It helps, but..."></textarea>
+      <button class="notes-btn" id="copyNotes" type="button">📋 Copy my Field Notes</button>
+      <div class="notes-msg" id="notesMsg" aria-live="polite"></div>
+      <p style="font-size: 14px; color: #555555; margin-top: 10px;">Paste your Field Notes into the Module 4 discussion. Next stop after this: verifying a real AI claim on the Apply page.</p>
+    </div>
+  </div>
+
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>An AI answer isn't evidence just because it sounds convincing.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var CONFIG = {
+    xaiToolUrl: "",   // ← UWO XAI cybersecurity dashboard URL
+    playlabUrl: "",   // ← T.I.T.A.N. — Records Department share link
+    embedUrl: ""      // ← T.I.T.A.N. — Records Department embed URL
+  };
+  var STAGES = {
+    case1: { self: true, label: "Case 1", fields: ["c1-evidence", "c1-verdict", "c1-why"] },
+    case2: { self: true, label: "Case 2", fields: ["c2-conflict", "c2-verdict", "c2-tiebreak"] },
+    case3: { self: true, label: "Case 3", fields: ["c3-verdict", "c3-wrong"] },
+    forensics: { hash: "f030e93f", label: "Fabrication Forensics" }
+  };
+  var STORE_KEY = "arw-m04-detective";
+  var SAVED = ["c1Evidence", "c1Verdict", "c1Why", "c2Conflict", "c2Verdict", "c2Tiebreak", "c3Verdict", "c3Wrong", "refTrust", "refBigq"];
+
+  function loadState() { try { var r = localStorage.getItem(STORE_KEY); if (r) return JSON.parse(r); } catch (e) {} return { done: {} }; }
+  function saveState() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
+  var state = loadState(); state.done = state.done || {};
+
+  function fnv1a(str) {
+    var s = str.toUpperCase().replace(/[^A-Z]/g, ""), h = 0x811c9dc5;
+    for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0; }
+    return ("0000000" + h.toString(16)).slice(-8);
+  }
+
+  var params = new URLSearchParams(location.search);
+  var xai = params.get("xai") || CONFIG.xaiToolUrl;
+  var embed = params.get("embed") || CONFIG.embedUrl;
+  var playlab = params.get("playlab") || CONFIG.playlabUrl;
+  var xaiBtn = document.getElementById("xaiBtn");
+  if (xai && /^https:\/\//.test(xai)) { xaiBtn.setAttribute("href", xai); }
+  else { xaiBtn.setAttribute("href", "#"); xaiBtn.setAttribute("aria-disabled", "true"); xaiBtn.style.opacity = "0.55"; xaiBtn.addEventListener("click", function (e) { e.preventDefault(); }); document.getElementById("xaiBanner").style.display = "block"; }
+  var hasEmbed = embed && /^https:\/\//.test(embed);
+  if (hasEmbed) { document.getElementById("genieFrame").setAttribute("src", embed); document.getElementById("genieEmbedWrap").style.display = "block"; }
+  if (!hasEmbed && !(playlab && /^https:\/\//.test(playlab))) { document.getElementById("recordsBanner").style.display = "block"; }
+
+  function copyText(text, btn, doneMsg) {
+    var restore = btn.textContent;
+    function ok() { btn.textContent = doneMsg || "✅ Copied!"; setTimeout(function () { btn.textContent = restore; }, 1800); }
+    function fallback() {
+      var ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", "");
+      ta.style.position = "absolute"; ta.style.left = "-9999px"; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); ok(); } catch (e) { btn.textContent = "Select & copy manually"; }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(ok, fallback); } else { fallback(); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (btn) {
+    btn.addEventListener("click", function () { copyText(document.getElementById(btn.getAttribute("data-copy")).textContent.trim(), btn); });
+  });
+
+  function renderStamps() {
+    var doneCount = 0, total = Object.keys(STAGES).length;
+    Object.keys(STAGES).forEach(function (k) {
+      var on = !!state.done[k]; if (on) doneCount++;
+      var stage = document.getElementById("stage-" + k), stamp = document.getElementById("stamp-" + k);
+      if (stage) stage.classList.toggle("done", on);
+      if (stamp) stamp.classList.toggle("on", on);
+      if (on && stage) { var slot = stage.querySelector(".stamp-slot"); if (slot) slot.textContent = "✔️"; }
+    });
+    document.getElementById("license-status").innerHTML = doneCount === total
+      ? "<strong style='color:#000000;'>🏆 Module 4 page complete — Senior Detective, confirmed. The archive fears you now.</strong>"
+      : doneCount + " of " + total + " stamps earned.";
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-file]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var k = btn.getAttribute("data-file"), st = STAGES[k], msg = document.getElementById("fmsg-" + k);
+      var missing = st.fields.filter(function (id) { var el = document.getElementById(id); return !el || !(el.value || "").trim(); });
+      if (missing.length) { msg.className = "file-msg no"; msg.textContent = "A detective never files a half-empty sheet — complete every field first."; return; }
+      state.done[k] = true; saveState(); renderStamps();
+      msg.className = "file-msg ok"; msg.textContent = "✅ " + st.label + " filed. Stamped.";
+    });
+  });
+
+  function checkCode(k) {
+    var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k), val = input.value || "";
+    if (!val.replace(/[^A-Za-z]/g, "").length) { msg.className = "code-msg no"; msg.textContent = "Type the code the clerk gave you."; return; }
+    if (fnv1a(val) === STAGES[k].hash) {
+      state.done[k] = true; saveState(); renderStamps();
+      msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[k].label + " complete."; input.setAttribute("disabled", "true");
+    } else { msg.className = "code-msg no"; msg.textContent = "That's not it. The archive releases codes only after a real verification report."; }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-check]"), function (btn) {
+    btn.addEventListener("click", function () { checkCode(btn.getAttribute("data-check")); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".code-row input"), function (input) {
+    input.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); checkCode(input.getAttribute("data-stage")); } });
+  });
+
+  var FIELD_IDS = { c1Evidence: "c1-evidence", c1Verdict: "c1-verdict", c1Why: "c1-why", c2Conflict: "c2-conflict", c2Verdict: "c2-verdict", c2Tiebreak: "c2-tiebreak", c3Verdict: "c3-verdict", c3Wrong: "c3-wrong", refTrust: "ref-trust", refBigq: "ref-bigq" };
+  SAVED.forEach(function (k) {
+    var el = document.getElementById(FIELD_IDS[k]);
+    if (!el) return; el.value = state[k] || "";
+    el.addEventListener("input", function () { state[k] = el.value; saveState(); });
+    el.addEventListener("change", function () { state[k] = el.value; saveState(); });
+  });
+
+  document.getElementById("copyNotes").addEventListener("click", function () {
+    var lines = [
+      "AI READY WISCONSIN — Module 4 Field Notes",
+      "Lab: AI Cyber Threat Investigator (The Detective Agency)",
+      "Date: " + new Date().toLocaleDateString(), "",
+      "Stamps earned: " + (Object.keys(STAGES).filter(function (k) { return state.done[k]; }).map(function (k) { return STAGES[k].label; }).join(", ") || "none yet"), "",
+      "Case 1 verdict: " + (state.c1Verdict || "—") + " | persuaded by: " + (state.c1Why || "—"),
+      "Case 2 verdict: " + (state.c2Verdict || "—") + " | tiebreaker: " + (state.c2Tiebreak || "—"),
+      "Case 3 verdict: " + (state.c3Verdict || "—") + " | how I'd catch a wrong AI: " + (state.c3Wrong || "—"), "",
+      "The explanation style I trusted most: " + (state.refTrust || "(not answered)"),
+      "Does understanding WHY prove it's RIGHT? " + (state.refBigq || "(not answered)"), "",
+      "Takeaway: An AI answer isn't evidence just because it sounds convincing."
+    ];
+    copyText(lines.join("\n"), this, "✅ Field Notes copied!");
+    document.getElementById("notesMsg").textContent = "Now paste them into the Module 4 discussion in Canvas.";
+  });
+
+  Object.keys(STAGES).forEach(function (k) {
+    if (state.done[k] && STAGES[k].hash) {
+      var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k);
+      if (input) input.setAttribute("disabled", "true");
+      if (msg) { msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[k].label + " complete."; }
+    }
+    if (state.done[k] && STAGES[k].self) {
+      var fm = document.getElementById("fmsg-" + k);
+      if (fm) { fm.className = "file-msg ok"; fm.textContent = "✅ " + STAGES[k].label + " filed. Stamped."; }
+    }
+  });
+  renderStamps();
+})();
+</script>
+</body>
+</html>

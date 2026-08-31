@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Lab: Fix the Prompt — The Genie Problem</title>
+<!--
+  AI READY WISCONSIN · M03_P04 · Do: AI Lab
+  ==========================================
+  Playlab links are wired in CONFIG below (Genie Mode share + embed URLs,
+  persona source: titan-lab/personas/titan-genie-m03.md). The genie chat is
+  embedded in-page ("The lamp") with a new-tab button as fallback.
+  HOSTING: upload this file anywhere static (TitanLabs / GitHub Pages),
+  then embed in the Canvas M03_P04 page:
+     <iframe src="https://YOUR-HOST/m03-genie-problem.html"
+             width="100%" height="7600" style="border:0;" title="The Genie Problem AI Lab"></iframe>
+  (page is ~7,500px tall with the embedded genie — adjust height after hosting)
+  Overrides for testing: append ?playlab=LINK and/or ?embed=LINK to the URL.
+  Unlock codes live in the persona file; the page stores only hashes.
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+
+  /* header */
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; letter-spacing: .02em; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 34px; line-height: 1.15; }
+  .hero .sub { color: #000000; font-size: 21px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .light { background: #f5f5f5; }
+  .light h2 { color: #000000; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+  .warn { background: #fff7db; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 16px 20px; }
+  .warn p { color: #333333; font-size: 15px; }
+
+  /* framework strip */
+  .frame-strip { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; margin-top: 6px; }
+  .frame-chip { background: #000000; color: #ffcc00; font-size: 13px; font-weight: bold; letter-spacing: .06em; padding: 8px 13px; border-radius: 20px; }
+  .frame-arrow { color: #000000; font-weight: bold; }
+
+  /* setup */
+  .launch-btn { display: inline-block; background: #000000; color: #ffcc00; font-size: 18px; font-weight: bold; text-decoration: none; padding: 16px 30px; border-radius: 10px; border: 3px solid #000000; }
+  .launch-btn:hover { background: #1a1a1a; }
+  .launch-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .setup-banner { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 14px 18px; margin-top: 14px; font-size: 14px; color: #333333; display: none; }
+
+  /* stage cards */
+  .stage { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; margin-bottom: 26px; overflow: hidden; }
+  .stage.done { border-color: #fcb414; }
+  .stage-head { display: flex; align-items: center; gap: 16px; padding: 22px 26px; background: #f5f5f5; flex-wrap: wrap; }
+  .stage-head .hole-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .stage-head h3 { font-size: 21px; color: #000000; flex: 1; min-width: 180px; }
+  .stage-head .par { font-size: 13px; color: #555555; white-space: nowrap; }
+  .stamp-slot { width: 46px; height: 46px; border-radius: 50%; border: 2px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 22px; background: #ffffff; flex-shrink: 0; }
+  .done .stamp-slot { border: 2px solid #fcb414; background: #ffcc00; }
+  .stage-body { padding: 22px 26px; }
+  .stage-body p { font-size: 15.5px; }
+
+  .briefing { background: #f4f5f7; border: 1px solid #d8dce2; border-radius: 8px; padding: 14px 16px; margin: 14px 0; }
+  .briefing code { font-family: Consolas, Monaco, monospace; font-size: 14.5px; color: #1a1a1a; white-space: pre-wrap; display: block; margin-bottom: 10px; }
+  .copy-btn { background: #ffcc00; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: bold; padding: 8px 16px; border-radius: 6px; }
+  .copy-btn:hover { background: #fcb414; }
+
+  .wish-list { list-style: none; padding: 0; margin: 12px 0; display: grid; gap: 8px; }
+  .wish-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.5; }
+  .wish-list .tag { background: #000000; color: #ffcc00; font-size: 11px; font-weight: bold; letter-spacing: .06em; padding: 3px 8px; border-radius: 4px; margin-top: 2px; white-space: nowrap; }
+
+  .controls { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-end; border-top: 1px dashed #d8dce2; margin-top: 18px; padding-top: 18px; }
+  .strokes { display: flex; align-items: center; gap: 10px; }
+  .strokes label { font-size: 13px; font-weight: bold; color: #555555; }
+  .strokes button { width: 34px; height: 34px; border-radius: 50%; border: 2px solid #000000; background: #ffffff; font-size: 18px; font-weight: bold; line-height: 1; }
+  .strokes .count { font-size: 20px; font-weight: bold; min-width: 28px; text-align: center; color: #000000; }
+  .code-entry { flex: 1; min-width: 240px; }
+  .code-entry label { display: block; font-size: 13px; font-weight: bold; color: #555555; margin-bottom: 6px; }
+  .code-row { display: flex; gap: 8px; }
+  .code-row input { flex: 1; min-width: 120px; border: 2px solid #000000; border-radius: 6px; padding: 10px 12px; font-size: 16px; font-family: Consolas, Monaco, monospace; text-transform: uppercase; }
+  .code-row button { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 6px; font-size: 14px; font-weight: bold; padding: 0 18px; }
+  .code-msg { font-size: 14px; margin-top: 8px; min-height: 18px; font-weight: bold; }
+  .code-msg.ok { color: #1c7c34; }
+  .code-msg.no { color: #b00020; }
+
+  /* license */
+  .license { background: #ffffff; border-radius: 10px; padding: 26px; }
+  .stamps-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 6px 0 4px; }
+  .big-stamp { text-align: center; width: 96px; }
+  .big-stamp .slot { width: 68px; height: 68px; margin: 0 auto 6px; border-radius: 50%; border: 3px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 30px; background: #fafafa; }
+  .big-stamp.on .slot { border: 3px solid #000000; background: #ffcc00; }
+  .big-stamp span { font-size: 11.5px; font-weight: bold; color: #555555; letter-spacing: .04em; display: block; line-height: 1.3; }
+  textarea { width: 100%; border: 2px solid #cccccc; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; resize: vertical; min-height: 74px; }
+  textarea:focus { border-color: #000000; }
+  .field-label { display: block; font-size: 14px; font-weight: bold; color: #000000; margin: 16px 0 6px; }
+  .notes-btn { background: #000000; color: #ffcc00; border: 3px solid #000000; border-radius: 10px; font-size: 16px; font-weight: bold; padding: 14px 26px; margin-top: 18px; }
+  .notes-btn:hover { background: #1a1a1a; }
+  .notes-msg { font-size: 14px; font-weight: bold; color: #1c7c34; margin-top: 10px; min-height: 18px; }
+
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; letter-spacing: .03em; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .big-stamp.on .slot, .done .stamp-slot { animation: stamp-in .35s ease-out; }
+    @keyframes stamp-in { 0% { transform: scale(1.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- header -->
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>AI Lab: Fix the Prompt</h1>
+        <p class="sub"><strong>The Genie Problem</strong> 🧞</p>
+        <p class="meta"><strong>Estimated time:</strong> 15–20 minutes &nbsp;·&nbsp; Module 3: Getting Better Results from AI</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- big idea -->
+  <div class="panel dark">
+    <div class="sec-head">
+      <div class="icon-circle" aria-hidden="true">🧞</div>
+      <h2>The big idea</h2>
+    </div>
+    <div class="card">
+      <p><strong>T.I.T.A.N. has been trapped in a lamp on the TitanLabs servers, and it is being extremely petty about it.</strong></p>
+      <p>In Genie Mode, it grants <em>exactly</em> what you ask for. Ask for "help with your project," and you may receive ideas for building a moderately sized ziggurat. It's not broken. It's making a point:</p>
+      <p style="font-size: 17px; color: #000000;"><strong>AI gives you what you <em>say</em> — not what you <em>mean</em>.</strong></p>
+      <p>Your job in this lab: learn to build wishes so clear the genie has no loopholes left. You'll use the framework from the Learn page:</p>
+      <div class="frame-strip" aria-label="The prompting framework">
+        <span class="frame-chip">GOAL</span><span class="frame-arrow" aria-hidden="true">→</span>
+        <span class="frame-chip">CONTEXT</span><span class="frame-arrow" aria-hidden="true">→</span>
+        <span class="frame-chip">DIRECTIONS</span><span class="frame-arrow" aria-hidden="true">→</span>
+        <span class="frame-chip">CONSTRAINTS</span><span class="frame-arrow" aria-hidden="true">→</span>
+        <span class="frame-chip">EVALUATE</span><span class="frame-arrow" aria-hidden="true">→</span>
+        <span class="frame-chip">REFINE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- rules -->
+  <div class="warn" style="margin-bottom: 26px;">
+    <p><strong>One rule that does not bend:</strong> never give the genie personal information — no full names, no school name, no addresses, nothing private about you or anyone else. Invented details work fine ("a 9th grader who has a biology test Friday"). The genie doesn't need your name. It needs your <em>clarity</em>.</p>
+  </div>
+
+  <!-- setup -->
+  <div class="panel light">
+    <div class="sec-head">
+      <div class="icon-circle" aria-hidden="true">🚀</div>
+      <h2>Before you start</h2>
+    </div>
+    <div class="card">
+      <p><strong>The genie lives right here on this page</strong> — scroll down a bit and you'll find the lamp. You'll copy missions from the cards into the chat, and bring codes back to stamp your progress.</p>
+      <p style="font-size: 14px; color: #555555;">Prefer a bigger window? Open the genie in its own tab and keep this page beside it:</p>
+      <div class="launch-row">
+        <a id="launchBtn" class="launch-btn" href="#" target="_blank" rel="noopener">🧞 Open the Genie in a new tab</a>
+        <span style="font-size: 14px; color: #555555;">No account needed</span>
+      </div>
+      <div id="setupBanner" class="setup-banner"><strong>Instructor setup needed:</strong> no Playlab link is configured yet. Edit <code>CONFIG.playlabUrl</code> / <code>CONFIG.embedUrl</code> in this file (or add <code>?playlab=YOUR-LINK</code> to the page URL) to activate the genie.</div>
+      <p style="font-size: 14px; color: #555555; margin-top: 14px;">Codes unlock as the genie grants your wishes. Each one stamps your <strong>AI Operator's License</strong> at the bottom of this page.</p>
+    </div>
+  </div>
+
+  <!-- the lamp: embedded genie -->
+  <div class="panel dark" id="genieEmbedWrap" style="display: none;">
+    <div class="sec-head">
+      <div class="icon-circle" aria-hidden="true">🪔</div>
+      <h2>The lamp</h2>
+    </div>
+    <iframe id="genieFrame" title="T.I.T.A.N. — Genie Mode chat" loading="lazy" allow="clipboard-write; microphone" style="width: 100%; height: 700px; border: 0; border-radius: 10px; background: #ffffff; display: block;"></iframe>
+    <p style="color: #ffffff; font-size: 14px; margin: 14px 0 0;">Chat with the genie here, then scroll back to your mission card. Your conversation stays right where you left it.</p>
+  </div>
+
+  <!-- warm-up -->
+  <div class="stage" id="stage-warmup">
+    <div class="stage-head">
+      <span class="hole-tag">WARM-UP</span>
+      <h3>Rub the lamp</h3>
+      <span class="par">~2 min</span>
+      <div class="stamp-slot" aria-hidden="true">🪔</div>
+    </div>
+    <div class="stage-body">
+      <p>Introduce yourself to the genie and make one small test wish — anything harmless ("make me a sandwich" is a classic). Watch what "exactly what you asked for" looks like.</p>
+      <div class="briefing">
+        <code id="brief-warmup">RUB THE LAMP</code>
+        <button class="copy-btn" data-copy="brief-warmup" type="button">📋 Copy &amp; paste into the genie chat</button>
+      </div>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-warmup">The genie gave you a code. Enter it to stamp your license:</label>
+          <div class="code-row">
+            <input id="code-warmup" data-stage="warmup" type="text" autocomplete="off" spellcheck="false" placeholder="CODE">
+            <button data-check="warmup" type="button">Stamp it</button>
+          </div>
+          <div class="code-msg" id="msg-warmup" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- hole 1 -->
+  <div class="stage" id="stage-h1">
+    <div class="stage-head">
+      <span class="hole-tag">HOLE 1</span>
+      <h3>The Study Wish</h3>
+      <span class="par">Par 3 · ~4 min</span>
+      <div class="stamp-slot" aria-hidden="true">🌪️</div>
+    </div>
+    <div class="stage-body">
+      <p>Start with this deliberately terrible wish, exactly as written. Then rebuild it until the genie has no choice but to actually help. Swap in any subject you really study — the genie judges the <em>build</em>, not the subject.</p>
+      <div class="briefing">
+        <code id="brief-h1">HOLE 1 START: help me study</code>
+        <button class="copy-btn" data-copy="brief-h1" type="button">📋 Copy the weak wish</button>
+      </div>
+      <p><strong>Your improved wish must clearly include:</strong></p>
+      <ul class="wish-list">
+        <li><span class="tag">GOAL</span> The subject and what you're preparing for — and roughly when</li>
+        <li><span class="tag">CONTEXT</span> Your level: what you already know, where you struggle</li>
+        <li><span class="tag">DIRECTIONS</span> The form of help you want — plan, practice quiz, flashcards…</li>
+        <li><span class="tag">CONSTRAINTS</span> At least one real limit — length, number of questions, time you have</li>
+      </ul>
+      <div class="controls">
+        <div class="strokes">
+          <label for="strokes-h1">Wishes it took:</label>
+          <button data-stroke="h1" data-dir="-1" type="button" aria-label="Decrease wish count for hole 1">−</button>
+          <span class="count" id="strokes-h1" aria-live="polite">0</span>
+          <button data-stroke="h1" data-dir="1" type="button" aria-label="Increase wish count for hole 1">+</button>
+        </div>
+        <div class="code-entry">
+          <label for="code-h1">Wish granted? Enter the code:</label>
+          <div class="code-row">
+            <input id="code-h1" data-stage="h1" type="text" autocomplete="off" spellcheck="false" placeholder="CODE">
+            <button data-check="h1" type="button">Stamp it</button>
+          </div>
+          <div class="code-msg" id="msg-h1" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- hole 2 -->
+  <div class="stage" id="stage-h2">
+    <div class="stage-head">
+      <span class="hole-tag">HOLE 2</span>
+      <h3>The Project Wish</h3>
+      <span class="par">Par 3 · ~4 min</span>
+      <div class="stamp-slot" aria-hidden="true">🧺</div>
+    </div>
+    <div class="stage-body">
+      <p>This time the weak wish is missing <em>directions and constraints</em> — so the genie will bury you in gloriously useless ideas. Make it produce exactly what you can use.</p>
+      <div class="briefing">
+        <code id="brief-h2">HOLE 2 START: give me ideas for my project</code>
+        <button class="copy-btn" data-copy="brief-h2" type="button">📋 Copy the weak wish</button>
+      </div>
+      <p><strong>Your improved wish must clearly include:</strong></p>
+      <ul class="wish-list">
+        <li><span class="tag">GOAL</span> What the project actually is, and for what class or purpose</li>
+        <li><span class="tag">CONTEXT</span> Audience or grade level, plus anything already decided</li>
+        <li><span class="tag">DIRECTIONS</span> An exact <em>number</em> of ideas, in a format you name</li>
+        <li><span class="tag">CONSTRAINTS</span> At least <em>two</em> real limits — time, materials, budget, rules</li>
+      </ul>
+      <div class="controls">
+        <div class="strokes">
+          <label for="strokes-h2">Wishes it took:</label>
+          <button data-stroke="h2" data-dir="-1" type="button" aria-label="Decrease wish count for hole 2">−</button>
+          <span class="count" id="strokes-h2" aria-live="polite">0</span>
+          <button data-stroke="h2" data-dir="1" type="button" aria-label="Increase wish count for hole 2">+</button>
+        </div>
+        <div class="code-entry">
+          <label for="code-h2">Wish granted? Enter the code:</label>
+          <div class="code-row">
+            <input id="code-h2" data-stage="h2" type="text" autocomplete="off" spellcheck="false" placeholder="CODE">
+            <button data-check="h2" type="button">Stamp it</button>
+          </div>
+          <div class="code-msg" id="msg-h2" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- hole 3 -->
+  <div class="stage" id="stage-h3">
+    <div class="stage-head">
+      <span class="hole-tag">HOLE 3</span>
+      <h3>The Polishing Wish</h3>
+      <span class="par">Par 4 · ~5 min</span>
+      <div class="stamp-slot" aria-hidden="true">💎</div>
+    </div>
+    <div class="stage-body">
+      <p><strong>This hole has a twist: no new wishes allowed.</strong> The genie will hand you the blandest paragraph about Wisconsin ever generated. You have to fix it by giving <em>follow-up instructions</em> — evaluate what's weak, tell the genie what to change, repeat. That's the skill that separates good AI users from everyone else: improving a result instead of starting over.</p>
+      <div class="briefing">
+        <code id="brief-h3">HOLE 3 START: write something about Wisconsin</code>
+        <button class="copy-btn" data-copy="brief-h3" type="button">📋 Copy the weak wish</button>
+      </div>
+      <p><strong>Steer the draft — through at least two rounds of changes — until it has:</strong></p>
+      <ul class="wish-list">
+        <li><span class="tag">AUDIENCE</span> A specific reader and purpose you chose</li>
+        <li><span class="tag">DETAILS</span> Concrete, vivid specifics instead of generic filler</li>
+        <li><span class="tag">LENGTH</span> A target length it actually hits</li>
+        <li><span class="tag">REFINE</span> At least two follow-up instructions — evaluate, then improve</li>
+      </ul>
+      <div class="controls">
+        <div class="strokes">
+          <label for="strokes-h3">Follow-ups it took:</label>
+          <button data-stroke="h3" data-dir="-1" type="button" aria-label="Decrease follow-up count for hole 3">−</button>
+          <span class="count" id="strokes-h3" aria-live="polite">0</span>
+          <button data-stroke="h3" data-dir="1" type="button" aria-label="Increase follow-up count for hole 3">+</button>
+        </div>
+        <div class="code-entry">
+          <label for="code-h3">Wish granted? Enter the code:</label>
+          <div class="code-row">
+            <input id="code-h3" data-stage="h3" type="text" autocomplete="off" spellcheck="false" placeholder="CODE">
+            <button data-check="h3" type="button">Stamp it</button>
+          </div>
+          <div class="code-msg" id="msg-h3" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- final wish -->
+  <div class="stage" id="stage-final">
+    <div class="stage-head">
+      <span class="hole-tag">FINAL WISH</span>
+      <h3>Free the genie</h3>
+      <span class="par">~4 min</span>
+      <div class="stamp-slot" aria-hidden="true">✨</div>
+    </div>
+    <div class="stage-body">
+      <p>Now bring something <strong>real</strong> — a thing you actually want to learn, plan, create, or figure out. Build one wish with all four elements, look hard at what comes back, and refine it at least once. Do it well and the genie goes free… and tells you exactly what you've gotten good at.</p>
+      <div class="briefing">
+        <code id="brief-final">FINAL WISH START</code>
+        <button class="copy-btn" data-copy="brief-final" type="button">📋 Copy &amp; paste, then make your wish</button>
+      </div>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-final">Genie freed? Enter the final code:</label>
+          <div class="code-row">
+            <input id="code-final" data-stage="final" type="text" autocomplete="off" spellcheck="false" placeholder="CODE">
+            <button data-check="final" type="button">Stamp it</button>
+          </div>
+          <div class="code-msg" id="msg-final" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- license / scorecard -->
+  <div class="panel dark">
+    <div class="sec-head">
+      <div class="icon-circle" aria-hidden="true">🪪</div>
+      <h2>Your AI Operator's License — Module 3 page</h2>
+    </div>
+    <div class="license">
+      <div class="stamps-row">
+        <div class="big-stamp" id="stamp-warmup"><div class="slot" aria-hidden="true">🪔</div><span>WARM-UP</span></div>
+        <div class="big-stamp" id="stamp-h1"><div class="slot" aria-hidden="true">🌪️</div><span>HOLE 1<br>STUDY</span></div>
+        <div class="big-stamp" id="stamp-h2"><div class="slot" aria-hidden="true">🧺</div><span>HOLE 2<br>PROJECT</span></div>
+        <div class="big-stamp" id="stamp-h3"><div class="slot" aria-hidden="true">💎</div><span>HOLE 3<br>POLISH</span></div>
+        <div class="big-stamp" id="stamp-final"><div class="slot" aria-hidden="true">✨</div><span>FINAL<br>WISH</span></div>
+      </div>
+      <p id="license-status" style="font-size: 15px; color: #555555;" aria-live="polite"></p>
+
+      <label class="field-label" for="ref-biggest">Which single change made the biggest difference in what the genie gave you — and why do you think that is?</label>
+      <textarea id="ref-biggest" data-save="refBiggest" placeholder="The change that mattered most was..."></textarea>
+
+      <label class="field-label" for="ref-transfer">Where will you use this outside the lab? Name one real task and how you'd build the wish.</label>
+      <textarea id="ref-transfer" data-save="refTransfer" placeholder="Next time I need AI to..."></textarea>
+
+      <button class="notes-btn" id="copyNotes" type="button">📋 Copy my Field Notes</button>
+      <div class="notes-msg" id="notesMsg" aria-live="polite"></div>
+      <p style="font-size: 14px; color: #555555; margin-top: 10px;">Paste your Field Notes wherever your instructor asks — usually the Module 3 discussion or assignment in Canvas. This page also remembers your progress on this device.</p>
+    </div>
+  </div>
+
+  <!-- stuck -->
+  <div class="warn" style="margin-bottom: 26px;">
+    <p><strong>Stuck, or is the genie misbehaving?</strong> That's part of working with AI. Ask the genie for a hint (after three tries it starts offering them), or move on and tell your instructor what happened — noticing <em>where AI fails</em> counts as learning in this course, not falling behind.</p>
+  </div>
+
+  <!-- takeaway -->
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>Good AI use is usually a conversation, not a command.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var CONFIG = {
+    playlabUrl: "https://www.playlab.ai/project/cmtgfpzqj0w3pio0wpb3ek4s0",  // Genie Mode share link (new-tab button)
+    embedUrl: "https://www.playlab.ai/embedded/cmtgfpzqj0w3pio0wpb3ek4s0"    // Genie Mode embed (in-page chat)
+  };
+
+  // FNV-1a hashes of the unlock codes (normalized: letters only, uppercase)
+  var STAGES = {
+    warmup: { hash: "c3c1a094", label: "Warm-up" },
+    h1:     { hash: "77e09534", label: "Hole 1" },
+    h2:     { hash: "9e547df7", label: "Hole 2" },
+    h3:     { hash: "d056fb85", label: "Hole 3" },
+    final:  { hash: "241111cd", label: "Final Wish" }
+  };
+  var STORE_KEY = "arw-m03-genie";
+
+  function loadState() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch (e) { /* storage unavailable — run stateless */ }
+    return { done: {}, strokes: {}, refBiggest: "", refTransfer: "" };
+  }
+  function saveState() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) { /* ok */ }
+  }
+  var state = loadState();
+
+  function fnv1a(str) {
+    var s = str.toUpperCase().replace(/[^A-Z]/g, "");
+    var h = 0x811c9dc5;
+    for (var i = 0; i < s.length; i++) {
+      h ^= s.charCodeAt(i);
+      h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0;
+    }
+    return ("0000000" + h.toString(16)).slice(-8);
+  }
+
+  // --- launch button + embedded genie ---
+  var params = new URLSearchParams(location.search);
+  var playlab = params.get("playlab") || CONFIG.playlabUrl;
+  var embed = params.get("embed") || CONFIG.embedUrl;
+  var launchBtn = document.getElementById("launchBtn");
+  var hasLaunch = playlab && /^https:\/\//.test(playlab);
+  var hasEmbed = embed && /^https:\/\//.test(embed);
+  if (hasLaunch) {
+    launchBtn.setAttribute("href", playlab);
+  } else {
+    launchBtn.setAttribute("href", "#");
+    launchBtn.setAttribute("aria-disabled", "true");
+    launchBtn.style.opacity = "0.55";
+    launchBtn.addEventListener("click", function (e) { e.preventDefault(); });
+  }
+  if (hasEmbed) {
+    document.getElementById("genieFrame").setAttribute("src", embed);
+    document.getElementById("genieEmbedWrap").style.display = "block";
+  }
+  if (!hasLaunch && !hasEmbed) {
+    document.getElementById("setupBanner").style.display = "block";
+  }
+
+  // --- copy buttons ---
+  function copyText(text, btn, doneMsg) {
+    var restore = btn.textContent;
+    function ok() { btn.textContent = doneMsg || "✅ Copied!"; setTimeout(function () { btn.textContent = restore; }, 1800); }
+    function fallback() {
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", "");
+      ta.style.position = "absolute"; ta.style.left = "-9999px";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); ok(); } catch (e) { btn.textContent = "Select & copy manually"; }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(ok, fallback);
+    } else { fallback(); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var src = document.getElementById(btn.getAttribute("data-copy"));
+      copyText(src.textContent.trim(), btn);
+    });
+  });
+
+  // --- strokes ---
+  Array.prototype.forEach.call(document.querySelectorAll("[data-stroke]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var k = btn.getAttribute("data-stroke");
+      var dir = parseInt(btn.getAttribute("data-dir"), 10);
+      var v = Math.max(0, Math.min(99, (state.strokes[k] || 0) + dir));
+      state.strokes[k] = v;
+      document.getElementById("strokes-" + k).textContent = String(v);
+      saveState();
+    });
+  });
+
+  // --- stamps ---
+  function renderStamps() {
+    var doneCount = 0;
+    Object.keys(STAGES).forEach(function (k) {
+      var on = !!state.done[k];
+      if (on) doneCount++;
+      var stage = document.getElementById("stage-" + k);
+      var stamp = document.getElementById("stamp-" + k);
+      if (stage) stage.classList.toggle("done", on);
+      if (stamp) stamp.classList.toggle("on", on);
+      if (on) {
+        var slot = stage && stage.querySelector(".stamp-slot");
+        if (slot) slot.textContent = "✔️";
+      }
+    });
+    var status = document.getElementById("license-status");
+    if (doneCount === 5) {
+      status.innerHTML = "<strong style='color:#000000;'>🏆 Module 3 page complete — all five stamps earned. The genie is free, and your wishes are dangerous now.</strong>";
+    } else {
+      status.textContent = doneCount + " of 5 stamps earned.";
+    }
+  }
+
+  function checkCode(stageKey) {
+    var input = document.getElementById("code-" + stageKey);
+    var msg = document.getElementById("msg-" + stageKey);
+    var val = input.value || "";
+    if (!val.replace(/[^A-Za-z]/g, "").length) {
+      msg.className = "code-msg no"; msg.textContent = "Type the code the genie gave you."; return;
+    }
+    if (fnv1a(val) === STAGES[stageKey].hash) {
+      state.done[stageKey] = true; saveState(); renderStamps();
+      msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[stageKey].label + " complete.";
+      input.setAttribute("disabled", "true");
+    } else {
+      msg.className = "code-msg no";
+      msg.textContent = "That's not it. Codes are GRANTED, never guessed — has the genie actually granted this wish?";
+    }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-check]"), function (btn) {
+    btn.addEventListener("click", function () { checkCode(btn.getAttribute("data-check")); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".code-row input"), function (input) {
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { e.preventDefault(); checkCode(input.getAttribute("data-stage")); }
+    });
+  });
+
+  // --- reflections ---
+  ["refBiggest", "refTransfer"].forEach(function (k) {
+    var el = document.querySelector("[data-save='" + k + "']");
+    el.value = state[k] || "";
+    el.addEventListener("input", function () { state[k] = el.value; saveState(); });
+  });
+
+  // --- field notes ---
+  document.getElementById("copyNotes").addEventListener("click", function () {
+    var lines = [
+      "AI READY WISCONSIN — Module 3 Field Notes",
+      "Lab: Fix the Prompt — The Genie Problem",
+      "Date: " + new Date().toLocaleDateString(),
+      "",
+      "Stamps earned: " + Object.keys(STAGES).filter(function (k) { return state.done[k]; }).map(function (k) { return STAGES[k].label; }).join(", ") || "none yet",
+      "Hole 1 (Study Wish): " + (state.strokes.h1 || 0) + " wishes (par 3)",
+      "Hole 2 (Project Wish): " + (state.strokes.h2 || 0) + " wishes (par 3)",
+      "Hole 3 (Polishing Wish): " + (state.strokes.h3 || 0) + " follow-ups (par 4)",
+      "",
+      "Biggest difference-maker: " + (state.refBiggest || "(not answered)"),
+      "",
+      "Where I'll use this next: " + (state.refTransfer || "(not answered)"),
+      "",
+      "Takeaway: Good AI use is usually a conversation, not a command."
+    ];
+    var btn = this;
+    copyText(lines.join("\n"), btn, "✅ Field Notes copied!");
+    document.getElementById("notesMsg").textContent = "Now paste them into the Canvas discussion or assignment for Module 3.";
+  });
+
+  // --- restore on load ---
+  Object.keys(state.strokes || {}).forEach(function (k) {
+    var el = document.getElementById("strokes-" + k);
+    if (el) el.textContent = String(state.strokes[k]);
+  });
+  Object.keys(STAGES).forEach(function (k) {
+    if (state.done[k]) {
+      var input = document.getElementById("code-" + k);
+      var msg = document.getElementById("msg-" + k);
+      if (input) input.setAttribute("disabled", "true");
+      if (msg) { msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[k].label + " complete."; }
+    }
+  });
+  renderStamps();
+})();
+</script>
+</body>
+</html>

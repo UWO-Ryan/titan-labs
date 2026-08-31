@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Learning Coach Lab: Teach-It-Back</title>
+<!--
+  AI READY WISCONSIN · M02_P04 · Do: AI Lab
+  Persona: T.I.T.A.N. — Coach & Lil' T (titan-lab/personas/titan-coach-m02.md)
+  After creating the app, paste its links into CONFIG below.
+  Canvas embed: <iframe src="https://YOUR-HOST/m02-learning-coach.html" width="100%" height="7200" style="border:0;" title="AI Learning Coach Lab"></iframe>
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 30px; line-height: 1.2; }
+  .hero .sub { color: #000000; font-size: 20px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .light { background: #f5f5f5; }
+  .light h2 { color: #000000; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+  .warn { background: #fff7db; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 16px 20px; }
+  .warn p { color: #333333; font-size: 15px; }
+  .launch-btn { display: inline-block; background: #000000; color: #ffcc00; font-size: 17px; font-weight: bold; text-decoration: none; padding: 14px 26px; border-radius: 10px; border: 3px solid #000000; }
+  .launch-btn:hover { background: #1a1a1a; }
+  .launch-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .setup-banner { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 14px 18px; margin-top: 14px; font-size: 14px; color: #333333; display: none; }
+  .stage { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; margin-bottom: 26px; overflow: hidden; }
+  .stage.done { border-color: #fcb414; }
+  .stage-head { display: flex; align-items: center; gap: 16px; padding: 22px 26px; background: #f5f5f5; flex-wrap: wrap; }
+  .stage-head .hole-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .stage-head h3 { font-size: 21px; color: #000000; flex: 1; min-width: 180px; }
+  .stage-head .par { font-size: 13px; color: #555555; white-space: nowrap; }
+  .stamp-slot { width: 46px; height: 46px; border-radius: 50%; border: 2px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 22px; background: #ffffff; flex-shrink: 0; }
+  .done .stamp-slot { border: 2px solid #fcb414; background: #ffcc00; }
+  .stage-body { padding: 22px 26px; }
+  .stage-body p { font-size: 15.5px; }
+  .briefing { background: #f4f5f7; border: 1px solid #d8dce2; border-radius: 8px; padding: 14px 16px; margin: 14px 0; }
+  .briefing code { font-family: Consolas, Monaco, monospace; font-size: 14.5px; color: #1a1a1a; white-space: pre-wrap; display: block; margin-bottom: 10px; }
+  .copy-btn { background: #ffcc00; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: bold; padding: 8px 16px; border-radius: 6px; }
+  .copy-btn:hover { background: #fcb414; }
+  .strat-grid { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0; }
+  .strat { display: flex; align-items: center; gap: 8px; background: #f5f5f5; border-radius: 20px; padding: 8px 14px; font-size: 14px; color: #333333; }
+  .strat input { width: 18px; height: 18px; accent-color: #fcb414; }
+  .controls { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-end; border-top: 1px dashed #d8dce2; margin-top: 18px; padding-top: 18px; }
+  .code-entry { flex: 1; min-width: 240px; }
+  .code-entry label { display: block; font-size: 13px; font-weight: bold; color: #555555; margin-bottom: 6px; }
+  .code-row { display: flex; gap: 8px; }
+  .code-row input { flex: 1; min-width: 120px; border: 2px solid #000000; border-radius: 6px; padding: 10px 12px; font-size: 16px; font-family: Consolas, Monaco, monospace; text-transform: uppercase; }
+  .code-row button { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 6px; font-size: 14px; font-weight: bold; padding: 0 18px; }
+  .code-msg { font-size: 14px; margin-top: 8px; min-height: 18px; font-weight: bold; }
+  .code-msg.ok { color: #1c7c34; }
+  .code-msg.no { color: #b00020; }
+  .license { background: #ffffff; border-radius: 10px; padding: 26px; }
+  .stamps-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 6px 0 4px; }
+  .big-stamp { text-align: center; width: 96px; }
+  .big-stamp .slot { width: 68px; height: 68px; margin: 0 auto 6px; border-radius: 50%; border: 3px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 30px; background: #fafafa; }
+  .big-stamp.on .slot { border: 3px solid #000000; background: #ffcc00; }
+  .big-stamp span { font-size: 11.5px; font-weight: bold; color: #555555; display: block; line-height: 1.3; }
+  textarea { width: 100%; border: 2px solid #cccccc; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; resize: vertical; min-height: 70px; }
+  textarea:focus { border-color: #000000; }
+  .field-label { display: block; font-size: 14px; font-weight: bold; color: #000000; margin: 16px 0 6px; }
+  .notes-btn { background: #000000; color: #ffcc00; border: 3px solid #000000; border-radius: 10px; font-size: 16px; font-weight: bold; padding: 14px 26px; margin-top: 18px; }
+  .notes-btn:hover { background: #1a1a1a; }
+  .notes-msg { font-size: 14px; font-weight: bold; color: #1c7c34; margin-top: 10px; min-height: 18px; }
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .big-stamp.on .slot, .done .stamp-slot { animation: stamp-in .35s ease-out; }
+    @keyframes stamp-in { 0% { transform: scale(1.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>AI Learning Coach Lab</h1>
+        <p class="sub"><strong>Teach-It-Back</strong> 🧑‍🏫</p>
+        <p class="meta"><strong>Estimated time:</strong> 15–20 minutes &nbsp;·&nbsp; Module 2: AI as Your Learning Coach</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🏋️</div><h2>The big idea</h2></div>
+    <div class="card">
+      <p><strong>Anyone can ask AI for an answer. Today you make it teach you something — and then comes the twist.</strong></p>
+      <p>T.I.T.A.N. has switched into Coach Mode: it explains, quizzes, and adjusts, but it will <em>not</em> just do your thinking for you. Bring something you genuinely don't get. Make it change teaching strategies until one clicks.</p>
+      <p>Then the twist: you'll teach the same idea to <strong>Lil' T</strong> — T.I.T.A.N.'s hopelessly confused little-sibling model. If you can survive Lil' T's questions, you actually understand it. Teaching something is the strongest way to learn it — that's real research, not a gimmick.</p>
+    </div>
+  </div>
+
+  <div class="warn" style="margin-bottom: 26px;">
+    <p><strong>One rule that does not bend:</strong> no personal information in the chat — no full names, school names, or private details. Your topic and your brain are all the coach needs.</p>
+  </div>
+
+  <div class="panel light">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🚀</div><h2>Before you start</h2></div>
+    <div class="card">
+      <p><strong>The gym is below.</strong> Copy missions from the cards into the chat; bring the codes back here.</p>
+      <div class="launch-row">
+        <a id="launchBtn" class="launch-btn" href="#" target="_blank" rel="noopener">🧑‍🏫 Open the Coach in a new tab</a>
+        <span style="font-size: 14px; color: #555555;">No account needed</span>
+      </div>
+      <div id="setupBanner" class="setup-banner"><strong>Instructor setup needed:</strong> create the "T.I.T.A.N. — Coach &amp; Lil' T" Playlab app (see personas/titan-coach-m02.md) and paste its links into <code>CONFIG</code> in this file.</div>
+    </div>
+  </div>
+
+  <div class="panel dark" id="genieEmbedWrap" style="display: none;">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🏋️</div><h2>The gym</h2></div>
+    <iframe id="genieFrame" title="T.I.T.A.N. Coach chat" loading="lazy" allow="clipboard-write; microphone" style="width: 100%; height: 700px; border: 0; border-radius: 10px; background: #ffffff; display: block;"></iframe>
+    <p style="color: #ffffff; font-size: 14px; margin: 14px 0 0;">Chat here, then scroll back to your mission card.</p>
+  </div>
+
+  <div class="stage" id="stage-warmup">
+    <div class="stage-head"><span class="hole-tag">WARM-UP</span><h3>The Five Levels</h3><span class="par">~3 min</span><div class="stamp-slot" aria-hidden="true">🪜</div></div>
+    <div class="stage-body">
+      <p>Pick any topic. The coach explains it five ways — from little-kid level to expert. Find the level that matches you, then look one rung up: that's where you're headed.</p>
+      <div class="briefing">
+        <code id="brief-warmup">M02 WARM-UP: FIVE LEVELS — my topic is [anything you're curious about]</code>
+        <button class="copy-btn" data-copy="brief-warmup" type="button">📋 Copy &amp; paste into the chat</button>
+      </div>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-warmup">Found your level? Enter the code:</label>
+          <div class="code-row"><input id="code-warmup" data-stage="warmup" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="warmup" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-warmup" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-phase1">
+    <div class="stage-head"><span class="hole-tag">PHASE 1</span><h3>The tutoring session</h3><span class="par">~7 min</span><div class="stamp-slot" aria-hidden="true">🧑‍🏫</div></div>
+    <div class="stage-body">
+      <p>Bring something you're honestly stuck on — from any class, hobby, or life. The rule: <strong>don't settle for the first explanation.</strong> Push the coach to switch strategies at least twice, and check off what you try:</p>
+      <div class="briefing">
+        <code id="brief-phase1">M02 TUTOR SESSION: [the thing I don't get] — here's what I already know and where I get lost: [be honest]</code>
+        <button class="copy-btn" data-copy="brief-phase1" type="button">📋 Copy the mission template</button>
+      </div>
+      <div class="strat-grid">
+        <label class="strat"><input type="checkbox" data-strat="another"> Explain it another way</label>
+        <label class="strat"><input type="checkbox" data-strat="analogy"> Give me an analogy</label>
+        <label class="strat"><input type="checkbox" data-strat="example"> Show a concrete example</label>
+        <label class="strat"><input type="checkbox" data-strat="socratic"> Ask ME questions</label>
+        <label class="strat"><input type="checkbox" data-strat="quiz"> Quiz me</label>
+        <label class="strat"><input type="checkbox" data-strat="try"> Let me try one, then check it</label>
+      </div>
+      <p style="font-size: 14.5px; color: #555555;">The session ends with a three-question mini-quiz. Take it honestly — it's how you and the coach both find out if the explanation actually landed.</p>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-phase1">Session complete? Enter the code:</label>
+          <div class="code-row"><input id="code-phase1" data-stage="phase1" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="phase1" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-phase1" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-phase2">
+    <div class="stage-head"><span class="hole-tag">PHASE 2</span><h3>Teach it back to Lil' T</h3><span class="par">~6 min</span><div class="stamp-slot" aria-hidden="true">🎓</div></div>
+    <div class="stage-body">
+      <p>Now the tables turn. Send the marker below and the coach wakes up <strong>Lil' T</strong> — who knows absolutely nothing about your topic and will interrupt you with gloriously confused questions. Teach it. Correct it when it repeats your idea back wrong (it will).</p>
+      <div class="briefing">
+        <code id="brief-phase2">M02 TEACH-BACK</code>
+        <button class="copy-btn" data-copy="brief-phase2" type="button">📋 Copy &amp; paste into the chat</button>
+      </div>
+      <p style="font-size: 14.5px; color: #555555;">If you can make <em>Lil' T</em> get it, you've got it. If you can't explain it simply yet, that's not failure — that's the gap showing you where to aim.</p>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-phase2">Lil' T educated? Enter the code:</label>
+          <div class="code-row"><input id="code-phase2" data-stage="phase2" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="phase2" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-phase2" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-apply">
+    <div class="stage-head"><span class="hole-tag">YOUR TURN</span><h3>Design your own session</h3><span class="par">~4 min</span><div class="stamp-slot" aria-hidden="true">💡</div></div>
+    <div class="stage-body">
+      <p>Pick something you <em>want</em> to understand — school, hobby, future plans, anything. Plan it here, run it in the chat, then report back to the coach.</p>
+      <label class="field-label" for="f-topic">What do I want to learn?</label>
+      <textarea id="f-topic" data-save="fTopic" placeholder="I want to understand..."></textarea>
+      <label class="field-label" for="f-strategies">Which strategies will I use? (steal the ones that worked in Phase 1)</label>
+      <textarea id="f-strategies" data-save="fStrategies" placeholder="Start with an analogy, then make it quiz me..."></textarea>
+      <div class="briefing">
+        <code id="brief-apply">M02 APPLY REPORT: I tried to learn [topic] using [strategies]. Here's whether it worked: [honest verdict]</code>
+        <button class="copy-btn" data-copy="brief-apply" type="button">📋 Copy the report template</button>
+      </div>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-apply">Report filed? Enter the code:</label>
+          <div class="code-row"><input id="code-apply" data-stage="apply" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="apply" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-apply" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🪪</div><h2>Your AI Operator's License — Module 2 page</h2></div>
+    <div class="license">
+      <div class="stamps-row">
+        <div class="big-stamp" id="stamp-warmup"><div class="slot" aria-hidden="true">🪜</div><span>FIVE<br>LEVELS</span></div>
+        <div class="big-stamp" id="stamp-phase1"><div class="slot" aria-hidden="true">🧑‍🏫</div><span>TUTOR<br>SESSION</span></div>
+        <div class="big-stamp" id="stamp-phase2"><div class="slot" aria-hidden="true">🎓</div><span>TEACH<br>BACK</span></div>
+        <div class="big-stamp" id="stamp-apply"><div class="slot" aria-hidden="true">💡</div><span>YOUR<br>SESSION</span></div>
+      </div>
+      <p id="license-status" style="font-size: 15px; color: #555555;" aria-live="polite"></p>
+      <label class="field-label" for="ref-strategy">Which teaching strategy actually worked for you — and how could you ask for it next time you're stuck?</label>
+      <textarea id="ref-strategy" data-save="refStrategy" placeholder="What clicked was... so next time I'll ask AI to..."></textarea>
+      <label class="field-label" for="ref-line">Where's the line for you between AI helping you learn and AI doing the learning for you?</label>
+      <textarea id="ref-line" data-save="refLine" placeholder="It's helping when... it's replacing me when..."></textarea>
+      <button class="notes-btn" id="copyNotes" type="button">📋 Copy my Field Notes</button>
+      <div class="notes-msg" id="notesMsg" aria-live="polite"></div>
+      <p style="font-size: 14px; color: #555555; margin-top: 10px;">Paste your Field Notes wherever your instructor asks — usually the Module 2 discussion in Canvas.</p>
+    </div>
+  </div>
+
+  <div class="warn" style="margin-bottom: 26px;">
+    <p><strong>Coach being stubborn, or Lil' T too confused?</strong> Tell it what's not working — "that analogy lost me, try a sports one" is exactly the skill this module teaches. And if the chat goes sideways, tell your instructor what happened; that's data, not defeat.</p>
+  </div>
+
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>Using AI to get an answer and using AI to learn are not the same thing.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var CONFIG = { playlabUrl: "", embedUrl: "" }; // ← paste T.I.T.A.N. — Coach & Lil' T links here
+  var STAGES = {
+    warmup: { hash: "6da1a41a", label: "Five Levels" },
+    phase1:  { hash: "db9d9bbc", label: "Tutor Session" },
+    phase2:  { hash: "3d1593fa", label: "Teach-Back" },
+    apply:  { hash: "151226b4", label: "Your Session" }
+  };
+  var STORE_KEY = "arw-m02-coach";
+  var SAVED = ["fTopic", "fStrategies", "refStrategy", "refLine"];
+
+  function loadState() { try { var r = localStorage.getItem(STORE_KEY); if (r) return JSON.parse(r); } catch (e) {} return { done: {}, strats: {} }; }
+  function saveState() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
+  var state = loadState(); state.done = state.done || {}; state.strats = state.strats || {};
+
+  function fnv1a(str) {
+    var s = str.toUpperCase().replace(/[^A-Z]/g, ""), h = 0x811c9dc5;
+    for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0; }
+    return ("0000000" + h.toString(16)).slice(-8);
+  }
+
+  var params = new URLSearchParams(location.search);
+  var playlab = params.get("playlab") || CONFIG.playlabUrl;
+  var embed = params.get("embed") || CONFIG.embedUrl;
+  var launchBtn = document.getElementById("launchBtn");
+  var hasLaunch = playlab && /^https:\/\//.test(playlab);
+  var hasEmbed = embed && /^https:\/\//.test(embed);
+  if (hasLaunch) { launchBtn.setAttribute("href", playlab); }
+  else { launchBtn.setAttribute("href", "#"); launchBtn.setAttribute("aria-disabled", "true"); launchBtn.style.opacity = "0.55"; launchBtn.addEventListener("click", function (e) { e.preventDefault(); }); }
+  if (hasEmbed) { document.getElementById("genieFrame").setAttribute("src", embed); document.getElementById("genieEmbedWrap").style.display = "block"; }
+  if (!hasLaunch && !hasEmbed) { document.getElementById("setupBanner").style.display = "block"; }
+
+  function copyText(text, btn, doneMsg) {
+    var restore = btn.textContent;
+    function ok() { btn.textContent = doneMsg || "✅ Copied!"; setTimeout(function () { btn.textContent = restore; }, 1800); }
+    function fallback() {
+      var ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", "");
+      ta.style.position = "absolute"; ta.style.left = "-9999px"; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); ok(); } catch (e) { btn.textContent = "Select & copy manually"; }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(ok, fallback); } else { fallback(); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (btn) {
+    btn.addEventListener("click", function () { copyText(document.getElementById(btn.getAttribute("data-copy")).textContent.trim(), btn); });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-strat]"), function (cb) {
+    var k = cb.getAttribute("data-strat");
+    cb.checked = !!state.strats[k];
+    cb.addEventListener("change", function () { state.strats[k] = cb.checked; saveState(); });
+  });
+
+  function renderStamps() {
+    var doneCount = 0, total = Object.keys(STAGES).length;
+    Object.keys(STAGES).forEach(function (k) {
+      var on = !!state.done[k]; if (on) doneCount++;
+      var stage = document.getElementById("stage-" + k), stamp = document.getElementById("stamp-" + k);
+      if (stage) stage.classList.toggle("done", on);
+      if (stamp) stamp.classList.toggle("on", on);
+      if (on && stage) { var slot = stage.querySelector(".stamp-slot"); if (slot) slot.textContent = "✔️"; }
+    });
+    document.getElementById("license-status").innerHTML = doneCount === total
+      ? "<strong style='color:#000000;'>🏆 Module 2 page complete — Lil' T finally gets it, thanks to you.</strong>"
+      : doneCount + " of " + total + " stamps earned.";
+  }
+
+  function checkCode(k) {
+    var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k), val = input.value || "";
+    if (!val.replace(/[^A-Za-z]/g, "").length) { msg.className = "code-msg no"; msg.textContent = "Type the code the coach gave you."; return; }
+    if (fnv1a(val) === STAGES[k].hash) {
+      state.done[k] = true; saveState(); renderStamps();
+      msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[k].label + " complete."; input.setAttribute("disabled", "true");
+    } else { msg.className = "code-msg no"; msg.textContent = "That's not it. Codes are earned in the gym — has the coach actually awarded it?"; }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-check]"), function (btn) {
+    btn.addEventListener("click", function () { checkCode(btn.getAttribute("data-check")); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".code-row input"), function (input) {
+    input.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); checkCode(input.getAttribute("data-stage")); } });
+  });
+
+  SAVED.forEach(function (k) {
+    var el = document.querySelector("[data-save='" + k + "']");
+    if (!el) return; el.value = state[k] || "";
+    el.addEventListener("input", function () { state[k] = el.value; saveState(); });
+  });
+
+  document.getElementById("copyNotes").addEventListener("click", function () {
+    var strats = Array.prototype.filter.call(document.querySelectorAll("[data-strat]"), function (c) { return c.checked; })
+      .map(function (c) { return c.parentElement.textContent.trim(); }).join(", ");
+    var lines = [
+      "AI READY WISCONSIN — Module 2 Field Notes",
+      "Lab: AI Learning Coach — Teach-It-Back",
+      "Date: " + new Date().toLocaleDateString(), "",
+      "Stamps earned: " + (Object.keys(STAGES).filter(function (k) { return state.done[k]; }).map(function (k) { return STAGES[k].label; }).join(", ") || "none yet"),
+      "Strategies I tried: " + (strats || "(none checked)"), "",
+      "My own session — topic: " + (state.fTopic || "(not answered)"),
+      "My plan: " + (state.fStrategies || "(not answered)"), "",
+      "The strategy that worked for me: " + (state.refStrategy || "(not answered)"),
+      "My line between learning with AI and avoiding learning: " + (state.refLine || "(not answered)"), "",
+      "Takeaway: Using AI to get an answer and using AI to learn are not the same thing."
+    ];
+    copyText(lines.join("\n"), this, "✅ Field Notes copied!");
+    document.getElementById("notesMsg").textContent = "Now paste them into the Module 2 discussion in Canvas.";
+  });
+
+  Object.keys(STAGES).forEach(function (k) {
+    if (state.done[k]) {
+      var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k);
+      if (input) input.setAttribute("disabled", "true");
+      if (msg) { msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[k].label + " complete."; }
+    }
+  });
+  renderStamps();
+})();
+</script>
+</body>
+</html>

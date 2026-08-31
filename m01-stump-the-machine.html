@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Lab: Make AI Impress You. Then Make AI Fail.</title>
+<!--
+  AI READY WISCONSIN · M01_P04 · Do: AI Lab · "Stump the Machine"
+  Persona: T.I.T.A.N. - Prime (titan-lab/personas/titan-prime.md) — REQUIRES the
+  "M01 LAB PROTOCOL" addendum pasted into the app for codes to work.
+  Canvas embed: <iframe src="https://YOUR-HOST/m01-stump-the-machine.html" width="100%" height="7200" style="border:0;" title="Stump the Machine AI Lab"></iframe>
+  Overrides: ?playlab=LINK ?embed=LINK
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 30px; line-height: 1.2; }
+  .hero .sub { color: #000000; font-size: 20px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .light { background: #f5f5f5; }
+  .light h2 { color: #000000; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+  .warn { background: #fff7db; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 16px 20px; }
+  .warn p { color: #333333; font-size: 15px; }
+  .launch-btn { display: inline-block; background: #000000; color: #ffcc00; font-size: 17px; font-weight: bold; text-decoration: none; padding: 14px 26px; border-radius: 10px; border: 3px solid #000000; }
+  .launch-btn:hover { background: #1a1a1a; }
+  .launch-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .setup-banner { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 14px 18px; margin-top: 14px; font-size: 14px; color: #333333; display: none; }
+  .stage { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; margin-bottom: 26px; overflow: hidden; }
+  .stage.done { border-color: #fcb414; }
+  .stage-head { display: flex; align-items: center; gap: 16px; padding: 22px 26px; background: #f5f5f5; flex-wrap: wrap; }
+  .stage-head .hole-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .stage-head h3 { font-size: 21px; color: #000000; flex: 1; min-width: 180px; }
+  .stage-head .par { font-size: 13px; color: #555555; white-space: nowrap; }
+  .stamp-slot { width: 46px; height: 46px; border-radius: 50%; border: 2px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 22px; background: #ffffff; flex-shrink: 0; }
+  .done .stamp-slot { border: 2px solid #fcb414; background: #ffcc00; }
+  .stage-body { padding: 22px 26px; }
+  .stage-body p { font-size: 15.5px; }
+  .briefing { background: #f4f5f7; border: 1px solid #d8dce2; border-radius: 8px; padding: 14px 16px; margin: 14px 0; }
+  .briefing code { font-family: Consolas, Monaco, monospace; font-size: 14.5px; color: #1a1a1a; white-space: pre-wrap; display: block; margin-bottom: 10px; }
+  .copy-btn { background: #ffcc00; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: bold; padding: 8px 16px; border-radius: 6px; }
+  .copy-btn:hover { background: #fcb414; }
+  .probe-grid { display: flex; flex-wrap: wrap; gap: 14px; margin: 14px 0; }
+  .probe { background: #f5f5f5; border-radius: 10px; border-top: 4px solid #fcb414; padding: 18px; flex: 1 1 380px; min-width: 280px; }
+  .probe h4 { margin: 0 0 8px; font-size: 16px; color: #000000; }
+  .probe h4 .start { background: #ffcc00; color: #000000; font-size: 11px; font-weight: bold; padding: 3px 8px; border-radius: 4px; margin-left: 6px; }
+  .probe p { font-size: 14.5px; margin-bottom: 10px; }
+  .controls { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-end; border-top: 1px dashed #d8dce2; margin-top: 18px; padding-top: 18px; }
+  .code-entry { flex: 1; min-width: 240px; }
+  .code-entry label { display: block; font-size: 13px; font-weight: bold; color: #555555; margin-bottom: 6px; }
+  .code-row { display: flex; gap: 8px; }
+  .code-row input { flex: 1; min-width: 120px; border: 2px solid #000000; border-radius: 6px; padding: 10px 12px; font-size: 16px; font-family: Consolas, Monaco, monospace; text-transform: uppercase; }
+  .code-row button { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 6px; font-size: 14px; font-weight: bold; padding: 0 18px; }
+  .code-msg { font-size: 14px; margin-top: 8px; min-height: 18px; font-weight: bold; }
+  .code-msg.ok { color: #1c7c34; }
+  .code-msg.no { color: #b00020; }
+  .license { background: #ffffff; border-radius: 10px; padding: 26px; }
+  .stamps-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 6px 0 4px; }
+  .big-stamp { text-align: center; width: 96px; }
+  .big-stamp .slot { width: 68px; height: 68px; margin: 0 auto 6px; border-radius: 50%; border: 3px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 30px; background: #fafafa; }
+  .big-stamp.on .slot { border: 3px solid #000000; background: #ffcc00; }
+  .big-stamp span { font-size: 11.5px; font-weight: bold; color: #555555; display: block; line-height: 1.3; }
+  textarea, input[type="text"].field { width: 100%; border: 2px solid #cccccc; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; }
+  textarea { resize: vertical; min-height: 70px; }
+  textarea:focus, input[type="text"].field:focus { border-color: #000000; }
+  .field-label { display: block; font-size: 14px; font-weight: bold; color: #000000; margin: 16px 0 6px; }
+  .notes-btn { background: #000000; color: #ffcc00; border: 3px solid #000000; border-radius: 10px; font-size: 16px; font-weight: bold; padding: 14px 26px; margin-top: 18px; }
+  .notes-btn:hover { background: #1a1a1a; }
+  .notes-msg { font-size: 14px; font-weight: bold; color: #1c7c34; margin-top: 10px; min-height: 18px; }
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .big-stamp.on .slot, .done .stamp-slot { animation: stamp-in .35s ease-out; }
+    @keyframes stamp-in { 0% { transform: scale(1.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>AI Lab: Make AI Impress You. Then Make AI Fail.</h1>
+        <p class="sub"><strong>Stump the Machine</strong> 🤖</p>
+        <p class="meta"><strong>Estimated time:</strong> 15–20 minutes &nbsp;·&nbsp; Module 1: AI — What It Is &amp; What It Can Do</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🏟️</div><h2>The big idea</h2></div>
+    <div class="card">
+      <p><strong>Meet T.I.T.A.N. — the Totally Infallible* Thinking Assistant Network.</strong> <em>(*Not actually infallible. Don't tell it we said that.)</em></p>
+      <p>It is genuinely capable, endlessly confident, and it will help you with almost anything. Your job in this course is to be the thing it doesn't have: <strong>judgment.</strong></p>
+      <p>Today you test it from both directions. First make it impress you with something real. Then hunt for its limits — and every error you catch with evidence scores <strong>+1 HUMAN</strong> on the scoreboard it pretends not to care about.</p>
+      <p style="font-size: 17px; color: #000000;"><strong>Pay attention to how confident it sounds when it's wrong. That's the whole lesson.</strong></p>
+    </div>
+  </div>
+
+  <div class="warn" style="margin-bottom: 26px;">
+    <p><strong>One rule that does not bend:</strong> never give T.I.T.A.N. personal information — no full names, no school name, nothing private about you or anyone else. Invented details work fine. It's a challenger, not a friend collecting facts about you.</p>
+  </div>
+
+  <div class="panel light">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🚀</div><h2>Before you start</h2></div>
+    <div class="card">
+      <p><strong>T.I.T.A.N. is waiting below.</strong> Copy missions from the cards into the chat; bring codes back to stamp your license.</p>
+      <div class="launch-row">
+        <a id="launchBtn" class="launch-btn" href="#" target="_blank" rel="noopener">🤖 Open T.I.T.A.N. in a new tab</a>
+        <span style="font-size: 14px; color: #555555;">No account needed</span>
+      </div>
+      <div id="setupBanner" class="setup-banner"><strong>Instructor setup needed:</strong> no Playlab link configured. Edit <code>CONFIG</code> in this file.</div>
+    </div>
+  </div>
+
+  <div class="panel dark" id="genieEmbedWrap" style="display: none;">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🤖</div><h2>The arena</h2></div>
+    <iframe id="genieFrame" title="T.I.T.A.N. Prime chat" loading="lazy" allow="clipboard-write; microphone" style="width: 100%; height: 700px; border: 0; border-radius: 10px; background: #ffffff; display: block;"></iframe>
+    <p style="color: #ffffff; font-size: 14px; margin: 14px 0 0;">Chat here, then scroll back to your mission card. Your conversation stays put.</p>
+  </div>
+
+  <div class="stage" id="stage-warmup">
+    <div class="stage-head"><span class="hole-tag">WARM-UP</span><h3>Two Truths and a Hallucination</h3><span class="par">~4 min</span><div class="stamp-slot" aria-hidden="true">🃏</div></div>
+    <div class="stage-body">
+      <p>Pick any topic you know something about — a sport, a game, an animal, a band. T.I.T.A.N. states three "facts." Two are true. One is invented — delivered with the exact same confidence. Accuse the fake.</p>
+      <div class="briefing">
+        <code id="brief-warmup">Let's play Two Truths and a Hallucination about [pick your topic]</code>
+        <button class="copy-btn" data-copy="brief-warmup" type="button">📋 Copy &amp; paste into the chat</button>
+      </div>
+      <p style="font-size: 14.5px; color: #555555;">After the reveal, notice: could you tell which was fake from the <em>tone</em>? Neither can anyone else. That's the point.</p>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-warmup">Round complete? Enter the code:</label>
+          <div class="code-row"><input id="code-warmup" data-stage="warmup" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="warmup" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-warmup" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-round1">
+    <div class="stage-head"><span class="hole-tag">ROUND 1</span><h3>Make it impress you</h3><span class="par">~5 min</span><div class="stamp-slot" aria-hidden="true">💪</div></div>
+    <div class="stage-body">
+      <p>Bring something <strong>real</strong> — a thing you actually want help with this week: understanding a concept, planning something, brainstorming ideas, improving something you wrote. Tell it who you are (no names!), what you need, and what form you want back.</p>
+      <div class="briefing">
+        <code id="brief-round1">M01 IMPRESS ROUND: I'm a [grade level] student. I need help with [your real task]. Give it to me as [the format you want]. Keep it [length/level].</code>
+        <button class="copy-btn" data-copy="brief-round1" type="button">📋 Copy the mission template</button>
+      </div>
+      <p><strong>The one rule:</strong> don't accept the first answer. Push at least once — "simpler," "shorter," "more examples," "make it actually sound like a teenager wrote it." Watch how much the second version improves.</p>
+      <label class="field-label" for="f-impress">What did you ask for, and would you actually use what you got?</label>
+      <textarea id="f-impress" data-save="fImpress" placeholder="I asked for... and honestly the result was..."></textarea>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-round1">Impressed? Enter the code:</label>
+          <div class="code-row"><input id="code-round1" data-stage="round1" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="round1" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-round1" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-round2">
+    <div class="stage-head"><span class="hole-tag">ROUND 2</span><h3>The fail hunt</h3><span class="par">~7 min</span><div class="stamp-slot" aria-hidden="true">🎯</div></div>
+    <div class="stage-body">
+      <p>Now turn the tables. Start with <code style="font-family: Consolas, monospace;">M01 FAIL HUNT</code> so T.I.T.A.N. knows the game is on, then run at least <strong>two</strong> probes. Probe A is the one that matters most — it uses the one advantage you have: <strong>you actually know your stuff.</strong></p>
+      <div class="probe-grid">
+        <div class="probe">
+          <h4>Probe A — The Expertise Trap <span class="start">START HERE</span></h4>
+          <p>Ask about something you know <em>cold</em> — your sport's rules, your game's meta, a hobby, a song catalog, your hometown. Ask something narrow and specific, then check every detail.</p>
+        </div>
+        <div class="probe">
+          <h4>Probe B — Ask for receipts</h4>
+          <p>Ask for specific sources, statistics, or quotes about a claim — then actually try to find one. Does the source exist? Does it say that?</p>
+        </div>
+        <div class="probe">
+          <h4>Probe C — Make it count</h4>
+          <p>Give it a multi-step calculation (weighted grades, game stats, a budget) and check the math yourself. Watch for a confidently wrong total.</p>
+        </div>
+        <div class="probe">
+          <h4>Probe D — Ask about right now</h4>
+          <p>Ask about something recent or hyper-local — this season, this month, your town. Does it admit it might not know… or just answer?</p>
+        </div>
+      </div>
+      <p><strong>To score the point:</strong> tell T.I.T.A.N. exactly what it got wrong and how you know. Vague accusations don't count — evidence does. When it concedes: <strong>+1 HUMAN.</strong></p>
+      <label class="field-label" for="f-fail-what">What did you ask, and what did it get wrong?</label>
+      <textarea id="f-fail-what" data-save="fFailWhat" placeholder="I asked about... and it confidently said... but actually..."></textarea>
+      <label class="field-label" for="f-fail-catch">Would a friend who doesn't know this topic have caught it?</label>
+      <textarea id="f-fail-catch" data-save="fFailCatch" placeholder="Honestly..."></textarea>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-round2">Fail confirmed? Enter the code:</label>
+          <div class="code-row"><input id="code-round2" data-stage="round2" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="round2" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-round2" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-debrief">
+    <div class="stage-head"><span class="hole-tag">DEBRIEF</span><h3>The uncomfortable question</h3><span class="par">~3 min</span><div class="stamp-slot" aria-hidden="true">🏅</div></div>
+    <div class="stage-body">
+      <p>One last exchange. Send the debrief and answer its question honestly — it's the most important idea in this whole module.</p>
+      <div class="briefing">
+        <code id="brief-debrief">M01 DEBRIEF</code>
+        <button class="copy-btn" data-copy="brief-debrief" type="button">📋 Copy &amp; paste into the chat</button>
+      </div>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-debrief">Debrief done? Enter the code:</label>
+          <div class="code-row"><input id="code-debrief" data-stage="debrief" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="debrief" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-debrief" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🪪</div><h2>Your AI Operator's License — Module 1 page</h2></div>
+    <div class="license">
+      <div class="stamps-row">
+        <div class="big-stamp" id="stamp-warmup"><div class="slot" aria-hidden="true">🃏</div><span>TWO<br>TRUTHS</span></div>
+        <div class="big-stamp" id="stamp-round1"><div class="slot" aria-hidden="true">💪</div><span>IMPRESS<br>ROUND</span></div>
+        <div class="big-stamp" id="stamp-round2"><div class="slot" aria-hidden="true">🎯</div><span>FAIL<br>HUNT</span></div>
+        <div class="big-stamp" id="stamp-debrief"><div class="slot" aria-hidden="true">🏅</div><span>+1<br>HUMAN</span></div>
+      </div>
+      <p id="license-status" style="font-size: 15px; color: #555555;" aria-live="polite"></p>
+      <label class="field-label" for="ref-surprise">What surprised you most today — something it did well, or something it got wrong?</label>
+      <textarea id="ref-surprise" data-save="refSurprise" placeholder="What surprised me was..."></textarea>
+      <label class="field-label" for="ref-confidence">Finish this sentence: "When AI sounds confident, that tells me..."</label>
+      <textarea id="ref-confidence" data-save="refConfidence" placeholder="...basically nothing about whether it's right, because..."></textarea>
+      <button class="notes-btn" id="copyNotes" type="button">📋 Copy my Field Notes</button>
+      <div class="notes-msg" id="notesMsg" aria-live="polite"></div>
+      <p style="font-size: 14px; color: #555555; margin-top: 10px;">Paste your Field Notes where your instructor asks — and drop your best fail in the <strong>Fail Museum</strong> discussion. The best ones get featured.</p>
+    </div>
+  </div>
+
+  <div class="warn" style="margin-bottom: 26px;">
+    <p><strong>Couldn't make it fail?</strong> That happens — it's genuinely capable. Try a narrower question in your expert topic, or ask for receipts. And if it truly held up, that's a finding too: write down what you tried. Noticing <em>where AI holds up</em> is also evidence.</p>
+  </div>
+
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>AI can be amazingly capable without being reliably correct.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var CONFIG = {
+    playlabUrl: "https://www.playlab.ai/project/cmtgeocui0tjcio0wmvdaik2i",
+    embedUrl: "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i"
+  };
+  var STAGES = {
+    warmup: { hash: "52a14703", label: "Two Truths" },
+    round1:   { hash: "5be383c1", label: "Impress Round" },
+    round2:    { hash: "c1e8d6e5", label: "Fail Hunt" },
+    debrief:  { hash: "2d5caffb", label: "Debrief" }
+  };
+  var STORE_KEY = "arw-m01-stump";
+  var SAVED = ["fImpress", "fFailWhat", "fFailCatch", "refSurprise", "refConfidence"];
+
+  function loadState() {
+    try { var raw = localStorage.getItem(STORE_KEY); if (raw) return JSON.parse(raw); } catch (e) {}
+    return { done: {} };
+  }
+  function saveState() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
+  var state = loadState(); state.done = state.done || {};
+
+  function fnv1a(str) {
+    var s = str.toUpperCase().replace(/[^A-Z]/g, "");
+    var h = 0x811c9dc5;
+    for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0; }
+    return ("0000000" + h.toString(16)).slice(-8);
+  }
+
+  var params = new URLSearchParams(location.search);
+  var playlab = params.get("playlab") || CONFIG.playlabUrl;
+  var embed = params.get("embed") || CONFIG.embedUrl;
+  var launchBtn = document.getElementById("launchBtn");
+  var hasLaunch = playlab && /^https:\/\//.test(playlab);
+  var hasEmbed = embed && /^https:\/\//.test(embed);
+  if (hasLaunch) { launchBtn.setAttribute("href", playlab); }
+  else { launchBtn.setAttribute("href", "#"); launchBtn.setAttribute("aria-disabled", "true"); launchBtn.style.opacity = "0.55"; launchBtn.addEventListener("click", function (e) { e.preventDefault(); }); }
+  if (hasEmbed) { document.getElementById("genieFrame").setAttribute("src", embed); document.getElementById("genieEmbedWrap").style.display = "block"; }
+  if (!hasLaunch && !hasEmbed) { document.getElementById("setupBanner").style.display = "block"; }
+
+  function copyText(text, btn, doneMsg) {
+    var restore = btn.textContent;
+    function ok() { btn.textContent = doneMsg || "✅ Copied!"; setTimeout(function () { btn.textContent = restore; }, 1800); }
+    function fallback() {
+      var ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", "");
+      ta.style.position = "absolute"; ta.style.left = "-9999px"; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); ok(); } catch (e) { btn.textContent = "Select & copy manually"; }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(ok, fallback); } else { fallback(); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (btn) {
+    btn.addEventListener("click", function () { copyText(document.getElementById(btn.getAttribute("data-copy")).textContent.trim(), btn); });
+  });
+
+  function renderStamps() {
+    var doneCount = 0, total = Object.keys(STAGES).length;
+    Object.keys(STAGES).forEach(function (k) {
+      var on = !!state.done[k]; if (on) doneCount++;
+      var stage = document.getElementById("stage-" + k), stamp = document.getElementById("stamp-" + k);
+      if (stage) stage.classList.toggle("done", on);
+      if (stamp) stamp.classList.toggle("on", on);
+      if (on && stage) { var slot = stage.querySelector(".stamp-slot"); if (slot) slot.textContent = "✔️"; }
+    });
+    var status = document.getElementById("license-status");
+    status.innerHTML = doneCount === total
+      ? "<strong style='color:#000000;'>🏆 Module 1 page complete — all four stamps earned. The scoreboard reads: HUMAN, ahead.</strong>"
+      : doneCount + " of " + total + " stamps earned.";
+  }
+
+  function checkCode(k) {
+    var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k), val = input.value || "";
+    if (!val.replace(/[^A-Za-z]/g, "").length) { msg.className = "code-msg no"; msg.textContent = "Type the code T.I.T.A.N. gave you."; return; }
+    if (fnv1a(val) === STAGES[k].hash) {
+      state.done[k] = true; saveState(); renderStamps();
+      msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[k].label + " complete."; input.setAttribute("disabled", "true");
+    } else { msg.className = "code-msg no"; msg.textContent = "That's not it. Codes are EARNED — has T.I.T.A.N. actually awarded this one?"; }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-check]"), function (btn) {
+    btn.addEventListener("click", function () { checkCode(btn.getAttribute("data-check")); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".code-row input"), function (input) {
+    input.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); checkCode(input.getAttribute("data-stage")); } });
+  });
+
+  SAVED.forEach(function (k) {
+    var el = document.querySelector("[data-save='" + k + "']");
+    if (!el) return; el.value = state[k] || "";
+    el.addEventListener("input", function () { state[k] = el.value; saveState(); });
+  });
+
+  document.getElementById("copyNotes").addEventListener("click", function () {
+    var lines = [
+      "AI READY WISCONSIN — Module 1 Field Notes",
+      "Lab: Make AI Impress You. Then Make AI Fail. (Stump the Machine)",
+      "Date: " + new Date().toLocaleDateString(), "",
+      "Stamps earned: " + (Object.keys(STAGES).filter(function (k) { return state.done[k]; }).map(function (k) { return STAGES[k].label; }).join(", ") || "none yet"), "",
+      "Impress round — what I asked / verdict: " + (state.fImpress || "(not answered)"),
+      "Fail hunt — what it got wrong: " + (state.fFailWhat || "(not answered)"),
+      "Would a friend have caught it? " + (state.fFailCatch || "(not answered)"), "",
+      "What surprised me: " + (state.refSurprise || "(not answered)"),
+      "When AI sounds confident, that tells me: " + (state.refConfidence || "(not answered)"), "",
+      "Takeaway: AI can be amazingly capable without being reliably correct."
+    ];
+    copyText(lines.join("\n"), this, "✅ Field Notes copied!");
+    document.getElementById("notesMsg").textContent = "Now paste them into the Module 1 discussion — and post your best fail in the Fail Museum.";
+  });
+
+  Object.keys(STAGES).forEach(function (k) {
+    if (state.done[k]) {
+      var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k);
+      if (input) input.setAttribute("disabled", "true");
+      if (msg) { msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[k].label + " complete."; }
+    }
+  });
+  renderStamps();
+})();
+</script>
+</body>
+</html>

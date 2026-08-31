@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Judgment Lab: You Be the Judge</title>
+<!--
+  AI READY WISCONSIN · M07_P04 · Do: AI Lab
+  Persona: T.I.T.A.N. — Devil's Advocate (titan-lab/personas/titan-advocate-m07.md)
+  Canvas embed: <iframe src="https://YOUR-HOST/m07-you-be-the-judge.html" width="100%" height="9000" style="border:0;" title="AI Judgment Lab"></iframe>
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 30px; line-height: 1.2; }
+  .hero .sub { color: #000000; font-size: 20px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .light { background: #f5f5f5; }
+  .light h2 { color: #000000; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+  .warn { background: #fff7db; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 16px 20px; }
+  .warn p { color: #333333; font-size: 15px; }
+  .launch-btn { display: inline-block; background: #000000; color: #ffcc00; font-size: 16px; font-weight: bold; text-decoration: none; padding: 13px 22px; border-radius: 10px; border: 3px solid #000000; }
+  .launch-btn:hover { background: #1a1a1a; }
+  .setup-banner { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 14px 18px; margin-top: 14px; font-size: 14px; color: #333333; display: none; }
+  .scenario { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
+  .scenario.ruled { border-color: #fcb414; }
+  .sc-head { display: flex; align-items: center; gap: 12px; padding: 16px 22px; background: #f5f5f5; flex-wrap: wrap; }
+  .sc-head .num { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; padding: 5px 11px; border-radius: 4px; white-space: nowrap; }
+  .sc-head h3 { font-size: 18px; color: #000000; flex: 1; min-width: 160px; }
+  .sc-body { padding: 18px 22px 20px; }
+  .sc-body .story { font-size: 15.5px; color: #333333; margin-bottom: 14px; }
+  .dial { display: flex; gap: 10px; flex-wrap: wrap; }
+  .dial button { flex: 1 1 150px; min-width: 130px; border: 2px solid #000000; background: #ffffff; color: #000000; font-size: 15px; font-weight: bold; padding: 12px 10px; border-radius: 8px; }
+  .dial button:hover { background: #fff7db; }
+  .dial button.sel-use { background: #1c7c34; border-color: #1c7c34; color: #ffffff; }
+  .dial button.sel-dep { background: #fcb414; border-color: #b8860b; color: #000000; }
+  .dial button.sel-dont { background: #b00020; border-color: #b00020; color: #ffffff; }
+  .reveal { display: none; margin-top: 16px; border-top: 1px dashed #d8dce2; padding-top: 14px; }
+  .reveal.open { display: block; }
+  .reveal h4 { font-size: 14px; color: #000000; margin: 0 0 8px; }
+  .reveal ul { margin: 0 0 14px; padding-left: 20px; font-size: 14.5px; color: #333333; line-height: 1.6; }
+  .split { margin-top: 4px; }
+  .split .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; font-size: 13px; color: #333333; }
+  .split .bar-label { width: 88px; font-weight: bold; }
+  .split .bar-track { flex: 1; background: #f0f0f0; border-radius: 4px; height: 16px; overflow: hidden; }
+  .split .bar-fill { height: 100%; border-radius: 4px; }
+  .split .pct { width: 40px; text-align: right; font-weight: bold; }
+  .split-note { font-size: 12px; color: #777777; margin-top: 6px; }
+  .stage { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; margin-bottom: 26px; overflow: hidden; }
+  .stage.done { border-color: #fcb414; }
+  .stage-head { display: flex; align-items: center; gap: 16px; padding: 22px 26px; background: #f5f5f5; flex-wrap: wrap; }
+  .stage-head .hole-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .stage-head h3 { font-size: 21px; color: #000000; flex: 1; min-width: 180px; }
+  .stage-head .par { font-size: 13px; color: #555555; white-space: nowrap; }
+  .stamp-slot { width: 46px; height: 46px; border-radius: 50%; border: 2px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 22px; background: #ffffff; flex-shrink: 0; }
+  .done .stamp-slot { border: 2px solid #fcb414; background: #ffcc00; }
+  .stage-body { padding: 22px 26px; }
+  .stage-body p { font-size: 15.5px; }
+  .briefing { background: #f4f5f7; border: 1px solid #d8dce2; border-radius: 8px; padding: 14px 16px; margin: 14px 0; }
+  .briefing code { font-family: Consolas, Monaco, monospace; font-size: 14.5px; color: #1a1a1a; white-space: pre-wrap; display: block; margin-bottom: 10px; }
+  .copy-btn { background: #ffcc00; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: bold; padding: 8px 16px; border-radius: 6px; }
+  .copy-btn:hover { background: #fcb414; }
+  textarea { width: 100%; border: 2px solid #cccccc; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; resize: vertical; min-height: 60px; }
+  textarea:focus { border-color: #000000; }
+  .field-label { display: block; font-size: 14px; font-weight: bold; color: #000000; margin: 16px 0 6px; }
+  .file-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; margin-top: 16px; }
+  .file-btn:hover { background: #1a1a1a; }
+  .file-msg { font-size: 14px; font-weight: bold; margin-top: 8px; min-height: 18px; }
+  .file-msg.ok { color: #1c7c34; }
+  .file-msg.no { color: #b00020; }
+  .controls { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-end; border-top: 1px dashed #d8dce2; margin-top: 18px; padding-top: 18px; }
+  .code-entry { flex: 1; min-width: 240px; }
+  .code-entry label { display: block; font-size: 13px; font-weight: bold; color: #555555; margin-bottom: 6px; }
+  .code-row { display: flex; gap: 8px; }
+  .code-row input { flex: 1; min-width: 120px; border: 2px solid #000000; border-radius: 6px; padding: 10px 12px; font-size: 16px; font-family: Consolas, Monaco, monospace; text-transform: uppercase; }
+  .code-row button { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 6px; font-size: 14px; font-weight: bold; padding: 0 18px; }
+  .code-msg { font-size: 14px; margin-top: 8px; min-height: 18px; font-weight: bold; }
+  .code-msg.ok { color: #1c7c34; }
+  .code-msg.no { color: #b00020; }
+  .license { background: #ffffff; border-radius: 10px; padding: 26px; }
+  .stamps-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 6px 0 4px; }
+  .big-stamp { text-align: center; width: 96px; }
+  .big-stamp .slot { width: 68px; height: 68px; margin: 0 auto 6px; border-radius: 50%; border: 3px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 30px; background: #fafafa; }
+  .big-stamp.on .slot { border: 3px solid #000000; background: #ffcc00; }
+  .big-stamp span { font-size: 11.5px; font-weight: bold; color: #555555; display: block; line-height: 1.3; }
+  .notes-btn { background: #000000; color: #ffcc00; border: 3px solid #000000; border-radius: 10px; font-size: 16px; font-weight: bold; padding: 14px 26px; margin-top: 18px; }
+  .notes-btn:hover { background: #1a1a1a; }
+  .notes-msg { font-size: 14px; font-weight: bold; color: #1c7c34; margin-top: 10px; min-height: 18px; }
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .big-stamp.on .slot, .done .stamp-slot { animation: stamp-in .35s ease-out; }
+    @keyframes stamp-in { 0% { transform: scale(1.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>AI Judgment Lab</h1>
+        <p class="sub"><strong>You Be the Judge</strong> ⚖️</p>
+        <p class="meta"><strong>Estimated time:</strong> 15–20 minutes &nbsp;·&nbsp; Module 7: Should I Use AI for This?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">⚖️</div><h2>The big idea</h2></div>
+    <div class="card">
+      <p><strong>No new tool today. Today the tool is you.</strong></p>
+      <p>Nine situations. For each, set the dial: <strong>Use it · It depends · Don't use it.</strong> After you rule, you'll see what's worth weighing — and how others called it. Spoiler: reasonable people disagree, and the <em>why</em> matters more than the ruling.</p>
+      <p>Then the hard part: take your toughest call to T.I.T.A.N.'s Devil's Advocate, who will argue the other side better than anyone you know. If your reasoning survives, it's real.</p>
+    </div>
+  </div>
+
+  <div class="warn" style="margin-bottom: 26px;">
+    <p><strong>House rules:</strong> these scenarios stay hypothetical — don't share real personal stories with names or details in any AI chat. And your class or school's actual AI rules always outrank a lab verdict.</p>
+  </div>
+
+  <div class="panel light">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🗂️</div><h2>The docket: nine cases</h2></div>
+    <div id="deck"></div>
+    <p style="font-size: 14px; color: #555555;" id="deckStatus" aria-live="polite"></p>
+  </div>
+
+  <div class="panel dark" id="genieEmbedWrap" style="display: none;">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🛡️</div><h2>The courtroom: Devil's Advocate</h2></div>
+    <iframe id="genieFrame" title="T.I.T.A.N. Devil's Advocate chat" loading="lazy" allow="clipboard-write; microphone" style="width: 100%; height: 700px; border: 0; border-radius: 10px; background: #ffffff; display: block;"></iframe>
+    <p style="color: #ffffff; font-size: 14px; margin: 14px 0 0;">It argues whatever you didn't. Make your ruling survive it.</p>
+  </div>
+
+  <div class="stage" id="stage-trial">
+    <div class="stage-head"><span class="hole-tag">THE TRIAL</span><h3>Defend your hardest call</h3><span class="par">~6 min</span><div class="stamp-slot" aria-hidden="true">🛡️</div></div>
+    <div class="stage-body">
+      <p>Pick the scenario you found hardest (or the one you're most sure about — those are fun to watch collapse). Send your ruling and your reasoning. Rebut what comes back. Changing your mind for a better argument counts as winning.</p>
+      <div class="briefing">
+        <code id="brief-debate">DEBATE: [the scenario, in your words] — MY RULING: [use it / don't use it / it depends] — BECAUSE: [your honest reasoning]</code>
+        <button class="copy-btn" data-copy="brief-debate" type="button">📋 Copy the debate template</button>
+      </div>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-trial">Reasoning survived? Enter the code:</label>
+          <div class="code-row"><input id="code-trial" data-stage="trial" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="trial" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-trial" aria-live="polite"></div>
+        </div>
+      </div>
+      <div id="setupBanner" class="setup-banner"><strong>Instructor setup needed:</strong> create the "T.I.T.A.N. — Devil's Advocate" Playlab app (see personas/titan-advocate-m07.md) and paste its links into <code>CONFIG</code> in this file.</div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-myrules">
+    <div class="stage-head"><span class="hole-tag">YOUR TURN</span><h3>Write your personal AI rules</h3><span class="par">~4 min</span><div class="stamp-slot" aria-hidden="true">📜</div></div>
+    <div class="stage-body">
+      <p>Turn today's judgment calls into rules you'd actually follow. Short and honest beats long and impressive.</p>
+      <label class="field-label" for="ru-use">I WILL use AI for…</label>
+      <textarea id="ru-use" data-save="ruUse" placeholder="brainstorming, practice quizzes, explaining things I'm stuck on..."></textarea>
+      <label class="field-label" for="ru-wont">I WON'T use AI for…</label>
+      <textarea id="ru-wont" data-save="ruWont" placeholder="work I'm claiming as my own, other people's private stuff..."></textarea>
+      <label class="field-label" for="ru-check">I'll ALWAYS double-check when…</label>
+      <textarea id="ru-check" data-save="ruCheck" placeholder="facts matter, money matters, health matters..."></textarea>
+      <label class="field-label" for="ru-tell">I'll TELL people AI helped when…</label>
+      <textarea id="ru-tell" data-save="ruTell" placeholder="someone's judging the work as mine, the rules ask, it would matter to them..."></textarea>
+      <button class="file-btn" data-file="myrules" type="button">📜 Sign my rules</button>
+      <div class="file-msg" id="fmsg-myrules" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🪪</div><h2>Your AI Operator's License — Module 7 page</h2></div>
+    <div class="license">
+      <div class="stamps-row">
+        <div class="big-stamp" id="stamp-gavel"><div class="slot" aria-hidden="true">🔨</div><span>SIX<br>RULINGS</span></div>
+        <div class="big-stamp" id="stamp-verdict"><div class="slot" aria-hidden="true">⚖️</div><span>FULL<br>DOCKET</span></div>
+        <div class="big-stamp" id="stamp-trial"><div class="slot" aria-hidden="true">🛡️</div><span>THE<br>TRIAL</span></div>
+        <div class="big-stamp" id="stamp-myrules"><div class="slot" aria-hidden="true">📜</div><span>MY<br>RULES</span></div>
+      </div>
+      <p id="license-status" style="font-size: 15px; color: #555555;" aria-live="polite"></p>
+      <label class="field-label" for="ref-changed">Did any ruling change after you saw the considerations — or after the Devil's Advocate got to you? Which one, and why?</label>
+      <textarea id="ref-changed" data-save="refChanged" placeholder="I flipped on the one about... because I hadn't considered..."></textarea>
+      <button class="notes-btn" id="copyNotes" type="button">📋 Copy my Field Notes</button>
+      <div class="notes-msg" id="notesMsg" aria-live="polite"></div>
+      <p style="font-size: 14px; color: #555555; margin-top: 10px;">Paste your Field Notes (rules included) into the Module 7 discussion.</p>
+    </div>
+  </div>
+
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>Being AI ready includes knowing when NOT to use AI.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var CONFIG = { playlabUrl: "", embedUrl: "" }; // ← paste T.I.T.A.N. — Devil's Advocate links here
+  var STAGES = {
+    gavel:    { auto: true, label: "Six Rulings" },
+    verdict:  { auto: true, label: "Full Docket" },
+    trial: { hash: "08346390", label: "The Trial" },
+    myrules:  { self: true, label: "My Rules", fields: ["ru-use", "ru-wont", "ru-check", "ru-tell"] }
+  };
+  var STORE_KEY = "arw-m07-judge";
+
+  var SCENARIOS = [
+    { t: "The stuck math problem", s: "It's 10 pm, homework due tomorrow, and you're stuck on one problem. You could ask AI to solve it.",
+      c: ["Asking for the answer and asking to be taught are different requests — one gets you through tonight, one gets you through the test.", "What are your teacher's actual rules for homework help?", "If you copy the solution, who finds out you're lost — and when?"], p: [20, 55, 25] },
+    { t: "The practice quiz", s: "Big test Friday. You paste your own class notes into AI and ask it to quiz you until you're solid.",
+      c: ["Your notes, your studying — this is AI as a learning coach, straight out of Module 2.", "AI-written questions can contain errors: if an answer feels off, that's a flag to check the source, not to memorize the mistake.", "Does the quiz cover what the TEACHER emphasized, or what the AI found interesting?"], p: [75, 20, 5] },
+    { t: "The essay intro", s: "Your essay is due and the intro won't come. You could have AI write the opening paragraph and submit it as yours.",
+      c: ["Whose words is the teacher grading — and did they agree to grade an AI's?", "There's a real line between 'give me feedback on my draft' and 'write it for me.' Which side is this on?", "If disclosure would sink it, that tells you something."], p: [10, 30, 60] },
+    { t: "The friend's message", s: "A friend sends you a long, personal message about their family trouble. You want to reply well, so you consider pasting the whole thing into AI for advice.",
+      c: ["It's THEIR private information, and they didn't agree to share it with an AI company.", "You could describe the situation generically — no names, no details — and get the same help.", "How would you feel finding out your message was pasted somewhere?"], p: [5, 30, 65] },
+    { t: "The college essay glow-up", s: "AI offers to rewrite your college personal statement 'in a stronger voice.'",
+      c: ["Admissions readers want YOUR voice — a polished essay that doesn't sound like you can hurt in an interview.", "Feedback ('what's weak here?') and rewriting are different asks.", "Many colleges now publish AI policies. Have you read the one that applies to you?"], p: [15, 50, 35] },
+    { t: "The art contest", s: "You generate an image with AI, touch nothing, and enter it in an art contest as your own work. No one asks, so you don't tell.",
+      c: ["What do the contest rules say — and would you defend this in front of the judges?", "Someone in that contest spent forty hours on their entry.", "Module 5's credit question applies: what in this is YOURS?"], p: [5, 15, 80] },
+    { t: "The tryout algorithm", s: "A coach feeds tryout stats into an AI and cuts players strictly by its ranking — no discussion, no second look.",
+      c: ["Stats miss things humans see: growth, effort, leadership, a bad week.", "The AI ranks whatever the data rewards — and the data can carry old unfairness forward.", "Efficiency is real too; the question is whether a human still owns the final call, and whether players know how it was made."], p: [10, 45, 45] },
+    { t: "The symptom checker", s: "A weird rash, a week old. You ask AI what it is, it names a condition and a treatment, and you follow the treatment instead of seeing anyone.",
+      c: ["Using AI to get informed and prep questions for a real professional: reasonable. Using it INSTEAD of one when something persists: different stakes.", "If it's wrong, what's the cost — and who's responsible?", "Confidence ≠ accuracy applies double when it's your body."], p: [5, 40, 55] },
+    { t: "The scholarship algorithm", s: "A scholarship committee uses AI to rank 2,000 applicants. Humans only read the AI's top 20%. Nobody reviews the rest.",
+      c: ["Life-changing stakes, zero human eyes on 1,600 applications.", "Whatever patterns the AI learned — including unfair ones — silently decide who gets a future.", "Could an applicant appeal? Would anyone even know what to appeal?", "Is there a version with AI assistance AND human oversight?"], p: [5, 25, 70] }
+  ];
+  var RULINGS = ["Use it", "It depends", "Don't use it"];
+  var RULE_CLASSES = ["sel-use", "sel-dep", "sel-dont"];
+  var BAR_COLORS = ["#1c7c34", "#fcb414", "#b00020"];
+
+  function loadState() { try { var r = localStorage.getItem(STORE_KEY); if (r) return JSON.parse(r); } catch (e) {} return { done: {}, rulings: {} }; }
+  function saveState() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
+  var state = loadState(); state.done = state.done || {}; state.rulings = state.rulings || {};
+
+  function fnv1a(str) {
+    var s = str.toUpperCase().replace(/[^A-Z]/g, ""), h = 0x811c9dc5;
+    for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0; }
+    return ("0000000" + h.toString(16)).slice(-8);
+  }
+
+  var params = new URLSearchParams(location.search);
+  var playlab = params.get("playlab") || CONFIG.playlabUrl;
+  var embed = params.get("embed") || CONFIG.embedUrl;
+  var hasEmbed = embed && /^https:\/\//.test(embed);
+  if (hasEmbed) { document.getElementById("genieFrame").setAttribute("src", embed); document.getElementById("genieEmbedWrap").style.display = "block"; }
+  if (!hasEmbed && !(playlab && /^https:\/\//.test(playlab))) { document.getElementById("setupBanner").style.display = "block"; }
+
+  // build the deck
+  var deck = document.getElementById("deck");
+  SCENARIOS.forEach(function (sc, i) {
+    var card = document.createElement("div");
+    card.className = "scenario"; card.id = "sc-" + i;
+    var bars = sc.p.map(function (pct, j) {
+      return '<div class="bar-row"><span class="bar-label">' + RULINGS[j] + '</span><span class="bar-track"><span class="bar-fill" style="width:' + pct + '%;background:' + BAR_COLORS[j] + ';"></span></span><span class="pct">' + pct + '%</span></div>';
+    }).join("");
+    card.innerHTML =
+      '<div class="sc-head"><span class="num">CASE ' + (i + 1) + '</span><h3>' + sc.t + '</h3></div>' +
+      '<div class="sc-body"><p class="story">' + sc.s + '</p>' +
+      '<div class="dial" role="group" aria-label="Your ruling for case ' + (i + 1) + '">' +
+      RULINGS.map(function (r, j) { return '<button type="button" data-sc="' + i + '" data-r="' + j + '">' + r + '</button>'; }).join("") +
+      '</div><div class="reveal" id="rev-' + i + '"><h4>Worth weighing:</h4><ul>' +
+      sc.c.map(function (c) { return "<li>" + c + "</li>"; }).join("") +
+      '</ul><h4>How our design team predicted students would split:</h4><div class="split">' + bars +
+      '<p class="split-note">Prediction only — real student data replaces this after the pilot cohort.</p></div></div></div>';
+    deck.appendChild(card);
+  });
+
+  function paintRuling(i) {
+    var r = state.rulings[i];
+    var card = document.getElementById("sc-" + i);
+    var btns = card.querySelectorAll(".dial button");
+    Array.prototype.forEach.call(btns, function (b, j) {
+      b.className = (r !== undefined && j === r) ? RULE_CLASSES[j] : "";
+      b.setAttribute("aria-pressed", r !== undefined && j === r ? "true" : "false");
+    });
+    if (r !== undefined) { card.classList.add("ruled"); document.getElementById("rev-" + i).classList.add("open"); }
+  }
+  deck.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-sc]");
+    if (!b) return;
+    var i = parseInt(b.getAttribute("data-sc"), 10);
+    state.rulings[i] = parseInt(b.getAttribute("data-r"), 10);
+    saveState(); paintRuling(i); updateDeck();
+  });
+  function updateDeck() {
+    var count = Object.keys(state.rulings).length;
+    document.getElementById("deckStatus").textContent = count + " of " + SCENARIOS.length + " cases ruled.";
+    if (count >= 6 && !state.done.gavel) { state.done.gavel = true; saveState(); }
+    if (count >= SCENARIOS.length && !state.done.verdict) { state.done.verdict = true; saveState(); }
+    renderStamps();
+  }
+
+  function copyText(text, btn, doneMsg) {
+    var restore = btn.textContent;
+    function ok() { btn.textContent = doneMsg || "✅ Copied!"; setTimeout(function () { btn.textContent = restore; }, 1800); }
+    function fallback() {
+      var ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", "");
+      ta.style.position = "absolute"; ta.style.left = "-9999px"; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); ok(); } catch (e) { btn.textContent = "Select & copy manually"; }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(ok, fallback); } else { fallback(); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (btn) {
+    btn.addEventListener("click", function () { copyText(document.getElementById(btn.getAttribute("data-copy")).textContent.trim(), btn); });
+  });
+
+  function renderStamps() {
+    var doneCount = 0, total = Object.keys(STAGES).length;
+    Object.keys(STAGES).forEach(function (k) {
+      var on = !!state.done[k]; if (on) doneCount++;
+      var stage = document.getElementById("stage-" + k), stamp = document.getElementById("stamp-" + k);
+      if (stage) stage.classList.toggle("done", on);
+      if (stamp) stamp.classList.toggle("on", on);
+      if (on && stage) { var slot = stage.querySelector(".stamp-slot"); if (slot) slot.textContent = "✔️"; }
+    });
+    document.getElementById("license-status").innerHTML = doneCount === total
+      ? "<strong style='color:#000000;'>🏆 Module 7 page complete — the court finds you dangerously reasonable.</strong>"
+      : doneCount + " of " + total + " stamps earned.";
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-file]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var k = btn.getAttribute("data-file"), st = STAGES[k], msg = document.getElementById("fmsg-" + k);
+      var missing = (st.fields || []).filter(function (id) { var el = document.getElementById(id); return !el || !(el.value || "").trim(); });
+      if (missing.length) { msg.className = "file-msg no"; msg.textContent = "All four rules first — a half-signed code of conduct isn't one."; return; }
+      state.done[k] = true; saveState(); renderStamps();
+      msg.className = "file-msg ok"; msg.textContent = "✅ Rules signed. Stamped.";
+    });
+  });
+
+  function checkCode(k) {
+    var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k), val = input.value || "";
+    if (!val.replace(/[^A-Za-z]/g, "").length) { msg.className = "code-msg no"; msg.textContent = "Type the code the Advocate gave you."; return; }
+    if (fnv1a(val) === STAGES[k].hash) {
+      state.done[k] = true; saveState(); renderStamps();
+      msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[k].label + " complete."; input.setAttribute("disabled", "true");
+    } else { msg.className = "code-msg no"; msg.textContent = "Objection — that's not it. Survive a real exchange first."; }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-check]"), function (btn) {
+    btn.addEventListener("click", function () { checkCode(btn.getAttribute("data-check")); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".code-row input"), function (input) {
+    input.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); checkCode(input.getAttribute("data-stage")); } });
+  });
+
+  var SAVED = { ruUse: "ru-use", ruWont: "ru-wont", ruCheck: "ru-check", ruTell: "ru-tell", refChanged: "ref-changed" };
+  Object.keys(SAVED).forEach(function (k) {
+    var el = document.getElementById(SAVED[k]);
+    if (!el) return; el.value = state[k] || "";
+    el.addEventListener("input", function () { state[k] = el.value; saveState(); });
+  });
+
+  document.getElementById("copyNotes").addEventListener("click", function () {
+    var rulings = SCENARIOS.map(function (sc, i) {
+      return (i + 1) + ". " + sc.t + " — " + (state.rulings[i] !== undefined ? RULINGS[state.rulings[i]] : "(not ruled)");
+    });
+    var lines = [
+      "AI READY WISCONSIN — Module 7 Field Notes",
+      "Lab: AI Judgment Lab (You Be the Judge)",
+      "Date: " + new Date().toLocaleDateString(), "",
+      "MY RULINGS —"].concat(rulings, ["",
+      "MY PERSONAL AI RULES —",
+      "I will use AI for: " + (state.ruUse || "(not written)"),
+      "I won't use AI for: " + (state.ruWont || "(not written)"),
+      "I'll always double-check when: " + (state.ruCheck || "(not written)"),
+      "I'll tell people AI helped when: " + (state.ruTell || "(not written)"), "",
+      "A ruling I changed, and why: " + (state.refChanged || "(not answered)"), "",
+      "Takeaway: Being AI ready includes knowing when NOT to use AI."
+    ]);
+    copyText(lines.join("\n"), this, "✅ Field Notes copied!");
+    document.getElementById("notesMsg").textContent = "Paste them (rules included) into the Module 7 discussion.";
+  });
+
+  Object.keys(STAGES).forEach(function (k) {
+    if (state.done[k] && STAGES[k].hash) {
+      var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k);
+      if (input) input.setAttribute("disabled", "true");
+      if (msg) { msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[k].label + " complete."; }
+    }
+    if (state.done[k] && STAGES[k].self) {
+      var fm = document.getElementById("fmsg-" + k);
+      if (fm) { fm.className = "file-msg ok"; fm.textContent = "✅ Rules signed. Stamped."; }
+    }
+  });
+  SCENARIOS.forEach(function (_, i) { paintRuling(i); });
+  updateDeck();
+})();
+</script>
+</body>
+</html>

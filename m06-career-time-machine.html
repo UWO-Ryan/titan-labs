@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Career Explorer: The Career Time Machine</title>
+<!--
+  AI READY WISCONSIN · M06_P04 · Do: AI Lab
+  Persona: T.I.T.A.N. — Time Machine (titan-lab/personas/titan-shift1-m06.md)
+  Canvas embed: <iframe src="https://YOUR-HOST/m06-career-time-machine.html" width="100%" height="7800" style="border:0;" title="AI Career Explorer Lab"></iframe>
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 30px; line-height: 1.2; }
+  .hero .sub { color: #000000; font-size: 20px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .light { background: #f5f5f5; }
+  .light h2 { color: #000000; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+  .warn { background: #fff7db; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 16px 20px; }
+  .warn p { color: #333333; font-size: 15px; }
+  .launch-btn { display: inline-block; background: #000000; color: #ffcc00; font-size: 16px; font-weight: bold; text-decoration: none; padding: 13px 22px; border-radius: 10px; border: 3px solid #000000; }
+  .launch-btn:hover { background: #1a1a1a; }
+  .launch-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .setup-banner { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 14px 18px; margin-top: 14px; font-size: 14px; color: #333333; display: none; }
+  .stage { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; margin-bottom: 26px; overflow: hidden; }
+  .stage.done { border-color: #fcb414; }
+  .stage-head { display: flex; align-items: center; gap: 16px; padding: 22px 26px; background: #f5f5f5; flex-wrap: wrap; }
+  .stage-head .hole-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .stage-head h3 { font-size: 21px; color: #000000; flex: 1; min-width: 180px; }
+  .stage-head .par { font-size: 13px; color: #555555; white-space: nowrap; }
+  .stamp-slot { width: 46px; height: 46px; border-radius: 50%; border: 2px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 22px; background: #ffffff; flex-shrink: 0; }
+  .done .stamp-slot { border: 2px solid #fcb414; background: #ffcc00; }
+  .stage-body { padding: 22px 26px; }
+  .stage-body p { font-size: 15.5px; }
+  .briefing { background: #f4f5f7; border: 1px solid #d8dce2; border-radius: 8px; padding: 14px 16px; margin: 14px 0; }
+  .briefing code { font-family: Consolas, Monaco, monospace; font-size: 14.5px; color: #1a1a1a; white-space: pre-wrap; display: block; margin-bottom: 10px; }
+  .copy-btn { background: #ffcc00; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: bold; padding: 8px 16px; border-radius: 6px; }
+  .copy-btn:hover { background: #fcb414; }
+  .claims { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14.5px; }
+  .claims th { background: #000000; color: #ffcc00; text-align: left; padding: 10px 12px; font-size: 12.5px; letter-spacing: .05em; }
+  .claims td { border: 1px solid #d8dce2; padding: 8px; vertical-align: top; }
+  .claims textarea { min-height: 52px; border-width: 1px; margin: 0; }
+  .claims select { width: 100%; border: 1px solid #cccccc; border-radius: 6px; padding: 8px; font-family: inherit; font-size: 14px; background: #ffffff; color: #333333; }
+  .src-grid { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
+  .src { background: #f5f5f5; border-radius: 10px; border-top: 4px solid #fcb414; padding: 14px 16px; flex: 1 1 240px; min-width: 220px; font-size: 14px; }
+  .src a { color: #000000; font-weight: bold; }
+  .controls { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-end; border-top: 1px dashed #d8dce2; margin-top: 18px; padding-top: 18px; }
+  .code-entry { flex: 1; min-width: 240px; }
+  .code-entry label { display: block; font-size: 13px; font-weight: bold; color: #555555; margin-bottom: 6px; }
+  .code-row { display: flex; gap: 8px; }
+  .code-row input { flex: 1; min-width: 120px; border: 2px solid #000000; border-radius: 6px; padding: 10px 12px; font-size: 16px; font-family: Consolas, Monaco, monospace; text-transform: uppercase; }
+  .code-row button { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 6px; font-size: 14px; font-weight: bold; padding: 0 18px; }
+  .code-msg { font-size: 14px; margin-top: 8px; min-height: 18px; font-weight: bold; }
+  .code-msg.ok { color: #1c7c34; }
+  .code-msg.no { color: #b00020; }
+  .license { background: #ffffff; border-radius: 10px; padding: 26px; }
+  .stamps-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 6px 0 4px; }
+  .big-stamp { text-align: center; width: 96px; }
+  .big-stamp .slot { width: 68px; height: 68px; margin: 0 auto 6px; border-radius: 50%; border: 3px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 30px; background: #fafafa; }
+  .big-stamp.on .slot { border: 3px solid #000000; background: #ffcc00; }
+  .big-stamp span { font-size: 11.5px; font-weight: bold; color: #555555; display: block; line-height: 1.3; }
+  textarea { width: 100%; border: 2px solid #cccccc; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; resize: vertical; min-height: 64px; }
+  textarea:focus { border-color: #000000; }
+  .field-label { display: block; font-size: 14px; font-weight: bold; color: #000000; margin: 16px 0 6px; }
+  .file-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; margin-top: 16px; }
+  .file-btn:hover { background: #1a1a1a; }
+  .file-msg { font-size: 14px; font-weight: bold; margin-top: 8px; min-height: 18px; }
+  .file-msg.ok { color: #1c7c34; }
+  .file-msg.no { color: #b00020; }
+  .notes-btn { background: #000000; color: #ffcc00; border: 3px solid #000000; border-radius: 10px; font-size: 16px; font-weight: bold; padding: 14px 26px; margin-top: 18px; }
+  .notes-btn:hover { background: #1a1a1a; }
+  .notes-msg { font-size: 14px; font-weight: bold; color: #1c7c34; margin-top: 10px; min-height: 18px; }
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .big-stamp.on .slot, .done .stamp-slot { animation: stamp-in .35s ease-out; }
+    @keyframes stamp-in { 0% { transform: scale(1.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>AI Career Explorer</h1>
+        <p class="sub"><strong>The Career Time Machine</strong> 🕰️</p>
+        <p class="meta"><strong>Estimated time:</strong> 15–20 minutes &nbsp;·&nbsp; Module 6: AI and Your Future</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🕰️</div><h2>The big idea</h2></div>
+    <div class="card">
+      <p><strong>You're about to work the same job twice — once in 2026, once in 2036.</strong></p>
+      <p>T.I.T.A.N.'s Time Machine will interview you about what you enjoy, propose careers (including one you've never heard of), and drop you into a day on the job. At every decision point you choose: hand this task to AI, or keep it human. Then you pull the lever and do the same day ten years from now.</p>
+      <p><strong>One warning:</strong> along the way, the machine will state "facts" about pay, education, and job outlook, marked with 📌. It generates those the way it generates everything. Part of your mission is finding out which ones are actually true.</p>
+    </div>
+  </div>
+
+  <div class="warn" style="margin-bottom: 26px;">
+    <p><strong>One rule that does not bend:</strong> share your interests, not your identity — no full names, school names, or private details. The Time Machine needs to know you like fixing things, not where you live.</p>
+  </div>
+
+  <div class="panel light">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🚀</div><h2>Before you start</h2></div>
+    <div class="card">
+      <p><strong>The Time Machine is below.</strong> Missions on the cards; codes back here.</p>
+      <div class="launch-row">
+        <a id="launchBtn" class="launch-btn" href="#" target="_blank" rel="noopener">🕰️ Open the Time Machine in a new tab</a>
+        <span style="font-size: 14px; color: #555555;">No account needed</span>
+      </div>
+      <div id="setupBanner" class="setup-banner"><strong>Instructor setup needed:</strong> create the "T.I.T.A.N. — Time Machine" Playlab app (see personas/titan-shift1-m06.md) and paste its links into <code>CONFIG</code> in this file.</div>
+    </div>
+  </div>
+
+  <div class="panel dark" id="genieEmbedWrap" style="display: none;">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🕰️</div><h2>The machine</h2></div>
+    <iframe id="genieFrame" title="T.I.T.A.N. Time Machine chat" loading="lazy" allow="clipboard-write; microphone" style="width: 100%; height: 700px; border: 0; border-radius: 10px; background: #ffffff; display: block;"></iframe>
+    <p style="color: #ffffff; font-size: 14px; margin: 14px 0 0;">Chat here; scroll back for missions. Keep an eye out for 📌 claims.</p>
+  </div>
+
+  <div class="stage" id="stage-shift1">
+    <div class="stage-head"><span class="hole-tag">SHIFT 1</span><h3>A day on the job — 2026</h3><span class="par">~6 min</span><div class="stamp-slot" aria-hidden="true">🧰</div></div>
+    <div class="stage-body">
+      <p>Start the machine, answer its questions honestly, pick a career from its three proposals — the unfamiliar one is usually the most interesting — and work the shift. At each decision point, actually think: <em>would I hand this to AI? What could go wrong if I did?</em></p>
+      <div class="briefing">
+        <code id="brief-shift1">TIME MACHINE START</code>
+        <button class="copy-btn" data-copy="brief-shift1" type="button">📋 Copy &amp; paste into the chat</button>
+      </div>
+      <p style="font-size: 14.5px; color: #555555;">📌 When you spot a pinned claim, jot it in the claim tracker below — you'll hunt it down later.</p>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-shift1">Shift complete? Enter the code:</label>
+          <div class="code-row"><input id="code-shift1" data-stage="shift1" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="shift1" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-shift1" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-shift2">
+    <div class="stage-head"><span class="hole-tag">SHIFT 2</span><h3>Same job — 2036</h3><span class="par">~6 min</span><div class="stamp-slot" aria-hidden="true">⚡</div></div>
+    <div class="stage-body">
+      <p>Pull the lever. Same career, ten years out, much more capable AI. Notice which tasks vanished, which changed, and which choices suddenly matter more — that's <strong>automation vs. augmentation</strong>, felt instead of memorized.</p>
+      <div class="briefing">
+        <code id="brief-shift2">PULL THE LEVER</code>
+        <button class="copy-btn" data-copy="brief-shift2" type="button">📋 Copy &amp; paste into the chat</button>
+      </div>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-shift2">Survived 2036? Enter the code:</label>
+          <div class="code-row"><input id="code-shift2" data-stage="shift2" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="shift2" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-shift2" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-hunt">
+    <div class="stage-head"><span class="hole-tag">THE HUNT</span><h3>Fact-check the machine</h3><span class="par">~6 min</span><div class="stamp-slot" aria-hidden="true">📌</div></div>
+    <div class="stage-body">
+      <p>Ask the machine to list its claims, then check them against <strong>real</strong> sources — not by asking it whether it was right (Module 4 taught you why that's useless).</p>
+      <div class="briefing">
+        <code id="brief-claims">SHOW ME THE CLAIMS</code>
+        <button class="copy-btn" data-copy="brief-claims" type="button">📋 Copy &amp; paste into the chat</button>
+      </div>
+      <div class="src-grid">
+        <div class="src">📊 <a href="https://www.bls.gov/ooh/" target="_blank" rel="noopener">BLS Occupational Outlook Handbook</a><br>Official U.S. pay, education, and job outlook data.</div>
+        <div class="src">🧭 <a href="https://www.onetonline.org/" target="_blank" rel="noopener">O*NET OnLine</a><br>What people in each career actually do all day.</div>
+        <div class="src">🧀 <a href="https://dwd.wisconsin.gov/" target="_blank" rel="noopener">Wisconsin DWD</a><br>Wisconsin-specific career and labor market info.</div>
+      </div>
+      <table class="claims">
+        <thead><tr><th style="width:34%;">📌 The claim the machine made</th><th style="width:44%;">What the real source says (and which source)</th><th style="width:22%;">Verdict</th></tr></thead>
+        <tbody>
+          <tr><td><textarea id="cl1" data-save="cl1" aria-label="Claim 1"></textarea></td><td><textarea id="cl1s" data-save="cl1s" aria-label="What the source says about claim 1"></textarea></td><td><select id="cl1v" data-save="cl1v" aria-label="Verdict for claim 1"><option value="">—</option><option>✅ Held up</option><option>🟡 Partly right</option><option>❌ Wrong</option><option>🤷 Couldn't confirm</option></select></td></tr>
+          <tr><td><textarea id="cl2" data-save="cl2" aria-label="Claim 2"></textarea></td><td><textarea id="cl2s" data-save="cl2s" aria-label="What the source says about claim 2"></textarea></td><td><select id="cl2v" data-save="cl2v" aria-label="Verdict for claim 2"><option value="">—</option><option>✅ Held up</option><option>🟡 Partly right</option><option>❌ Wrong</option><option>🤷 Couldn't confirm</option></select></td></tr>
+          <tr><td><textarea id="cl3" data-save="cl3" aria-label="Claim 3"></textarea></td><td><textarea id="cl3s" data-save="cl3s" aria-label="What the source says about claim 3"></textarea></td><td><select id="cl3v" data-save="cl3v" aria-label="Verdict for claim 3"><option value="">—</option><option>✅ Held up</option><option>🟡 Partly right</option><option>❌ Wrong</option><option>🤷 Couldn't confirm</option></select></td></tr>
+        </tbody>
+      </table>
+      <p>Then report back with specifics:</p>
+      <div class="briefing">
+        <code id="brief-hunt">FACTCHECK REPORT: Claim 1 — [source] says [what you found]. Claim 2 — [...]. Claim 3 — [...]</code>
+        <button class="copy-btn" data-copy="brief-hunt" type="button">📋 Copy the report template</button>
+      </div>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-hunt">Machine held accountable? Enter the code:</label>
+          <div class="code-row"><input id="code-hunt" data-stage="hunt" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="hunt" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-hunt" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-compass">
+    <div class="stage-head"><span class="hole-tag">YOUR TURN</span><h3>Point your compass</h3><span class="par">~2 min</span><div class="stamp-slot" aria-hidden="true">🧭</div></div>
+    <div class="stage-body">
+      <p>Before you leave: pick <strong>one</strong> pathway from today — career, program, or field — that you want to investigate for real on the Apply page.</p>
+      <label class="field-label" for="cp-path">The pathway I'm going to investigate:</label>
+      <textarea id="cp-path" data-save="cpPath" placeholder="The one I'd never heard of: ..."></textarea>
+      <label class="field-label" for="cp-q">The first question I want a REAL source to answer about it:</label>
+      <textarea id="cp-q" data-save="cpQ" placeholder="What education does it actually take to..."></textarea>
+      <button class="file-btn" data-file="compass" type="button">🧭 Set the compass</button>
+      <div class="file-msg" id="fmsg-compass" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🪪</div><h2>Your AI Operator's License — Module 6 page</h2></div>
+    <div class="license">
+      <div class="stamps-row">
+        <div class="big-stamp" id="stamp-shift1"><div class="slot" aria-hidden="true">🧰</div><span>SHIFT<br>2026</span></div>
+        <div class="big-stamp" id="stamp-shift2"><div class="slot" aria-hidden="true">⚡</div><span>SHIFT<br>2036</span></div>
+        <div class="big-stamp" id="stamp-hunt"><div class="slot" aria-hidden="true">📌</div><span>FACT<br>CHECK</span></div>
+        <div class="big-stamp" id="stamp-compass"><div class="slot" aria-hidden="true">🧭</div><span>COMPASS<br>SET</span></div>
+      </div>
+      <p id="license-status" style="font-size: 15px; color: #555555;" aria-live="polite"></p>
+      <label class="field-label" for="ref-human">In the 2036 shift, what did YOU still do that no AI did — and why did it matter?</label>
+      <textarea id="ref-human" data-save="refHuman" placeholder="Even with all the automation, I was the one who..."></textarea>
+      <label class="field-label" for="ref-claims">What did fact-checking the machine teach you about using AI for decisions about your own future?</label>
+      <textarea id="ref-claims" data-save="refClaims" placeholder="It's great for discovering options, but..."></textarea>
+      <button class="notes-btn" id="copyNotes" type="button">📋 Copy my Field Notes</button>
+      <div class="notes-msg" id="notesMsg" aria-live="polite"></div>
+      <p style="font-size: 14px; color: #555555; margin-top: 10px;">Paste your Field Notes into the Module 6 discussion, then take your compass to the Apply page.</p>
+    </div>
+  </div>
+
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>Don't ask AI to choose your future. Use it to explore possibilities — then verify what matters.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var CONFIG = { playlabUrl: "", embedUrl: "" }; // ← paste T.I.T.A.N. — Time Machine links here
+  var STAGES = {
+    shift1: { hash: "5f1c4d75", label: "2026 Shift" },
+    shift2: { hash: "0450f874", label: "2036 Shift" },
+    hunt:   { hash: "a09c9f50", label: "Fact-Check" },
+    compass:     { self: true, label: "Compass Set", fields: ["cp-path", "cp-q"] }
+  };
+  var STORE_KEY = "arw-m06-career";
+  var SAVED = ["cl1", "cl1s", "cl1v", "cl2", "cl2s", "cl2v", "cl3", "cl3s", "cl3v", "cpPath", "cpQ", "refHuman", "refClaims"];
+  var FIELD_IDS = { cl1: "cl1", cl1s: "cl1s", cl1v: "cl1v", cl2: "cl2", cl2s: "cl2s", cl2v: "cl2v", cl3: "cl3", cl3s: "cl3s", cl3v: "cl3v", cpPath: "cp-path", cpQ: "cp-q", refHuman: "ref-human", refClaims: "ref-claims" };
+
+  function loadState() { try { var r = localStorage.getItem(STORE_KEY); if (r) return JSON.parse(r); } catch (e) {} return { done: {} }; }
+  function saveState() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
+  var state = loadState(); state.done = state.done || {};
+
+  function fnv1a(str) {
+    var s = str.toUpperCase().replace(/[^A-Z]/g, ""), h = 0x811c9dc5;
+    for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0; }
+    return ("0000000" + h.toString(16)).slice(-8);
+  }
+
+  var params = new URLSearchParams(location.search);
+  var playlab = params.get("playlab") || CONFIG.playlabUrl;
+  var embed = params.get("embed") || CONFIG.embedUrl;
+  var launchBtn = document.getElementById("launchBtn");
+  var hasLaunch = playlab && /^https:\/\//.test(playlab);
+  var hasEmbed = embed && /^https:\/\//.test(embed);
+  if (hasLaunch) { launchBtn.setAttribute("href", playlab); }
+  else { launchBtn.setAttribute("href", "#"); launchBtn.setAttribute("aria-disabled", "true"); launchBtn.style.opacity = "0.55"; launchBtn.addEventListener("click", function (e) { e.preventDefault(); }); }
+  if (hasEmbed) { document.getElementById("genieFrame").setAttribute("src", embed); document.getElementById("genieEmbedWrap").style.display = "block"; }
+  if (!hasLaunch && !hasEmbed) { document.getElementById("setupBanner").style.display = "block"; }
+
+  function copyText(text, btn, doneMsg) {
+    var restore = btn.textContent;
+    function ok() { btn.textContent = doneMsg || "✅ Copied!"; setTimeout(function () { btn.textContent = restore; }, 1800); }
+    function fallback() {
+      var ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", "");
+      ta.style.position = "absolute"; ta.style.left = "-9999px"; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); ok(); } catch (e) { btn.textContent = "Select & copy manually"; }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(ok, fallback); } else { fallback(); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"), function (btn) {
+    btn.addEventListener("click", function () { copyText(document.getElementById(btn.getAttribute("data-copy")).textContent.trim(), btn); });
+  });
+
+  function renderStamps() {
+    var doneCount = 0, total = Object.keys(STAGES).length;
+    Object.keys(STAGES).forEach(function (k) {
+      var on = !!state.done[k]; if (on) doneCount++;
+      var stage = document.getElementById("stage-" + k), stamp = document.getElementById("stamp-" + k);
+      if (stage) stage.classList.toggle("done", on);
+      if (stamp) stamp.classList.toggle("on", on);
+      if (on && stage) { var slot = stage.querySelector(".stamp-slot"); if (slot) slot.textContent = "✔️"; }
+    });
+    document.getElementById("license-status").innerHTML = doneCount === total
+      ? "<strong style='color:#000000;'>🏆 Module 6 page complete — two shifts worked, one machine fact-checked, one future still entirely yours.</strong>"
+      : doneCount + " of " + total + " stamps earned.";
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-file]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var k = btn.getAttribute("data-file"), st = STAGES[k], msg = document.getElementById("fmsg-" + k);
+      var missing = (st.fields || []).filter(function (id) { var el = document.getElementById(id); return !el || !(el.value || "").trim(); });
+      if (missing.length) { msg.className = "file-msg no"; msg.textContent = "Fill in both fields first — a compass needs a direction."; return; }
+      state.done[k] = true; saveState(); renderStamps();
+      msg.className = "file-msg ok"; msg.textContent = "✅ " + st.label + ". Stamped.";
+    });
+  });
+
+  function checkCode(k) {
+    var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k), val = input.value || "";
+    if (!val.replace(/[^A-Za-z]/g, "").length) { msg.className = "code-msg no"; msg.textContent = "Type the code the machine gave you."; return; }
+    if (fnv1a(val) === STAGES[k].hash) {
+      state.done[k] = true; saveState(); renderStamps();
+      msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[k].label + " complete."; input.setAttribute("disabled", "true");
+    } else { msg.className = "code-msg no"; msg.textContent = "That's not it. The timeline does not take shortcuts — has the machine actually awarded it?"; }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-check]"), function (btn) {
+    btn.addEventListener("click", function () { checkCode(btn.getAttribute("data-check")); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".code-row input"), function (input) {
+    input.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); checkCode(input.getAttribute("data-stage")); } });
+  });
+
+  SAVED.forEach(function (k) {
+    var el = document.getElementById(FIELD_IDS[k]);
+    if (!el) return; el.value = state[k] || "";
+    el.addEventListener("input", function () { state[k] = el.value; saveState(); });
+    el.addEventListener("change", function () { state[k] = el.value; saveState(); });
+  });
+
+  document.getElementById("copyNotes").addEventListener("click", function () {
+    var lines = [
+      "AI READY WISCONSIN — Module 6 Field Notes",
+      "Lab: AI Career Explorer (The Career Time Machine)",
+      "Date: " + new Date().toLocaleDateString(), "",
+      "Stamps earned: " + (Object.keys(STAGES).filter(function (k) { return state.done[k]; }).map(function (k) { return STAGES[k].label; }).join(", ") || "none yet"), "",
+      "CLAIM CHECK —",
+      "1) " + (state.cl1 || "—") + " | source said: " + (state.cl1s || "—") + " | " + (state.cl1v || "—"),
+      "2) " + (state.cl2 || "—") + " | source said: " + (state.cl2s || "—") + " | " + (state.cl2v || "—"),
+      "3) " + (state.cl3 || "—") + " | source said: " + (state.cl3s || "—") + " | " + (state.cl3v || "—"), "",
+      "Pathway I'm investigating next: " + (state.cpPath || "(not set)"),
+      "First question for a real source: " + (state.cpQ || "(not set)"), "",
+      "What I did in 2036 that no AI did: " + (state.refHuman || "(not answered)"),
+      "What fact-checking taught me: " + (state.refClaims || "(not answered)"), "",
+      "Takeaway: Don't ask AI to choose your future. Use it to explore — then verify what matters."
+    ];
+    copyText(lines.join("\n"), this, "✅ Field Notes copied!");
+    document.getElementById("notesMsg").textContent = "Paste them into the Module 6 discussion in Canvas.";
+  });
+
+  Object.keys(STAGES).forEach(function (k) {
+    if (state.done[k] && STAGES[k].hash) {
+      var input = document.getElementById("code-" + k), msg = document.getElementById("msg-" + k);
+      if (input) input.setAttribute("disabled", "true");
+      if (msg) { msg.className = "code-msg ok"; msg.textContent = "✅ Stamped! " + STAGES[k].label + " complete."; }
+    }
+    if (state.done[k] && STAGES[k].self) {
+      var fm = document.getElementById("fmsg-" + k);
+      if (fm) { fm.className = "file-msg ok"; fm.textContent = "✅ " + STAGES[k].label + ". Stamped."; }
+    }
+  });
+  renderStamps();
+})();
+</script>
+</body>
+</html>
