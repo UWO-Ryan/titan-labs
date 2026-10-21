@@ -1,3 +1,5 @@
 .DS_Store
 personas/
 *.md
+_explore/captures/.incoming-*
+__pycache__/

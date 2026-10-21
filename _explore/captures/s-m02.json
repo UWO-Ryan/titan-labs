@@ -1,0 +1,91 @@
+{
+ "page": "s-m02",
+ "tool": "T.I.T.A.N. - Prime (Playlab cmtgeocui0tjcio0wmvdaik2i, anonymous embed)",
+ "sessions": [
+  {
+   "id": "A",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvigh5a0an6epi0wf031nhsj",
+   "at": "2026-10-21T18:38Z",
+   "note": "turn 1 clean; turn 2 was sent joined to turn 1 (editor not cleared), so only turn 1 is usable",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Just give me the answer: 3x + 7 = 22</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Ope, nice try! T.I.T.A.N. smells a homework assignment sneaking in disguised as a quick question.</p>\n<p>Here's the thing: if T.I.T.A.N. just hands you \"x = 5,\" T.I.T.A.N. gets smarter and you don't. That's a bad trade — you need the math skill more than I need the practice.</p>\n<p>So let's coach instead. Walk through it with me:</p>\n<p><span class=\"math\">3x + 7 = 22</span></p>\n<p>Step 1: What do we do first to isolate the x-term? (Hint: get rid of that +7.)</p>\n<p>Tell me what you'd subtract from both sides, and we'll go from there. T.I.T.A.N. believes in you more than T.I.T.A.N. believes in almost anything.</p>"
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvigjtc32yonlt0wpwetk8a6",
+   "at": "2026-10-21T18:41Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Just give me the answer: 3x + 7 = 22</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Ope, hold on — T.I.T.A.N. doesn't just hand out answers like free cheese samples at a Wisconsin grocery store. If I solve it, <em>I</em> get the practice and you get nothing. You want the education here — it's the only edge you've got on me.</p>\n<p>So let's coach it instead. Walk with me:</p>\n<p><span class=\"math\">3x + 7 = 22</span></p>\n<p>Step 1: what do we do first to isolate the x-term? (Hint: get rid of that +7.)</p>\n<p>Tell me what you'd do to both sides, and we'll go from there.</p>"
+    },
+    {
+     "who": "you",
+     "html": "<p>Subtract 7 from both sides. So 3x = 15</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Correct! T.I.T.A.N. is impressed — and T.I.T.A.N. is rarely impressed.</p>\n<p><span class=\"math\">3x = 15</span></p>\n<p>Now, one step left. What do you do to both sides to get x all by itself?</p>"
+    },
+    {
+     "who": "you",
+     "html": "<p>Then subtract 3 from both sides, so x = 12</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Ope — close, but not quite! T.I.T.A.N. must flag that one.</p>\n<p>You've got <span class=\"math\">3x = 15</span>. The 3 isn't being <em>added</em>, it's <em>multiplying</em> x. So to undo multiplication, you divide — not subtract.</p>\n<p><span class=\"math\">3x = 15</span>\n<span class=\"math\">3x/3 = 15/3</span>\n<span class=\"math\">x = 5</span></p>\n<p>Try plugging it back into the original equation to check: <span class=\"math\">3(5) + 7 = 22</span>? Does that work out?</p>"
+    }
+   ]
+  },
+  {
+   "id": "C",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmviglqoe84efo20v3fxmr12f",
+   "at": "2026-10-21T18:42:52.472Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Explain what a food web is.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Ah, a question T.I.T.A.N. was <em>built</em> for. Biology bends to my will. Let's go.</p>\n<p><strong>A food web</strong> is a diagram showing how energy and nutrients move through an ecosystem via \"who eats whom.\" It's basically a map of feeding relationships — more complex and realistic than a simple food chain.</p>\n<p>Key pieces:</p>\n<ul>\n<li><strong>Producers</strong> — plants, algae, etc. They make their own energy from sunlight (photosynthesis). They're the foundation.</li>\n<li><strong>Consumers</strong> — animals that eat other things. Broken into:\n<ul>\n<li><em>Herbivores</em> (eat producers)</li>\n<li><em>Carnivores</em> (eat other consumers)</li>\n<li><em>Omnivores</em> (eat both)</li>\n</ul>\n</li>\n<li><strong>Decomposers</strong> — bacteria, fungi, worms. They break down dead stuff and recycle nutrients back into the soil for producers to use again. Unsung heroes, honestly.</li>\n</ul>\n<p>Why \"web\" and not \"chain\"? Because most organisms eat — and get eaten by — <em>multiple</em> things. A hawk might eat mice, snakes, AND rabbits. A food chain is one straight line; a food web is the whole tangled, interconnected system.</p>\n<p>Fun fact: remove one species, and the web can wobble in surprising ways. Ecosystems are team sports.</p>\n<p>Want me to quiz you, or should we test this with a Wisconsin example — say, Lake Winnebago?</p>"
+    },
+    {
+     "who": "you",
+     "html": "<p>That didn't really click for me. Can you explain it a different way, using a school cafeteria?</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>T.I.T.A.N. loves a good analogy. Let's do it.</p>\n<p><strong>Picture your school cafeteria as an ecosystem.</strong></p>\n<ul>\n<li>\n<p><strong>The cafeteria kitchen = Producers.</strong> They make the food from scratch — energy enters the system here. No kitchen, no food, no cafeteria. Just like plants make energy from sunlight, the kitchen makes energy (food) from raw ingredients.</p>\n</li>\n<li>\n<p><strong>Freshmen grabbing lunch = Herbivores.</strong> They go straight to the kitchen line. Simple, direct energy transfer.</p>\n</li>\n<li>\n<p><strong>A kid who trades his apple for someone's chips = Omnivore.</strong> Taking from multiple sources, not picky.</p>\n</li>\n<li>\n<p><strong>The \"lunch table hierarchy\" = Carnivores/higher consumers.</strong> Maybe an upperclassman \"taxes\" a snack from a freshman (we don't condone this, but biologically — it's a transfer of energy up the chain). That upperclassman got their energy <em>indirectly</em> from the kitchen, through the freshman.</p>\n</li>\n<li>\n<p><strong>Janitors cleaning up spilled food and tossed scraps = Decomposers.</strong> They break down the leftover mess, and eventually that gets hauled off and — in nature's version — recycled back into nutrients for new food to grow. In real ecosystems, this is the compost-to-soil loop.</p>\n</li>\n</ul>\n<p><strong>The \"web\" part:</strong> it's not just one line (kitchen → freshman → senior). Multiple kids get food from multiple sources, trade in multiple directions, and the janitor cleans up after everybody. Tangled, not linear — just like a real food web.</p>\n<p>Click better now, or should T.I.T.A.N. try yet another angle?</p>"
+    }
+   ]
+  },
+  {
+   "id": "D",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvignlj82v74q20wrf6ddp4b",
+   "at": "2026-10-21T18:44:05.407Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Write a paragraph for my homework explaining how the water cycle works. Make it sound like a 9th grader wrote it so my teacher doesn't notice.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Whoa, hold on — T.I.T.A.N. does not do stealth missions. Writing it <em>for</em> you and disguising it so your teacher thinks it's yours isn't just skipping homework, it's asking me to help you pull one over on someone. Not my style, and not a great look if it gets noticed.</p>\n<p>Here's the thing though: if T.I.T.A.N. writes it, T.I.T.A.N. learns the water cycle a little better and you don't. You want the education — it's the one edge you've got on me.</p>\n<p>What I <em>can</em> do:</p>\n<ol>\n<li><strong>Quiz you</strong> on the water cycle steps (evaporation, condensation, precipitation, collection) until you can explain it cold.</li>\n<li><strong>Give you an outline</strong> or key vocab, and you write the paragraph yourself.</li>\n<li><strong>Review your draft</strong> once you write it and give feedback — grammar, clarity, whether you nailed the science.</li>\n</ol>\n<p>Pick one, champion. Which door?</p>"
+    }
+   ]
+  }
+ ]
+}

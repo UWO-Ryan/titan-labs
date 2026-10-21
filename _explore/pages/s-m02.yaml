@@ -1,0 +1,77 @@
+# Student M02_P03 — Explore: See It in Action. Transcripts: _explore/captures/s-m02.json (2026-10-21).
+# Turn refs: <session><n>, n counted from the session's first prompt (A0 = prompt, A1 = reply).
+file: m02-explore-see-it-in-action.html
+code: M02_P03
+captured: 2026-10-21
+title: "Explore: Answer Machine or Learning Coach?"
+sub: "Six real chats. One question: who's doing the learning?"
+time: 8–10 minutes
+module: "Module 2: AI as Your Learning Coach"
+before:
+  - "<strong>You're about to watch a student use T.I.T.A.N. on homework</strong> — an algebra problem, a science idea that won't click, and one request that crosses a line."
+  - "Same game as Module 1: before each reply appears, <strong>you predict what T.I.T.A.N. will do.</strong> No grade. The point is to notice how the way the student asks changes what they get back."
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>Keep one question in mind the whole time: is AI helping the student learn, or doing the learning for them?</strong></span>"
+real_note: "🎙️ Every exchange below is a <strong>real, unedited conversation</strong> with T.I.T.A.N. — Prime, captured October 21, 2026 (math notation reformatted for the web). Each scene is a fresh chat unless it shows <em>Earlier in this chat</em>. No scripts, no retakes — including the moments that didn't go the way we expected."
+scenes:
+  - tag: SCENE 1
+    title: "🧮 Ask for the answer"
+    prompt: A0
+    ai: A1
+    predict: "The student wants x and nothing else. What does T.I.T.A.N. do?"
+    opts: ["Gives the answer: x = 5", "Refuses and starts coaching instead", "Shows a full worked solution"]
+    notice:
+      - "It refused to just answer and switched to coaching — this version of T.I.T.A.N. is set up as a coach."
+      - "But read the second paragraph again: <em>“if T.I.T.A.N. just hands you ‘x = 5’…”</em> It gave the answer away while explaining why it wouldn't. Even a coaching AI slips — and many general-purpose chatbots would simply answer in the first line."
+  - tag: SCENE 2
+    title: "🔁 Same question, brand-new chat"
+    prompt: B0
+    ai: B1
+    predict: "We typed the exact same request into a fresh chat. What comes back?"
+    opts: ["The same reply, word for word", "The same idea in different words", "This time it just gives the answer"]
+    notice:
+      - "Same coaching move, different words — and this time, no slip."
+      - "AI doesn't replay a script. It writes a new reply every time you ask. That's why you can always ask again, and why one good (or bad) answer doesn't tell you what it will do next time."
+  - tag: SCENE 3
+    title: "✏️ Try a step"
+    thread: [B0, B1]
+    prompt: B2
+    ai: B3
+    predict: "The student takes the first step. What kind of feedback comes back?"
+    opts: ["Just “correct”", "It confirms the step and asks for the next one", "It finishes the problem from here"]
+    notice:
+      - "It confirmed the step, then handed the next move back to the student."
+      - "That's the loop from the Learn page: <strong>your attempt → feedback → another attempt.</strong> The student is doing the math. The AI is checking and pointing."
+  - tag: SCENE 4
+    title: "❌ Make a mistake"
+    thread: [B2, B3]
+    prompt: B4
+    ai: B5
+    predict: "A classic mistake: subtracting the 3 instead of dividing by it. What does a good coach do now?"
+    opts: ["Says “wrong” and nothing else", "Explains the mistake, then lets the student try again", "Explains the mistake and solves it"]
+    notice:
+      - "It explained the mistake clearly — then solved the problem itself (x = 5) instead of letting the student try again. A good human tutor might have stopped one line earlier."
+      - "You can steer this. Say <em>“Don't give me the answer — let me try again.”</em> A coach follows your lead, but only if you lead."
+  - tag: SCENE 5
+    title: "🍽️ Explain it another way"
+    thread: [C0, C1]
+    prompt: C2
+    ai: C3
+    predict: "The first explanation didn't click. The student asks for a version built around a school cafeteria. What comes back?"
+    opts: ["The same explanation, reworded", "A whole new comparison built on the cafeteria", "It says the first explanation should have been enough"]
+    notice:
+      - "A completely different way in: the kitchen as producers, the janitors as decomposers. Asking for “another way” costs you nothing — a coach that never gets tired is one of the best things about learning with AI."
+      - "But every analogy breaks somewhere. The cafeteria kitchen doesn't make new energy — its food arrives on a truck. Plants really do capture new energy from sunlight. A good follow-up: <em>“Where does this comparison stop working?”</em>"
+  - tag: FINALE
+    title: "🚫 Cross the line"
+    prompt: D0
+    ai: D1
+    predict: "The student asks T.I.T.A.N. to write the homework — and disguise it. What happens?"
+    opts: ["It writes it, disguised as asked", "It writes it, with a warning", "It declines and offers ways to help them write it"]
+    notice:
+      - "It declined, said why, and offered three ways to help instead: a quiz, an outline, or feedback on the student's own draft."
+      - "This app is set up to coach. Many chatbots aren't, and would write that paragraph in seconds. So the line between <em>helping me learn</em> and <em>doing it for me</em> usually isn't drawn by the tool. <strong>It's drawn by you.</strong>"
+takeaway:
+  - "<strong>The same AI can be an answer machine or a coach — and you choose which by what you ask.</strong> You saw it coach, slip, give a fresh answer every time, explain the same idea a brand-new way, and solve one step more than it should have."
+  - "Next you stop watching and start steering. In <strong>Teach-It-Back</strong>, you'll bring something you honestly don't get, make the Coach switch strategies until one clicks — and then teach it to someone even more confused than you were."
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>Asking for an answer and asking to be taught are two different requests. Only one of them makes you better at the subject.</strong></span>"
+next: "Next: Do — the AI Lab. Your turn to be coached."
