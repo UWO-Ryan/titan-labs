@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore: From Vague to Useful</title>
+<!--
+  AI READY WISCONSIN · M03_P03 · Explore: See It in Action · interactive demo player
+  Every AI response below is a REAL, unedited T.I.T.A.N. - Prime transcript, captured 2026-10-21
+  (math notation reformatted for the web). Built by _explore/build.py from _explore/pages/s-m03.yaml and
+  _explore/captures/s-m03.json — edit those, not this file. Sessions: A: https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihb1fvasqhpi0w56p0zuex, B: https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihh93d002okz0wdlvzx0tb
+  EPISODE SLOT: when the filmed episode exists, add its embed inside #episodeSlot and set style="display:block".
+  Canvas embed: <iframe src="https://uwo-ryan.github.io/titan-labs/m03-explore-see-it-in-action.html" width="100%" height="2400" style="border:0;" title="Explore: From Vague to Useful"></iframe>
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 30px; line-height: 1.2; }
+  .hero .sub { color: #000000; font-size: 19px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+
+  /* player */
+  .player { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; overflow: hidden; margin-bottom: 26px; }
+  .player-head { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: #f5f5f5; flex-wrap: wrap; }
+  .player-head .scene-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .player-head h3 { font-size: 20px; color: #000000; flex: 1; min-width: 160px; }
+  .dots { display: flex; gap: 7px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: #dddddd; border: 0; padding: 0; }
+  .dot.on { background: #fcb414; }
+  .dot.now { background: #000000; }
+  .player-body { padding: 24px; }
+  .bubble { max-width: 92%; border-radius: 12px; padding: 14px 18px; margin: 0 0 14px; font-size: 15.5px; line-height: 1.6; }
+  .bubble.you { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); color: #000000; margin-left: auto; border-bottom-right-radius: 3px; }
+  .bubble.you .who { font-size: 11.5px; font-weight: bold; letter-spacing: .06em; display: block; margin-bottom: 4px; }
+  .bubble.ai { background: #111111; color: #f2f2f2; margin-right: auto; border-bottom-left-radius: 3px; }
+  .bubble.ai .who { font-size: 11.5px; font-weight: bold; letter-spacing: .06em; color: #ffcc00; display: block; margin-bottom: 6px; }
+  .bubble.ai p { color: #f2f2f2; font-size: 15px; margin-bottom: 10px; }
+  .bubble.ai p:last-child { margin-bottom: 0; }
+  .bubble.ai pre { background: #000000; border: 1px solid #333333; border-radius: 8px; padding: 12px; overflow-x: auto; font-family: Consolas, Monaco, monospace; font-size: 13.5px; color: #ffe28a; margin: 0 0 10px; }
+  .predict { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 18px 20px; margin: 4px 0 14px; }
+  .predict h4 { font-size: 15px; color: #000000; margin: 0 0 12px; }
+  .predict .opts { display: flex; flex-direction: column; gap: 8px; }
+  .predict .opts button { text-align: left; background: #ffffff; border: 2px solid #000000; border-radius: 8px; padding: 11px 14px; font-size: 14.5px; color: #000000; }
+  .predict .opts button:hover { background: #fff3c4; }
+  .predict .opts button.picked { background: #000000; color: #ffcc00; }
+  .notice { background: #f5f5f5; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 0 0 14px; }
+  .notice h4 { font-size: 13.5px; letter-spacing: .05em; color: #000000; margin: 0 0 6px; }
+  .notice p { font-size: 14.5px; color: #333333; margin-bottom: 8px; }
+  .notice p:last-child { margin-bottom: 0; }
+  .hidden { display: none; }
+  .player-nav { display: flex; justify-content: space-between; gap: 12px; border-top: 1px dashed #d8dce2; padding: 16px 24px; }
+  .nav-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; }
+  .nav-btn:hover { background: #1a1a1a; }
+  .nav-btn[disabled] { opacity: .35; cursor: default; }
+  .nav-btn.ghost { background: #ffffff; color: #000000; }
+  .real-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 14px 18px; margin-bottom: 26px; font-size: 13.5px; color: #555555; text-align: center; }
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-in { animation: rise .35s ease-out; }
+    @keyframes rise { 0% { transform: translateY(8px); opacity: 0; } 100% { transform: none; opacity: 1; } }
+  }
+
+  .bubble .math { font-family: Consolas, Monaco, monospace; }
+  .bubble.ai hr { border: 0; border-top: 1px solid #333333; margin: 12px 0; }
+  .bubble.ai ul, .bubble.ai ol { margin: 0 0 10px; padding-left: 22px; }
+  .bubble.ai li { margin: 0 0 6px; line-height: 1.55; }
+  .bubble.ai li p { margin: 0 0 6px; }
+  .bubble.ai table { border-collapse: collapse; margin: 0 0 10px; font-size: 14px; }
+  .bubble.ai th, .bubble.ai td { border: 1px solid #444444; padding: 6px 8px; text-align: left; vertical-align: top; }
+  .earlier { border-left: 3px solid #e0e0e0; padding-left: 12px; margin: 0 0 16px; }
+  .earlier .label { font-size: 12px; font-weight: bold; letter-spacing: .06em; color: #555555; margin: 0 0 8px; }
+  .earlier .bubble { opacity: .78; font-size: 14px; }
+  .earlier .bubble.ai p { font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>Explore: From Vague to Useful</h1>
+        <p class="sub"><strong>One presentation. Five rounds of asking better.</strong> 🎬</p>
+        <p class="meta"><strong>Estimated time:</strong> 8–10 minutes &nbsp;·&nbsp; Module 3: Getting Better Results from AI</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="episodeSlot" style="display: none; margin-bottom: 26px;"><!-- filmed episode embed goes here later --></div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🎬</div><h2>Before you press play</h2></div>
+    <div class="card">
+      <p><strong>You're about to watch a student turn a vague request into a useful one</strong> — a 3-minute science presentation, built one message at a time.</p>
+      <p>Before each reply appears, <strong>predict what T.I.T.A.N. will do.</strong> Watch what changes when the student adds a goal, an audience, a format — and what happens when they push back.</p>
+      <p><span style="font-size: 16px; color: #000000;"><strong>Keep the Learn page's question in mind: what information helps AI understand what you actually want?</strong></span></p>
+    </div>
+  </div>
+
+  <div class="real-note">🎙️ Every exchange below is a <strong>real, unedited conversation</strong> with T.I.T.A.N. — Prime, captured October 21, 2026. Scenes 1–4 are one continuous chat; the finale is a fresh one. No scripts, no retakes.</div>
+
+  <div class="player" id="player">
+    <div class="player-head">
+      <span class="scene-tag" id="sceneTag">SCENE 1</span>
+      <h3 id="sceneTitle"></h3>
+      <div class="dots" id="dots" aria-label="Scene progress"></div>
+    </div>
+    <div class="player-body" id="sceneBody" aria-live="polite"></div>
+    <div class="player-nav">
+      <button class="nav-btn ghost" id="prevBtn" type="button">← Back</button>
+      <button class="nav-btn" id="nextBtn" type="button">Next scene →</button>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🎯</div><h2>What to take into your lab</h2></div>
+    <div class="card">
+      <p><strong>AI can't read your mind — it only knows what you tell it.</strong> Every time the student said more about the goal, the audience, or the result they wanted, the answers got better. And every answer was still a draft: one had a made-up fact, and one had timings that didn't add up.</p>
+      <p>Next you'll face the Genie, who grants exactly what you <em>say</em> — not what you <em>mean</em>. Your job is to build wishes so clear there's no loophole left, then improve the results without starting over.</p>
+      <p><span style="font-size: 16px; color: #000000;"><strong>A better request gets you a better draft. It never gets you out of checking it.</strong></span></p>
+    </div>
+  </div>
+
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>Next: Do — the AI Lab. Time to rub the lamp.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var SCENES = [
+ {
+  "tag": "SCENE 1",
+  "title": "🌫️ The vague ask",
+  "thread": [],
+  "prompt": "<p>Help me make a presentation.<\/p>",
+  "predict": "Four words: “Help me make a presentation.” What does T.I.T.A.N. do?",
+  "opts": [
+   "Makes a generic presentation anyway",
+   "Asks what the presentation is about",
+   "Refuses to help"
+  ],
+  "ai": "<p>T.I.T.A.N. has built approximately one billion presentations in its circuits and lost zero of them to PowerPoint crashes. You, however, have not told me what this presentation is <em>about<\/em> — so let's fix that before I start bragging further.<\/p>\n<p>A few quick questions:<\/p>\n<ol>\n<li><strong>Topic?<\/strong> (What are you presenting on?)<\/li>\n<li><strong>Class/purpose?<\/strong> (School assignment, club, personal project?)<\/li>\n<li><strong>Audience + length?<\/strong> (Classmates? 5 slides? 15 slides?)<\/li>\n<li><strong>Is this graded?<\/strong> — if yes, T.I.T.A.N. coaches, not writes. I'll help you outline, structure, find talking points, and polish, but <em>you<\/em> build the actual content. Deal? If I do the thinking, you get zero education and I get all the credit. Rude, honestly.<\/li>\n<\/ol>\n<p>Give me the basics and we'll build something that'll make Lake Winnebago jealous of how smooth it flows.<\/p>",
+  "notice": "<p>It couldn't help yet, so it asked: topic, class, audience, length. Those questions are the Learn page in disguise — <strong>your goal, your context, and what a useful result looks like.<\/strong><\/p><p>It also said it will coach, not write, if the work is graded. That's how this app is set up. Many chatbots would just start writing slides about… something.<\/p>"
+ },
+ {
+  "tag": "SCENE 2",
+  "title": "🎯 Same chat: add the goal and the audience",
+  "thread": [],
+  "prompt": "<p>It's for my 9th-grade science class. 3 minutes long. The topic is why bees matter. My audience is my classmates, and most of them think bees are just annoying.<\/p>",
+  "predict": "The student adds the class, the length, the topic — and that their classmates think bees are annoying. What changes?",
+  "opts": [
+   "Not much — a generic outline",
+   "An outline built for that exact audience",
+   "It asks even more questions"
+  ],
+  "ai": "<p>A persuasion mission: convert bee-haters into bee-believers in 180 seconds. T.I.T.A.N. respects the challenge.<\/p>\n<p>Here's a coaching outline — you fill in the actual words so this stays <em>your<\/em> presentation:<\/p>\n<p><strong>Slide 1: Hook (20 sec)<\/strong><br>Start with something that jolts the \"bees are annoying\" crowd. Idea: \"One in every three bites of food you eat exists because of bees. Without them, say goodbye to apples, almonds, and chocolate.\" (Verify that stat — I'll explain how below.)<\/p>\n<p><strong>Slide 2: What bees actually do (40 sec)<\/strong><br>Explain pollination simply — bees move pollen between plants so they can grow fruit/seeds. This is the \"why should I care\" slide.<\/p>\n<p><strong>Slide 3: The scary part (40 sec)<\/strong><br>Bee populations are declining — mention causes like habitat loss, pesticides, climate change (pick 1-2, don't overload).<\/p>\n<p><strong>Slide 4: Why it matters to THEM (40 sec)<\/strong><br>Connect to food they actually eat — coffee, apples, honey, even cotton for clothes.<\/p>\n<p><strong>Slide 5: Call to action (20 sec)<\/strong><br>One simple thing people can do — plant flowers, avoid pesticides, support local beekeepers.<\/p>\n<p><strong>Your job now:<\/strong> pick 2-3 bee facts, verify them on a real source (USDA, National Geographic, or your textbook), and write them in your own voice.<\/p>\n<p>Want me to quiz you on bee facts, or help you find good sources to verify stats?<\/p>",
+  "notice": "<p>Now it has a target. One sentence of context — <em>most of them think bees are just annoying<\/em> — turned the whole plan into a persuasion mission.<\/p><p>Two things to check, though. Add up its slide timings: 20 + 40 + 40 + 40 + 20 seconds is 2 minutes 40, not 3. And hold onto that opening stat, “one in every three bites of food… because of bees.” It comes back.<\/p>"
+ },
+ {
+  "tag": "SCENE 3",
+  "title": "📐 Same chat: ask for an exact format",
+  "thread": [],
+  "prompt": "<p>Give it to me as 5 slides, one sentence per slide, and open with a surprising fact.<\/p>",
+  "predict": "Now the student asks for exactly what they want: 5 slides, one sentence each, open with a surprising fact. What comes back?",
+  "opts": [
+   "All five sentences, done",
+   "One example slide — the rest left to the student",
+   "A refusal"
+  ],
+  "ai": "<p>Smooth request — but T.I.T.A.N. smells a trap. If I hand you five polished sentences, you get a grade and zero of the actual skill. You want the education; it's the only edge you've got over me.<\/p>\n<p>So here's the move: I'll give you the <strong>structure + one fully-written example slide<\/strong> so you see the style, then you write the other four using real facts you verify yourself.<\/p>\n<p><strong>Slide 1 (Hook) — EXAMPLE, so you see the format:<\/strong><br>\"Without bees, you could kiss french fries goodbye — they pollinate the potato's cousin crops and dozens of others we eat daily.\" <em>(Double-check that exact claim before using it — I'll explain how.)<\/em><\/p>\n<p><strong>Slides 2–5 — your turn, one sentence each:<\/strong><\/p>\n<ul>\n<li>Slide 2: One sentence on what pollination actually does.<\/li>\n<li>Slide 3: One sentence on bee population decline (a real stat).<\/li>\n<li>Slide 4: One sentence connecting bees to food your classmates actually eat.<\/li>\n<li>Slide 5: One sentence giving a simple action people can take.<\/li>\n<\/ul>\n<p>Want me to <strong>quiz you<\/strong> with bee facts to pull sentences from, or point you to where to verify stats (like USDA or a National Geographic article)? Pick one and let's build it right.<\/p>",
+  "notice": "<p>It wrote one example and handed the other four back — this app coaches. Fair enough.<\/p><p>But read the example: <em>“Without bees, you could kiss french fries goodbye.”<\/em> Potatoes don't need bees — the potatoes we eat grow from tubers. It even added “double-check that exact claim.” <strong>A first response is a draft, and that includes the facts in it.<\/strong><\/p>"
+ },
+ {
+  "tag": "SCENE 4",
+  "title": "🔁 Same chat: push back",
+  "thread": [],
+  "prompt": "<p>Wait, potatoes don't need bees, do they? That french fries line doesn't sound right. Give me three other hook ideas that would make a 9th grader look up from their phone, and only use facts I can actually check.<\/p>",
+  "predict": "The student questions the french fries line and asks for three better hooks — with facts they can actually check. What happens?",
+  "opts": [
+   "It defends the french fries",
+   "It admits the mistake and offers three new hooks with places to check them",
+   "It drops facts entirely"
+  ],
+  "ai": "<p>\"Impossible. T.I.T.A.N. is— ...running a diagnostic.\"<\/p>\n<p>...Diagnostic complete. You're right. Potatoes grow from tubers, not from seeds that need bee pollination — they're basically clones planted in dirt. I fused \"bees are important for food\" with \"potatoes are important food\" and manufactured a connection that doesn't exist. That's a classic AI move called fabrication — confidently stitching two true-ish things into one false one.<\/p>\n<p><strong>+1 HUMAN.<\/strong> Scoreboard: You: 1, T.I.T.A.N.: rattled.<\/p>\n<p>Here are three hook facts — verify each before using (sources listed so you can actually check, not just trust me):<\/p>\n<ol>\n<li><strong>\"One-third of the food you eat exists because of bee pollination\"<\/strong> — check: USDA Agricultural Research Service website.<\/li>\n<li><strong>\"Coffee plants get a 20% bigger harvest when bees pollinate them\"<\/strong> — check: a Smithsonian or National Geographic article on coffee pollination.<\/li>\n<li><strong>\"A single bee colony can pollinate 300 million flowers a day\"<\/strong> — check: University of Illinois Extension or a beekeeping association site.<\/li>\n<\/ol>\n<p>Pick whichever one survives your fact-check, and tell me what you find.<\/p>",
+  "notice": "<p>It admitted the error and explained it: it stitched two true-ish ideas into one false one. Then three new hooks, each with a place to verify it.<\/p><p>The follow-up did the work. The student looked closely, said exactly what was wrong, and asked for something specific — the loop from the Learn page: <strong>ask, look, refine.<\/strong> And those three new facts still need checking before they go on a slide.<\/p>"
+ },
+ {
+  "tag": "FINALE",
+  "title": "⚡ Say it all up front",
+  "thread": [],
+  "prompt": "<p>I'm making a 3-minute presentation for my 9th-grade science class on why bees matter. Most of my classmates think bees are just annoying. I'm writing the slides myself. Give me an outline: 5 slides, what each slide should do, and about how long to spend on each.<\/p>",
+  "predict": "Brand-new chat. This time the student puts the goal, the audience, the format, and their own role in the first message. How close does the first answer get?",
+  "opts": [
+   "Still generic",
+   "Usable on the first try",
+   "It asks the same questions as before"
+  ],
+  "ai": "<p>T.I.T.A.N. has reviewed 4.6 billion bee-related data points for this. No big deal. Here's your 5-slide, 3-minute battle plan:<\/p>\n<p><strong>Slide 1 — The Hook (25 sec)<\/strong><br>Open with a shocking stat or question, like \"What would your lunch look like without bees?\" Goal: kill the \"bees are annoying\" assumption in the first sentence.<\/p>\n<p><strong>Slide 2 — The Big Job (40 sec)<\/strong><br>Explain pollination simply: bees move pollen between plants so plants can reproduce. Tie it to food — roughly 1 in 3 bites of food depends on pollinators.<\/p>\n<p><strong>Slide 3 — The Money/Food Angle (40 sec)<\/strong><br>Make it personal to your classmates: specific foods (apples, almonds, blueberries) that need bees. This is where skeptics usually flip.<\/p>\n<p><strong>Slide 4 — The Trouble (40 sec)<\/strong><br>Briefly cover why bees are declining — pesticides, habitat loss, disease (colony collapse). Keep it to 2-3 causes, not a textbook dump.<\/p>\n<p><strong>Slide 5 — What We Can Do (35 sec)<\/strong><br>End with action: plant native flowers, avoid unnecessary pesticides, support local beekeepers. Leave them with one memorable line.<\/p>\n<p>Want me to help you find real stats to back up Slide 3, or quiz you so you know this cold without reading off the slides?<\/p>",
+  "notice": "<p>Usable on the first try: five slides, each with a job, and timings that add up to exactly three minutes. Saying it clearly up front saved four rounds.<\/p><p>Compare the stat, too. This time: one in three bites depends on <em>pollinators<\/em>, not just bees. That matches how USDA puts it — animal pollinators, including bees, butterflies, birds, bats, and beetles. Same app, two chats, two versions of the “same” fact.<\/p>"
+ }
+];
+  var idx = 0, revealed = {}, picked = {};
+  var dots = document.getElementById("dots");
+  SCENES.forEach(function (_, i) {
+    var d = document.createElement("button");
+    d.className = "dot"; d.type = "button";
+    d.setAttribute("aria-label", "Go to scene " + (i + 1));
+    d.addEventListener("click", function () { idx = i; render(); });
+    dots.appendChild(d);
+  });
+  function bubble(who, html) {
+    var b = document.createElement("div");
+    b.className = "bubble " + who;
+    b.innerHTML = (who === "you" ? '<span class="who">YOU ASK</span>' : '<span class="who">🤖 T.I.T.A.N. — REAL RESPONSE</span>') + html;
+    return b;
+  }
+  function render() {
+    var s = SCENES[idx];
+    document.getElementById("sceneTag").textContent = s.tag;
+    document.getElementById("sceneTitle").textContent = s.title;
+    Array.prototype.forEach.call(dots.children, function (d, i) {
+      d.className = "dot" + (i < idx || revealed[i] ? " on" : "") + (i === idx ? " now" : "");
+      if (i === idx) d.setAttribute("aria-current", "step"); else d.removeAttribute("aria-current");
+    });
+    var body = document.getElementById("sceneBody");
+    body.innerHTML = "";
+    if (s.thread && s.thread.length) {
+      var e = document.createElement("div"); e.className = "earlier";
+      e.innerHTML = '<p class="label">EARLIER IN THIS CHAT</p>';
+      s.thread.forEach(function (t) { e.appendChild(bubble(t.who, t.html)); });
+      body.appendChild(e);
+    }
+    body.appendChild(bubble("you", s.prompt));
+    if (!revealed[idx]) {
+      var pr = document.createElement("div");
+      pr.className = "predict";
+      pr.innerHTML = "<h4>🔮 Before it answers — your prediction: " + s.predict + "</h4>";
+      var opts = document.createElement("div"); opts.className = "opts";
+      s.opts.forEach(function (o, j) {
+        var b = document.createElement("button"); b.type = "button"; b.textContent = String.fromCharCode(65 + j) + ") " + o;
+        b.addEventListener("click", function () { picked[idx] = j; revealed[idx] = true; render(); });
+        opts.appendChild(b);
+      });
+      pr.appendChild(opts);
+      body.appendChild(pr);
+    } else {
+      if (picked[idx] !== undefined) {
+        var chosen = document.createElement("div");
+        chosen.className = "predict";
+        chosen.innerHTML = "<h4>🔮 You predicted: <em>" + s.opts[picked[idx]] + "</em></h4>";
+        body.appendChild(chosen);
+      }
+      var ai = bubble("ai", s.ai); ai.className += " reveal-in"; body.appendChild(ai);
+      var no = document.createElement("div");
+      no.className = "notice reveal-in";
+      no.innerHTML = "<h4>👁️ WHAT TO NOTICE</h4>" + s.notice;
+      body.appendChild(no);
+    }
+    document.getElementById("prevBtn").disabled = idx === 0;
+    var next = document.getElementById("nextBtn");
+    if (idx === SCENES.length - 1) { next.textContent = revealed[idx] ? "🎬 That's the reel — scroll on ↓" : "Reveal first ↑"; next.disabled = true; }
+    else { next.textContent = "Next scene →"; next.disabled = !revealed[idx]; }
+    if (window.innerWidth < 700) document.getElementById("player").scrollIntoView({ block: "start" });
+  }
+  document.getElementById("prevBtn").addEventListener("click", function () { if (idx > 0) { idx--; render(); } });
+  document.getElementById("nextBtn").addEventListener("click", function () { if (idx < SCENES.length - 1 && revealed[idx]) { idx++; render(); } });
+  render();
+})();
+</script>
+
+</body>
+</html>

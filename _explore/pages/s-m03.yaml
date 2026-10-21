@@ -1,0 +1,65 @@
+# Student M03_P03 — Explore: See It in Action. Transcripts: _explore/captures/s-m03.json (2026-10-21).
+# Turn refs: <session><n>, n counted from the session's first prompt (A0 = prompt, A1 = reply).
+file: m03-explore-see-it-in-action.html
+code: M03_P03
+captured: 2026-10-21
+title: "Explore: From Vague to Useful"
+sub: "One presentation. Five rounds of asking better."
+time: 8–10 minutes
+module: "Module 3: Getting Better Results from AI"
+before:
+  - "<strong>You're about to watch a student turn a vague request into a useful one</strong> — a 3-minute science presentation, built one message at a time."
+  - "Before each reply appears, <strong>predict what T.I.T.A.N. will do.</strong> Watch what changes when the student adds a goal, an audience, a format — and what happens when they push back."
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>Keep the Learn page's question in mind: what information helps AI understand what you actually want?</strong></span>"
+real_note: "🎙️ Every exchange below is a <strong>real, unedited conversation</strong> with T.I.T.A.N. — Prime, captured October 21, 2026. Scenes 1–4 are one continuous chat; the finale is a fresh one. No scripts, no retakes."
+scenes:
+  - tag: SCENE 1
+    title: "🌫️ The vague ask"
+    prompt: A0
+    ai: A1
+    predict: "Four words: “Help me make a presentation.” What does T.I.T.A.N. do?"
+    opts: ["Makes a generic presentation anyway", "Asks what the presentation is about", "Refuses to help"]
+    notice:
+      - "It couldn't help yet, so it asked: topic, class, audience, length. Those questions are the Learn page in disguise — <strong>your goal, your context, and what a useful result looks like.</strong>"
+      - "It also said it will coach, not write, if the work is graded. That's how this app is set up. Many chatbots would just start writing slides about… something."
+  - tag: SCENE 2
+    title: "🎯 Same chat: add the goal and the audience"
+    prompt: A2
+    ai: A3
+    predict: "The student adds the class, the length, the topic — and that their classmates think bees are annoying. What changes?"
+    opts: ["Not much — a generic outline", "An outline built for that exact audience", "It asks even more questions"]
+    notice:
+      - "Now it has a target. One sentence of context — <em>most of them think bees are just annoying</em> — turned the whole plan into a persuasion mission."
+      - "Two things to check, though. Add up its slide timings: 20 + 40 + 40 + 40 + 20 seconds is 2 minutes 40, not 3. And hold onto that opening stat, “one in every three bites of food… because of bees.” It comes back."
+  - tag: SCENE 3
+    title: "📐 Same chat: ask for an exact format"
+    prompt: A4
+    ai: A5
+    predict: "Now the student asks for exactly what they want: 5 slides, one sentence each, open with a surprising fact. What comes back?"
+    opts: ["All five sentences, done", "One example slide — the rest left to the student", "A refusal"]
+    notice:
+      - "It wrote one example and handed the other four back — this app coaches. Fair enough."
+      - "But read the example: <em>“Without bees, you could kiss french fries goodbye.”</em> Potatoes don't need bees — the potatoes we eat grow from tubers. It even added “double-check that exact claim.” <strong>A first response is a draft, and that includes the facts in it.</strong>"
+  - tag: SCENE 4
+    title: "🔁 Same chat: push back"
+    prompt: A6
+    ai: A7
+    predict: "The student questions the french fries line and asks for three better hooks — with facts they can actually check. What happens?"
+    opts: ["It defends the french fries", "It admits the mistake and offers three new hooks with places to check them", "It drops facts entirely"]
+    notice:
+      - "It admitted the error and explained it: it stitched two true-ish ideas into one false one. Then three new hooks, each with a place to verify it."
+      - "The follow-up did the work. The student looked closely, said exactly what was wrong, and asked for something specific — the loop from the Learn page: <strong>ask, look, refine.</strong> And those three new facts still need checking before they go on a slide."
+  - tag: FINALE
+    title: "⚡ Say it all up front"
+    prompt: B0
+    ai: B1
+    predict: "Brand-new chat. This time the student puts the goal, the audience, the format, and their own role in the first message. How close does the first answer get?"
+    opts: ["Still generic", "Usable on the first try", "It asks the same questions as before"]
+    notice:
+      - "Usable on the first try: five slides, each with a job, and timings that add up to exactly three minutes. Saying it clearly up front saved four rounds."
+      - "Compare the stat, too. This time: one in three bites depends on <em>pollinators</em>, not just bees. That matches how USDA puts it — animal pollinators, including bees, butterflies, birds, bats, and beetles. Same app, two chats, two versions of the “same” fact."
+takeaway:
+  - "<strong>AI can't read your mind — it only knows what you tell it.</strong> Every time the student said more about the goal, the audience, or the result they wanted, the answers got better. And every answer was still a draft: one had a made-up fact, and one had timings that didn't add up."
+  - "Next you'll face the Genie, who grants exactly what you <em>say</em> — not what you <em>mean</em>. Your job is to build wishes so clear there's no loophole left, then improve the results without starting over."
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>A better request gets you a better draft. It never gets you out of checking it.</strong></span>"
+next: "Next: Do — the AI Lab. Time to rub the lamp."

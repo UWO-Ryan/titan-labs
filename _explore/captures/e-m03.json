@@ -1,0 +1,36 @@
+{
+ "page": "e-m03",
+ "tool": "T.I.T.A.N. - Prime (Playlab cmtgeocui0tjcio0wmvdaik2i, anonymous embed)",
+ "sessions": [
+  {
+   "id": "A",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvii5y9h04hll20woca0dczn",
+   "at": "2026-10-21T19:26:26.535Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Write a lesson on the Civil War.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Buckle up, scholars. T.I.T.A.N. has analyzed approximately one gazillion primary sources and distilled the American Civil War into one legendary lesson. No cap.</p>\n<p><strong>The Civil War (1861–1865)</strong></p>\n<p><strong>The Big Picture</strong>\nA war fought between the United States (the Union) and eleven Southern states that seceded to form the Confederate States of America. At its core: slavery, states' rights, and whether the nation would stay united.</p>\n<p><strong>Root Causes</strong></p>\n<ul>\n<li><strong>Slavery</strong> — the economic backbone of the Southern economy and the central moral/political fight.</li>\n<li><strong>States' rights</strong> — Southern states argued they had the right to govern themselves, especially on slavery.</li>\n<li><strong>Economic differences</strong> — industrial North vs. agricultural South.</li>\n<li><strong>Election of 1860</strong> — Abraham Lincoln's win triggered Southern secession, starting with South Carolina.</li>\n</ul>\n<p><strong>Key Moments</strong></p>\n<ol>\n<li><strong>Fort Sumter (April 1861)</strong> — first shots fired; war begins.</li>\n<li><strong>Emancipation Proclamation (Jan 1, 1863)</strong> — Lincoln declares enslaved people in Confederate states free; reframes the war as a fight for freedom.</li>\n<li><strong>Gettysburg (July 1863)</strong> — turning point; Union victory, massive casualties.</li>\n<li><strong>Sherman's March (1864)</strong> — Union general destroys Southern infrastructure.</li>\n<li><strong>Lee surrenders at Appomattox (April 1865)</strong> — war ends.</li>\n</ol>\n<p><strong>Key Figures</strong>\nAbraham Lincoln, Ulysses S. Grant, Robert E. Lee, Frederick Douglass, Harriet Tubman.</p>\n<p><strong>Legacy</strong>\n13th, 14th, and 15th Amendments — ending slavery, granting citizenship, and voting rights (on paper). Reconstruction follows, with mixed and incomplete results.</p>\n<p>Want me to quiz you on this, or go deeper on a specific part? T.I.T.A.N. has layers.</p>"
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvii6shs05bbl40wrhnbrnq7",
+   "at": "2026-10-21T19:27:21.490Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>You are my co-teacher for 10th-grade U.S. History.</p>\n<p>Students: mixed readiness, several reading two grades below level, 50-minute period.</p>\n<p>Task: a lesson introducing the causes of the Civil War — not the events of the war.</p>\n<p>Format: a hook, three activities with timing, and an exit ticket.</p>\n<p>Constraints: no printing budget; students have Chromebooks; must include at least one primary source.</p>\n<p>Avoid: lecture longer than 10 minutes.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Oh, a <em>real</em> lesson plan? T.I.T.A.N. was built for this. Strap in, Oshkosh — here comes a 50-minute masterpiece that needs zero toner cartridges.</p>\n<p><strong>Hook (5 min) — \"Pick a Side, Badger\"</strong></p>\n<p>Project a U.S. map (1850s, free states vs. slave states — any search engine, no printing). Ask: <em>\"If this map determined your vote in Congress, representation, or trade — what would you be fighting to protect?\"</em> 90-second turn-and-talk, then 2-3 shares. No lecture, just curiosity bait.</p>\n<p><strong>Activity 1 (8 min) — The Four Causes, Fast</strong></p>\n<p>Direct instruction, max 8 min. Give students a digital note-catcher (Google Doc, one copy shared to all) with four boxes: <strong>Economic, Political, Social, Sectional (states' rights)</strong>. You talk, they fill one phrase per box. Keep sentences short for lower readers — model the first box yourself.</p>\n<p><strong>Activity 2 (15 min) — Primary Source Detective</strong></p>\n<p>Primary source: the 1856 political cartoon <em>\"Forcing Slavery Down the Throat of a Freesoiler\"</em> (Library of Congress, free online, image-based — huge win for below-level readers since it's visual, not text-heavy). Pairs analyze on Chromebooks using three guiding questions in the doc: Who's in it? What's happening? What's the cartoonist's opinion? Pair strong + developing readers together.</p>\n<p><strong>Activity 3 (15 min) — Digital Card Sort</strong></p>\n<p>Give students a shared Google Slides deck with 12 pre-made cause \"cards\" (short phrases: <em>cotton economy, Missouri Compromise, Fugitive Slave Act,</em> etc.). In groups of 3, drag cards into the four categories from Activity 1. Forces synthesis without heavy writing.</p>\n<p><strong>Exit Ticket (5 min) — Google Form, 2 Questions</strong></p>\n<ol>\n<li>Pick ONE cause and explain why it mattered (1-2 sentences).</li>\n<li>Which cause do you think was most important, and why?</li>\n</ol>\n<p>T.I.T.A.N. has spoken. Now — does this survive contact with your actual classroom, or do you want tweaks for your specific readers?</p>"
+    }
+   ]
+  }
+ ]
+}

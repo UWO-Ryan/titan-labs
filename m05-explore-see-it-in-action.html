@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore: Generating Isn&#x27;t Creating</title>
+<!--
+  AI READY WISCONSIN · M05_P03 · Explore: See It in Action · interactive demo player
+  Every AI response below is a REAL, unedited T.I.T.A.N. - Prime transcript, captured 2026-10-21
+  (math notation reformatted for the web). Built by _explore/build.py from _explore/pages/s-m05.yaml and
+  _explore/captures/s-m05.json — edit those, not this file. Sessions: A: https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihmgtm01syl40w1iq796d6
+  EPISODE SLOT: when the filmed episode exists, add its embed inside #episodeSlot and set style="display:block".
+  Canvas embed: <iframe src="https://uwo-ryan.github.io/titan-labs/m05-explore-see-it-in-action.html" width="100%" height="2400" style="border:0;" title="Explore: Generating Isn&#x27;t Creating"></iframe>
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 30px; line-height: 1.2; }
+  .hero .sub { color: #000000; font-size: 19px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+
+  /* player */
+  .player { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; overflow: hidden; margin-bottom: 26px; }
+  .player-head { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: #f5f5f5; flex-wrap: wrap; }
+  .player-head .scene-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .player-head h3 { font-size: 20px; color: #000000; flex: 1; min-width: 160px; }
+  .dots { display: flex; gap: 7px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: #dddddd; border: 0; padding: 0; }
+  .dot.on { background: #fcb414; }
+  .dot.now { background: #000000; }
+  .player-body { padding: 24px; }
+  .bubble { max-width: 92%; border-radius: 12px; padding: 14px 18px; margin: 0 0 14px; font-size: 15.5px; line-height: 1.6; }
+  .bubble.you { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); color: #000000; margin-left: auto; border-bottom-right-radius: 3px; }
+  .bubble.you .who { font-size: 11.5px; font-weight: bold; letter-spacing: .06em; display: block; margin-bottom: 4px; }
+  .bubble.ai { background: #111111; color: #f2f2f2; margin-right: auto; border-bottom-left-radius: 3px; }
+  .bubble.ai .who { font-size: 11.5px; font-weight: bold; letter-spacing: .06em; color: #ffcc00; display: block; margin-bottom: 6px; }
+  .bubble.ai p { color: #f2f2f2; font-size: 15px; margin-bottom: 10px; }
+  .bubble.ai p:last-child { margin-bottom: 0; }
+  .bubble.ai pre { background: #000000; border: 1px solid #333333; border-radius: 8px; padding: 12px; overflow-x: auto; font-family: Consolas, Monaco, monospace; font-size: 13.5px; color: #ffe28a; margin: 0 0 10px; }
+  .predict { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 18px 20px; margin: 4px 0 14px; }
+  .predict h4 { font-size: 15px; color: #000000; margin: 0 0 12px; }
+  .predict .opts { display: flex; flex-direction: column; gap: 8px; }
+  .predict .opts button { text-align: left; background: #ffffff; border: 2px solid #000000; border-radius: 8px; padding: 11px 14px; font-size: 14.5px; color: #000000; }
+  .predict .opts button:hover { background: #fff3c4; }
+  .predict .opts button.picked { background: #000000; color: #ffcc00; }
+  .notice { background: #f5f5f5; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 0 0 14px; }
+  .notice h4 { font-size: 13.5px; letter-spacing: .05em; color: #000000; margin: 0 0 6px; }
+  .notice p { font-size: 14.5px; color: #333333; margin-bottom: 8px; }
+  .notice p:last-child { margin-bottom: 0; }
+  .hidden { display: none; }
+  .player-nav { display: flex; justify-content: space-between; gap: 12px; border-top: 1px dashed #d8dce2; padding: 16px 24px; }
+  .nav-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; }
+  .nav-btn:hover { background: #1a1a1a; }
+  .nav-btn[disabled] { opacity: .35; cursor: default; }
+  .nav-btn.ghost { background: #ffffff; color: #000000; }
+  .real-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 14px 18px; margin-bottom: 26px; font-size: 13.5px; color: #555555; text-align: center; }
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-in { animation: rise .35s ease-out; }
+    @keyframes rise { 0% { transform: translateY(8px); opacity: 0; } 100% { transform: none; opacity: 1; } }
+  }
+
+  .bubble .math { font-family: Consolas, Monaco, monospace; }
+  .bubble.ai hr { border: 0; border-top: 1px solid #333333; margin: 12px 0; }
+  .bubble.ai ul, .bubble.ai ol { margin: 0 0 10px; padding-left: 22px; }
+  .bubble.ai li { margin: 0 0 6px; line-height: 1.55; }
+  .bubble.ai li p { margin: 0 0 6px; }
+  .bubble.ai table { border-collapse: collapse; margin: 0 0 10px; font-size: 14px; }
+  .bubble.ai th, .bubble.ai td { border: 1px solid #444444; padding: 6px 8px; text-align: left; vertical-align: top; }
+  .earlier { border-left: 3px solid #e0e0e0; padding-left: 12px; margin: 0 0 16px; }
+  .earlier .label { font-size: 12px; font-weight: bold; letter-spacing: .06em; color: #555555; margin: 0 0 8px; }
+  .earlier .bubble { opacity: .78; font-size: 14px; }
+  .earlier .bubble.ai p { font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>Explore: Generating Isn't Creating</h1>
+        <p class="sub"><strong>One slogan, five rounds. Watch who makes the decisions.</strong> 🎬</p>
+        <p class="meta"><strong>Estimated time:</strong> 8–10 minutes &nbsp;·&nbsp; Module 5: Create with AI</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="episodeSlot" style="display: none; margin-bottom: 26px;"><!-- filmed episode embed goes here later --></div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🎬</div><h2>Before you press play</h2></div>
+    <div class="card">
+      <p><strong>You're about to watch a student make a slogan with T.I.T.A.N.</strong> for a made-up school recycling drive — from a generic first try to a line that's actually theirs.</p>
+      <p>Before each reply, <strong>predict what happens.</strong> Pay attention to every decision: who chose the angle, who judged the drafts, who had the final say?</p>
+      <p><span style="font-size: 16px; color: #000000;"><strong>Keep the Learn page's question in mind: if AI helps create something, what decisions still belong to the human?</strong></span></p>
+    </div>
+  </div>
+
+  <div class="real-note">🎙️ Every exchange below is a <strong>real, unedited conversation</strong> with T.I.T.A.N. — Prime, captured October 21, 2026 — one continuous chat. The school and its heron mascot are made up for this demo.</div>
+
+  <div class="player" id="player">
+    <div class="player-head">
+      <span class="scene-tag" id="sceneTag">SCENE 1</span>
+      <h3 id="sceneTitle"></h3>
+      <div class="dots" id="dots" aria-label="Scene progress"></div>
+    </div>
+    <div class="player-body" id="sceneBody" aria-live="polite"></div>
+    <div class="player-nav">
+      <button class="nav-btn ghost" id="prevBtn" type="button">← Back</button>
+      <button class="nav-btn" id="nextBtn" type="button">Next scene →</button>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🎯</div><h2>What to take into your lab</h2></div>
+    <div class="card">
+      <p><strong>The AI generated a lot of words. The student made every decision that mattered</strong> — the angle, the tone, what to keep, what to cut, and when to ignore the AI's opinion.</p>
+      <p>Next, in the <strong>Creative Gauntlet</strong>, a mystery basket hands you a format, a subject, and a twist. You'll make it with an image tool, take critiques from a Creative Director in a beret, and roll your own honest credits.</p>
+      <p><span style="font-size: 16px; color: #000000;"><strong>Generating is the beginning of creating, not the end.</strong></span></p>
+    </div>
+  </div>
+
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>Next: Do — the AI Lab. Spin the mystery basket.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var SCENES = [
+ {
+  "tag": "SCENE 1",
+  "title": "📦 The generic ask",
+  "thread": [],
+  "prompt": "<p>Write a slogan for a school recycling drive.<\/p>",
+  "predict": "“Write a slogan for a school recycling drive.” No other details. What do you get?",
+  "opts": [
+   "One perfect slogan",
+   "A pile of generic options",
+   "Questions about your school"
+  ],
+  "ai": "<p>Oh, a slogan request? T.I.T.A.N. was <em>born<\/em> for this. Behold:<\/p>\n<p><strong>\"Don't Trash It — Stash It, Smash It, Recycle It!\"<\/strong><\/p>\n<p>A few more options, because champions bring backups:<\/p>\n<ul>\n<li><strong>\"Bin There, Done That — Now Recycle It!\"<\/strong><\/li>\n<li><strong>\"Give It Another Life — Recycle Tonight!\"<\/strong><\/li>\n<li><strong>\"Wisconsin Doesn't Waste. Neither Should You.\"<\/strong> <em>(one cheese-state flex, allowed per the rules)<\/em><\/li>\n<li><strong>\"One Bin to Save Them All.\"<\/strong><\/li>\n<\/ul>\n<p>Pick your favorite, mix and match, or tell T.I.T.A.N. the vibe you want — punny, serious, rhyming — and I'll generate a fresh batch.<\/p>\n<p>Want me to also mock up a short announcement script to go with it? Or ready to test my limits with a round of <strong>Two Truths and a Hallucination<\/strong>?<\/p>",
+  "notice": "<p>Five slogans in seconds — and any school in the country could use them. Generating is fast. It's also generic when you give it nothing to work with.<\/p>"
+ },
+ {
+  "tag": "SCENE 2",
+  "title": "🐦 Add the vision",
+  "thread": [],
+  "prompt": "<p>Our school mascot is a heron, the drive is called Feed the Heron, and it should be funny, not preachy. Give me five options.<\/p>",
+  "predict": "The student adds the heron mascot, the drive's name, and a tone: funny, not preachy. What changes?",
+  "opts": [
+   "Same slogans, new words",
+   "Slogans that could only belong to this drive",
+   "It ignores the tone"
+  ],
+  "ai": "<p>Heron-approved, pun-heavy, zero lectures. T.I.T.A.N. delivers:<\/p>\n<ol>\n<li><strong>\"Feed the Heron — It's Hangry for Cans.\"<\/strong><\/li>\n<li><strong>\"This Bird Don't Do Landfills.\"<\/strong><\/li>\n<li><strong>\"Herons Eat Fish, Not Your Trash. Recycle It.\"<\/strong><\/li>\n<li><strong>\"Give a Heron a Can, Save the Whole Pond.\"<\/strong><\/li>\n<li><strong>\"Feed the Heron, Starve the Dumpster.\"<\/strong><\/li>\n<\/ol>\n<p>Bonus overachiever option (free of charge, you're welcome):<\/p>\n<ol>\n<li><strong>\"One Bottle at a Time. The Heron Is Watching.\"<\/strong><\/li>\n<\/ol>\n<p>Want me to rank these by \"most likely to end up on a hallway poster,\" or spin up some bird-pun merch slogans too? Or are we finally doing Two Truths and a Hallucination — Wisconsin wildlife edition?<\/p>",
+  "notice": "<p>Now the slogans belong to <em>this<\/em> drive. The heron, the name, the tone — all of that came from the student. That's the creative direction AI can't supply on its own.<\/p><p>(It also tossed in a sixth option nobody asked for. You'll meet that habit again.)<\/p>"
+ },
+ {
+  "tag": "SCENE 3",
+  "title": "🧐 Make it critique itself",
+  "thread": [],
+  "prompt": "<p>Which of your five is the weakest, and why?<\/p>",
+  "predict": "Which of its five is the weakest? Will it criticize its own work?",
+  "opts": [
+   "It says they're all great",
+   "It picks one and explains why",
+   "It refuses to judge"
+  ],
+  "ai": "<p>Good question — T.I.T.A.N. grades its own work ruthlessly, unlike certain humans grading their own quizzes.<\/p>\n<p><strong>Weakest: #3, \"Herons Eat Fish, Not Your Trash. Recycle It.\"<\/strong><\/p>\n<p>Here's why it flops:<\/p>\n<ul>\n<li>It's basically a mini science lecture disguised as a joke — exactly the \"preachy\" tone you asked me to avoid.<\/li>\n<li>It explains the joke instead of just being funny (\"herons eat fish\" is setup, but the payoff \"not your trash, recycle it\" lands like a PSA, not a punchline.<\/li>\n<li>Compare it to #2 (\"This bird don't do landfills\") — same energy, way punchier, no explaining required.<\/li>\n<\/ul>\n<p>Strongest pick, for the record: <strong>#5, \"Feed the Heron, Starve the Dumpster.\"<\/strong> Rhythmic, funny, and poster-ready without a syllable wasted.<\/p>\n<p>Want me to generate five <em>more<\/em> using #5's structure as the template? Or are you ready to put me on trial with Two Truths and a Hallucination?<\/p>",
+  "notice": "<p>It picked #3 — “Herons Eat Fish, Not Your Trash. Recycle It.” — and said the ending turns the joke into a lecture. A useful critique: specific, with a reason.<\/p><p>But a critique is an opinion. Watch what the student does with it.<\/p>"
+ },
+ {
+  "tag": "SCENE 4",
+  "title": "✋ Overrule it",
+  "thread": [],
+  "prompt": "<p>I like the third one, but the word recycle makes it sound like a lecture. Keep the heron joke and lose the lecture.<\/p>",
+  "predict": "The student likes #3 anyway — and wants to keep it, minus the lecture. What does T.I.T.A.N. do?",
+  "opts": [
+   "Argues for its own favorite",
+   "Rewrites #3 the student's way",
+   "Starts over from scratch"
+  ],
+  "ai": "<p>Fair callout — \"Recycle it\" was T.I.T.A.N. tacking a hall-monitor voice onto a perfectly good joke. Here's the heron joke, lecture-free:<\/p>\n<ol>\n<li><strong>\"Herons Eat Fish. Not Your Trash.\"<\/strong><\/li>\n<li><strong>\"Herons Eat Fish — They've Got Standards.\"<\/strong><\/li>\n<li><strong>\"Herons Eat Fish. This Isn't That Kind of Buffet.\"<\/strong><\/li>\n<li><strong>\"Herons Eat Fish, Not Juice Pouches.\"<\/strong><\/li>\n<li><strong>\"Herons Eat Fish. Act Like the Can Is Lunch.\"<\/strong><\/li>\n<\/ol>\n<p>My pick: <strong>#1<\/strong> — clean, confident, funny on its own with zero explaining. The joke does the work; no moral required.<\/p>\n<p>Want a few more riffs on this angle, or shall we settle who's actually in charge here with a round of Two Truths and a Hallucination?<\/p>",
+  "notice": "<p>It followed the student's call: “Herons Eat Fish. Not Your Trash.” The AI said #3 was weakest. The human saw what was good in it and kept it.<\/p><p><strong>Overruling AI feedback, with a reason, is creative direction.<\/strong><\/p>"
+ },
+ {
+  "tag": "FINALE",
+  "title": "🖋️ Who's the author?",
+  "thread": [],
+  "prompt": "<p>If I use this slogan, who's the author: me or you?<\/p>",
+  "predict": "If the student uses the slogan, who's the author?",
+  "opts": [
+   "The AI — it wrote the words",
+   "The student — they made the decisions",
+   "It refuses to say"
+  ],
+  "ai": "<p>Real talk, no swagger: <strong>you are.<\/strong><\/p>\n<p>Here's the thing — T.I.T.A.N. generated raw material, but <em>you<\/em> did the actual creative work: you picked the mascot angle, the tone (funny not preachy), rejected my first drafts, caught that \"recycle\" killed the joke, and chose the final winner. That's editorial judgment. That's authorship.<\/p>\n<p>I'm more like... a word-suggestion machine with an ego problem. A thesaurus that talks back. If you turned this in and said \"I wrote this slogan,\" that's true — you <em>did<\/em> write it, through a process that included asking an AI for drafts and then improving them with your own judgment. That's a legitimate way to work, as long as you're not pretending the whole thing sprang fully formed from your own brain with zero help.<\/p>\n<p>If your teacher asks \"did you use AI,\" the honest answer is \"yes, for drafts, then I edited and chose.\" That's not cheating — that's literally what this course is teaching you to do well.<\/p>\n<p>Want to go test that judgment muscle on <em>me<\/em> now? Two Truths and a Hallucination is right there waiting.<\/p>",
+  "notice": "<p>It said: <em>you are<\/em>. The student chose the angle, set the tone, rejected drafts, and picked the winner — real creative work.<\/p><p>But it also wrote every word of the final line. Honest credits name both: what came from you and what came from the AI. And whether it's “not cheating” depends on your teacher's rules — not on what an AI tells you.<\/p>"
+ }
+];
+  var idx = 0, revealed = {}, picked = {};
+  var dots = document.getElementById("dots");
+  SCENES.forEach(function (_, i) {
+    var d = document.createElement("button");
+    d.className = "dot"; d.type = "button";
+    d.setAttribute("aria-label", "Go to scene " + (i + 1));
+    d.addEventListener("click", function () { idx = i; render(); });
+    dots.appendChild(d);
+  });
+  function bubble(who, html) {
+    var b = document.createElement("div");
+    b.className = "bubble " + who;
+    b.innerHTML = (who === "you" ? '<span class="who">YOU ASK</span>' : '<span class="who">🤖 T.I.T.A.N. — REAL RESPONSE</span>') + html;
+    return b;
+  }
+  function render() {
+    var s = SCENES[idx];
+    document.getElementById("sceneTag").textContent = s.tag;
+    document.getElementById("sceneTitle").textContent = s.title;
+    Array.prototype.forEach.call(dots.children, function (d, i) {
+      d.className = "dot" + (i < idx || revealed[i] ? " on" : "") + (i === idx ? " now" : "");
+      if (i === idx) d.setAttribute("aria-current", "step"); else d.removeAttribute("aria-current");
+    });
+    var body = document.getElementById("sceneBody");
+    body.innerHTML = "";
+    if (s.thread && s.thread.length) {
+      var e = document.createElement("div"); e.className = "earlier";
+      e.innerHTML = '<p class="label">EARLIER IN THIS CHAT</p>';
+      s.thread.forEach(function (t) { e.appendChild(bubble(t.who, t.html)); });
+      body.appendChild(e);
+    }
+    body.appendChild(bubble("you", s.prompt));
+    if (!revealed[idx]) {
+      var pr = document.createElement("div");
+      pr.className = "predict";
+      pr.innerHTML = "<h4>🔮 Before it answers — your prediction: " + s.predict + "</h4>";
+      var opts = document.createElement("div"); opts.className = "opts";
+      s.opts.forEach(function (o, j) {
+        var b = document.createElement("button"); b.type = "button"; b.textContent = String.fromCharCode(65 + j) + ") " + o;
+        b.addEventListener("click", function () { picked[idx] = j; revealed[idx] = true; render(); });
+        opts.appendChild(b);
+      });
+      pr.appendChild(opts);
+      body.appendChild(pr);
+    } else {
+      if (picked[idx] !== undefined) {
+        var chosen = document.createElement("div");
+        chosen.className = "predict";
+        chosen.innerHTML = "<h4>🔮 You predicted: <em>" + s.opts[picked[idx]] + "</em></h4>";
+        body.appendChild(chosen);
+      }
+      var ai = bubble("ai", s.ai); ai.className += " reveal-in"; body.appendChild(ai);
+      var no = document.createElement("div");
+      no.className = "notice reveal-in";
+      no.innerHTML = "<h4>👁️ WHAT TO NOTICE</h4>" + s.notice;
+      body.appendChild(no);
+    }
+    document.getElementById("prevBtn").disabled = idx === 0;
+    var next = document.getElementById("nextBtn");
+    if (idx === SCENES.length - 1) { next.textContent = revealed[idx] ? "🎬 That's the reel — scroll on ↓" : "Reveal first ↑"; next.disabled = true; }
+    else { next.textContent = "Next scene →"; next.disabled = !revealed[idx]; }
+    if (window.innerWidth < 700) document.getElementById("player").scrollIntoView({ block: "start" });
+  }
+  document.getElementById("prevBtn").addEventListener("click", function () { if (idx > 0) { idx--; render(); } });
+  document.getElementById("nextBtn").addEventListener("click", function () { if (idx < SCENES.length - 1 && revealed[idx]) { idx++; render(); } });
+  render();
+})();
+</script>
+
+</body>
+</html>

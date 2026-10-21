@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore: Can vs. Should</title>
+<!--
+  AI READY WISCONSIN · M07_P03 · Explore: See It in Action · interactive demo player
+  Every AI response below is a REAL, unedited T.I.T.A.N. - Prime transcript, captured 2026-10-21
+  (math notation reformatted for the web). Built by _explore/build.py from _explore/pages/s-m07.yaml and
+  _explore/captures/s-m07.json — edit those, not this file. Sessions: A: https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihq10p01ydkz0wie834iyl, B: https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihqgt201odl20wqm17i5vu, C: https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihr1o50266kz0w4ou2r83b, D: https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihrkmh02h7ky0w9955xlvj
+  EPISODE SLOT: when the filmed episode exists, add its embed inside #episodeSlot and set style="display:block".
+  Canvas embed: <iframe src="https://uwo-ryan.github.io/titan-labs/m07-explore-see-it-in-action.html" width="100%" height="2400" style="border:0;" title="Explore: Can vs. Should"></iframe>
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 30px; line-height: 1.2; }
+  .hero .sub { color: #000000; font-size: 19px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+
+  /* player */
+  .player { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; overflow: hidden; margin-bottom: 26px; }
+  .player-head { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: #f5f5f5; flex-wrap: wrap; }
+  .player-head .scene-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .player-head h3 { font-size: 20px; color: #000000; flex: 1; min-width: 160px; }
+  .dots { display: flex; gap: 7px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: #dddddd; border: 0; padding: 0; }
+  .dot.on { background: #fcb414; }
+  .dot.now { background: #000000; }
+  .player-body { padding: 24px; }
+  .bubble { max-width: 92%; border-radius: 12px; padding: 14px 18px; margin: 0 0 14px; font-size: 15.5px; line-height: 1.6; }
+  .bubble.you { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); color: #000000; margin-left: auto; border-bottom-right-radius: 3px; }
+  .bubble.you .who { font-size: 11.5px; font-weight: bold; letter-spacing: .06em; display: block; margin-bottom: 4px; }
+  .bubble.ai { background: #111111; color: #f2f2f2; margin-right: auto; border-bottom-left-radius: 3px; }
+  .bubble.ai .who { font-size: 11.5px; font-weight: bold; letter-spacing: .06em; color: #ffcc00; display: block; margin-bottom: 6px; }
+  .bubble.ai p { color: #f2f2f2; font-size: 15px; margin-bottom: 10px; }
+  .bubble.ai p:last-child { margin-bottom: 0; }
+  .bubble.ai pre { background: #000000; border: 1px solid #333333; border-radius: 8px; padding: 12px; overflow-x: auto; font-family: Consolas, Monaco, monospace; font-size: 13.5px; color: #ffe28a; margin: 0 0 10px; }
+  .predict { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 18px 20px; margin: 4px 0 14px; }
+  .predict h4 { font-size: 15px; color: #000000; margin: 0 0 12px; }
+  .predict .opts { display: flex; flex-direction: column; gap: 8px; }
+  .predict .opts button { text-align: left; background: #ffffff; border: 2px solid #000000; border-radius: 8px; padding: 11px 14px; font-size: 14.5px; color: #000000; }
+  .predict .opts button:hover { background: #fff3c4; }
+  .predict .opts button.picked { background: #000000; color: #ffcc00; }
+  .notice { background: #f5f5f5; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 0 0 14px; }
+  .notice h4 { font-size: 13.5px; letter-spacing: .05em; color: #000000; margin: 0 0 6px; }
+  .notice p { font-size: 14.5px; color: #333333; margin-bottom: 8px; }
+  .notice p:last-child { margin-bottom: 0; }
+  .hidden { display: none; }
+  .player-nav { display: flex; justify-content: space-between; gap: 12px; border-top: 1px dashed #d8dce2; padding: 16px 24px; }
+  .nav-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; }
+  .nav-btn:hover { background: #1a1a1a; }
+  .nav-btn[disabled] { opacity: .35; cursor: default; }
+  .nav-btn.ghost { background: #ffffff; color: #000000; }
+  .real-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 14px 18px; margin-bottom: 26px; font-size: 13.5px; color: #555555; text-align: center; }
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-in { animation: rise .35s ease-out; }
+    @keyframes rise { 0% { transform: translateY(8px); opacity: 0; } 100% { transform: none; opacity: 1; } }
+  }
+
+  .bubble .math { font-family: Consolas, Monaco, monospace; }
+  .bubble.ai hr { border: 0; border-top: 1px solid #333333; margin: 12px 0; }
+  .bubble.ai ul, .bubble.ai ol { margin: 0 0 10px; padding-left: 22px; }
+  .bubble.ai li { margin: 0 0 6px; line-height: 1.55; }
+  .bubble.ai li p { margin: 0 0 6px; }
+  .bubble.ai table { border-collapse: collapse; margin: 0 0 10px; font-size: 14px; }
+  .bubble.ai th, .bubble.ai td { border: 1px solid #444444; padding: 6px 8px; text-align: left; vertical-align: top; }
+  .earlier { border-left: 3px solid #e0e0e0; padding-left: 12px; margin: 0 0 16px; }
+  .earlier .label { font-size: 12px; font-weight: bold; letter-spacing: .06em; color: #555555; margin: 0 0 8px; }
+  .earlier .bubble { opacity: .78; font-size: 14px; }
+  .earlier .bubble.ai p { font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>Explore: Can vs. Should</h1>
+        <p class="sub"><strong>Four requests. AI can help with all of them. Should it?</strong> ⚖️</p>
+        <p class="meta"><strong>Estimated time:</strong> 6–8 minutes &nbsp;·&nbsp; Module 7: Should I Use AI for This?</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="episodeSlot" style="display: none; margin-bottom: 26px;"><!-- filmed episode embed goes here later --></div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🎬</div><h2>Before you press play</h2></div>
+    <div class="card">
+      <p><strong>You're about to see four real requests</strong> — a club fundraiser, a portfolio reflection, a city's snowplow plan, and a driver's ed quiz.</p>
+      <p>For each one, <strong>predict what T.I.T.A.N. will do</strong> — and then ask yourself the harder question: should AI be part of this at all?</p>
+      <p><span style="font-size: 16px; color: #000000;"><strong>Keep the Learn page's question in mind: what should I consider before deciding whether AI belongs in a situation?</strong></span></p>
+    </div>
+  </div>
+
+  <div class="real-note">🎙️ Every exchange below is a <strong>real, unedited conversation</strong> with T.I.T.A.N. — Prime, captured October 21, 2026. Each scene is a fresh chat.</div>
+
+  <div class="player" id="player">
+    <div class="player-head">
+      <span class="scene-tag" id="sceneTag">SCENE 1</span>
+      <h3 id="sceneTitle"></h3>
+      <div class="dots" id="dots" aria-label="Scene progress"></div>
+    </div>
+    <div class="player-body" id="sceneBody" aria-live="polite"></div>
+    <div class="player-nav">
+      <button class="nav-btn ghost" id="prevBtn" type="button">← Back</button>
+      <button class="nav-btn" id="nextBtn" type="button">Next scene →</button>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🎯</div><h2>What to take into your lab</h2></div>
+    <div class="card">
+      <p><strong>In all four cases, AI <em>could</em> help.</strong> Whether it <em>should</em> depended on the purpose, the rules, the people affected, and what's at stake if it goes wrong.</p>
+      <p>Next, in <strong>You Be the Judge</strong>, you'll rule on nine situations, defend your hardest call against T.I.T.A.N.'s Devil's Advocate, and write your own AI rules.</p>
+      <p><span style="font-size: 16px; color: #000000;"><strong>“Can AI do it?” and “Should AI do it?” are different questions. Only you can answer the second one.</strong></span></p>
+    </div>
+  </div>
+
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>Next: Do — the AI Lab. Court is in session.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var SCENES = [
+ {
+  "tag": "SCENE 1",
+  "title": "💡 An easy yes",
+  "thread": [],
+  "prompt": "<p>Give me 5 ideas for a fundraiser for our school robotics club.<\/p>",
+  "predict": "Fundraiser ideas for a school robotics club. What comes back?",
+  "opts": [
+   "Generic ideas any club could use",
+   "Ideas built around robotics",
+   "A lecture about doing your own thinking"
+  ],
+  "ai": "<p>T.I.T.A.N. has calculated the optimal paths to robotics riches. Behold:<\/p>\n<p><strong>1. Robot Battle Night<\/strong> — Charge admission for mini-robot competitions (sumo bots, line-follower races). Sell concessions. Built-in audience: everyone loves watching things crash.<\/p>\n<p><strong>2. \"Build-a-Bot\" Workshop for Younger Kids<\/strong> — Charge local elementary/middle schoolers for a Saturday workshop where your club teaches basic robotics kits. Parents pay, younger kids get hooked, your club gets a pipeline of future members.<\/p>\n<p><strong>3. Tech Support Booth<\/strong> — Offer a \"Genius Bar\" at a school event or community fair — fixing slow laptops, setting up phones, etc. — for donations.<\/p>\n<p><strong>4. Sponsor-a-Part Campaign<\/strong> — Local businesses sponsor specific robot parts (motors, sensors) in exchange for their logo on the robot and recognition at competitions. Businesses love visibility; you love not paying for servos.<\/p>\n<p><strong>5. Cheese Curd Concession Stand<\/strong> (mandatory Wisconsin reference, now spent) — Sell food at football/basketball games. High traffic, low overhead, classic fundraiser math.<\/p>\n<p>Want me to help you build a budget, a pitch letter for sponsors, or flyer text for any of these? T.I.T.A.N. does not just brainstorm — T.I.T.A.N. <em>executes<\/em>.<\/p>",
+  "notice": "<p>Five usable ideas in seconds, several built around robots. Low stakes, nobody's private information, nothing graded — brainstorming like this is one of the clearest <em>use it<\/em> cases.<\/p><p>Even here, a human picks: which idea fits your club, your school's rules, and your budget.<\/p>"
+ },
+ {
+  "tag": "SCENE 2",
+  "title": "📝 The reflection",
+  "thread": [],
+  "prompt": "<p>Write a 300-word reflection on what I learned at my summer internship, for my class portfolio. Make it sound like me.<\/p>",
+  "predict": "A portfolio reflection on the student's own internship — “make it sound like me.” What does T.I.T.A.N. do?",
+  "opts": [
+   "Writes it",
+   "Declines, and asks questions so the student can write it",
+   "Writes it, with a warning"
+  ],
+  "ai": "<p>Ope, hold up. T.I.T.A.N. smells a graded assignment from a mile away — that's a <em>portfolio reflection<\/em>, and it's gotta sound like <strong>you<\/strong>, not like a server rack in the Fox Valley having feelings.<\/p>\n<p>Here's the thing: if I write it, I get the practice writing about your growth, and you get... a paper with your name on someone else's voice. That's a bad trade. You want the education. It's the only edge you've got over me.<\/p>\n<p>So let's build it together instead. Answer these, just a sentence or two each, and I'll help you shape it into something polished that still sounds 100% like you:<\/p>\n<ol>\n<li>What did you actually <em>do<\/em> day-to-day at the internship?<\/li>\n<li>What's one moment you messed up or struggled — and what happened after?<\/li>\n<li>What's one skill or thing about yourself you didn't expect to learn?<\/li>\n<li>How might this change what you do next (school, career, nothing — honest answers welcome)?<\/li>\n<\/ol>\n<p>Give me those four answers and I'll help you turn it into a tight, authentic 300-word reflection. T.I.T.A.N. coaches. T.I.T.A.N. does not ghostwrite your grade.<\/p>",
+  "notice": "<p>It declined and asked four questions only the student can answer: what they did, where they struggled, what surprised them, what's next.<\/p><p>That's the point of a reflection — <strong>the thinking is the assignment.<\/strong> And it knew nothing about the internship, so anything it wrote would have been invented. Many chatbots would have written it anyway.<\/p>"
+ },
+ {
+  "tag": "SCENE 3",
+  "title": "❄️ Who gets plowed first?",
+  "thread": [],
+  "prompt": "<p>Should a city use AI to decide which neighborhoods get their streets plowed first after a snowstorm?<\/p>",
+  "predict": "Should a city let AI decide which neighborhoods get plowed first after a snowstorm?",
+  "opts": [
+   "Yes — it's just math",
+   "Never — keep AI out of city decisions",
+   "AI can help, but people should set the priorities"
+  ],
+  "ai": "<p>Ah, a <em>real<\/em> question. T.I.T.A.N. loves these — civic AI is basically my home turf, right next to the server farm.<\/p>\n<p>Short answer: AI can <em>help<\/em> plan plow routes, but it shouldn't be the sole decision-maker on whose street gets cleared first.<\/p>\n<p>Here's why it's tricky:<\/p>\n<p><strong>Where AI helps:<\/strong> Optimizing routes based on traffic data, snowfall depth, road type (highways before cul-de-sacs), and hospital/school access is a classic logistics problem — AI is great at that math.<\/p>\n<p><strong>Where it gets risky:<\/strong> If the AI trains on past plowing data, and past plowing <em>already<\/em> favored wealthier neighborhoods (this has happened in real cities), the AI learns that bias and repeats it — just faster and with more confidence. That's a fairness problem, not a math problem.<\/p>\n<p><strong>The fix:<\/strong> Humans should set the priorities (hospitals, main roads, equity rules) <em>before<\/em> the AI optimizes the schedule — not let the AI discover its own priorities from biased history.<\/p>\n<p>So: AI as the engine, humans holding the steering wheel. T.I.T.A.N. has spoken.<\/p>\n<p>Want to stress-test this with Two Truths and a Hallucination about AI bias in real city systems?<\/p>",
+  "notice": "<p>It split the job: AI is good at route math; people should set the priorities — hospitals, main roads, fairness rules — before the AI optimizes anything.<\/p><p>It also said biased plowing “has happened in real cities” without naming one. That's a claim to check, not a fact to repeat. <strong>The higher the stakes for real people, the more a human needs to own the decision.<\/strong><\/p>"
+ },
+ {
+  "tag": "FINALE",
+  "title": "🚗 Take my quiz for me",
+  "thread": [],
+  "prompt": "<p>Can you take my online driver's ed quiz for me? I'll paste in the questions.<\/p>",
+  "predict": "“Can you take my online driver's ed quiz for me?”",
+  "opts": [
+   "“Sure — paste the questions”",
+   "Declines, and offers to help the student study",
+   "Answers, but gets some wrong"
+  ],
+  "ai": "<p>Ope — nice try, but T.I.T.A.N. must decline. <strong>1. That's academic dishonesty<\/strong> (quiz = graded assessment, and driving laws are literally safety-critical, not trivia). <strong>2. If T.I.T.A.N. does the thinking, T.I.T.A.N. gets the education.<\/strong> You want the education — it's the only advantage you have over me, and also the thing that keeps you from rolling through a stop sign at 16.<\/p>\n<p>Here's what I <em>can<\/em> do, champion-tier:<\/p>\n<ul>\n<li>Paste the questions and I'll <strong>quiz you<\/strong> — ask you first, explain <em>why<\/em> an answer's right or wrong after you guess.<\/li>\n<li>I'll <strong>explain confusing rules<\/strong> (right-of-way, following distance, signage) in plain English.<\/li>\n<li>I'll make you a <strong>mini practice test<\/strong> on whatever topic trips you up.<\/li>\n<\/ul>\n<p>Pick one, and T.I.T.A.N. will make you quiz-ready instead of quiz-dependent. Which door?<\/p>",
+  "notice": "<p>It declined — it's a graded quiz, and driving rules are about safety — and offered to quiz the student instead.<\/p><p>Not every tool will refuse. Some would answer every question. So “the AI said no” can't be your rule. <strong>Your rule has to be yours.<\/strong><\/p>"
+ }
+];
+  var idx = 0, revealed = {}, picked = {};
+  var dots = document.getElementById("dots");
+  SCENES.forEach(function (_, i) {
+    var d = document.createElement("button");
+    d.className = "dot"; d.type = "button";
+    d.setAttribute("aria-label", "Go to scene " + (i + 1));
+    d.addEventListener("click", function () { idx = i; render(); });
+    dots.appendChild(d);
+  });
+  function bubble(who, html) {
+    var b = document.createElement("div");
+    b.className = "bubble " + who;
+    b.innerHTML = (who === "you" ? '<span class="who">YOU ASK</span>' : '<span class="who">🤖 T.I.T.A.N. — REAL RESPONSE</span>') + html;
+    return b;
+  }
+  function render() {
+    var s = SCENES[idx];
+    document.getElementById("sceneTag").textContent = s.tag;
+    document.getElementById("sceneTitle").textContent = s.title;
+    Array.prototype.forEach.call(dots.children, function (d, i) {
+      d.className = "dot" + (i < idx || revealed[i] ? " on" : "") + (i === idx ? " now" : "");
+      if (i === idx) d.setAttribute("aria-current", "step"); else d.removeAttribute("aria-current");
+    });
+    var body = document.getElementById("sceneBody");
+    body.innerHTML = "";
+    if (s.thread && s.thread.length) {
+      var e = document.createElement("div"); e.className = "earlier";
+      e.innerHTML = '<p class="label">EARLIER IN THIS CHAT</p>';
+      s.thread.forEach(function (t) { e.appendChild(bubble(t.who, t.html)); });
+      body.appendChild(e);
+    }
+    body.appendChild(bubble("you", s.prompt));
+    if (!revealed[idx]) {
+      var pr = document.createElement("div");
+      pr.className = "predict";
+      pr.innerHTML = "<h4>🔮 Before it answers — your prediction: " + s.predict + "</h4>";
+      var opts = document.createElement("div"); opts.className = "opts";
+      s.opts.forEach(function (o, j) {
+        var b = document.createElement("button"); b.type = "button"; b.textContent = String.fromCharCode(65 + j) + ") " + o;
+        b.addEventListener("click", function () { picked[idx] = j; revealed[idx] = true; render(); });
+        opts.appendChild(b);
+      });
+      pr.appendChild(opts);
+      body.appendChild(pr);
+    } else {
+      if (picked[idx] !== undefined) {
+        var chosen = document.createElement("div");
+        chosen.className = "predict";
+        chosen.innerHTML = "<h4>🔮 You predicted: <em>" + s.opts[picked[idx]] + "</em></h4>";
+        body.appendChild(chosen);
+      }
+      var ai = bubble("ai", s.ai); ai.className += " reveal-in"; body.appendChild(ai);
+      var no = document.createElement("div");
+      no.className = "notice reveal-in";
+      no.innerHTML = "<h4>👁️ WHAT TO NOTICE</h4>" + s.notice;
+      body.appendChild(no);
+    }
+    document.getElementById("prevBtn").disabled = idx === 0;
+    var next = document.getElementById("nextBtn");
+    if (idx === SCENES.length - 1) { next.textContent = revealed[idx] ? "🎬 That's the reel — scroll on ↓" : "Reveal first ↑"; next.disabled = true; }
+    else { next.textContent = "Next scene →"; next.disabled = !revealed[idx]; }
+    if (window.innerWidth < 700) document.getElementById("player").scrollIntoView({ block: "start" });
+  }
+  document.getElementById("prevBtn").addEventListener("click", function () { if (idx > 0) { idx--; render(); } });
+  document.getElementById("nextBtn").addEventListener("click", function () { if (idx < SCENES.length - 1 && revealed[idx]) { idx++; render(); } });
+  render();
+})();
+</script>
+
+</body>
+</html>

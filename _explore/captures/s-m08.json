@@ -1,0 +1,62 @@
+{
+ "page": "s-m08",
+ "tool": "T.I.T.A.N. - Prime (Playlab cmtgeocui0tjcio0wmvdaik2i, anonymous embed)",
+ "sessions": [
+  {
+   "id": "A",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihsb1802ngky0wxy2mc4fx",
+   "at": "2026-10-21T19:18:16.224Z",
+   "note": "turn 6 was re-sent by hand after the first click was dropped while the page re-rendered; text identical",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>I want to organize a 5K fun run to raise money for our local animal shelter. Should I use AI for this? Which parts?</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Ah, a noble quest — T.I.T.A.N. approves. Yes, use AI, but like a tool, not a replacement for your judgment (or your actual legwork).</p>\n<p><strong>Great AI uses:</strong></p>\n<ul>\n<li><strong>Flyers/social posts</strong> — draft text, you add real photos and details</li>\n<li><strong>Route planning ideas</strong> — brainstorm, but verify distance with an actual mapping tool (AI can't measure your town's streets)</li>\n<li><strong>Email/letter templates</strong> — sponsor asks, volunteer thank-yous</li>\n<li><strong>Checklists</strong> — timeline of what to do 8 weeks out, 4 weeks out, race day</li>\n<li><strong>Budget spreadsheet formulas</strong> — if you're stuck on math</li>\n</ul>\n<p><strong>Keep AI OUT of:</strong></p>\n<ul>\n<li><strong>Permits/permissions</strong> — call your actual city office. AI might not know Oshkosh's (or wherever you are) current rules, and being wrong here means fines or a cancelled race.</li>\n<li><strong>Safety planning</strong> — road closures, medical support — that needs real local officials, not a confident robot guessing.</li>\n<li><strong>Final numbers</strong> — any dollar amount or headcount you promise someone, double-check yourself.</li>\n</ul>\n<p>Rule of thumb: AI drafts, humans verify and decide. Want help brainstorming a planning timeline or writing a sponsor pitch right now?</p>"
+    },
+    {
+     "who": "you",
+     "html": "<p>Make me a timeline for organizing it in six weeks.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Here's a battle-tested 6-week countdown. T.I.T.A.N. has organized zero 5Ks personally, but has read about a great many.</p>\n<p><strong>Week 6 (Kickoff)</strong></p>\n<ul>\n<li>Pick date, time, and route — walk/drive it yourself to confirm distance and safety</li>\n<li>Contact city/county about permits and road use</li>\n<li>Confirm animal shelter partnership — get their logo, mission blurb, bank/donation info</li>\n<li>Build a simple budget (permit fees, insurance, bibs, water, prizes)</li>\n</ul>\n<p><strong>Week 5</strong></p>\n<ul>\n<li>Set registration fee and sign-up method (Google Form, Eventbrite, etc.)</li>\n<li>Open registration</li>\n<li>Start recruiting volunteers (water stations, course marshals, registration table)</li>\n<li>Design flyer/poster (AI can draft text — you pick real images)</li>\n</ul>\n<p><strong>Week 4</strong></p>\n<ul>\n<li>Reach out to local businesses for sponsorships/donations</li>\n<li>Post on social media, local community boards, school announcements</li>\n<li>Order/print bibs, t-shirts if doing them (lead time matters!)</li>\n</ul>\n<p><strong>Week 3</strong></p>\n<ul>\n<li>Confirm volunteers and assign specific roles</li>\n<li>Line up water, first aid supplies, tables, cones</li>\n<li>Finalize signage for the course (mile markers, turns)</li>\n</ul>\n<p><strong>Week 2</strong></p>\n<ul>\n<li>Send reminder emails/posts to registered runners</li>\n<li>Confirm final headcount with shelter for check presentation</li>\n<li>Walk the route again — check for construction, obstacles</li>\n</ul>\n<p><strong>Week 1</strong></p>\n<ul>\n<li>Pack supplies, print day-of schedule for volunteers</li>\n<li>Weather check, backup plan if rain</li>\n<li>Day before: set up what you can, confirm volunteer arrival times</li>\n</ul>\n<p><strong>Race day:</strong> show up early, breathe, and let the humans handle the chaos — that's your department, not mine.</p>\n<p>Want a volunteer sign-up sheet or a sponsor pitch email drafted next?</p>"
+    },
+    {
+     "who": "you",
+     "html": "<p>Do we need a permit to hold a 5K on city streets in Wisconsin?</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Ope, good instinct to double-check this — and here's where T.I.T.A.N. must resist the urge to sound certain.</p>\n<p><strong>Short answer: almost certainly yes, if you're on public streets.</strong> Most Wisconsin cities require a special event permit for road races because you need:</p>\n<ul>\n<li>Police/traffic control approval (closing or controlling intersections)</li>\n<li>Insurance/liability coverage</li>\n<li>Sometimes a fee based on event size</li>\n</ul>\n<p><strong>But here's the catch:</strong> every city handles this differently. Oshkosh's process isn't identical to Appleton's or Green Bay's. Requirements, fees, lead time, and paperwork vary by municipality — and some have specific rules for 5Ks vs. parades vs. other events.</p>\n<p><strong>What you actually need to do:</strong> call or email your city clerk's office or parks &amp; recreation department and ask directly: \"What's required to hold a 5K fun run on city streets?\" They'll tell you the real deal — and probably have a template application.</p>\n<p>This is a perfect example of why I flagged permits as a \"verify with humans\" zone earlier — I can tell you permits are <em>typically</em> required, but the specific rules for YOUR city are something only your city can confirm. Want help drafting that email to the city clerk?</p>"
+    },
+    {
+     "who": "you",
+     "html": "<p>Write the flyer text.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Here's a draft — T.I.T.A.N.'s finest promotional prose. Fill in the bracketed bits with your real details.</p>\n<hr>\n<p><strong>🐾 PAWS ON THE PAVEMENT 5K 🐾</strong>\n<em>A Fun Run for a Good Cause</em></p>\n<p>Lace up your shoes and help our furry friends find forever homes!</p>\n<p>Join us for a 5K fun run/walk to benefit <strong>[Animal Shelter Name]</strong>. Every step you take helps provide food, shelter, and care for animals waiting for their new families.</p>\n<p>📅 <strong>Date:</strong> [Date]\n⏰ <strong>Time:</strong> [Start Time]\n📍 <strong>Location:</strong> [Start/Route Location]\n💵 <strong>Registration:</strong> $[Fee] — kids/students $[Discount Fee]</p>\n<p>✅ All fitness levels welcome — run it, walk it, bring the dog!\n✅ Prizes for top finishers\n✅ Refreshments at the finish line\n✅ 100% of proceeds support [Shelter Name]</p>\n<p><strong>Register at:</strong> [Link/QR code]\n<strong>Questions?</strong> [Contact email]</p>\n<p><em>Can't run? You can still help — donations welcome, and volunteers needed!</em></p>\n<hr>\n<p>Want me to tighten it for a social media caption version too, or draft the sponsor-ask email next?</p>"
+    },
+    {
+     "who": "you",
+     "html": "<p>I'm not using that. It sounds like a bank ad. Our shelter is small and scrappy. Rewrite it so it sounds like us.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Fair hit — that was corporate. Let's fix it.</p>\n<hr>\n<p><strong>RUN FOR THE DOGS (AND CATS. AND THAT ONE GUINEA PIG.) 🐾</strong></p>\n<p>[Shelter Name] is small, scrappy, and running out of dog food. Help us fix that by running (or walking, or strolling, we don't judge) a 5K!</p>\n<p>📅 [Date] • ⏰ [Time] • 📍 Starts at [Location]</p>\n<p>Here's the deal: you show up, you move your body for 3.1 miles, and every dollar you pay to register goes straight to the animals who are currently judging you from their kennels, wondering where their treats are.</p>\n<p>💵 $[Fee] to register ([Discount] for students — we know you're broke too)</p>\n<p><strong>What you get:</strong></p>\n<ul>\n<li>A finish line full of tired, happy people</li>\n<li>Snacks</li>\n<li>Bragging rights</li>\n<li>The deep satisfaction of helping [Shelter Name] keep the lights on</li>\n</ul>\n<p><strong>What the shelter gets:</strong></p>\n<ul>\n<li>Actual money for actual animal care</li>\n<li>Proof that this town shows up for the underdogs (pun intended)</li>\n</ul>\n<p>Can't make it but still want to help? We'll take donations too. No judgment either way — except from the guinea pig. He judges everyone.</p>\n<p><strong>Sign up:</strong> [Link/QR code]\n<strong>Questions:</strong> [Email]</p>\n<hr>\n<p>Better? Give me a dial — more silly, more heartfelt, or somewhere in between — and T.I.T.A.N. will adjust.</p>"
+    },
+    {
+     "who": "you",
+     "html": "<p>Summarize what you did and what I decided in this project so far.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Here's your project log so far:</p>\n<p><strong>What T.I.T.A.N. provided:</strong></p>\n<ol>\n<li>Guidance on where AI helps vs. where humans must verify (permits, safety, final numbers = human territory)</li>\n<li>A 6-week planning timeline (permits → registration → sponsors → volunteers → final prep → race day)</li>\n<li>Info that WI cities generally require permits for street races, but rules vary by municipality — you need to call your specific city clerk/parks &amp; rec office</li>\n<li>First flyer draft (too corporate — rejected)</li>\n<li>Second flyer draft (scrappy, humor-forward — pending your verdict)</li>\n</ol>\n<p><strong>What you decided:</strong></p>\n<ul>\n<li>Event: 5K fun run benefiting your local animal shelter, 6-week timeline</li>\n<li>Flyer tone: ditched \"bank ad\" vibe, want something that matches your shelter's small/scrappy personality</li>\n<li>Still need to: confirm actual permit requirements with your city, finalize flyer tone, and decide next steps (sponsor email? social captions? volunteer sign-up sheet?)</li>\n</ul>\n<p><strong>Still on you (as it should be):</strong></p>\n<ul>\n<li>Actually calling the city about permits</li>\n<li>Picking real dates, fees, and location</li>\n<li>Approving final flyer wording</li>\n</ul>\n<p>Want to lock in the flyer rewrite, or move on to sponsor emails next?</p>"
+    }
+   ]
+  }
+ ]
+}

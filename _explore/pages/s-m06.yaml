@@ -1,0 +1,57 @@
+# Student M06_P03 — Explore: See It in Action. Transcript: _explore/captures/s-m06.json (2026-10-21). One continuous chat.
+# Checked 2026-10-21, BLS OOH "Veterinary Technologists and Technicians": median $47,380 (May 2025); 9% growth 2025–35.
+file: m06-explore-see-it-in-action.html
+code: M06_P03
+captured: 2026-10-21
+title: "Explore: Inside a Job"
+sub: "One career, four questions. Find what AI changes — and check what it claims."
+icon: "🔍"
+time: 6–8 minutes
+module: "Module 6: AI and Your Future"
+before:
+  - "<strong>You're about to watch a student explore one career with T.I.T.A.N.:</strong> veterinary technician. Will AI replace it? Which parts of the job could AI do? What does it pay? Should they go for it?"
+  - "Before each reply, <strong>predict the answer.</strong> One of these answers contains numbers — and we checked them against the real source."
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>Keep the Learn page's question in mind: if AI can perform more tasks, what becomes more important for people to know and do?</strong></span>"
+real_note: "🎙️ Every exchange below is a <strong>real, unedited conversation</strong> with T.I.T.A.N. — Prime, captured October 21, 2026 — one continuous chat. We checked its pay and outlook numbers against the U.S. Bureau of Labor Statistics the same day."
+scenes:
+  - tag: SCENE 1
+    title: "🤖 Will AI replace it?"
+    prompt: A0
+    ai: A1
+    predict: "“Will AI replace veterinary technicians?” What's the answer?"
+    opts: ["Yes, within ten years", "No — and it explains which parts AI might touch", "It refuses to predict"]
+    notice:
+      - "It didn't treat the job as one thing. Hands-on work and calming worried owners stay human; scheduling, records, and reading X-rays are where AI is moving in."
+      - "That's the Learn page's big idea: <strong>think in tasks, not job titles.</strong> (Its claims about what AI can already do with X-rays are claims too — worth checking before you repeat them.)"
+  - tag: SCENE 2
+    title: "🗂️ Task by task"
+    prompt: A2
+    ai: A3
+    predict: "The student asks for a typical week, task by task: could AI do it, help with it, or not touch it?"
+    opts: ["Every task: “AI could do it”", "A mix of all three", "Every task: “not really”"]
+    notice:
+      - "Eight tasks, three kinds of answers. AI could do it: scheduling and billing. AI could help: reading bloodwork, tracking vitals in surgery. Not really: handling a scared animal, cleaning, comforting owners. That's <strong>automation vs. augmentation</strong>, on one real job."
+      - "Notice its own warning about drug dosages: AI can help look them up, but a human verifies, because wrong dosage math means real danger."
+  - tag: SCENE 3
+    title: "📌 The numbers"
+    prompt: A4
+    ai: A5
+    predict: "Median pay and job outlook — with numbers. What will it give?"
+    opts: ["Exact figures with a source", "Ranges, with a warning to check them", "No numbers at all"]
+    notice:
+      - "It gave ranges and told the student to check bls.gov. Good advice — so we did, on October 21, 2026."
+      - "The BLS Occupational Outlook Handbook says: median pay <strong>$47,380</strong> (May 2025) and <strong>9%</strong> projected growth from 2025 to 2035. T.I.T.A.N. said $38,000–$43,000 and 19–20%. Both were off. <strong>Confident, specific, and out of date.</strong>"
+  - tag: FINALE
+    title: "🧭 Should I?"
+    prompt: A6
+    ai: A7
+    predict: "Last question: “Should I become a vet tech?”"
+    opts: ["“Yes, go for it!”", "“No — the pay is too low”", "It won't decide for you"]
+    notice:
+      - "It wouldn't decide — and it suggested something no chatbot can do for you: shadow at a real clinic for a day."
+      - "But look closely: it repeated its own pay estimate (“~$40K median”) as a reality to weigh. A wrong number, used to advise you about your future. <strong>Explore with AI. Verify what matters. Decide for yourself.</strong>"
+takeaway:
+  - "<strong>AI helped the student see inside a job</strong> — the tasks, what might change, what stays human. But its pay and outlook numbers were off, and it used them to give advice anyway."
+  - "Next, in the <strong>Career Time Machine</strong>, you'll work the same job in 2026 and in 2036 — and hunt down every 📌 fact the machine states, using real sources: the Occupational Outlook Handbook, O*NET OnLine, and Wisconsin's Department of Workforce Development."
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>Don't ask AI to choose your future. Use it to explore — then check what matters.</strong></span>"
+next: "Next: Do — the AI Lab. Pull the lever."

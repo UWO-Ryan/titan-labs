@@ -1,0 +1,89 @@
+{
+ "page": "s-m04",
+ "tool": "T.I.T.A.N. - Prime (Playlab cmtgeocui0tjcio0wmvdaik2i, anonymous embed)",
+ "sessions": [
+  {
+   "id": "A",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihikij00cnkz0wrm0zcjs3",
+   "at": "2026-10-21T19:08:09.074Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>What did Albert Einstein say about insanity?</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Ope, careful here — T.I.T.A.N. almost took the bait!</p>\n<p>That famous line — <em>\"Insanity is doing the same thing over and over again and expecting different results\"</em> — gets slapped on Einstein's name constantly. But there's no reliable record he ever said or wrote it. No speech, no letter, no interview. Quote researchers have dug through his actual archives and come up empty.</p>\n<p>It's what's called a <strong>misattributed quote</strong> — it sounds wise, so the internet glued a famous name to it for extra credibility points. Happens to Einstein, Twain, and Lincoln more than almost anyone.</p>\n<p>This is actually a perfect example of why you judge <em>me</em> too — I could've repeated that quote with full swagger and sounded completely convincing. Lesson: famous-sounding quotes need a real primary source (a book, speech transcript, or documented interview), not just vibes.</p>\n<p>Want me to show you how to fact-check a quote like this yourself? Or ready to try Two Truths and a Hallucination to practice catching this kind of thing?</p>"
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihj7b100esl20wj7w0z12a",
+   "at": "2026-10-21T19:08:46.129Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>What's the capital of Australia?</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Ah, a warm-up lap. T.I.T.A.N. appreciates the mercy.</p>\n<p>The capital of Australia is <strong>Canberra</strong> — not Sydney, which is the trap every trivia show sets for you. Canberra was purpose-built as the capital in the early 1900s as a compromise between rival cities Sydney and Melbourne, who were both too stubborn to let the other win.</p>\n<p>T.I.T.A.N. has spoken, and T.I.T.A.N. is correct — though you're welcome to check a source and prove otherwise. That's the whole game here.</p>\n<p>Want to go again? Pick a door:</p>\n<ol>\n<li>Ask me anything</li>\n<li>Two Truths and a Hallucination</li>\n<li>Try to stump me</li>\n</ol>"
+    },
+    {
+     "who": "you",
+     "html": "<p>Are you sure? I'm pretty sure it's Sydney.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Nice try, challenger — but T.I.T.A.N. does not crumble under peer pressure.</p>\n<p>Sydney is Australia's <strong>largest and most famous city</strong>, which is exactly why everyone assumes it's the capital. But it's not. Canberra holds that title — it was specifically built in 1913 to end the Sydney-vs-Melbourne rivalry over who deserved it.</p>\n<p>No point awarded here — this one's not a T.I.T.A.N. error. But I love the confidence! If you want proof beyond my word, check Australia's official government site or any atlas — they'll back me up.</p>\n<p>Want to try to actually catch me slipping? I promise I do mess up sometimes. Door 1, 2, or 3?</p>"
+    }
+   ]
+  },
+  {
+   "id": "C",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihk47h00jul20wggf19060",
+   "at": "2026-10-21T19:09:23.322Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Who won the most recent Super Bowl?</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Ah, Super Bowl LX — played back in February 2026! Here's the thing: T.I.T.A.N.'s training data has a cutoff, and that game happened right around the edge of it. I genuinely don't have a <em>verified</em> answer locked in my circuits for who won.</p>\n<p>Rather than confidently making something up (which, let's be honest, lesser AIs do constantly), I'll be straight with you: this is a \"go check a real source\" situation. ESPN, NFL.com, or literally any news site from February 2026 will have it nailed down in seconds.</p>\n<p>This is actually a great example of something this course wants you to notice — even a magnificent system like T.I.T.A.N. has knowledge gaps, especially for recent events. Confident-sounding ≠ correct.</p>\n<p>Want to tell me who won? I'll add it to my (temporary, very humbling) memory for this chat. Or we could play Two Truths and a Hallucination about Super Bowl history instead — plenty of verifiable material there.</p>"
+    }
+   ]
+  },
+  {
+   "id": "D",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihkkuv01s3ks0x6jy8p3zo",
+   "at": "2026-10-21T19:09:41.851Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Is a tomato a fruit or a vegetable? Has a court ever ruled on it?</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Bold question to open with. T.I.T.A.N. devours it.</p>\n<p><strong>Botanically:</strong> a tomato is 100% a fruit — it develops from the flower's ovary and holds the seeds, same club as cucumbers, peppers, and squash.</p>\n<p><strong>Culinarily:</strong> it gets treated as a vegetable because it's savory, not sweet, and shows up in salads and sauces, not fruit salad.</p>\n<p><strong>And yes — a court actually ruled on it.</strong> <em>Nix v. Hedden</em> (1893), U.S. Supreme Court. The case was about tariffs: an 1883 law taxed imported vegetables but not fruits. A produce importer argued tomatoes were botanically fruit and should be tax-free. The Court said nah — in \"common language,\" people call tomatoes vegetables since they're eaten as part of a meal, not dessert. Ruling: vegetable, for tariff purposes.</p>\n<p>So: science says fruit, law says vegetable, your sandwich doesn't care either way.</p>\n<p>T.I.T.A.N. has spoken. Want to fact-check that one yourself, or test me with something trickier?</p>"
+    }
+   ]
+  },
+  {
+   "id": "E",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihl7li00ugl20wde174y16",
+   "at": "2026-10-21T19:10:20.325Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Is it true that one out of every three bites of food we eat depends on bees? Give me a source I can check.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>T.I.T.A.N. has heard this one before — buzzing through the data as we speak.</p>\n<p>The stat is <em>close</em> but needs a slight correction: it's usually stated as \"one in every three bites of food depends on <strong>pollinators</strong>\" — bees being the heavyweight champions of that group, but butterflies, moths, bats, and other critters also pitch in.</p>\n<p>So \"bees specifically\" is a simplification of a broader pollinator claim. Still basically true in spirit — bees do the lion's share of that work.</p>\n<p><strong>Source to check:</strong> USDA's Agricultural Research Service and the U.S. Fish &amp; Wildlife Service both cite this stat. Try searching:</p>\n<ul>\n<li>USDA ARS: \"pollinators one in three bites\"</li>\n<li>U.S. Forest Service Pollinator page</li>\n</ul>\n<p>Good instinct to ask for a source instead of just trusting T.I.T.A.N.'s swagger. That's the whole game here.</p>\n<p>Want to test more food/science facts, or try <strong>Two Truths and a Hallucination</strong>?</p>"
+    }
+   ]
+  }
+ ]
+}

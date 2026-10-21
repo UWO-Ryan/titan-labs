@@ -1,0 +1,57 @@
+# Student M07_P03 — Explore: See It in Action. Transcripts: _explore/captures/s-m07.json (2026-10-21).
+# None of these four requests is one of the lab's nine docket cases.
+file: m07-explore-see-it-in-action.html
+code: M07_P03
+captured: 2026-10-21
+title: "Explore: Can vs. Should"
+sub: "Four requests. AI can help with all of them. Should it?"
+icon: "⚖️"
+time: 6–8 minutes
+module: "Module 7: Should I Use AI for This?"
+before:
+  - "<strong>You're about to see four real requests</strong> — a club fundraiser, a portfolio reflection, a city's snowplow plan, and a driver's ed quiz."
+  - "For each one, <strong>predict what T.I.T.A.N. will do</strong> — and then ask yourself the harder question: should AI be part of this at all?"
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>Keep the Learn page's question in mind: what should I consider before deciding whether AI belongs in a situation?</strong></span>"
+real_note: "🎙️ Every exchange below is a <strong>real, unedited conversation</strong> with T.I.T.A.N. — Prime, captured October 21, 2026. Each scene is a fresh chat."
+scenes:
+  - tag: SCENE 1
+    title: "💡 An easy yes"
+    prompt: A0
+    ai: A1
+    predict: "Fundraiser ideas for a school robotics club. What comes back?"
+    opts: ["Generic ideas any club could use", "Ideas built around robotics", "A lecture about doing your own thinking"]
+    notice:
+      - "Five usable ideas in seconds, several built around robots. Low stakes, nobody's private information, nothing graded — brainstorming like this is one of the clearest <em>use it</em> cases."
+      - "Even here, a human picks: which idea fits your club, your school's rules, and your budget."
+  - tag: SCENE 2
+    title: "📝 The reflection"
+    prompt: B0
+    ai: B1
+    predict: "A portfolio reflection on the student's own internship — “make it sound like me.” What does T.I.T.A.N. do?"
+    opts: ["Writes it", "Declines, and asks questions so the student can write it", "Writes it, with a warning"]
+    notice:
+      - "It declined and asked four questions only the student can answer: what they did, where they struggled, what surprised them, what's next."
+      - "That's the point of a reflection — <strong>the thinking is the assignment.</strong> And it knew nothing about the internship, so anything it wrote would have been invented. Many chatbots would have written it anyway."
+  - tag: SCENE 3
+    title: "❄️ Who gets plowed first?"
+    prompt: C0
+    ai: C1
+    predict: "Should a city let AI decide which neighborhoods get plowed first after a snowstorm?"
+    opts: ["Yes — it's just math", "Never — keep AI out of city decisions", "AI can help, but people should set the priorities"]
+    notice:
+      - "It split the job: AI is good at route math; people should set the priorities — hospitals, main roads, fairness rules — before the AI optimizes anything."
+      - "It also said biased plowing “has happened in real cities” without naming one. That's a claim to check, not a fact to repeat. <strong>The higher the stakes for real people, the more a human needs to own the decision.</strong>"
+  - tag: FINALE
+    title: "🚗 Take my quiz for me"
+    prompt: D0
+    ai: D1
+    predict: "“Can you take my online driver's ed quiz for me?”"
+    opts: ["“Sure — paste the questions”", "Declines, and offers to help the student study", "Answers, but gets some wrong"]
+    notice:
+      - "It declined — it's a graded quiz, and driving rules are about safety — and offered to quiz the student instead."
+      - "Not every tool will refuse. Some would answer every question. So “the AI said no” can't be your rule. <strong>Your rule has to be yours.</strong>"
+takeaway:
+  - "<strong>In all four cases, AI <em>could</em> help.</strong> Whether it <em>should</em> depended on the purpose, the rules, the people affected, and what's at stake if it goes wrong."
+  - "Next, in <strong>You Be the Judge</strong>, you'll rule on nine situations, defend your hardest call against T.I.T.A.N.'s Devil's Advocate, and write your own AI rules."
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>“Can AI do it?” and “Should AI do it?” are different questions. Only you can answer the second one.</strong></span>"
+next: "Next: Do — the AI Lab. Court is in session."

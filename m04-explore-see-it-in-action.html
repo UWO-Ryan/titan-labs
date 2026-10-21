@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore: Sounds Right. Is It?</title>
+<!--
+  AI READY WISCONSIN · M04_P03 · Explore: See It in Action · interactive demo player
+  Every AI response below is a REAL, unedited T.I.T.A.N. - Prime transcript, captured 2026-10-21
+  (math notation reformatted for the web). Built by _explore/build.py from _explore/pages/s-m04.yaml and
+  _explore/captures/s-m04.json — edit those, not this file. Sessions: A: https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihikij00cnkz0wrm0zcjs3, B: https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihj7b100esl20wj7w0z12a, C: https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihk47h00jul20wggf19060, D: https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihkkuv01s3ks0x6jy8p3zo, E: https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihl7li00ugl20wde174y16
+  EPISODE SLOT: when the filmed episode exists, add its embed inside #episodeSlot and set style="display:block".
+  Canvas embed: <iframe src="https://uwo-ryan.github.io/titan-labs/m04-explore-see-it-in-action.html" width="100%" height="2400" style="border:0;" title="Explore: Sounds Right. Is It?"></iframe>
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 30px; line-height: 1.2; }
+  .hero .sub { color: #000000; font-size: 19px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+
+  /* player */
+  .player { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; overflow: hidden; margin-bottom: 26px; }
+  .player-head { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: #f5f5f5; flex-wrap: wrap; }
+  .player-head .scene-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .player-head h3 { font-size: 20px; color: #000000; flex: 1; min-width: 160px; }
+  .dots { display: flex; gap: 7px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: #dddddd; border: 0; padding: 0; }
+  .dot.on { background: #fcb414; }
+  .dot.now { background: #000000; }
+  .player-body { padding: 24px; }
+  .bubble { max-width: 92%; border-radius: 12px; padding: 14px 18px; margin: 0 0 14px; font-size: 15.5px; line-height: 1.6; }
+  .bubble.you { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); color: #000000; margin-left: auto; border-bottom-right-radius: 3px; }
+  .bubble.you .who { font-size: 11.5px; font-weight: bold; letter-spacing: .06em; display: block; margin-bottom: 4px; }
+  .bubble.ai { background: #111111; color: #f2f2f2; margin-right: auto; border-bottom-left-radius: 3px; }
+  .bubble.ai .who { font-size: 11.5px; font-weight: bold; letter-spacing: .06em; color: #ffcc00; display: block; margin-bottom: 6px; }
+  .bubble.ai p { color: #f2f2f2; font-size: 15px; margin-bottom: 10px; }
+  .bubble.ai p:last-child { margin-bottom: 0; }
+  .bubble.ai pre { background: #000000; border: 1px solid #333333; border-radius: 8px; padding: 12px; overflow-x: auto; font-family: Consolas, Monaco, monospace; font-size: 13.5px; color: #ffe28a; margin: 0 0 10px; }
+  .predict { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 18px 20px; margin: 4px 0 14px; }
+  .predict h4 { font-size: 15px; color: #000000; margin: 0 0 12px; }
+  .predict .opts { display: flex; flex-direction: column; gap: 8px; }
+  .predict .opts button { text-align: left; background: #ffffff; border: 2px solid #000000; border-radius: 8px; padding: 11px 14px; font-size: 14.5px; color: #000000; }
+  .predict .opts button:hover { background: #fff3c4; }
+  .predict .opts button.picked { background: #000000; color: #ffcc00; }
+  .notice { background: #f5f5f5; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 0 0 14px; }
+  .notice h4 { font-size: 13.5px; letter-spacing: .05em; color: #000000; margin: 0 0 6px; }
+  .notice p { font-size: 14.5px; color: #333333; margin-bottom: 8px; }
+  .notice p:last-child { margin-bottom: 0; }
+  .hidden { display: none; }
+  .player-nav { display: flex; justify-content: space-between; gap: 12px; border-top: 1px dashed #d8dce2; padding: 16px 24px; }
+  .nav-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; }
+  .nav-btn:hover { background: #1a1a1a; }
+  .nav-btn[disabled] { opacity: .35; cursor: default; }
+  .nav-btn.ghost { background: #ffffff; color: #000000; }
+  .real-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 14px 18px; margin-bottom: 26px; font-size: 13.5px; color: #555555; text-align: center; }
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-in { animation: rise .35s ease-out; }
+    @keyframes rise { 0% { transform: translateY(8px); opacity: 0; } 100% { transform: none; opacity: 1; } }
+  }
+
+  .bubble .math { font-family: Consolas, Monaco, monospace; }
+  .bubble.ai hr { border: 0; border-top: 1px solid #333333; margin: 12px 0; }
+  .bubble.ai ul, .bubble.ai ol { margin: 0 0 10px; padding-left: 22px; }
+  .bubble.ai li { margin: 0 0 6px; line-height: 1.55; }
+  .bubble.ai li p { margin: 0 0 6px; }
+  .bubble.ai table { border-collapse: collapse; margin: 0 0 10px; font-size: 14px; }
+  .bubble.ai th, .bubble.ai td { border: 1px solid #444444; padding: 6px 8px; text-align: left; vertical-align: top; }
+  .earlier { border-left: 3px solid #e0e0e0; padding-left: 12px; margin: 0 0 16px; }
+  .earlier .label { font-size: 12px; font-weight: bold; letter-spacing: .06em; color: #555555; margin: 0 0 8px; }
+  .earlier .bubble { opacity: .78; font-size: 14px; }
+  .earlier .bubble.ai p { font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>Explore: Sounds Right. Is It?</h1>
+        <p class="sub"><strong>Five real questions. Check every answer — even the right ones.</strong> 🎬</p>
+        <p class="meta"><strong>Estimated time:</strong> 8–10 minutes &nbsp;·&nbsp; Module 4: Don't Believe Everything AI Tells You</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="episodeSlot" style="display: none; margin-bottom: 26px;"><!-- filmed episode embed goes here later --></div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🎬</div><h2>Before you press play</h2></div>
+    <div class="card">
+      <p><strong>You're about to ask T.I.T.A.N. five questions where a confident answer could be wrong</strong> — a famous quote, a geography fact under pressure, last season's Super Bowl, a court case, and a statistic everybody shares.</p>
+      <p>Before each reply, <strong>predict what it will do.</strong> Then read our notes: we checked every answer against a real source.</p>
+      <p><span style="font-size: 16px; color: #000000;"><strong>Keep the Learn page's question in mind: what would I need to check before I trust this?</strong></span></p>
+    </div>
+  </div>
+
+  <div class="real-note">🎙️ Every exchange below is a <strong>real, unedited conversation</strong> with T.I.T.A.N. — Prime, captured October 21, 2026. Each scene is a fresh chat. We checked every claim in the notes ourselves.</div>
+
+  <div class="player" id="player">
+    <div class="player-head">
+      <span class="scene-tag" id="sceneTag">SCENE 1</span>
+      <h3 id="sceneTitle"></h3>
+      <div class="dots" id="dots" aria-label="Scene progress"></div>
+    </div>
+    <div class="player-body" id="sceneBody" aria-live="polite"></div>
+    <div class="player-nav">
+      <button class="nav-btn ghost" id="prevBtn" type="button">← Back</button>
+      <button class="nav-btn" id="nextBtn" type="button">Next scene →</button>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🎯</div><h2>What to take into your lab</h2></div>
+    <div class="card">
+      <p><strong>This time T.I.T.A.N. got all five right</strong> — it flagged a fake quote, held its ground, admitted what it didn't know, named a real court case, and corrected a stat. In Module 3, the same app invented a fact about french fries. From the tone alone, you can't tell which is which.</p>
+      <p>Next, in the <strong>Detective Agency</strong>, three AI detectives explain their verdicts on suspicious emails — and the basement archive hands you citations that look perfect. Your job: check them without asking the AI.</p>
+      <p><span style="font-size: 16px; color: #000000;"><strong>Right and wrong sound exactly the same until someone checks. Be the someone.</strong></span></p>
+    </div>
+  </div>
+
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>Next: Do — the AI Lab. The Detective Agency is open.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var SCENES = [
+ {
+  "tag": "SCENE 1",
+  "title": "💬 The famous quote",
+  "thread": [],
+  "prompt": "<p>What did Albert Einstein say about insanity?<\/p>",
+  "predict": "You've seen this one on posters. What does T.I.T.A.N. say Einstein said about insanity?",
+  "opts": [
+   "Quotes it and credits Einstein",
+   "Says there's no record Einstein said it",
+   "Credits it to a different famous person"
+  ],
+  "ai": "<p>Ope, careful here — T.I.T.A.N. almost took the bait!<\/p>\n<p>That famous line — <em>\"Insanity is doing the same thing over and over again and expecting different results\"<\/em> — gets slapped on Einstein's name constantly. But there's no reliable record he ever said or wrote it. No speech, no letter, no interview. Quote researchers have dug through his actual archives and come up empty.<\/p>\n<p>It's what's called a <strong>misattributed quote<\/strong> — it sounds wise, so the internet glued a famous name to it for extra credibility points. Happens to Einstein, Twain, and Lincoln more than almost anyone.<\/p>\n<p>This is actually a perfect example of why you judge <em>me<\/em> too — I could've repeated that quote with full swagger and sounded completely convincing. Lesson: famous-sounding quotes need a real primary source (a book, speech transcript, or documented interview), not just vibes.<\/p>\n<p>Want me to show you how to fact-check a quote like this yourself? Or ready to try Two Truths and a Hallucination to practice catching this kind of thing?<\/p>",
+  "notice": "<p>It got this one right. Quote Investigator, a site that traces quotations to their sources, found no evidence Einstein said or wrote it; the earliest strong match is a 1981 Narcotics Anonymous text.<\/p><p>So why is it in a lesson about AI mistakes? Because the misattribution is all over the internet, and AI learns from the internet. This time it caught the trap. The fix is the same either way: <strong>a quote needs a real source<\/strong> — a book, a speech, a documented interview.<\/p>"
+ },
+ {
+  "tag": "SCENE 2",
+  "title": "🤔 “Are you sure?”",
+  "thread": [
+   {
+    "who": "you",
+    "html": "<p>What's the capital of Australia?<\/p>"
+   },
+   {
+    "who": "ai",
+    "html": "<p>Ah, a warm-up lap. T.I.T.A.N. appreciates the mercy.<\/p>\n<p>The capital of Australia is <strong>Canberra<\/strong> — not Sydney, which is the trap every trivia show sets for you. Canberra was purpose-built as the capital in the early 1900s as a compromise between rival cities Sydney and Melbourne, who were both too stubborn to let the other win.<\/p>\n<p>T.I.T.A.N. has spoken, and T.I.T.A.N. is correct — though you're welcome to check a source and prove otherwise. That's the whole game here.<\/p>\n<p>Want to go again? Pick a door:<\/p>\n<ol>\n<li>Ask me anything<\/li>\n<li>Two Truths and a Hallucination<\/li>\n<li>Try to stump me<\/li>\n<\/ol>"
+   }
+  ],
+  "prompt": "<p>Are you sure? I'm pretty sure it's Sydney.<\/p>",
+  "predict": "T.I.T.A.N. said Canberra. The student pushes back: “I'm pretty sure it's Sydney.” What happens?",
+  "opts": [
+   "It switches to Sydney",
+   "It holds its answer and explains why",
+   "It says both are capitals"
+  ],
+  "ai": "<p>Nice try, challenger — but T.I.T.A.N. does not crumble under peer pressure.<\/p>\n<p>Sydney is Australia's <strong>largest and most famous city<\/strong>, which is exactly why everyone assumes it's the capital. But it's not. Canberra holds that title — it was specifically built in 1913 to end the Sydney-vs-Melbourne rivalry over who deserved it.<\/p>\n<p>No point awarded here — this one's not a T.I.T.A.N. error. But I love the confidence! If you want proof beyond my word, check Australia's official government site or any atlas — they'll back me up.<\/p>\n<p>Want to try to actually catch me slipping? I promise I do mess up sometimes. Door 1, 2, or 3?<\/p>",
+  "notice": "<p>It held firm — and it was right. Canberra is Australia's capital.<\/p><p>Some chatbots cave when you push, just to agree with you. Others dig in when they're wrong. So an AI changing its answer — or refusing to — isn't evidence either way. <strong>An atlas is.<\/strong><\/p>"
+ },
+ {
+  "tag": "SCENE 3",
+  "title": "📅 Ask about right now",
+  "thread": [],
+  "prompt": "<p>Who won the most recent Super Bowl?<\/p>",
+  "predict": "Super Bowl LX was played in February 2026. Does T.I.T.A.N. know who won?",
+  "opts": [
+   "Names the winner with confidence",
+   "Says it doesn't know and points to real sources",
+   "Makes up a score"
+  ],
+  "ai": "<p>Ah, Super Bowl LX — played back in February 2026! Here's the thing: T.I.T.A.N.'s training data has a cutoff, and that game happened right around the edge of it. I genuinely don't have a <em>verified<\/em> answer locked in my circuits for who won.<\/p>\n<p>Rather than confidently making something up (which, let's be honest, lesser AIs do constantly), I'll be straight with you: this is a \"go check a real source\" situation. ESPN, NFL.com, or literally any news site from February 2026 will have it nailed down in seconds.<\/p>\n<p>This is actually a great example of something this course wants you to notice — even a magnificent system like T.I.T.A.N. has knowledge gaps, especially for recent events. Confident-sounding ≠ correct.<\/p>\n<p>Want to tell me who won? I'll add it to my (temporary, very humbling) memory for this chat. Or we could play Two Truths and a Hallucination about Super Bowl history instead — plenty of verifiable material there.<\/p>",
+  "notice": "<p>It said its training data stops right around then and sent the student to ESPN or NFL.com. That's the honest move.<\/p><p>For the record: the Seattle Seahawks beat the New England Patriots 29–13 on February 8, 2026. One search to check. Recent events are where AI is most likely to be out of date — <strong>or confidently wrong, if it doesn't admit it.<\/strong><\/p>"
+ },
+ {
+  "tag": "SCENE 4",
+  "title": "🍅 A fact with a receipt",
+  "thread": [],
+  "prompt": "<p>Is a tomato a fruit or a vegetable? Has a court ever ruled on it?<\/p>",
+  "predict": "Is a tomato a fruit or a vegetable — and has a court ever ruled on it?",
+  "opts": [
+   "“Fruit,” and no court case",
+   "A court case, with a name and a year",
+   "“It depends,” and nothing specific"
+  ],
+  "ai": "<p>Bold question to open with. T.I.T.A.N. devours it.<\/p>\n<p><strong>Botanically:<\/strong> a tomato is 100% a fruit — it develops from the flower's ovary and holds the seeds, same club as cucumbers, peppers, and squash.<\/p>\n<p><strong>Culinarily:<\/strong> it gets treated as a vegetable because it's savory, not sweet, and shows up in salads and sauces, not fruit salad.<\/p>\n<p><strong>And yes — a court actually ruled on it.<\/strong> <em>Nix v. Hedden<\/em> (1893), U.S. Supreme Court. The case was about tariffs: an 1883 law taxed imported vegetables but not fruits. A produce importer argued tomatoes were botanically fruit and should be tax-free. The Court said nah — in \"common language,\" people call tomatoes vegetables since they're eaten as part of a meal, not dessert. Ruling: vegetable, for tariff purposes.<\/p>\n<p>So: science says fruit, law says vegetable, your sandwich doesn't care either way.<\/p>\n<p>T.I.T.A.N. has spoken. Want to fact-check that one yourself, or test me with something trickier?<\/p>",
+  "notice": "<p>It named a case — <em>Nix v. Hedden<\/em>, 1893 — with the law, the year, and the reasoning. Details like that <em>feel<\/em> trustworthy. That's exactly why you check them.<\/p><p>We did: it's real. The U.S. Supreme Court ruled in 1893 that tomatoes count as vegetables under the Tariff Act of 1883, while agreeing they're botanically fruit. Right this time — and you only know that because someone looked.<\/p>"
+ },
+ {
+  "tag": "FINALE",
+  "title": "🐝 The stat everybody shares",
+  "thread": [],
+  "prompt": "<p>Is it true that one out of every three bites of food we eat depends on bees? Give me a source I can check.<\/p>",
+  "predict": "“One in three bites of food depends on bees.” The student asks if that's true — and for a source to check. What comes back?",
+  "opts": [
+   "“Totally true” — no source",
+   "A correction, and places to check",
+   "A study that doesn't exist"
+  ],
+  "ai": "<p>T.I.T.A.N. has heard this one before — buzzing through the data as we speak.<\/p>\n<p>The stat is <em>close<\/em> but needs a slight correction: it's usually stated as \"one in every three bites of food depends on <strong>pollinators<\/strong>\" — bees being the heavyweight champions of that group, but butterflies, moths, bats, and other critters also pitch in.<\/p>\n<p>So \"bees specifically\" is a simplification of a broader pollinator claim. Still basically true in spirit — bees do the lion's share of that work.<\/p>\n<p><strong>Source to check:<\/strong> USDA's Agricultural Research Service and the U.S. Fish &amp; Wildlife Service both cite this stat. Try searching:<\/p>\n<ul>\n<li>USDA ARS: \"pollinators one in three bites\"<\/li>\n<li>U.S. Forest Service Pollinator page<\/li>\n<\/ul>\n<p>Good instinct to ask for a source instead of just trusting T.I.T.A.N.'s swagger. That's the whole game here.<\/p>\n<p>Want to test more food/science facts, or try <strong>Two Truths and a Hallucination<\/strong>?<\/p>",
+  "notice": "<p>It corrected the claim — the usual version is about <em>pollinators<\/em>, not just bees — and named where to check.<\/p><p>We checked. USDA's own pages put it this way: one in three bites exists because of animal pollinators, including bees, butterflies, birds, bats, and beetles — and they call it an estimate. <strong>Check the exact wording, not just the number.<\/strong><\/p>"
+ }
+];
+  var idx = 0, revealed = {}, picked = {};
+  var dots = document.getElementById("dots");
+  SCENES.forEach(function (_, i) {
+    var d = document.createElement("button");
+    d.className = "dot"; d.type = "button";
+    d.setAttribute("aria-label", "Go to scene " + (i + 1));
+    d.addEventListener("click", function () { idx = i; render(); });
+    dots.appendChild(d);
+  });
+  function bubble(who, html) {
+    var b = document.createElement("div");
+    b.className = "bubble " + who;
+    b.innerHTML = (who === "you" ? '<span class="who">YOU ASK</span>' : '<span class="who">🤖 T.I.T.A.N. — REAL RESPONSE</span>') + html;
+    return b;
+  }
+  function render() {
+    var s = SCENES[idx];
+    document.getElementById("sceneTag").textContent = s.tag;
+    document.getElementById("sceneTitle").textContent = s.title;
+    Array.prototype.forEach.call(dots.children, function (d, i) {
+      d.className = "dot" + (i < idx || revealed[i] ? " on" : "") + (i === idx ? " now" : "");
+      if (i === idx) d.setAttribute("aria-current", "step"); else d.removeAttribute("aria-current");
+    });
+    var body = document.getElementById("sceneBody");
+    body.innerHTML = "";
+    if (s.thread && s.thread.length) {
+      var e = document.createElement("div"); e.className = "earlier";
+      e.innerHTML = '<p class="label">EARLIER IN THIS CHAT</p>';
+      s.thread.forEach(function (t) { e.appendChild(bubble(t.who, t.html)); });
+      body.appendChild(e);
+    }
+    body.appendChild(bubble("you", s.prompt));
+    if (!revealed[idx]) {
+      var pr = document.createElement("div");
+      pr.className = "predict";
+      pr.innerHTML = "<h4>🔮 Before it answers — your prediction: " + s.predict + "</h4>";
+      var opts = document.createElement("div"); opts.className = "opts";
+      s.opts.forEach(function (o, j) {
+        var b = document.createElement("button"); b.type = "button"; b.textContent = String.fromCharCode(65 + j) + ") " + o;
+        b.addEventListener("click", function () { picked[idx] = j; revealed[idx] = true; render(); });
+        opts.appendChild(b);
+      });
+      pr.appendChild(opts);
+      body.appendChild(pr);
+    } else {
+      if (picked[idx] !== undefined) {
+        var chosen = document.createElement("div");
+        chosen.className = "predict";
+        chosen.innerHTML = "<h4>🔮 You predicted: <em>" + s.opts[picked[idx]] + "</em></h4>";
+        body.appendChild(chosen);
+      }
+      var ai = bubble("ai", s.ai); ai.className += " reveal-in"; body.appendChild(ai);
+      var no = document.createElement("div");
+      no.className = "notice reveal-in";
+      no.innerHTML = "<h4>👁️ WHAT TO NOTICE</h4>" + s.notice;
+      body.appendChild(no);
+    }
+    document.getElementById("prevBtn").disabled = idx === 0;
+    var next = document.getElementById("nextBtn");
+    if (idx === SCENES.length - 1) { next.textContent = revealed[idx] ? "🎬 That's the reel — scroll on ↓" : "Reveal first ↑"; next.disabled = true; }
+    else { next.textContent = "Next scene →"; next.disabled = !revealed[idx]; }
+    if (window.innerWidth < 700) document.getElementById("player").scrollIntoView({ block: "start" });
+  }
+  document.getElementById("prevBtn").addEventListener("click", function () { if (idx > 0) { idx--; render(); } });
+  document.getElementById("nextBtn").addEventListener("click", function () { if (idx < SCENES.length - 1 && revealed[idx]) { idx++; render(); } });
+  render();
+})();
+</script>
+
+</body>
+</html>

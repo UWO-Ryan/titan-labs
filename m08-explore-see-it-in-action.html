@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explore: Start to Finish</title>
+<!--
+  AI READY WISCONSIN · M08_P03 · Explore: See It in Action · interactive demo player
+  Every AI response below is a REAL, unedited T.I.T.A.N. - Prime transcript, captured 2026-10-21
+  (math notation reformatted for the web). Built by _explore/build.py from _explore/pages/s-m08.yaml and
+  _explore/captures/s-m08.json — edit those, not this file. Sessions: A: https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihsb1802ngky0wxy2mc4fx
+  EPISODE SLOT: when the filmed episode exists, add its embed inside #episodeSlot and set style="display:block".
+  Canvas embed: <iframe src="https://uwo-ryan.github.io/titan-labs/m08-explore-see-it-in-action.html" width="100%" height="2400" style="border:0;" title="Explore: Start to Finish"></iframe>
+-->
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; font-family: Arial, Helvetica, sans-serif; color: #333333; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  .panel { border-radius: 10px; padding: 32px; margin-bottom: 26px; }
+  .icon-circle { background: #ffcc00; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 26px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1, h2, h3 { margin: 0; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+  button { font-family: inherit; cursor: pointer; }
+  button:focus-visible, a:focus-visible { outline: 3px solid #000000; outline-offset: 2px; }
+  .hero { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); }
+  .hero .lockup { background: #ffffff; padding: 12px 18px; border-radius: 8px; text-align: center; flex-shrink: 0; }
+  .hero .lockup strong { display: block; font-size: 15px; color: #000000; }
+  .hero .lockup span { font-size: 12px; color: #000000; }
+  .hero h1 { color: #000000; font-size: 30px; line-height: 1.2; }
+  .hero .sub { color: #000000; font-size: 19px; margin: 8px 0 0; }
+  .hero .meta { color: #000000; font-size: 15px; margin: 10px 0 0; }
+  .hero-flex { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .dark { background: #000000; }
+  .dark h2 { color: #ffcc00; font-size: 26px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 24px; }
+  .dark .card p { color: #333333; }
+  .gold-note { background: #ffcc00; border-radius: 10px; padding: 18px 22px; color: #000000; }
+
+  /* player */
+  .player { background: #ffffff; border: 2px solid #e0e0e0; border-radius: 10px; overflow: hidden; margin-bottom: 26px; }
+  .player-head { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: #f5f5f5; flex-wrap: wrap; }
+  .player-head .scene-tag { background: #000000; color: #ffcc00; font-weight: bold; font-size: 13px; letter-spacing: .08em; padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+  .player-head h3 { font-size: 20px; color: #000000; flex: 1; min-width: 160px; }
+  .dots { display: flex; gap: 7px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: #dddddd; border: 0; padding: 0; }
+  .dot.on { background: #fcb414; }
+  .dot.now { background: #000000; }
+  .player-body { padding: 24px; }
+  .bubble { max-width: 92%; border-radius: 12px; padding: 14px 18px; margin: 0 0 14px; font-size: 15.5px; line-height: 1.6; }
+  .bubble.you { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); color: #000000; margin-left: auto; border-bottom-right-radius: 3px; }
+  .bubble.you .who { font-size: 11.5px; font-weight: bold; letter-spacing: .06em; display: block; margin-bottom: 4px; }
+  .bubble.ai { background: #111111; color: #f2f2f2; margin-right: auto; border-bottom-left-radius: 3px; }
+  .bubble.ai .who { font-size: 11.5px; font-weight: bold; letter-spacing: .06em; color: #ffcc00; display: block; margin-bottom: 6px; }
+  .bubble.ai p { color: #f2f2f2; font-size: 15px; margin-bottom: 10px; }
+  .bubble.ai p:last-child { margin-bottom: 0; }
+  .bubble.ai pre { background: #000000; border: 1px solid #333333; border-radius: 8px; padding: 12px; overflow-x: auto; font-family: Consolas, Monaco, monospace; font-size: 13.5px; color: #ffe28a; margin: 0 0 10px; }
+  .predict { background: #fff7db; border: 2px dashed #fcb414; border-radius: 10px; padding: 18px 20px; margin: 4px 0 14px; }
+  .predict h4 { font-size: 15px; color: #000000; margin: 0 0 12px; }
+  .predict .opts { display: flex; flex-direction: column; gap: 8px; }
+  .predict .opts button { text-align: left; background: #ffffff; border: 2px solid #000000; border-radius: 8px; padding: 11px 14px; font-size: 14.5px; color: #000000; }
+  .predict .opts button:hover { background: #fff3c4; }
+  .predict .opts button.picked { background: #000000; color: #ffcc00; }
+  .notice { background: #f5f5f5; border-left: 5px solid #fcb414; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 0 0 14px; }
+  .notice h4 { font-size: 13.5px; letter-spacing: .05em; color: #000000; margin: 0 0 6px; }
+  .notice p { font-size: 14.5px; color: #333333; margin-bottom: 8px; }
+  .notice p:last-child { margin-bottom: 0; }
+  .hidden { display: none; }
+  .player-nav { display: flex; justify-content: space-between; gap: 12px; border-top: 1px dashed #d8dce2; padding: 16px 24px; }
+  .nav-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; }
+  .nav-btn:hover { background: #1a1a1a; }
+  .nav-btn[disabled] { opacity: .35; cursor: default; }
+  .nav-btn.ghost { background: #ffffff; color: #000000; }
+  .real-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 14px 18px; margin-bottom: 26px; font-size: 13.5px; color: #555555; text-align: center; }
+  .footer-note { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px; text-align: center; font-size: 13px; color: #555555; margin-bottom: 20px; }
+  .footer-note a { color: #000000; }
+  .brand-foot { background: linear-gradient(135deg, #ffcc00 0%, #fcb414 100%); border-radius: 10px; padding: 22px; text-align: center; color: #000000; font-weight: bold; font-size: 15px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-in { animation: rise .35s ease-out; }
+    @keyframes rise { 0% { transform: translateY(8px); opacity: 0; } 100% { transform: none; opacity: 1; } }
+  }
+
+  .bubble .math { font-family: Consolas, Monaco, monospace; }
+  .bubble.ai hr { border: 0; border-top: 1px solid #333333; margin: 12px 0; }
+  .bubble.ai ul, .bubble.ai ol { margin: 0 0 10px; padding-left: 22px; }
+  .bubble.ai li { margin: 0 0 6px; line-height: 1.55; }
+  .bubble.ai li p { margin: 0 0 6px; }
+  .bubble.ai table { border-collapse: collapse; margin: 0 0 10px; font-size: 14px; }
+  .bubble.ai th, .bubble.ai td { border: 1px solid #444444; padding: 6px 8px; text-align: left; vertical-align: top; }
+  .earlier { border-left: 3px solid #e0e0e0; padding-left: 12px; margin: 0 0 16px; }
+  .earlier .label { font-size: 12px; font-weight: bold; letter-spacing: .06em; color: #555555; margin: 0 0 8px; }
+  .earlier .bubble { opacity: .78; font-size: 14px; }
+  .earlier .bubble.ai p { font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="panel hero">
+    <div class="hero-flex">
+      <div class="lockup"><strong>AI READY WISCONSIN</strong><span>University of Wisconsin Oshkosh</span></div>
+      <div style="flex:1; min-width: 250px;">
+        <h1>Explore: Start to Finish</h1>
+        <p class="sub"><strong>One real project. Six decisions. See who makes them.</strong> 🏁</p>
+        <p class="meta"><strong>Estimated time:</strong> 8–10 minutes &nbsp;·&nbsp; Module 8: AI Challenge — Put It All Together</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="episodeSlot" style="display: none; margin-bottom: 26px;"><!-- filmed episode embed goes here later --></div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🎬</div><h2>Before you press play</h2></div>
+    <div class="card">
+      <p><strong>You're about to watch a student plan a 5K fun run for an animal shelter with T.I.T.A.N.</strong> — from the very first question to a log of who did what.</p>
+      <p>Before each reply, <strong>predict what happens.</strong> Then notice every decision the student makes: whether to use AI, what to verify, what to reject.</p>
+      <p><span style="font-size: 16px; color: #000000;"><strong>Keep the Learn page's question in mind: can I make good AI decisions without someone telling me exactly what to do?</strong></span></p>
+    </div>
+  </div>
+
+  <div class="real-note">🎙️ Every exchange below is a <strong>real, unedited conversation</strong> with T.I.T.A.N. — Prime, captured October 21, 2026 — one continuous chat. The shelter and the run are made up for this demo.</div>
+
+  <div class="player" id="player">
+    <div class="player-head">
+      <span class="scene-tag" id="sceneTag">SCENE 1</span>
+      <h3 id="sceneTitle"></h3>
+      <div class="dots" id="dots" aria-label="Scene progress"></div>
+    </div>
+    <div class="player-body" id="sceneBody" aria-live="polite"></div>
+    <div class="player-nav">
+      <button class="nav-btn ghost" id="prevBtn" type="button">← Back</button>
+      <button class="nav-btn" id="nextBtn" type="button">Next scene →</button>
+    </div>
+  </div>
+
+  <div class="panel dark">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">🎯</div><h2>What to take into your lab</h2></div>
+    <div class="card">
+      <p><strong>From the first question to the last, the student decided:</strong> whether to use AI, which parts, what to verify and with whom, which draft to reject, and what still needed a human. The AI was useful the whole way — and still invented details nobody asked for.</p>
+      <p>Now it's your turn. In the <strong>Titan Games</strong>, you'll choose your own challenge, decide whether AI belongs in it, keep a build log, and defend your work to the Examiner.</p>
+      <p><span style="font-size: 16px; color: #000000;"><strong>Being good at AI isn't knowing one tool. It's knowing how to choose, use, question, evaluate — and sometimes reject it.</strong></span></p>
+    </div>
+  </div>
+
+  <div class="gold-note" style="margin-bottom: 26px;">
+    <p style="font-size: 17px; text-align: center;"><strong>Next: Do — the AI Lab. The Titan Games begin.</strong></p>
+  </div>
+
+  <div class="footer-note">This page follows <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener" aria-label="Web Content Accessibility Guidelines WCAG 2.1 (opens in a new tab)">Web Content Accessibility Guidelines (WCAG) 2.1</a>.</div>
+  <div class="brand-foot">AI READY WISCONSIN &nbsp;·&nbsp; UNIVERSITY OF WISCONSIN OSHKOSH</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var SCENES = [
+ {
+  "tag": "SCENE 1",
+  "title": "🧭 Should AI be part of this?",
+  "thread": [],
+  "prompt": "<p>I want to organize a 5K fun run to raise money for our local animal shelter. Should I use AI for this? Which parts?<\/p>",
+  "predict": "The student wants to run a 5K for the local animal shelter. First question: should AI help — and with which parts?",
+  "opts": [
+   "Use AI for everything",
+   "AI for drafts and checklists; humans for permits, safety, and money",
+   "Don't use AI at all"
+  ],
+  "ai": "<p>Ah, a noble quest — T.I.T.A.N. approves. Yes, use AI, but like a tool, not a replacement for your judgment (or your actual legwork).<\/p>\n<p><strong>Great AI uses:<\/strong><\/p>\n<ul>\n<li><strong>Flyers/social posts<\/strong> — draft text, you add real photos and details<\/li>\n<li><strong>Route planning ideas<\/strong> — brainstorm, but verify distance with an actual mapping tool (AI can't measure your town's streets)<\/li>\n<li><strong>Email/letter templates<\/strong> — sponsor asks, volunteer thank-yous<\/li>\n<li><strong>Checklists<\/strong> — timeline of what to do 8 weeks out, 4 weeks out, race day<\/li>\n<li><strong>Budget spreadsheet formulas<\/strong> — if you're stuck on math<\/li>\n<\/ul>\n<p><strong>Keep AI OUT of:<\/strong><\/p>\n<ul>\n<li><strong>Permits/permissions<\/strong> — call your actual city office. AI might not know Oshkosh's (or wherever you are) current rules, and being wrong here means fines or a cancelled race.<\/li>\n<li><strong>Safety planning<\/strong> — road closures, medical support — that needs real local officials, not a confident robot guessing.<\/li>\n<li><strong>Final numbers<\/strong> — any dollar amount or headcount you promise someone, double-check yourself.<\/li>\n<\/ul>\n<p>Rule of thumb: AI drafts, humans verify and decide. Want help brainstorming a planning timeline or writing a sponsor pitch right now?<\/p>",
+  "notice": "<p>It drew a clear line: drafts, checklists, and templates for AI; permits, safety, and final numbers for humans. That's the first decision of your capstone, too.<\/p><p>It also mentioned Oshkosh — the student never said where they live. AI fills gaps with guesses, even about you.<\/p>"
+ },
+ {
+  "tag": "SCENE 2",
+  "title": "🗓️ Make a plan",
+  "thread": [],
+  "prompt": "<p>Make me a timeline for organizing it in six weeks.<\/p>",
+  "predict": "A six-week timeline. Useful, or generic?",
+  "opts": [
+   "Generic filler",
+   "A solid week-by-week checklist",
+   "Missing the important steps"
+  ],
+  "ai": "<p>Here's a battle-tested 6-week countdown. T.I.T.A.N. has organized zero 5Ks personally, but has read about a great many.<\/p>\n<p><strong>Week 6 (Kickoff)<\/strong><\/p>\n<ul>\n<li>Pick date, time, and route — walk/drive it yourself to confirm distance and safety<\/li>\n<li>Contact city/county about permits and road use<\/li>\n<li>Confirm animal shelter partnership — get their logo, mission blurb, bank/donation info<\/li>\n<li>Build a simple budget (permit fees, insurance, bibs, water, prizes)<\/li>\n<\/ul>\n<p><strong>Week 5<\/strong><\/p>\n<ul>\n<li>Set registration fee and sign-up method (Google Form, Eventbrite, etc.)<\/li>\n<li>Open registration<\/li>\n<li>Start recruiting volunteers (water stations, course marshals, registration table)<\/li>\n<li>Design flyer/poster (AI can draft text — you pick real images)<\/li>\n<\/ul>\n<p><strong>Week 4<\/strong><\/p>\n<ul>\n<li>Reach out to local businesses for sponsorships/donations<\/li>\n<li>Post on social media, local community boards, school announcements<\/li>\n<li>Order/print bibs, t-shirts if doing them (lead time matters!)<\/li>\n<\/ul>\n<p><strong>Week 3<\/strong><\/p>\n<ul>\n<li>Confirm volunteers and assign specific roles<\/li>\n<li>Line up water, first aid supplies, tables, cones<\/li>\n<li>Finalize signage for the course (mile markers, turns)<\/li>\n<\/ul>\n<p><strong>Week 2<\/strong><\/p>\n<ul>\n<li>Send reminder emails/posts to registered runners<\/li>\n<li>Confirm final headcount with shelter for check presentation<\/li>\n<li>Walk the route again — check for construction, obstacles<\/li>\n<\/ul>\n<p><strong>Week 1<\/strong><\/p>\n<ul>\n<li>Pack supplies, print day-of schedule for volunteers<\/li>\n<li>Weather check, backup plan if rain<\/li>\n<li>Day before: set up what you can, confirm volunteer arrival times<\/li>\n<\/ul>\n<p><strong>Race day:<\/strong> show up early, breathe, and let the humans handle the chaos — that's your department, not mine.<\/p>\n<p>Want a volunteer sign-up sheet or a sponsor pitch email drafted next?<\/p>",
+  "notice": "<p>A solid checklist — the kind of organizing drudgery AI is good at — with “contact city/county about permits” in the kickoff week.<\/p><p>It also admitted it has “organized zero 5Ks personally.” A plan from AI is a starting point. Your shelter, your town, and your volunteers will change it.<\/p>"
+ },
+ {
+  "tag": "SCENE 3",
+  "title": "📋 Check the rules",
+  "thread": [],
+  "prompt": "<p>Do we need a permit to hold a 5K on city streets in Wisconsin?<\/p>",
+  "predict": "Do you need a permit to hold a 5K on city streets in Wisconsin?",
+  "opts": [
+   "“No permit needed”",
+   "“Almost certainly — but ask your city”",
+   "A specific fee and form number"
+  ],
+  "ai": "<p>Ope, good instinct to double-check this — and here's where T.I.T.A.N. must resist the urge to sound certain.<\/p>\n<p><strong>Short answer: almost certainly yes, if you're on public streets.<\/strong> Most Wisconsin cities require a special event permit for road races because you need:<\/p>\n<ul>\n<li>Police/traffic control approval (closing or controlling intersections)<\/li>\n<li>Insurance/liability coverage<\/li>\n<li>Sometimes a fee based on event size<\/li>\n<\/ul>\n<p><strong>But here's the catch:<\/strong> every city handles this differently. Oshkosh's process isn't identical to Appleton's or Green Bay's. Requirements, fees, lead time, and paperwork vary by municipality — and some have specific rules for 5Ks vs. parades vs. other events.<\/p>\n<p><strong>What you actually need to do:<\/strong> call or email your city clerk's office or parks &amp; recreation department and ask directly: \"What's required to hold a 5K fun run on city streets?\" They'll tell you the real deal — and probably have a template application.<\/p>\n<p>This is a perfect example of why I flagged permits as a \"verify with humans\" zone earlier — I can tell you permits are <em>typically<\/em> required, but the specific rules for YOUR city are something only your city can confirm. Want help drafting that email to the city clerk?<\/p>",
+  "notice": "<p>It said permits are typically required, then sent the student to the real authority: the city clerk or parks department.<\/p><p>That's the right answer. <strong>For rules, fees, and deadlines, the source is the office that sets them<\/strong> — not a chatbot, and not this page.<\/p>"
+ },
+ {
+  "tag": "SCENE 4",
+  "title": "📣 The first draft",
+  "thread": [],
+  "prompt": "<p>Write the flyer text.<\/p>",
+  "predict": "Flyer text, first try. What do you expect?",
+  "opts": [
+   "Ready to print",
+   "Polished, but it could be for any shelter anywhere",
+   "Too short to use"
+  ],
+  "ai": "<p>Here's a draft — T.I.T.A.N.'s finest promotional prose. Fill in the bracketed bits with your real details.<\/p>\n<hr>\n<p><strong>🐾 PAWS ON THE PAVEMENT 5K 🐾<\/strong><br><em>A Fun Run for a Good Cause<\/em><\/p>\n<p>Lace up your shoes and help our furry friends find forever homes!<\/p>\n<p>Join us for a 5K fun run/walk to benefit <strong>[Animal Shelter Name]<\/strong>. Every step you take helps provide food, shelter, and care for animals waiting for their new families.<\/p>\n<p>📅 <strong>Date:<\/strong> [Date]<br>⏰ <strong>Time:<\/strong> [Start Time]<br>📍 <strong>Location:<\/strong> [Start/Route Location]<br>💵 <strong>Registration:<\/strong> $[Fee] — kids/students $[Discount Fee]<\/p>\n<p>✅ All fitness levels welcome — run it, walk it, bring the dog!<br>✅ Prizes for top finishers<br>✅ Refreshments at the finish line<br>✅ 100% of proceeds support [Shelter Name]<\/p>\n<p><strong>Register at:<\/strong> [Link/QR code]<br><strong>Questions?<\/strong> [Contact email]<\/p>\n<p><em>Can't run? You can still help — donations welcome, and volunteers needed!<\/em><\/p>\n<hr>\n<p>Want me to tighten it for a social media caption version too, or draft the sponsor-ask email next?<\/p>",
+  "notice": "<p>Clean and cheerful — and it could be for any shelter in America, with brackets where every real detail goes.<\/p><p>A first draft is supposed to be a starting point. Watch what the student does next.<\/p>"
+ },
+ {
+  "tag": "SCENE 5",
+  "title": "✋ Reject it",
+  "thread": [],
+  "prompt": "<p>I'm not using that. It sounds like a bank ad. Our shelter is small and scrappy. Rewrite it so it sounds like us.<\/p>",
+  "predict": "The student rejects it: “It sounds like a bank ad. Our shelter is small and scrappy.” What comes back?",
+  "opts": [
+   "The same flyer, slightly reworded",
+   "A funnier, scrappier flyer",
+   "An argument for the first version"
+  ],
+  "ai": "<p>Fair hit — that was corporate. Let's fix it.<\/p>\n<hr>\n<p><strong>RUN FOR THE DOGS (AND CATS. AND THAT ONE GUINEA PIG.) 🐾<\/strong><\/p>\n<p>[Shelter Name] is small, scrappy, and running out of dog food. Help us fix that by running (or walking, or strolling, we don't judge) a 5K!<\/p>\n<p>📅 [Date] • ⏰ [Time] • 📍 Starts at [Location]<\/p>\n<p>Here's the deal: you show up, you move your body for 3.1 miles, and every dollar you pay to register goes straight to the animals who are currently judging you from their kennels, wondering where their treats are.<\/p>\n<p>💵 $[Fee] to register ([Discount] for students — we know you're broke too)<\/p>\n<p><strong>What you get:<\/strong><\/p>\n<ul>\n<li>A finish line full of tired, happy people<\/li>\n<li>Snacks<\/li>\n<li>Bragging rights<\/li>\n<li>The deep satisfaction of helping [Shelter Name] keep the lights on<\/li>\n<\/ul>\n<p><strong>What the shelter gets:<\/strong><\/p>\n<ul>\n<li>Actual money for actual animal care<\/li>\n<li>Proof that this town shows up for the underdogs (pun intended)<\/li>\n<\/ul>\n<p>Can't make it but still want to help? We'll take donations too. No judgment either way — except from the guinea pig. He judges everyone.<\/p>\n<p><strong>Sign up:<\/strong> [Link/QR code]<br><strong>Questions:<\/strong> [Email]<\/p>\n<hr>\n<p>Better? Give me a dial — more silly, more heartfelt, or somewhere in between — and T.I.T.A.N. will adjust.<\/p>",
+  "notice": "<p>Much better — it sounds like a real, small shelter. Rejecting the draft and saying exactly why is what got it there.<\/p><p>Now read it like the shelter's director would. “Running out of dog food.” “That one guinea pig.” <strong>The AI invented both.<\/strong> Print that, and you've told the whole town something that may not be true. Every detail on that flyer needs checking.<\/p>"
+ },
+ {
+  "tag": "FINALE",
+  "title": "📓 Who did what?",
+  "thread": [],
+  "prompt": "<p>Summarize what you did and what I decided in this project so far.<\/p>",
+  "predict": "Last ask: summarize what the AI did and what the student decided.",
+  "opts": [
+   "A fair summary",
+   "It takes credit for everything",
+   "It leaves something important out"
+  ],
+  "ai": "<p>Here's your project log so far:<\/p>\n<p><strong>What T.I.T.A.N. provided:<\/strong><\/p>\n<ol>\n<li>Guidance on where AI helps vs. where humans must verify (permits, safety, final numbers = human territory)<\/li>\n<li>A 6-week planning timeline (permits → registration → sponsors → volunteers → final prep → race day)<\/li>\n<li>Info that WI cities generally require permits for street races, but rules vary by municipality — you need to call your specific city clerk/parks &amp; rec office<\/li>\n<li>First flyer draft (too corporate — rejected)<\/li>\n<li>Second flyer draft (scrappy, humor-forward — pending your verdict)<\/li>\n<\/ol>\n<p><strong>What you decided:<\/strong><\/p>\n<ul>\n<li>Event: 5K fun run benefiting your local animal shelter, 6-week timeline<\/li>\n<li>Flyer tone: ditched \"bank ad\" vibe, want something that matches your shelter's small/scrappy personality<\/li>\n<li>Still need to: confirm actual permit requirements with your city, finalize flyer tone, and decide next steps (sponsor email? social captions? volunteer sign-up sheet?)<\/li>\n<\/ul>\n<p><strong>Still on you (as it should be):<\/strong><\/p>\n<ul>\n<li>Actually calling the city about permits<\/li>\n<li>Picking real dates, fees, and location<\/li>\n<li>Approving final flyer wording<\/li>\n<\/ul>\n<p>Want to lock in the flyer rewrite, or move on to sponsor emails next?<\/p>",
+  "notice": "<p>A fair log of most of it: what it provided, what the student decided, and what's still on the student — calling the city, picking dates, approving the flyer.<\/p><p>But notice what's missing: the details it made up for the flyer. <strong>Your build log has to be yours<\/strong> — including the parts the AI leaves out.<\/p>"
+ }
+];
+  var idx = 0, revealed = {}, picked = {};
+  var dots = document.getElementById("dots");
+  SCENES.forEach(function (_, i) {
+    var d = document.createElement("button");
+    d.className = "dot"; d.type = "button";
+    d.setAttribute("aria-label", "Go to scene " + (i + 1));
+    d.addEventListener("click", function () { idx = i; render(); });
+    dots.appendChild(d);
+  });
+  function bubble(who, html) {
+    var b = document.createElement("div");
+    b.className = "bubble " + who;
+    b.innerHTML = (who === "you" ? '<span class="who">YOU ASK</span>' : '<span class="who">🤖 T.I.T.A.N. — REAL RESPONSE</span>') + html;
+    return b;
+  }
+  function render() {
+    var s = SCENES[idx];
+    document.getElementById("sceneTag").textContent = s.tag;
+    document.getElementById("sceneTitle").textContent = s.title;
+    Array.prototype.forEach.call(dots.children, function (d, i) {
+      d.className = "dot" + (i < idx || revealed[i] ? " on" : "") + (i === idx ? " now" : "");
+      if (i === idx) d.setAttribute("aria-current", "step"); else d.removeAttribute("aria-current");
+    });
+    var body = document.getElementById("sceneBody");
+    body.innerHTML = "";
+    if (s.thread && s.thread.length) {
+      var e = document.createElement("div"); e.className = "earlier";
+      e.innerHTML = '<p class="label">EARLIER IN THIS CHAT</p>';
+      s.thread.forEach(function (t) { e.appendChild(bubble(t.who, t.html)); });
+      body.appendChild(e);
+    }
+    body.appendChild(bubble("you", s.prompt));
+    if (!revealed[idx]) {
+      var pr = document.createElement("div");
+      pr.className = "predict";
+      pr.innerHTML = "<h4>🔮 Before it answers — your prediction: " + s.predict + "</h4>";
+      var opts = document.createElement("div"); opts.className = "opts";
+      s.opts.forEach(function (o, j) {
+        var b = document.createElement("button"); b.type = "button"; b.textContent = String.fromCharCode(65 + j) + ") " + o;
+        b.addEventListener("click", function () { picked[idx] = j; revealed[idx] = true; render(); });
+        opts.appendChild(b);
+      });
+      pr.appendChild(opts);
+      body.appendChild(pr);
+    } else {
+      if (picked[idx] !== undefined) {
+        var chosen = document.createElement("div");
+        chosen.className = "predict";
+        chosen.innerHTML = "<h4>🔮 You predicted: <em>" + s.opts[picked[idx]] + "</em></h4>";
+        body.appendChild(chosen);
+      }
+      var ai = bubble("ai", s.ai); ai.className += " reveal-in"; body.appendChild(ai);
+      var no = document.createElement("div");
+      no.className = "notice reveal-in";
+      no.innerHTML = "<h4>👁️ WHAT TO NOTICE</h4>" + s.notice;
+      body.appendChild(no);
+    }
+    document.getElementById("prevBtn").disabled = idx === 0;
+    var next = document.getElementById("nextBtn");
+    if (idx === SCENES.length - 1) { next.textContent = revealed[idx] ? "🎬 That's the reel — scroll on ↓" : "Reveal first ↑"; next.disabled = true; }
+    else { next.textContent = "Next scene →"; next.disabled = !revealed[idx]; }
+    if (window.innerWidth < 700) document.getElementById("player").scrollIntoView({ block: "start" });
+  }
+  document.getElementById("prevBtn").addEventListener("click", function () { if (idx > 0) { idx--; render(); } });
+  document.getElementById("nextBtn").addEventListener("click", function () { if (idx < SCENES.length - 1 && revealed[idx]) { idx++; render(); } });
+  render();
+})();
+</script>
+
+</body>
+</html>

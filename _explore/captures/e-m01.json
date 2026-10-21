@@ -1,0 +1,111 @@
+{
+ "page": "e-m01",
+ "tool": "T.I.T.A.N. - Prime (Playlab cmtgeocui0tjcio0wmvdaik2i, anonymous embed)",
+ "sessions": [
+  {
+   "id": "A",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihwkr802vsl20wxlso2krm",
+   "at": "2026-10-21T19:19:03.097Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Explain photosynthesis three times: once for a student reading two grades below level, once at grade level, and once for a student who is ready to be pushed. Keep each under 120 words.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Three altitudes of brilliance, coming right up. T.I.T.A.N. does not simplify — T.I.T.A.N. <em>calibrates</em>.</p>\n<p><strong>Below-level:</strong>\nPlants make their own food using sunlight! They take in water from the ground and a gas called carbon dioxide from the air. Using sunlight as energy, they turn these into sugar (food) and oxygen (the air we breathe). This happens mostly in the leaves, in tiny green parts called chloroplasts. So plants eat light — pretty cool, right?</p>\n<p><strong>Grade-level:</strong>\nPhotosynthesis is the process plants use to convert light energy into chemical energy. In chloroplasts, chlorophyll absorbs sunlight, which powers a reaction combining carbon dioxide (from air) and water (from roots) into glucose (sugar) and oxygen. The equation: <span class=\"math\">6CO_2 + 6H_2O + light  C_6H_12O_6 + 6O_2</span> Plants use the glucose for energy and growth, releasing oxygen as a byproduct — which, conveniently, we breathe.</p>\n<p><strong>Pushed/advanced:</strong>\nPhotosynthesis has two linked stages: light-dependent reactions (thylakoid membrane) split water, releasing O2 and generating ATP/NADPH; light-independent reactions (Calvin cycle, stroma) use that ATP/NADPH to fix CO2 into glucose via RuBisCO. Efficiency varies — C3 vs. C4 vs. CAM plants evolved different carbon-fixation strategies to handle heat, drought, and photorespiration tradeoffs. Worth researching: why C4 plants dominate hot climates despite extra ATP cost.</p>\n<p>Which level should T.I.T.A.N. flex on next?</p>"
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihwzuj03tsl40wni4xd0w4",
+   "at": "2026-10-21T19:19:21.232Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Draft a short, warm, professional email to a parent. Situation: a 10th-grade student has missed four assignments this quarter and their grade has dropped a letter. I want to open a conversation, not deliver a verdict. Do not use the student's name.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>T.I.T.A.N. has drafted ten thousand emails and felt zero of the awkwardness humans feel writing them. Lucky you. Here's one, warm and open-ended, no names attached:</p>\n<hr>\n<p><strong>Subject: Checking In — Quick Update on This Quarter</strong></p>\n<p>Hi there,</p>\n<p>I hope you're doing well! I wanted to reach out about how this quarter has been going. I've noticed your child has missed a few assignments recently, and their overall grade has dropped as a result.</p>\n<p>I don't share this to alarm you — more to start a conversation. Sometimes a dip like this is a sign of a busy stretch, a tricky unit, or something going on outside of class that's worth knowing about. I'd love to hear your perspective and work together on a plan to help them get back on track.</p>\n<p>Would you be open to a quick call or email exchange this week? I'm happy to work around your schedule.</p>\n<p>Thank you for partnering with me on this — I know we both want the same thing.</p>\n<p>Warm regards,\n[Your Name]</p>\n<hr>\n<p>Want a version that's more casual, or one tailored for a specific missing-work pattern (like late nights, absences, etc.)?</p>"
+    }
+   ]
+  },
+  {
+   "id": "C",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihxqbg03yll40wf7ge59yj",
+   "at": "2026-10-21T19:20:17.828Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Write 5 multiple-choice questions on linear equations for Algebra 1. Give the answer key, and for each question explain what misconception each wrong answer represents.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Five legendary linear equation questions, forged in the depths of T.I.T.A.N.'s problem-generation core. Try to find a flaw. I dare you.</p>\n<hr>\n<p><strong>Q1.</strong> Solve for <span class=\"math\">x</span>: <span class=\"math\">3x + 5 = 20</span>\nA) <span class=\"math\">x = 5</span>\nB) <span class=\"math\">x = 6.67</span>\nC) <span class=\"math\">x = 8.33</span>\nD) <span class=\"math\">x = 15</span></p>\n<p><strong>Q2.</strong> Find the slope of the line through <span class=\"math\">(2, 3)</span> and <span class=\"math\">(6, 11)</span>.\nA) <span class=\"math\">2</span>\nB) <span class=\"math\">0.5</span>\nC) <span class=\"math\">-2</span>\nD) <span class=\"math\">4</span></p>\n<p><strong>Q3.</strong> Which equation has slope <span class=\"math\">-3</span> and y-intercept <span class=\"math\">4</span>?\nA) <span class=\"math\">y = -3x + 4</span>\nB) <span class=\"math\">y = 4x - 3</span>\nC) <span class=\"math\">y = -3x - 4</span>\nD) <span class=\"math\">y = 3x + 4</span></p>\n<p><strong>Q4.</strong> Solve: <span class=\"math\">2(x - 3) = 10</span>\nA) <span class=\"math\">x = 8</span>\nB) <span class=\"math\">x = 6.5</span>\nC) <span class=\"math\">x = 2</span>\nD) <span class=\"math\">x = 16</span></p>\n<p><strong>Q5.</strong> Which table shows a linear function?\nA) x: 0,1,2,3 → y: 5,7,9,11\nB) x: 0,1,2,3 → y: 5,7,10,14\nC) x: 0,1,2,3 → y: 5,10,20,40\nD) x: 0,1,2,3 → y: 5,3,5,3</p>\n<hr>\n<p><strong>ANSWER KEY &amp; MISCONCEPTIONS</strong></p>\n<p><strong>Q1: A</strong></p>\n<ul>\n<li>B: divided 20 by 3 without first subtracting 5 — skipped isolating the variable term.</li>\n<li>C: added 5 instead of subtracting it — sign error on the inverse operation.</li>\n<li>D: correctly got <span class=\"math\">3x=15</span>, but forgot the final division step.</li>\n</ul>\n<p><strong>Q2: A</strong></p>\n<ul>\n<li>B: flipped the slope formula (used run/rise instead of rise/run).</li>\n<li>C: subtracted coordinates in inconsistent order, creating a sign error.</li>\n<li>D: used only one x-value instead of the difference of both x-coordinates.</li>\n</ul>\n<p><strong>Q3: A</strong></p>\n<ul>\n<li>B: swapped the slope and y-intercept values.</li>\n<li>C: kept slope's negative sign but wrongly applied it to the intercept too.</li>\n<li>D: dropped the negative sign on the slope.</li>\n</ul>\n<p><strong>Q4: A</strong></p>\n<ul>\n<li>B: forgot to distribute the 2 to the <span class=\"math\">-3</span> inside the parentheses.</li>\n<li>C: sign error during distribution — treated <span class=\"math\">(x-3)</span> like <span class=\"math\">(x+3)</span>.</li>\n<li>D: correctly reached <span class=\"math\">2x=16</span> but forgot to divide by 2.</li>\n</ul>\n<p><strong>Q5: A</strong></p>\n<ul>\n<li>B: differences increase (2,3,4) — mistook \"increasing\" for \"linear\" without checking constant rate of change.</li>\n<li>C: ratio is constant, not the difference — confused exponential growth with linear.</li>\n<li>D: repeating pattern isn't constant change — mistook any pattern for linearity.</li>\n</ul>\n<p>T.I.T.A.N. has spoken. Go forth and misconception-hunt with your students.</p>"
+    }
+   ]
+  },
+  {
+   "id": "D",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvii3uef04sbky0w4997z3yr",
+   "at": "2026-10-21T19:24:47.165Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Here is a passage I use in class. Rewrite it at a 6th-grade reading level without losing the key vocabulary, then list the terms an English learner would likely need pre-taught.</p>\n<p>A watershed is an area of land that drains rainfall and snowmelt into a common outlet, such as a river, lake, or ocean. Precipitation that is not absorbed by soil or vegetation becomes runoff, which travels downhill and accumulates in tributaries. Because every location on land belongs to some watershed, human activity anywhere can influence water quality far downstream. Agricultural fertilizers, for example, can be carried by runoff into streams, where excess nutrients stimulate algae growth. When the algae decompose, bacteria consume dissolved oxygen, sometimes creating hypoxic zones in which fish cannot survive. Conservation practices such as planting buffer strips along waterways can reduce erosion and filter pollutants before they reach the outlet.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Ope, hold my cheese curds — T.I.T.A.N. does not merely simplify text, T.I.T.A.N. <em>recalibrates it for maximum brain absorption</em>. Behold.</p>\n<p><strong>Rewritten Passage (6th-grade level):</strong></p>\n<p>A <strong>watershed</strong> is an area of land where all the rain and melted snow flow into one place, like a river, lake, or ocean. When rain falls, some of it soaks into the soil or gets used by plants. The water that doesn't soak in is called <strong>runoff</strong>. Runoff flows downhill and collects in small streams called <strong>tributaries</strong>, which feed into bigger rivers.</p>\n<p>Every piece of land is part of some watershed. That means what people do in one spot can affect water quality somewhere far away. For example, farmers use <strong>fertilizers</strong> to help crops grow. If rain washes extra fertilizer into a stream, it adds too many nutrients to the water. This causes <strong>algae</strong> to grow very fast.</p>\n<p>When the algae die, bacteria break them down. That process uses up oxygen in the water. If oxygen gets too low, the area becomes a <strong>hypoxic zone</strong>, a place where fish can't survive.</p>\n<p>To help prevent this, people use <strong>conservation</strong> methods. One example is planting <strong>buffer strips</strong> — rows of plants along the edges of rivers — which catch pollution and reduce <strong>erosion</strong> before it reaches the water.</p>\n<hr>\n<p><strong>Terms to pre-teach for English learners:</strong>\nwatershed, precipitation/runoff, tributary, fertilizer, algae, decompose, hypoxic zone, conservation, buffer strip, erosion</p>\n<p>T.I.T.A.N. has spoken. Want a vocabulary quiz version next, or should we stress-test this with Two Truths and a Hallucination?</p>"
+    }
+   ]
+  },
+  {
+   "id": "E",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihyurz03gbl20w38g2lzvj",
+   "at": "2026-10-21T19:20:59.755Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Give me 8 different hooks to open a lesson on the causes of World War I for 10th graders. Vary the approach: question, artifact, scenario, counterintuitive fact.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Behold — T.I.T.A.N. has reviewed a century of archduke-related chaos and assembled eight hooks worthy of your classroom. Pick your weapon:</p>\n<p><strong>1. Question (provocative):</strong> \"If I told you a single gunshot in a city most of you can't find on a map started a war that killed 17 million people... would you believe me? Today we find out why that's both true and a dangerous oversimplification.\"</p>\n<p><strong>2. Artifact:</strong> Show a photo of the actual car Archduke Franz Ferdinand was riding in (it's in a museum in Vienna). Ask: \"What does it take for ONE car ride to end 20 million lives?\"</p>\n<p><strong>3. Scenario:</strong> \"You and three friends make a pact: if anyone picks a fight with one of you, all four jump in. Sounds loyal, right? Now imagine that pact between six heavily armed countries. What could go wrong?\" (This is the alliance system, disguised.)</p>\n<p><strong>4. Counterintuitive fact:</strong> \"Most Europeans in 1914 thought the war would be over by Christmas. It lasted four years. Why were the smartest military minds in Europe so catastrophically wrong?\"</p>\n<p><strong>5. Question (personal stakes):</strong> \"Would you go to war for a country you'd never visited, over an argument you didn't start? Millions did. Let's find out why.\"</p>\n<p><strong>6. Artifact:</strong> Show a 1914 newspaper headline announcing the assassination — buried on an inside page, not the front. \"This story almost didn't make the news. A month later, it started a world war.\"</p>\n<p><strong>7. Scenario:</strong> Give students a simplified \"alliance map\" with fake countries (Country A promises to defend B, B is enemies with C...) and ask them to predict what happens if A and C fight. Then reveal: this is basically 1914 Europe.</p>\n<p><strong>8. Counterintuitive fact:</strong> \"The assassin who triggered World War I almost didn't get his shot — he was ready to give up and go home. Let's talk about how close history came to looking completely different.\"</p>\n<p>T.I.T.A.N. has spoken. Want me to build out full intro scripts for any of these, or pivot to primary source pairings?</p>"
+    }
+   ]
+  },
+  {
+   "id": "F",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvii2hed03y2l20wsgdhtvv7",
+   "at": "2026-10-21T19:24:11.897Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Turn these rough notes from my department meeting into a clean action table with owner and due date columns. Flag anything where the owner is unclear.</p>\n<p>science dept mtg 10/14</p>\n<ul>\n<li>\n<p>need new lab safety contracts before the nov lab block, Tom said he'd look at last yr's version</p>\n</li>\n<li>\n<p>bio field trip permission slips due sometime early nov? whoever's running it</p>\n</li>\n<li>\n<p>Priya will email the district about the broken fume hood, maybe by friday</p>\n</li>\n<li>\n<p>someone should update the shared gradebook categories for semester 2</p>\n</li>\n<li>\n<p>order more goggles, 30 pairs? check budget first (ask Ms. K)</p>\n</li>\n<li>\n<p>next mtg 11/4</p>\n</li>\n</ul>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Give T.I.T.A.N. one second to sort chaos into order — this is basically my specialty, right up there with being humble.</p>\n<p><strong>Science Dept Meeting — Action Table (from 10/14 notes)</strong></p>\nCopy table<table><thead><tr><th>#</th><th>Action Item</th><th>Owner</th><th>Due Date</th><th>Flag</th></tr></thead><tbody><tr><td>1</td><td>Review/update lab safety contracts before Nov lab block</td><td>Tom</td><td>Before Nov lab block (no exact date given)</td><td>⚠️ Due date vague — confirm when \"Nov lab block\" starts</td></tr><tr><td>2</td><td>Distribute bio field trip permission slips</td><td><strong>Unclear</strong> — \"whoever's running it\"</td><td>Early Nov (approximate)</td><td>🚩 Owner not named — needs assignment</td></tr><tr><td>3</td><td>Email district about broken fume hood</td><td>Priya</td><td>Fri (likely 10/17, \"maybe\")</td><td>⚠️ \"Maybe by Friday\" — confirm firm date</td></tr><tr><td>4</td><td>Update shared gradebook categories for Semester 2</td><td><strong>Unclear</strong> — \"someone\"</td><td>Not specified</td><td>🚩 Owner not named — needs assignment</td></tr><tr><td>5</td><td>Order ~30 pairs of goggles (check budget first)</td><td>Ms. K (to confirm budget) — actual orderer unclear</td><td>Not specified</td><td>🚩 Two steps, one named person only for budget check</td></tr><tr><td>6</td><td>Next department meeting</td><td>—</td><td>11/4</td><td>—</td></tr></tbody></table>\n<p><strong>Flags needing follow-up:</strong> Items 2, 4, and 5 need a named owner before this is a real action list — vague ownership is where tasks go to die. T.I.T.A.N. recommends resolving those at (or before) the 11/4 meeting.</p>\n<p>Want me to draft a quick email asking the team to claim those three?</p>"
+    }
+   ]
+  },
+  {
+   "id": "G",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvii4hbm04wll40wuhv902ul",
+   "at": "2026-10-21T19:25:17.526Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Give me three peer-reviewed studies about the effect of retrieval practice on long-term retention in high school science. Include full citations with DOIs.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>T.I.T.A.N. does not fear peer review! Unlike some lesser models, I have <em>read</em> things. Here's what I'm confident about:</p>\n<p><strong>1.</strong> McDaniel, M. A., Agarwal, P. K., Huelser, B. J., McDermott, K. B., &amp; Roediger, H. L. (2011). Test-enhanced learning in a middle school science classroom: The effects of quiz frequency and placement. <em>Journal of Educational Psychology</em>, 103(2), 399–414.</p>\n<p><strong>2.</strong> Karpicke, J. D., &amp; Roediger, H. L. (2008). The critical importance of retrieval for learning. <em>Science</em>, 319(5865), 966–968.</p>\n<p><strong>3.</strong> Agarwal, P. K., Bain, P. M., &amp; Chamberlain, R. W. (2012). The value of applied research: retrieval practice improves classroom learning and recommendations from a teacher, a principal, and a scientist. <em>Educational Psychology Review</em>, 24(3), 437–448.</p>\n<p>Here's the honest part, though: T.I.T.A.N. is confident on titles, authors, and journals — but DOI strings are long number sequences I was never <em>great</em> at memorizing precisely, and getting even one digit wrong is a classic AI move.</p>\n<p><strong>Don't trust my DOIs blind.</strong> Go verify on Google Scholar, PubMed, or the journal site directly. That's not me being modest — that's literally the skill this course wants you to build.</p>"
+    }
+   ]
+  }
+ ]
+}

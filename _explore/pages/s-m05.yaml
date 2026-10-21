@@ -1,0 +1,63 @@
+# Student M05_P03 — Explore: See It in Action. Transcript: _explore/captures/s-m05.json (2026-10-21). One continuous chat.
+file: m05-explore-see-it-in-action.html
+code: M05_P03
+captured: 2026-10-21
+title: "Explore: Generating Isn't Creating"
+sub: "One slogan, five rounds. Watch who makes the decisions."
+time: 8–10 minutes
+module: "Module 5: Create with AI"
+before:
+  - "<strong>You're about to watch a student make a slogan with T.I.T.A.N.</strong> for a made-up school recycling drive — from a generic first try to a line that's actually theirs."
+  - "Before each reply, <strong>predict what happens.</strong> Pay attention to every decision: who chose the angle, who judged the drafts, who had the final say?"
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>Keep the Learn page's question in mind: if AI helps create something, what decisions still belong to the human?</strong></span>"
+real_note: "🎙️ Every exchange below is a <strong>real, unedited conversation</strong> with T.I.T.A.N. — Prime, captured October 21, 2026 — one continuous chat. The school and its heron mascot are made up for this demo."
+scenes:
+  - tag: SCENE 1
+    title: "📦 The generic ask"
+    prompt: A0
+    ai: A1
+    predict: "“Write a slogan for a school recycling drive.” No other details. What do you get?"
+    opts: ["One perfect slogan", "A pile of generic options", "Questions about your school"]
+    notice:
+      - "Five slogans in seconds — and any school in the country could use them. Generating is fast. It's also generic when you give it nothing to work with."
+  - tag: SCENE 2
+    title: "🐦 Add the vision"
+    prompt: A2
+    ai: A3
+    predict: "The student adds the heron mascot, the drive's name, and a tone: funny, not preachy. What changes?"
+    opts: ["Same slogans, new words", "Slogans that could only belong to this drive", "It ignores the tone"]
+    notice:
+      - "Now the slogans belong to <em>this</em> drive. The heron, the name, the tone — all of that came from the student. That's the creative direction AI can't supply on its own."
+      - "(It also tossed in a sixth option nobody asked for. You'll meet that habit again.)"
+  - tag: SCENE 3
+    title: "🧐 Make it critique itself"
+    prompt: A4
+    ai: A5
+    predict: "Which of its five is the weakest? Will it criticize its own work?"
+    opts: ["It says they're all great", "It picks one and explains why", "It refuses to judge"]
+    notice:
+      - "It picked #3 — “Herons Eat Fish, Not Your Trash. Recycle It.” — and said the ending turns the joke into a lecture. A useful critique: specific, with a reason."
+      - "But a critique is an opinion. Watch what the student does with it."
+  - tag: SCENE 4
+    title: "✋ Overrule it"
+    prompt: A6
+    ai: A7
+    predict: "The student likes #3 anyway — and wants to keep it, minus the lecture. What does T.I.T.A.N. do?"
+    opts: ["Argues for its own favorite", "Rewrites #3 the student's way", "Starts over from scratch"]
+    notice:
+      - "It followed the student's call: “Herons Eat Fish. Not Your Trash.” The AI said #3 was weakest. The human saw what was good in it and kept it."
+      - "<strong>Overruling AI feedback, with a reason, is creative direction.</strong>"
+  - tag: FINALE
+    title: "🖋️ Who's the author?"
+    prompt: A8
+    ai: A9
+    predict: "If the student uses the slogan, who's the author?"
+    opts: ["The AI — it wrote the words", "The student — they made the decisions", "It refuses to say"]
+    notice:
+      - "It said: <em>you are</em>. The student chose the angle, set the tone, rejected drafts, and picked the winner — real creative work."
+      - "But it also wrote every word of the final line. Honest credits name both: what came from you and what came from the AI. And whether it's “not cheating” depends on your teacher's rules — not on what an AI tells you."
+takeaway:
+  - "<strong>The AI generated a lot of words. The student made every decision that mattered</strong> — the angle, the tone, what to keep, what to cut, and when to ignore the AI's opinion."
+  - "Next, in the <strong>Creative Gauntlet</strong>, a mystery basket hands you a format, a subject, and a twist. You'll make it with an image tool, take critiques from a Creative Director in a beret, and roll your own honest credits."
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>Generating is the beginning of creating, not the end.</strong></span>"
+next: "Next: Do — the AI Lab. Spin the mystery basket."

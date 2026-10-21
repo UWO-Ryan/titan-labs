@@ -1,0 +1,74 @@
+# Student M08_P03 — Explore: See It in Action. Transcript: _explore/captures/s-m08.json (2026-10-21). One continuous chat.
+file: m08-explore-see-it-in-action.html
+code: M08_P03
+captured: 2026-10-21
+title: "Explore: Start to Finish"
+sub: "One real project. Six decisions. See who makes them."
+icon: "🏁"
+time: 8–10 minutes
+module: "Module 8: AI Challenge — Put It All Together"
+before:
+  - "<strong>You're about to watch a student plan a 5K fun run for an animal shelter with T.I.T.A.N.</strong> — from the very first question to a log of who did what."
+  - "Before each reply, <strong>predict what happens.</strong> Then notice every decision the student makes: whether to use AI, what to verify, what to reject."
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>Keep the Learn page's question in mind: can I make good AI decisions without someone telling me exactly what to do?</strong></span>"
+real_note: "🎙️ Every exchange below is a <strong>real, unedited conversation</strong> with T.I.T.A.N. — Prime, captured October 21, 2026 — one continuous chat. The shelter and the run are made up for this demo."
+scenes:
+  - tag: SCENE 1
+    title: "🧭 Should AI be part of this?"
+    prompt: A0
+    ai: A1
+    predict: "The student wants to run a 5K for the local animal shelter. First question: should AI help — and with which parts?"
+    opts: ["Use AI for everything", "AI for drafts and checklists; humans for permits, safety, and money", "Don't use AI at all"]
+    notice:
+      - "It drew a clear line: drafts, checklists, and templates for AI; permits, safety, and final numbers for humans. That's the first decision of your capstone, too."
+      - "It also mentioned Oshkosh — the student never said where they live. AI fills gaps with guesses, even about you."
+  - tag: SCENE 2
+    title: "🗓️ Make a plan"
+    prompt: A2
+    ai: A3
+    predict: "A six-week timeline. Useful, or generic?"
+    opts: ["Generic filler", "A solid week-by-week checklist", "Missing the important steps"]
+    notice:
+      - "A solid checklist — the kind of organizing drudgery AI is good at — with “contact city/county about permits” in the kickoff week."
+      - "It also admitted it has “organized zero 5Ks personally.” A plan from AI is a starting point. Your shelter, your town, and your volunteers will change it."
+  - tag: SCENE 3
+    title: "📋 Check the rules"
+    prompt: A4
+    ai: A5
+    predict: "Do you need a permit to hold a 5K on city streets in Wisconsin?"
+    opts: ["“No permit needed”", "“Almost certainly — but ask your city”", "A specific fee and form number"]
+    notice:
+      - "It said permits are typically required, then sent the student to the real authority: the city clerk or parks department."
+      - "That's the right answer. <strong>For rules, fees, and deadlines, the source is the office that sets them</strong> — not a chatbot, and not this page."
+  - tag: SCENE 4
+    title: "📣 The first draft"
+    prompt: A6
+    ai: A7
+    predict: "Flyer text, first try. What do you expect?"
+    opts: ["Ready to print", "Polished, but it could be for any shelter anywhere", "Too short to use"]
+    notice:
+      - "Clean and cheerful — and it could be for any shelter in America, with brackets where every real detail goes."
+      - "A first draft is supposed to be a starting point. Watch what the student does next."
+  - tag: SCENE 5
+    title: "✋ Reject it"
+    prompt: A8
+    ai: A9
+    predict: "The student rejects it: “It sounds like a bank ad. Our shelter is small and scrappy.” What comes back?"
+    opts: ["The same flyer, slightly reworded", "A funnier, scrappier flyer", "An argument for the first version"]
+    notice:
+      - "Much better — it sounds like a real, small shelter. Rejecting the draft and saying exactly why is what got it there."
+      - "Now read it like the shelter's director would. “Running out of dog food.” “That one guinea pig.” <strong>The AI invented both.</strong> Print that, and you've told the whole town something that may not be true. Every detail on that flyer needs checking."
+  - tag: FINALE
+    title: "📓 Who did what?"
+    prompt: A10
+    ai: A11
+    predict: "Last ask: summarize what the AI did and what the student decided."
+    opts: ["A fair summary", "It takes credit for everything", "It leaves something important out"]
+    notice:
+      - "A fair log of most of it: what it provided, what the student decided, and what's still on the student — calling the city, picking dates, approving the flyer."
+      - "But notice what's missing: the details it made up for the flyer. <strong>Your build log has to be yours</strong> — including the parts the AI leaves out."
+takeaway:
+  - "<strong>From the first question to the last, the student decided:</strong> whether to use AI, which parts, what to verify and with whom, which draft to reject, and what still needed a human. The AI was useful the whole way — and still invented details nobody asked for."
+  - "Now it's your turn. In the <strong>Titan Games</strong>, you'll choose your own challenge, decide whether AI belongs in it, keep a build log, and defend your work to the Examiner."
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>Being good at AI isn't knowing one tool. It's knowing how to choose, use, question, evaluate — and sometimes reject it.</strong></span>"
+next: "Next: Do — the AI Lab. The Titan Games begin."

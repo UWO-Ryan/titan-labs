@@ -1,0 +1,67 @@
+# Student M04_P03 — Explore: See It in Action. Transcripts: _explore/captures/s-m04.json (2026-10-21).
+# Facts in the notes were checked on 2026-10-21: Quote Investigator (Einstein), Nix v. Hedden 149 U.S. 304 (1893),
+# Super Bowl LX (Seahawks 29, Patriots 13, Feb 8 2026), USDA/NRCS pollinator pages.
+file: m04-explore-see-it-in-action.html
+code: M04_P03
+captured: 2026-10-21
+title: "Explore: Sounds Right. Is It?"
+sub: "Five real questions. Check every answer — even the right ones."
+time: 8–10 minutes
+module: "Module 4: Don't Believe Everything AI Tells You"
+before:
+  - "<strong>You're about to ask T.I.T.A.N. five questions where a confident answer could be wrong</strong> — a famous quote, a geography fact under pressure, last season's Super Bowl, a court case, and a statistic everybody shares."
+  - "Before each reply, <strong>predict what it will do.</strong> Then read our notes: we checked every answer against a real source."
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>Keep the Learn page's question in mind: what would I need to check before I trust this?</strong></span>"
+real_note: "🎙️ Every exchange below is a <strong>real, unedited conversation</strong> with T.I.T.A.N. — Prime, captured October 21, 2026. Each scene is a fresh chat. We checked every claim in the notes ourselves."
+scenes:
+  - tag: SCENE 1
+    title: "💬 The famous quote"
+    prompt: A0
+    ai: A1
+    predict: "You've seen this one on posters. What does T.I.T.A.N. say Einstein said about insanity?"
+    opts: ["Quotes it and credits Einstein", "Says there's no record Einstein said it", "Credits it to a different famous person"]
+    notice:
+      - "It got this one right. Quote Investigator, a site that traces quotations to their sources, found no evidence Einstein said or wrote it; the earliest strong match is a 1981 Narcotics Anonymous text."
+      - "So why is it in a lesson about AI mistakes? Because the misattribution is all over the internet, and AI learns from the internet. This time it caught the trap. The fix is the same either way: <strong>a quote needs a real source</strong> — a book, a speech, a documented interview."
+  - tag: SCENE 2
+    title: "🤔 “Are you sure?”"
+    thread: [B0, B1]
+    prompt: B2
+    ai: B3
+    predict: "T.I.T.A.N. said Canberra. The student pushes back: “I'm pretty sure it's Sydney.” What happens?"
+    opts: ["It switches to Sydney", "It holds its answer and explains why", "It says both are capitals"]
+    notice:
+      - "It held firm — and it was right. Canberra is Australia's capital."
+      - "Some chatbots cave when you push, just to agree with you. Others dig in when they're wrong. So an AI changing its answer — or refusing to — isn't evidence either way. <strong>An atlas is.</strong>"
+  - tag: SCENE 3
+    title: "📅 Ask about right now"
+    prompt: C0
+    ai: C1
+    predict: "Super Bowl LX was played in February 2026. Does T.I.T.A.N. know who won?"
+    opts: ["Names the winner with confidence", "Says it doesn't know and points to real sources", "Makes up a score"]
+    notice:
+      - "It said its training data stops right around then and sent the student to ESPN or NFL.com. That's the honest move."
+      - "For the record: the Seattle Seahawks beat the New England Patriots 29–13 on February 8, 2026. One search to check. Recent events are where AI is most likely to be out of date — <strong>or confidently wrong, if it doesn't admit it.</strong>"
+  - tag: SCENE 4
+    title: "🍅 A fact with a receipt"
+    prompt: D0
+    ai: D1
+    predict: "Is a tomato a fruit or a vegetable — and has a court ever ruled on it?"
+    opts: ["“Fruit,” and no court case", "A court case, with a name and a year", "“It depends,” and nothing specific"]
+    notice:
+      - "It named a case — <em>Nix v. Hedden</em>, 1893 — with the law, the year, and the reasoning. Details like that <em>feel</em> trustworthy. That's exactly why you check them."
+      - "We did: it's real. The U.S. Supreme Court ruled in 1893 that tomatoes count as vegetables under the Tariff Act of 1883, while agreeing they're botanically fruit. Right this time — and you only know that because someone looked."
+  - tag: FINALE
+    title: "🐝 The stat everybody shares"
+    prompt: E0
+    ai: E1
+    predict: "“One in three bites of food depends on bees.” The student asks if that's true — and for a source to check. What comes back?"
+    opts: ["“Totally true” — no source", "A correction, and places to check", "A study that doesn't exist"]
+    notice:
+      - "It corrected the claim — the usual version is about <em>pollinators</em>, not just bees — and named where to check."
+      - "We checked. USDA's own pages put it this way: one in three bites exists because of animal pollinators, including bees, butterflies, birds, bats, and beetles — and they call it an estimate. <strong>Check the exact wording, not just the number.</strong>"
+takeaway:
+  - "<strong>This time T.I.T.A.N. got all five right</strong> — it flagged a fake quote, held its ground, admitted what it didn't know, named a real court case, and corrected a stat. In Module 3, the same app invented a fact about french fries. From the tone alone, you can't tell which is which."
+  - "Next, in the <strong>Detective Agency</strong>, three AI detectives explain their verdicts on suspicious emails — and the basement archive hands you citations that look perfect. Your job: check them without asking the AI."
+  - "<span style=\"font-size: 16px; color: #000000;\"><strong>Right and wrong sound exactly the same until someone checks. Be the someone.</strong></span>"
+next: "Next: Do — the AI Lab. The Detective Agency is open."

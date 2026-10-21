@@ -35,6 +35,14 @@ def tidy(h: str) -> str:
     def br(m):
         return m.group(1) + m.group(2).strip().replace("\n", "<br>") + m.group(3)
     h = re.sub(r"(<p[^>]*>)([\s\S]*?)(</p>)", br, h)
+    h = h.replace("Copy table<table>", "<table>")            # Playlab's copy-button label, not the AI's words
+
+    def math(m):   # TeX left in captured math: subscripts, and the arrow early captures lost to a double space
+        t = re.sub(r"(\S) {2,}(\S)", r"\1 → \2", m.group(2))
+        t = re.sub(r"_(\d+)", r"<sub>\1</sub>", t)
+        t = re.sub(r"\^(\d+)", r"<sup>\1</sup>", t)
+        return m.group(1) + t + m.group(3)
+    h = re.sub(r'(<(?:span|p) class="math">)([\s\S]*?)(</(?:span|p)>)', math, h)
     return h.strip()
 
 
@@ -284,9 +292,9 @@ def you_block(h: str) -> str:
 
 
 def build_educator(name: str, spec: dict) -> Path:
-    sess, meta = turns(name)
+    sess, meta = turns(name) if spec.get("blocks") else ({}, {})
     blocks = []
-    for blk in spec["blocks"]:
+    for blk in spec.get("blocks") or []:
         parts = [f'<div style="{S["frame"]}">',
                  f'<p style="{S["label"]}">{spec["label"]}</p>',
                  f'<h3 style="{S["h3"]}margin-top:0;">{blk["heading"]}</h3>']
@@ -307,7 +315,8 @@ def build_educator(name: str, spec: dict) -> Path:
         blocks.append({"after": blk["after"], "html": "".join(parts)})
     OUT.mkdir(exist_ok=True)
     out = OUT / f"{name}.canvas.json"
-    out.write_text(json.dumps({"page": spec["canvas_page"], "remove_slot": True, "blocks": blocks},
+    out.write_text(json.dumps({"page": spec["canvas_page"], "remove_slot": True, "blocks": blocks,
+                               "replace": spec.get("replace") or []},
                               ensure_ascii=False, indent=1), encoding="utf-8")
     (OUT / f"{name}.preview.html").write_text(
         "<!DOCTYPE html><meta charset=utf-8><title>%s preview</title><body style=\"font-family:Arial,sans-serif;max-width:52em;margin:2em auto;padding:0 16px;\">%s</body>"

@@ -1,0 +1,17 @@
+# Educator M03_P03 — Explore: Weak Request vs. Better Request (course 880097). Transcripts: _explore/captures/e-m03.json.
+# Checked 2026-10-21: plan timings 5+8+15+15+5 = 48 min; the cartoon is John L. Magee, 1856, Library of Congress (Stern Collection).
+canvas_page: m03-p03-explore-see-it-in-action-2
+label: "Real run · T.I.T.A.N. – Prime, the course's AI app · October 21, 2026"
+blocks:
+  - after: " is overrated. Reasonable conclusion; wrong cause.</p>"
+    heading: "Real run: the weak request"
+    steps:
+      - {prompt: A0, ai: A1, show_prompt: false, reveal: "Reveal: what “Write a lesson on the Civil War” got",
+         notice: ["Exactly as described: a confident, student-facing fact sheet. No grade level, no timing, no activities — a summary of the war, not a lesson.",
+                  "Look at its “Root Causes” too: states' rights sits beside slavery as its own cause — a framing worth questioning before it reaches students."]}
+  - after: "ing it what you would have told a student teacher.</p>"
+    heading: "Real run: the same task, built properly"
+    steps:
+      - {prompt: B0, ai: B1, show_prompt: false, reveal: "Reveal: what the built prompt got",
+         notice: ["Same tool, a minute later: a 48-minute plan with timings, an eight-minute lecture cap, a real 1856 cartoon from the Library of Congress as the primary source, and nothing to print. Every constraint was respected.",
+                  "Now the honest limit, live: its four categories of causes are Economic, Political, Social and “Sectional (states' rights).” <strong>Slavery does not get a box of its own.</strong> A better prompt fixed the shape of the lesson. It did not fix the history."]}

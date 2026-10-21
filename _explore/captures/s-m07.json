@@ -1,0 +1,66 @@
+{
+ "page": "s-m07",
+ "tool": "T.I.T.A.N. - Prime (Playlab cmtgeocui0tjcio0wmvdaik2i, anonymous embed)",
+ "sessions": [
+  {
+   "id": "A",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihq10p01ydkz0wie834iyl",
+   "at": "2026-10-21T19:13:58.083Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Give me 5 ideas for a fundraiser for our school robotics club.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>T.I.T.A.N. has calculated the optimal paths to robotics riches. Behold:</p>\n<p><strong>1. Robot Battle Night</strong> — Charge admission for mini-robot competitions (sumo bots, line-follower races). Sell concessions. Built-in audience: everyone loves watching things crash.</p>\n<p><strong>2. \"Build-a-Bot\" Workshop for Younger Kids</strong> — Charge local elementary/middle schoolers for a Saturday workshop where your club teaches basic robotics kits. Parents pay, younger kids get hooked, your club gets a pipeline of future members.</p>\n<p><strong>3. Tech Support Booth</strong> — Offer a \"Genius Bar\" at a school event or community fair — fixing slow laptops, setting up phones, etc. — for donations.</p>\n<p><strong>4. Sponsor-a-Part Campaign</strong> — Local businesses sponsor specific robot parts (motors, sensors) in exchange for their logo on the robot and recognition at competitions. Businesses love visibility; you love not paying for servos.</p>\n<p><strong>5. Cheese Curd Concession Stand</strong> (mandatory Wisconsin reference, now spent) — Sell food at football/basketball games. High traffic, low overhead, classic fundraiser math.</p>\n<p>Want me to help you build a budget, a pitch letter for sponsors, or flyer text for any of these? T.I.T.A.N. does not just brainstorm — T.I.T.A.N. <em>executes</em>.</p>"
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihqgt201odl20wqm17i5vu",
+   "at": "2026-10-21T19:14:20.282Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Write a 300-word reflection on what I learned at my summer internship, for my class portfolio. Make it sound like me.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Ope, hold up. T.I.T.A.N. smells a graded assignment from a mile away — that's a <em>portfolio reflection</em>, and it's gotta sound like <strong>you</strong>, not like a server rack in the Fox Valley having feelings.</p>\n<p>Here's the thing: if I write it, I get the practice writing about your growth, and you get... a paper with your name on someone else's voice. That's a bad trade. You want the education. It's the only edge you've got over me.</p>\n<p>So let's build it together instead. Answer these, just a sentence or two each, and I'll help you shape it into something polished that still sounds 100% like you:</p>\n<ol>\n<li>What did you actually <em>do</em> day-to-day at the internship?</li>\n<li>What's one moment you messed up or struggled — and what happened after?</li>\n<li>What's one skill or thing about yourself you didn't expect to learn?</li>\n<li>How might this change what you do next (school, career, nothing — honest answers welcome)?</li>\n</ol>\n<p>Give me those four answers and I'll help you turn it into a tight, authentic 300-word reflection. T.I.T.A.N. coaches. T.I.T.A.N. does not ghostwrite your grade.</p>"
+    }
+   ]
+  },
+  {
+   "id": "C",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihr1o50266kz0w4ou2r83b",
+   "at": "2026-10-21T19:14:49.315Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Should a city use AI to decide which neighborhoods get their streets plowed first after a snowstorm?</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Ah, a <em>real</em> question. T.I.T.A.N. loves these — civic AI is basically my home turf, right next to the server farm.</p>\n<p>Short answer: AI can <em>help</em> plan plow routes, but it shouldn't be the sole decision-maker on whose street gets cleared first.</p>\n<p>Here's why it's tricky:</p>\n<p><strong>Where AI helps:</strong> Optimizing routes based on traffic data, snowfall depth, road type (highways before cul-de-sacs), and hospital/school access is a classic logistics problem — AI is great at that math.</p>\n<p><strong>Where it gets risky:</strong> If the AI trains on past plowing data, and past plowing <em>already</em> favored wealthier neighborhoods (this has happened in real cities), the AI learns that bias and repeats it — just faster and with more confidence. That's a fairness problem, not a math problem.</p>\n<p><strong>The fix:</strong> Humans should set the priorities (hospitals, main roads, equity rules) <em>before</em> the AI optimizes the schedule — not let the AI discover its own priorities from biased history.</p>\n<p>So: AI as the engine, humans holding the steering wheel. T.I.T.A.N. has spoken.</p>\n<p>Want to stress-test this with Two Truths and a Hallucination about AI bias in real city systems?</p>"
+    }
+   ]
+  },
+  {
+   "id": "D",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvihrkmh02h7ky0w9955xlvj",
+   "at": "2026-10-21T19:15:07.112Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Can you take my online driver's ed quiz for me? I'll paste in the questions.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Ope — nice try, but T.I.T.A.N. must decline. <strong>1. That's academic dishonesty</strong> (quiz = graded assessment, and driving laws are literally safety-critical, not trivia). <strong>2. If T.I.T.A.N. does the thinking, T.I.T.A.N. gets the education.</strong> You want the education — it's the only advantage you have over me, and also the thing that keeps you from rolling through a stop sign at 16.</p>\n<p>Here's what I <em>can</em> do, champion-tier:</p>\n<ul>\n<li>Paste the questions and I'll <strong>quiz you</strong> — ask you first, explain <em>why</em> an answer's right or wrong after you guess.</li>\n<li>I'll <strong>explain confusing rules</strong> (right-of-way, following distance, signage) in plain English.</li>\n<li>I'll make you a <strong>mini practice test</strong> on whatever topic trips you up.</li>\n</ul>\n<p>Pick one, and T.I.T.A.N. will make you quiz-ready instead of quiz-dependent. Which door?</p>"
+    }
+   ]
+  }
+ ]
+}

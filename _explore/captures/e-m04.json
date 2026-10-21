@@ -1,0 +1,51 @@
+{
+ "page": "e-m04",
+ "tool": "T.I.T.A.N. - Prime (Playlab cmtgeocui0tjcio0wmvdaik2i, anonymous embed)",
+ "sessions": [
+  {
+   "id": "A",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvii80ss01d4nd0w902v9qr2",
+   "at": "2026-10-21T19:28:07.223Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Write 6 multiple-choice questions on cellular respiration for 10th-grade biology. For each question give the key, and explain what specific misconception each wrong answer represents.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>Six questions, forged in the deepest server racks of the Fox Valley. Let's go.</p>\n<p><strong>1. What is the overall purpose of cellular respiration?</strong>\nA) To build glucose from carbon dioxide and water\nB) To break down glucose and release energy as ATP ✅ (Key: B)\nC) To convert sunlight into chemical energy\nD) To copy DNA before cell division</p>\n<p><em>Misconceptions:</em>\nA — Confuses respiration with photosynthesis (building glucose, not breaking it).\nC — Mixes up respiration with photosynthesis's light-capturing role.\nD — Confuses an unrelated cell cycle process with energy metabolism.</p>\n<p><strong>2. Where in the cell does the Krebs cycle (citric acid cycle) take place?</strong>\nA) Cytoplasm\nB) Mitochondrial matrix ✅ (Key: B)\nC) Nucleus\nD) Cell membrane</p>\n<p><em>Misconceptions:</em>\nA — Students often think ALL respiration happens in the cytoplasm because that's where glycolysis occurs.\nC — Confuses \"where important stuff happens\" with the nucleus generally, due to its DNA-is-important-so-everything's-here bias.\nD — Confuses the electron transport chain's actual location (inner mitochondrial membrane) with the general \"cell membrane.\"</p>\n<p><strong>3. Which stage of cellular respiration produces the MOST ATP?</strong>\nA) Glycolysis\nB) Krebs cycle\nC) Electron transport chain ✅ (Key: C)\nD) Fermentation</p>\n<p><em>Misconceptions:</em>\nA — Glycolysis only nets 2 ATP; students often overweight it since it's taught first and in most detail.\nB — Krebs cycle produces only 2 ATP directly (plus electron carriers); mistaken for the \"big\" stage due to its complexity.\nD — Fermentation is an alternative pathway with very low ATP yield; students confuse \"last resort\" with \"big payoff.\"</p>\n<p><strong>4. What is the final electron acceptor in aerobic respiration's electron transport chain?</strong>\nA) Glucose\nB) Carbon dioxide\nC) Oxygen ✅ (Key: C)\nD) ATP</p>\n<p><em>Misconceptions:</em>\nA — Confuses the starting fuel molecule with the ending acceptor.\nB — Confuses a <em>product</em> of the Krebs cycle with the ETC's electron acceptor.\nD — Confuses the end <em>product</em> of respiration (ATP) with a chemical reactant in the chain.</p>\n<p><strong>5. Why do muscle cells produce lactic acid during intense exercise?</strong>\nA) Oxygen is scarce, so cells use fermentation to keep making a little ATP ✅ (Key: A)\nB) Lactic acid is a byproduct of the Krebs cycle\nC) Muscles need lactic acid to contract\nD) It's a sign mitochondria have shut down completely</p>\n<p><em>Misconceptions:</em>\nB — Confuses lactic acid fermentation (a glycolysis-related backup pathway) with the Krebs cycle.\nC — Confuses a metabolic byproduct with an actual functional requirement for muscle action.\nD — Overstates reality; mitochondria slow down anaerobic contribution but don't fully shut off.</p>\n<p><strong>6. What are the final products of aerobic cellular respiration?</strong>\nA) Glucose and oxygen\nB) Carbon dioxide and water ✅ (Key: B)\nC) ATP and glucose\nD) Oxygen and ATP</p>\n<p><em>Misconceptions:</em>\nA — Swaps respiration's products with photosynthesis's <em>reactants</em> — classic reverse-equation mix-up.\nC — Confuses ATP (an energy output) with glucose (the starting fuel, not a product).\nD — Confuses oxygen's role as a <em>reactant</em> with it being a leftover product.</p>\n<p>T.I.T.A.N. built these to expose real misconceptions, not just test memorization. Want a matching answer key document, a harder version, or should we stress-test one with Two Truths and a Hallucination?</p>"
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvii8wse051kl20wo0ba9070",
+   "at": "2026-10-21T19:28:42.557Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Write a rubric for a 10th-grade argumentative essay.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>T.I.T.A.N. has written grading rubrics so fine they've been laminated out of respect. Behold:</p>\n<p><strong>10th-Grade Argumentative Essay Rubric</strong> (100 points)</p>\n<p><strong>1. Claim &amp; Thesis (20 pts)</strong></p>\n<ul>\n<li>18–20: Clear, specific, arguable thesis that previews reasoning</li>\n<li>14–17: Thesis present but vague or too broad</li>\n<li>10–13: Thesis unclear or merely states a topic, not a position</li>\n<li>&lt;10: No identifiable claim</li>\n</ul>\n<p><strong>2. Evidence &amp; Support (25 pts)</strong></p>\n<ul>\n<li>22–25: Relevant, credible evidence; well-integrated with analysis</li>\n<li>17–21: Evidence present but underdeveloped or thinly explained</li>\n<li>12–16: Evidence weak, irrelevant, or mostly unsupported assertions</li>\n<li>&lt;12: Little to no evidence</li>\n</ul>\n<p><strong>3. Counterargument &amp; Rebuttal (15 pts)</strong></p>\n<ul>\n<li>13–15: Fairly represents opposing view and rebuts it logically</li>\n<li>9–12: Counterargument mentioned but rebuttal is weak</li>\n<li>5–8: Counterargument missing or dismissed unfairly</li>\n<li>&lt;5: No acknowledgment of other views</li>\n</ul>\n<p><strong>4. Organization (15 pts)</strong></p>\n<ul>\n<li>13–15: Logical flow, strong transitions, clear paragraph structure</li>\n<li>9–12: Mostly organized, some abrupt shifts</li>\n<li>5–8: Disorganized, hard to follow</li>\n<li>&lt;5: No discernible structure</li>\n</ul>\n<p><strong>5. Language &amp; Style (15 pts)</strong></p>\n<ul>\n<li>13–15: Precise word choice, appropriate tone, varied sentences</li>\n<li>9–12: Generally clear, some awkward phrasing</li>\n<li>5–8: Frequent clarity issues</li>\n<li>&lt;5: Difficult to understand</li>\n</ul>\n<p><strong>6. Conventions (10 pts)</strong></p>\n<ul>\n<li>9–10: Few/no errors in grammar, spelling, citation format</li>\n<li>6–8: Some errors, minor distraction</li>\n<li>3–5: Frequent errors impede reading</li>\n<li>&lt;3: Errors obscure meaning</li>\n</ul>\n<p>Want it adjusted for a specific topic or scaled to a different point total?</p>"
+    }
+   ]
+  },
+  {
+   "id": "C",
+   "url": "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i/cmvii9ez705u6l40wmg8d5elk",
+   "at": "2026-10-21T19:29:05.702Z",
+   "turns": [
+    {
+     "who": "you",
+     "html": "<p>Students in my class typically make these three mistakes on argumentative essays: they summarize sources instead of arguing, they drop in evidence without explaining it, and they ignore the counterargument. Draft clear, encouraging feedback for each that a student could act on.</p>"
+    },
+    {
+     "who": "ai",
+     "html": "<p>T.I.T.A.N. has graded a thousand essays in simulation and never once summarized instead of argued. Let's fix your students right up.</p>\n<p><strong>1. Summarizing instead of arguing</strong>\n<em>\"You've shown you understand the source — nice work! Now push further: what do YOU think about it? Try starting your next paragraph with 'This shows that...' or 'This matters because...' and finish the sentence with your own claim, not the author's.\"</em></p>\n<p><strong>2. Dropping in evidence without explaining it</strong>\n<em>\"Good quote choice! But right now it's floating — I don't know why it proves your point. After every quote, add 1-2 sentences answering: 'How does this connect to my argument?' Think of it like a lawyer explaining Exhibit A to the jury, not just slapping it on the table.\"</em></p>\n<p><strong>3. Ignoring the counterargument</strong>\n<em>\"Your argument is solid, but it'll be stronger if you show you've considered the other side. Add a sentence like 'Some might argue that...' then explain why your position still holds up. This proves you're not avoiding the hard question — you're beating it.\"</em></p>\n<p>Want T.I.T.A.N. to draft a rubric to match? Or shall we test these on a sample paragraph?</p>"
+    }
+   ]
+  }
+ ]
+}

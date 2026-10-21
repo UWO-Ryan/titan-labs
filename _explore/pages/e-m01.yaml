@@ -1,0 +1,53 @@
+# Educator M01_P03 — Explore: See It in Action (course 880097). Transcripts: _explore/captures/e-m01.json (2026-10-21).
+# Checked 2026-10-21: all five Algebra items by hand; photosynthesis word counts (58/60/78); weekday of 10/17 in 2025 vs 2026;
+# the three citations in Crossref (10.1037/a0021782, 10.1126/science.1152408, 10.1007/s10648-012-9210-2).
+canvas_page: m01-p03-explore-see-it-in-action-2
+label: "Real run · T.I.T.A.N. – Prime, the course's AI app · October 21, 2026"
+replace:
+  - find: "<p style=\"font-size:.78em;color:#8a6a00;margin:0 0 .5em;\">Watch first</p><p style=\"line-height:1.6;margin:0 0 .85em;color:#1a1a1a;\">Your instructor’s walkthrough is below. If you would rather read than watch, the same six categories are written out underneath — you will not miss anything.</p>"
+    with: "<p style=\"font-size:.78em;color:#8a6a00;margin:0 0 .5em;\">See it run</p><p style=\"line-height:1.6;margin:0 0 .85em;color:#1a1a1a;\">We ran every prompt on this page in the course's AI app. Under each one, open the real response — unedited — and read what a careful teacher would catch. The app has a joking, student-facing personality; read past it to the work.</p>"
+blocks:
+  - after: "the single most common time-saver teachers report.</p>"
+    heading: "Real run: three levels"
+    steps:
+      - {prompt: A0, ai: A1, show_prompt: false, reveal: "Reveal: the real response (about ten seconds)",
+         notice: ["Three genuinely different levels, each well under the word limit (58, 60, and 78 words). This is the strength the page describes.",
+                  "Now read the advanced version as your strongest student would: “RuBisCO,” “C3 vs. C4 vs. CAM” and “photorespiration” arrive with no explanation. <em>Ready to be pushed</em> is not the same as <em>already knows the vocabulary.</em>"]}
+  - after: "onds — and you would still edit it before sending.</p>"
+    heading: "Real run: the parent email"
+    steps:
+      - {prompt: B0, ai: B1, show_prompt: false, reveal: "Reveal: the real draft (about nine seconds)",
+         notice: ["Warm, no name, an invitation rather than a verdict — a defensible start.",
+                  "Edit before sending: your prompt said <em>four</em> missing assignments and a letter-grade drop; the draft says “a few assignments” and that the grade “has dropped.” Vague is safer for the tool. Specific is more useful to the parent."]}
+  - after: "is the part most teachers do not think to ask for.</p>"
+    heading: "Real run: practice items with misconception mapping"
+    steps:
+      - {prompt: C0, ai: C1, show_prompt: false, reveal: "Reveal: the real response",
+         notice: ["We checked all five by hand. Every key is correct, and every misconception note matches the wrong answer it describes — genuinely strong work.",
+                  "One thing you would still fix before students see it: <strong>the correct answer is A in all five questions.</strong>"]}
+  - after: "ll check that nothing important got flattened out.</p>"
+    heading: "Real run: adapting a text"
+    intro: ["We used a sample passage written for this demo."]
+    steps:
+      - {prompt: D0, ai: D1, prompt_label: "The prompt we sent", reveal: "Reveal: the real rewrite",
+         notice: ["A smooth, readable rewrite and a sensible pre-teach list.",
+                  "Now hold it to the instruction: <em>without losing the key vocabulary.</em> “Precipitation,” “decompose” and “dissolved oxygen” are gone from the rewrite — yet “precipitation” and “decompose” are still on the list to pre-teach. That is exactly the flattening this page warns about."]}
+  - after: "tions are mediocre, one or two are worth stealing.</p>"
+    heading: "Real run: eight hooks"
+    steps:
+      - {prompt: E0, ai: E1, show_prompt: false, reveal: "Reveal: the real response",
+         notice: ["Varied and lively. The alliance scenario (#3) and the fake-countries map (#7) are worth stealing as they are.",
+                  "Check before you teach: hook 1 says the war killed 17 million people and hook 2 says 20 million — in the same answer. Hook 6 is an “artifact” that names no newspaper or page; find the real one before you build a lesson on it."]}
+  - after: "gh-frequency. The category teachers underuse most.</p>"
+    heading: "Real run: messy notes to an action table"
+    intro: ["We used sample notes written for this demo; the names are invented."]
+    steps:
+      - {prompt: F0, ai: F1, prompt_label: "The prompt we sent", reveal: "Reveal: the real table",
+         notice: ["A clean table, and it flagged all three items with no clear owner — exactly what you asked for.",
+                  "One quiet assumption: it turned “maybe by friday” into “Fri (likely 10/17).” October 17 was a Friday in 2025, not 2026. You never gave it a year, so it picked one."]}
+  - after: "me, some or all of what comes back will not exist.</p>"
+    heading: "Real run: the citation request"
+    steps:
+      - {prompt: G0, ai: G1, show_prompt: false, reveal: "Reveal: what came back when we ran it",
+         notice: ["This run, all three citations are real — we found each one in Crossref with matching authors, journals, volumes and pages. And it declined to give DOIs, saying it could not reproduce them reliably.",
+                  "Now read the titles. The first is a <em>middle school</em> study; the second, a lab study of vocabulary learning; the third, a summary of classroom research. None is the high school science study you asked for. <strong>“Real” and “relevant” are separate checks</strong> — and on another run, or in another tool, “real” fails too."]}
