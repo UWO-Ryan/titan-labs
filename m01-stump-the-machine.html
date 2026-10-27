@@ -83,6 +83,11 @@
   textarea { resize: vertical; min-height: 70px; }
   textarea:focus, input[type="text"].field:focus { border-color: #000000; }
   .field-label { display: block; font-size: 14px; font-weight: bold; color: #000000; margin: 16px 0 6px; }
+  .file-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; margin-top: 16px; }
+  .file-btn:hover { background: #1a1a1a; }
+  .file-msg { font-size: 14px; font-weight: bold; margin-top: 8px; min-height: 18px; }
+  .file-msg.ok { color: #1c7c34; }
+  .file-msg.no { color: #b00020; }
   .notes-btn { background: #000000; color: #ffcc00; border: 3px solid #000000; border-radius: 10px; font-size: 16px; font-weight: bold; padding: 14px 26px; margin-top: 18px; }
   .notes-btn:hover { background: #1a1a1a; }
   .notes-msg { font-size: 14px; font-weight: bold; color: #1c7c34; margin-top: 10px; min-height: 18px; }
@@ -150,13 +155,10 @@
         <button class="copy-btn" data-copy="brief-warmup" type="button">📋 Copy &amp; paste into the chat</button>
       </div>
       <p style="font-size: 14.5px; color: #555555;">After the reveal, notice: could you tell which was fake from the <em>tone</em>? Neither can anyone else. That's the point.</p>
-      <div class="controls">
-        <div class="code-entry">
-          <label for="code-warmup">Round complete? Enter the code:</label>
-          <div class="code-row"><input id="code-warmup" data-stage="warmup" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="warmup" type="button">Stamp it</button></div>
-          <div class="code-msg" id="msg-warmup" aria-live="polite"></div>
-        </div>
-      </div>
+      <label class="field-label" for="w-fake">Which claim did you accuse, was it the fake — and could you tell from the tone alone?</label>
+      <textarea id="w-fake" data-save="wFake" placeholder="I accused #... It was / wasn't the fake. From the tone alone, I..."></textarea>
+      <button class="file-btn" data-file="warmup" type="button">🃏 Stamp the warm-up</button>
+      <div class="file-msg" id="fmsg-warmup" aria-live="polite"></div>
     </div>
   </div>
 
@@ -277,13 +279,13 @@
     embedUrl: "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i"
   };
   var STAGES = {
-    warmup: { hash: "40d9d0ca", label: "Two Truths" },
+    warmup: { self: true, label: "Two Truths", fields: ["w-fake"] },   // self-stamp: the reflection is the point (2026-10-27)
     round1:   { hash: "5be383c1", label: "Impress Round" },
     round2:    { hash: "c1e8d6e5", label: "Fail Hunt" },
     debrief:  { hash: "2d5caffb", label: "Debrief" }
   };
   var STORE_KEY = "arw-m01-stump";
-  var SAVED = ["fImpress", "fFailWhat", "fFailCatch", "refSurprise", "refConfidence"];
+  var SAVED = ["wFake", "fImpress", "fFailWhat", "fFailCatch", "refSurprise", "refConfidence"];
 
   function loadState() {
     try { var raw = localStorage.getItem(STORE_KEY); if (raw) return JSON.parse(raw); } catch (e) {}
@@ -355,6 +357,16 @@
     input.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); checkCode(input.getAttribute("data-stage")); } });
   });
 
+  Array.prototype.forEach.call(document.querySelectorAll("[data-file]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var k = btn.getAttribute("data-file"), st = STAGES[k], msg = document.getElementById("fmsg-" + k);
+      var missing = st.fields.filter(function (id) { var el = document.getElementById(id); return !el || !(el.value || "").trim(); });
+      if (missing.length) { msg.className = "file-msg no"; msg.textContent = "Write down what happened first — which claim, and what the tone told you."; return; }
+      state.done[k] = true; saveState(); renderStamps();
+      msg.className = "file-msg ok"; msg.textContent = "✅ " + st.label + " stamped. Now make it impress you.";
+    });
+  });
+
   SAVED.forEach(function (k) {
     var el = document.querySelector("[data-save='" + k + "']");
     if (!el) return; el.value = state[k] || "";
@@ -367,6 +379,7 @@
       "Lab: Make AI Impress You. Then Make AI Fail. (Stump the Machine)",
       "Date: " + new Date().toLocaleDateString(), "",
       "Stamps earned: " + (Object.keys(STAGES).filter(function (k) { return state.done[k]; }).map(function (k) { return STAGES[k].label; }).join(", ") || "none yet"), "",
+      "Two Truths — which I accused, and what the tone told me: " + (state.wFake || "(not answered)"),
       "Impress round — what I asked / verdict: " + (state.fImpress || "(not answered)"),
       "Fail hunt — what it got wrong: " + (state.fFailWhat || "(not answered)"),
       "Would a friend have caught it? " + (state.fFailCatch || "(not answered)"), "",
