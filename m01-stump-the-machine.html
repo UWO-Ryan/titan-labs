@@ -157,8 +157,13 @@
       <p style="font-size: 14.5px; color: #555555;">After the reveal, notice: could you tell which was fake from the <em>tone</em>? Neither can anyone else. That's the point.</p>
       <label class="field-label" for="w-fake">Which claim did you accuse, was it the fake — and could you tell from the tone alone?</label>
       <textarea id="w-fake" data-save="wFake" placeholder="I accused #... It was / wasn't the fake. From the tone alone, I..."></textarea>
-      <button class="file-btn" data-file="warmup" type="button">🃏 Stamp the warm-up</button>
-      <div class="file-msg" id="fmsg-warmup" aria-live="polite"></div>
+      <div class="controls">
+        <div class="code-entry">
+          <label for="code-warmup">Round complete? Enter the code T.I.T.A.N. gave you:</label>
+          <div class="code-row"><input id="code-warmup" data-stage="warmup" type="text" autocomplete="off" spellcheck="false" placeholder="CODE"><button data-check="warmup" type="button">Stamp it</button></div>
+          <div class="code-msg" id="msg-warmup" aria-live="polite"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -279,7 +284,7 @@
     embedUrl: "https://www.playlab.ai/embedded/cmtgeocui0tjcio0wmvdaik2i"
   };
   var STAGES = {
-    warmup: { self: true, label: "Two Truths", fields: ["w-fake"] },   // self-stamp: the reflection is the point (2026-10-27)
+    warmup: { hash: "40d9d0ca", label: "Two Truths" },
     round1:   { hash: "5be383c1", label: "Impress Round" },
     round2:    { hash: "c1e8d6e5", label: "Fail Hunt" },
     debrief:  { hash: "2d5caffb", label: "Debrief" }
@@ -355,16 +360,6 @@
   });
   Array.prototype.forEach.call(document.querySelectorAll(".code-row input"), function (input) {
     input.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); checkCode(input.getAttribute("data-stage")); } });
-  });
-
-  Array.prototype.forEach.call(document.querySelectorAll("[data-file]"), function (btn) {
-    btn.addEventListener("click", function () {
-      var k = btn.getAttribute("data-file"), st = STAGES[k], msg = document.getElementById("fmsg-" + k);
-      var missing = st.fields.filter(function (id) { var el = document.getElementById(id); return !el || !(el.value || "").trim(); });
-      if (missing.length) { msg.className = "file-msg no"; msg.textContent = "Write down what happened first — which claim, and what the tone told you."; return; }
-      state.done[k] = true; saveState(); renderStamps();
-      msg.className = "file-msg ok"; msg.textContent = "✅ " + st.label + " stamped. Now make it impress you.";
-    });
   });
 
   SAVED.forEach(function (k) {
