@@ -80,9 +80,19 @@
     .reveal-in { animation: rise .35s ease-out; }
     @keyframes rise { 0% { transform: translateY(8px); opacity: 0; } 100% { transform: none; opacity: 1; } }
   }
+  .fullpage { display: none; position: sticky; top: 0; z-index: 5; background: #000000; color: #ffcc00; text-align: center; padding: 10px 14px; font-weight: bold; text-decoration: none; }
+  .fullpage:focus-visible { outline: 3px solid #ffcc00; outline-offset: -3px; }
+  .bubble.ai:focus-visible, #sceneTitle:focus-visible { outline: 3px solid #000000; outline-offset: 3px; }
+  @media (max-width: 700px) {
+    .panel { padding: 18px; }
+    .card { padding: 16px; }
+    .player-body { padding: 14px; }
+  }
 </style>
 </head>
 <body>
+<a id="fullpage" class="fullpage" href="#" target="_blank" rel="noopener">Open this page full-size ↗ (it fits a phone better in its own tab)</a>
+
 <div class="wrap">
 
   <div class="panel hero">
@@ -149,7 +159,7 @@
       predict: "Two instructions in one ask — a specific audience AND a word limit. What comes back?",
       opts: ["A textbook wall of physics", "Simple, short, and it counts its own words", "It'll blow right past the 80-word limit"],
       ai: "<p>Great question! Sunlight looks white, but it's actually made of all the colors mixed together.</p><p>When sunlight hits our atmosphere, it bumps into tiny gas molecules. Blue light waves are short and small, so they bounce around in every direction — this is called scattering. Red and orange light waves are bigger, so they zoom through mostly untouched.</p><p>All that bounced-around blue light hits your eyes from everywhere in the sky. That's why the sky looks blue!</p><p><strong>T.I.T.A.N. has spoken.</strong> (72 words — under budget, like a champion.)</p>",
-      notice: "<p>It followed <em>both</em> instructions — the audience and the limit. The way you ask shapes what you get, which is the entire subject of Module 3.</p><p>Also: it bragged about the word count. It was right this time. Keep that thought.</p>" },
+      notice: "<p>It followed <em>both</em> instructions — the audience and the limit. The way you ask shapes what you get, which is the entire subject of Module 3.</p><p>Also: it bragged about its word count — and the number is wrong (count it yourself: 76, not counting its sign-off). It did stay under 80. Keep that thought: even the AI's self-check is a claim.</p>" },
     { tag: "SCENE 2", title: "🎨 Create something", icon: "🎨",
       prompt: "Write a 4-line poem about a badger who is late for school.",
       predict: "Creativity on demand. How does it land?",
@@ -191,12 +201,13 @@
     var d = document.createElement("button");
     d.className = "dot"; d.type = "button";
     d.setAttribute("aria-label", "Go to scene " + (i + 1));
-    d.addEventListener("click", function () { idx = i; render(); });
+    d.addEventListener("click", function () { idx = i; render("title"); });
     dots.appendChild(d);
   });
 
-  function render() {
+  function render(focus) {
     var s = SCENES[idx];
+    var focusNode = null;
     document.getElementById("sceneTag").textContent = s.tag;
     document.getElementById("sceneTitle").textContent = s.title;
     Array.prototype.forEach.call(dots.children, function (d, i) {
@@ -217,7 +228,7 @@
       var opts = document.createElement("div"); opts.className = "opts";
       s.opts.forEach(function (o, j) {
         var b = document.createElement("button"); b.type = "button"; b.textContent = String.fromCharCode(65 + j) + ") " + o;
-        b.addEventListener("click", function () { picked[idx] = j; revealed[idx] = true; render(); });
+        b.addEventListener("click", function () { picked[idx] = j; revealed[idx] = true; render("response"); });
         opts.appendChild(b);
       });
       pr.appendChild(opts);
@@ -231,6 +242,8 @@
       }
       var ai = document.createElement("div");
       ai.className = "bubble ai reveal-in";
+      ai.setAttribute("tabindex", "-1");
+      focusNode = ai;
       ai.innerHTML = '<span class="who">🤖 T.I.T.A.N. — REAL RESPONSE</span>' + s.ai;
       body.appendChild(ai);
       var no = document.createElement("div");
@@ -244,12 +257,15 @@
     if (idx === SCENES.length - 1) { next.textContent = revealed[idx] ? "🎬 That's the reel — scroll on ↓" : "Reveal first ↑"; next.disabled = true; }
     else { next.textContent = "Next scene →"; next.disabled = !revealed[idx]; }
     if (window.innerWidth < 700) document.getElementById("player").scrollIntoView({ block: "start" });
+    if (focus === "response" && focusNode) { focusNode.focus({ preventScroll: window.innerWidth >= 700 }); }
+    else if (focus === "title") { var t = document.getElementById("sceneTitle"); t.setAttribute("tabindex", "-1"); t.focus({ preventScroll: window.innerWidth >= 700 }); }
   }
 
-  document.getElementById("prevBtn").addEventListener("click", function () { if (idx > 0) { idx--; render(); } });
-  document.getElementById("nextBtn").addEventListener("click", function () { if (idx < SCENES.length - 1 && revealed[idx]) { idx++; render(); } });
+  document.getElementById("prevBtn").addEventListener("click", function () { if (idx > 0) { idx--; render("title"); } });
+  document.getElementById("nextBtn").addEventListener("click", function () { if (idx < SCENES.length - 1 && revealed[idx]) { idx++; render("title"); } });
   render();
 })();
 </script>
+<script>(function(){try{if(window.self!==window.top&&window.innerWidth<700){var a=document.getElementById("fullpage");a.href=location.href;a.style.display="block";}}catch(e){}})();</script>
 </body>
 </html>

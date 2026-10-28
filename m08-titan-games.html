@@ -62,7 +62,7 @@
   .briefing code { font-family: Consolas, Monaco, monospace; font-size: 14.5px; color: #1a1a1a; white-space: pre-wrap; display: block; margin-bottom: 10px; }
   .copy-btn { background: #ffcc00; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: bold; padding: 8px 16px; border-radius: 6px; }
   .copy-btn:hover { background: #fcb414; }
-  textarea { width: 100%; border: 2px solid #cccccc; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; resize: vertical; min-height: 60px; }
+  textarea { width: 100%; border: 2px solid #767676; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; resize: vertical; min-height: 60px; }
   textarea:focus { border-color: #000000; }
   .field-label { display: block; font-size: 14px; font-weight: bold; color: #000000; margin: 16px 0 6px; }
   .file-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; margin-top: 16px; }
@@ -106,9 +106,18 @@
     .big-stamp.on .slot, .done .stamp-slot { animation: stamp-in .35s ease-out; }
     @keyframes stamp-in { 0% { transform: scale(1.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
   }
+  .fullpage { display: none; position: sticky; top: 0; z-index: 5; background: #000000; color: #ffcc00; text-align: center; padding: 10px 14px; font-weight: bold; text-decoration: none; }
+  .fullpage:focus-visible { outline: 3px solid #ffcc00; outline-offset: -3px; }
+  @media (max-width: 700px) {
+    .panel { padding: 18px; }
+    .card { padding: 16px; }
+    .stage-body { padding: 16px 14px; }
+  }
 </style>
 </head>
 <body>
+<a id="fullpage" class="fullpage" href="#" target="_blank" rel="noopener">Open this page full-size ↗ (it fits a phone better in its own tab)</a>
+
 <div class="wrap">
 
   <div class="panel hero">
@@ -431,5 +440,6 @@
   renderStamps();
 })();
 </script>
+<script>(function(){try{if(window.self!==window.top&&window.innerWidth<700){var a=document.getElementById("fullpage");a.href=location.href;a.style.display="block";}}catch(e){}})();</script>
 </body>
 </html>

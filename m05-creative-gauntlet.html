@@ -69,7 +69,7 @@
   .briefing code { font-family: Consolas, Monaco, monospace; font-size: 14.5px; color: #1a1a1a; white-space: pre-wrap; display: block; margin-bottom: 10px; }
   .copy-btn { background: #ffcc00; border: 2px solid #000000; color: #000000; font-size: 14px; font-weight: bold; padding: 8px 16px; border-radius: 6px; }
   .copy-btn:hover { background: #fcb414; }
-  textarea { width: 100%; border: 2px solid #cccccc; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; resize: vertical; min-height: 64px; }
+  textarea { width: 100%; border: 2px solid #767676; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; resize: vertical; min-height: 64px; }
   textarea:focus { border-color: #000000; }
   .field-label { display: block; font-size: 14px; font-weight: bold; color: #000000; margin: 16px 0 6px; }
   .file-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; margin-top: 16px; }
@@ -102,9 +102,18 @@
     .big-stamp.on .slot, .done .stamp-slot { animation: stamp-in .35s ease-out; }
     @keyframes stamp-in { 0% { transform: scale(1.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
   }
+  .fullpage { display: none; position: sticky; top: 0; z-index: 5; background: #000000; color: #ffcc00; text-align: center; padding: 10px 14px; font-weight: bold; text-decoration: none; }
+  .fullpage:focus-visible { outline: 3px solid #ffcc00; outline-offset: -3px; }
+  @media (max-width: 700px) {
+    .panel { padding: 18px; }
+    .card { padding: 16px; }
+    .stage-body { padding: 16px 14px; }
+  }
 </style>
 </head>
 <body>
+<a id="fullpage" class="fullpage" href="#" target="_blank" rel="noopener">Open this page full-size ↗ (it fits a phone better in its own tab)</a>
+
 <div class="wrap">
 
   <div class="panel hero">
@@ -151,12 +160,13 @@
   <div class="panel light">
     <div class="sec-head"><div class="icon-circle" aria-hidden="true">🛠️</div><h2>Step 2: Create it</h2></div>
     <div class="card">
-      <p>Use an approved creative AI tool — free tier only, no account should be required beyond what your teacher has approved:</p>
+      <p>Use the creative tool <strong>your teacher has approved</strong>. Most Wisconsin schools provide one through a school account — <strong>do not create a personal account for this lab.</strong></p>
       <div class="launch-row">
-        <a class="launch-btn" href="https://express.adobe.com/" target="_blank" rel="noopener">🎨 Adobe Express</a>
-        <a class="launch-btn" href="https://firefly.adobe.com/" target="_blank" rel="noopener">✨ Adobe Firefly</a>
-        <span style="font-size: 14px; color: #555555;">…or the tool your instructor listed on the Resources page</span>
+        <a class="launch-btn" href="https://www.adobe.com/education/express/" target="_blank" rel="noopener">🎨 Adobe Express for Education</a>
+        <a class="launch-btn" href="https://www.canva.com/education/" target="_blank" rel="noopener">🖌️ Canva for Education</a>
+        <span style="font-size: 14px; color: #555555;">…or the tool your teacher listed on the Resources page</span>
       </div>
+      <p style="font-size: 14.5px; color: #555555; margin-top: 14px;"><strong>No tool today?</strong> Describe your image in words to the Creative Director and sketch it on paper — the rounds and the credits still count.</p>
       <p style="font-size: 14.5px; color: #555555; margin-top: 14px;">Write your first prompt from the basket. Module 3 skills apply: the more specific your creative direction, the closer the result lands. Save or screenshot each version — you'll want the before/after.</p>
     </div>
   </div>
@@ -404,5 +414,6 @@
   renderStamps();
 })();
 </script>
+<script>(function(){try{if(window.self!==window.top&&window.innerWidth<700){var a=document.getElementById("fullpage");a.href=location.href;a.style.display="block";}}catch(e){}})();</script>
 </body>
 </html>

@@ -80,7 +80,7 @@
   .big-stamp .slot { width: 68px; height: 68px; margin: 0 auto 6px; border-radius: 50%; border: 3px dashed #bbbbbb; display: flex; align-items: center; justify-content: center; font-size: 30px; background: #fafafa; }
   .big-stamp.on .slot { border: 3px solid #000000; background: #ffcc00; }
   .big-stamp span { font-size: 11.5px; font-weight: bold; color: #555555; display: block; line-height: 1.3; }
-  textarea { width: 100%; border: 2px solid #cccccc; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; resize: vertical; min-height: 64px; }
+  textarea { width: 100%; border: 2px solid #767676; border-radius: 8px; padding: 12px; font-family: inherit; font-size: 15px; line-height: 1.5; resize: vertical; min-height: 64px; }
   textarea:focus { border-color: #000000; }
   .field-label { display: block; font-size: 14px; font-weight: bold; color: #000000; margin: 16px 0 6px; }
   .file-btn { background: #000000; color: #ffcc00; border: 2px solid #000000; border-radius: 8px; font-size: 15px; font-weight: bold; padding: 12px 22px; margin-top: 16px; }
@@ -98,9 +98,18 @@
     .big-stamp.on .slot, .done .stamp-slot { animation: stamp-in .35s ease-out; }
     @keyframes stamp-in { 0% { transform: scale(1.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
   }
+  .fullpage { display: none; position: sticky; top: 0; z-index: 5; background: #000000; color: #ffcc00; text-align: center; padding: 10px 14px; font-weight: bold; text-decoration: none; }
+  .fullpage:focus-visible { outline: 3px solid #ffcc00; outline-offset: -3px; }
+  @media (max-width: 700px) {
+    .panel { padding: 18px; }
+    .card { padding: 16px; }
+    .stage-body { padding: 16px 14px; }
+  }
 </style>
 </head>
 <body>
+<a id="fullpage" class="fullpage" href="#" target="_blank" rel="noopener">Open this page full-size ↗ (it fits a phone better in its own tab)</a>
+
 <div class="wrap">
 
   <div class="panel hero">
@@ -221,7 +230,7 @@
   <div class="stage" id="stage-compass">
     <div class="stage-head"><span class="hole-tag">YOUR TURN</span><h3>Point your compass</h3><span class="par">~2 min</span><div class="stamp-slot" aria-hidden="true">🧭</div></div>
     <div class="stage-body">
-      <p>Before you leave: pick <strong>one</strong> pathway from today — career, program, or field — that you want to investigate for real on the Apply page.</p>
+      <p>Before you leave: pick <strong>one</strong> pathway from today — career, program, or field — that you want to investigate for real — start with the Module 6 Resources page (Occupational Outlook Handbook, O*NET, My Next Move).</p>
       <label class="field-label" for="cp-path">The pathway I'm going to investigate:</label>
       <textarea id="cp-path" data-save="cpPath" placeholder="The one I'd never heard of: ..."></textarea>
       <label class="field-label" for="cp-q">The first question I want a REAL source to answer about it:</label>
@@ -247,7 +256,7 @@
       <textarea id="ref-claims" data-save="refClaims" placeholder="It's great for discovering options, but..."></textarea>
       <button class="notes-btn" id="copyNotes" type="button">📋 Copy my Field Notes</button>
       <div class="notes-msg" id="notesMsg" aria-live="polite"></div>
-      <p style="font-size: 14px; color: #555555; margin-top: 10px;">Paste your Field Notes into the Module 6 discussion, then take your compass to the Apply page.</p>
+      <p style="font-size: 14px; color: #555555; margin-top: 10px;">Paste your Field Notes into the Module 6 discussion, then take your compass to the Module 6 Resources page.</p>
     </div>
   </div>
 
@@ -390,5 +399,6 @@
   renderStamps();
 })();
 </script>
+<script>(function(){try{if(window.self!==window.top&&window.innerWidth<700){var a=document.getElementById("fullpage");a.href=location.href;a.style.display="block";}}catch(e){}})();</script>
 </body>
 </html>

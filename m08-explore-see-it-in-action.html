@@ -93,9 +93,19 @@
   .earlier .label { font-size: 12px; font-weight: bold; letter-spacing: .06em; color: #555555; margin: 0 0 8px; }
   .earlier .bubble { opacity: .78; font-size: 14px; }
   .earlier .bubble.ai p { font-size: 14px; }
+  .fullpage { display: none; position: sticky; top: 0; z-index: 5; background: #000000; color: #ffcc00; text-align: center; padding: 10px 14px; font-weight: bold; text-decoration: none; }
+  .fullpage:focus-visible { outline: 3px solid #ffcc00; outline-offset: -3px; }
+  .bubble.ai:focus-visible, #sceneTitle:focus-visible { outline: 3px solid #000000; outline-offset: 3px; }
+  @media (max-width: 700px) {
+    .panel { padding: 18px; }
+    .card { padding: 16px; }
+    .player-body { padding: 14px; }
+  }
 </style>
 </head>
 <body>
+<a id="fullpage" class="fullpage" href="#" target="_blank" rel="noopener">Open this page full-size ↗ (it fits a phone better in its own tab)</a>
+
 <div class="wrap">
 
   <div class="panel hero">
@@ -248,7 +258,7 @@
     var d = document.createElement("button");
     d.className = "dot"; d.type = "button";
     d.setAttribute("aria-label", "Go to scene " + (i + 1));
-    d.addEventListener("click", function () { idx = i; render(); });
+    d.addEventListener("click", function () { idx = i; render("title"); });
     dots.appendChild(d);
   });
   function bubble(who, html) {
@@ -257,8 +267,9 @@
     b.innerHTML = (who === "you" ? '<span class="who">YOU ASK</span>' : '<span class="who">🤖 T.I.T.A.N. — REAL RESPONSE</span>') + html;
     return b;
   }
-  function render() {
+  function render(focus) {
     var s = SCENES[idx];
+    var focusNode = null;
     document.getElementById("sceneTag").textContent = s.tag;
     document.getElementById("sceneTitle").textContent = s.title;
     Array.prototype.forEach.call(dots.children, function (d, i) {
@@ -281,7 +292,7 @@
       var opts = document.createElement("div"); opts.className = "opts";
       s.opts.forEach(function (o, j) {
         var b = document.createElement("button"); b.type = "button"; b.textContent = String.fromCharCode(65 + j) + ") " + o;
-        b.addEventListener("click", function () { picked[idx] = j; revealed[idx] = true; render(); });
+        b.addEventListener("click", function () { picked[idx] = j; revealed[idx] = true; render("response"); });
         opts.appendChild(b);
       });
       pr.appendChild(opts);
@@ -293,7 +304,7 @@
         chosen.innerHTML = "<h4>🔮 You predicted: <em>" + s.opts[picked[idx]] + "</em></h4>";
         body.appendChild(chosen);
       }
-      var ai = bubble("ai", s.ai); ai.className += " reveal-in"; body.appendChild(ai);
+      var ai = bubble("ai", s.ai); ai.className += " reveal-in"; ai.setAttribute("tabindex", "-1"); focusNode = ai; body.appendChild(ai);
       var no = document.createElement("div");
       no.className = "notice reveal-in";
       no.innerHTML = "<h4>👁️ WHAT TO NOTICE</h4>" + s.notice;
@@ -304,12 +315,15 @@
     if (idx === SCENES.length - 1) { next.textContent = revealed[idx] ? "🎬 That's the reel — scroll on ↓" : "Reveal first ↑"; next.disabled = true; }
     else { next.textContent = "Next scene →"; next.disabled = !revealed[idx]; }
     if (window.innerWidth < 700) document.getElementById("player").scrollIntoView({ block: "start" });
+    if (focus === "response" && focusNode) { focusNode.focus({ preventScroll: window.innerWidth >= 700 }); }
+    else if (focus === "title") { var t = document.getElementById("sceneTitle"); t.setAttribute("tabindex", "-1"); t.focus({ preventScroll: window.innerWidth >= 700 }); }
   }
-  document.getElementById("prevBtn").addEventListener("click", function () { if (idx > 0) { idx--; render(); } });
-  document.getElementById("nextBtn").addEventListener("click", function () { if (idx < SCENES.length - 1 && revealed[idx]) { idx++; render(); } });
+  document.getElementById("prevBtn").addEventListener("click", function () { if (idx > 0) { idx--; render("title"); } });
+  document.getElementById("nextBtn").addEventListener("click", function () { if (idx < SCENES.length - 1 && revealed[idx]) { idx++; render("title"); } });
   render();
 })();
 </script>
 
+<script>(function(){try{if(window.self!==window.top&&window.innerWidth<700){var a=document.getElementById("fullpage");a.href=location.href;a.style.display="block";}}catch(e){}})();</script>
 </body>
 </html>
