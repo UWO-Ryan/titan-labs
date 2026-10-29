@@ -121,7 +121,7 @@ Every lab and Explore page follows WCAG 2.1: keyboard navigation, visible focus,
 |---|---|---|
 | 01 | Two Truths and a Hallucination · Impress round · Fail Hunt · Debrief | FIBFINDER · SHOWOFF · GOTCHA · SCOREBOARD |
 | 02 | Five Levels · Tutor session · Teach-back · Your session | TOPRUNG · AHAMOMENT · PROFESSOR · LIGHTBULB |
-| 03 | Rub the lamp · Hole 1 · Hole 2 · Hole 3 · Final wish | BRASSLAMP · [Hole 1] · [Hole 2] · [Hole 3] · FREEGENIE (the three hole codes are in the Genie Mode app's instructions in Playlab; Ryan to add) |
+| 03 | Rub the lamp · Hole 1 · Hole 2 · Hole 3 · Final wish | BRASSLAMP · SANDSTORM · MAGICCARPET · THIRDWISH · FREEGENIE |
 | 04 | Cases 1–3 · Fabrication Forensics | the cases stamp when filed · PAPERTRAIL |
 | 05 | Basket · Director · Log · Credits | stamps when locked · ARTCRITIC · stamps when logged · stamps when signed |
 | 06 | 2026 shift · 2036 shift · Fact-check · Compass | PUNCHCARD · FUTUREPROOF · RECEIPTS · stamps when set |
