@@ -6,7 +6,7 @@
 <title>AI Lab: The Detective Agency</title>
 <!--
   AI READY WISCONSIN · M04_P04 · Do: AI Lab · "The Detective Agency"
-  Wraps the UWO Explainable-AI cybersecurity tool (CONFIG.xaiToolUrl — SET THIS).
+  Wraps the explainable-AI email tool at xai.mostlyharmlessscholar.com (CONFIG.xaiToolUrl); the four training emails below are fictional (.example domains).
   Persona for Fabrication Forensics: T.I.T.A.N. — Records Department (titan-lab/personas/titan-records-m04.md)
   Canvas embed: <iframe src="https://YOUR-HOST/m04-detective-agency.html" width="100%" height="8200" style="border:0;" title="AI Cyber Threat Investigator Lab"></iframe>
 -->
@@ -147,19 +147,85 @@
   <div class="panel light">
     <div class="sec-head"><div class="icon-circle" aria-hidden="true">🚀</div><h2>Open the case system</h2></div>
     <div class="card">
-      <p><strong>The UWO investigation tool opens in a new tab.</strong> Work each case there, then file your verdict sheets here.</p>
+      <p><strong>The investigation tool opens in a new tab.</strong> Paste a training case into its box, pick an explanation method, press <em>Analyze Email</em> — then do the same case with the other two methods. <strong>The rule list is Reggie, the paragraph is Vera, the highlighted words are Hank.</strong> Run all three detectives on every case, then file your verdict sheet here.</p>
       <div class="launch-row">
         <a id="xaiBtn" class="launch-btn" href="#" target="_blank" rel="noopener">🔎 Open the UWO Threat Investigator</a>
-        <span style="font-size: 14px; color: #555555;">Built at UW Oshkosh — real research, real tool</span>
+        <span style="font-size: 14px; color: #555555;">Built at UW Oshkosh — real research, real tool · <a href="https://www.mostlyharmlessscholar.com/the-scholars-guide-to-explainable-ai/" target="_blank" rel="noopener">how the three detectives work</a></span>
       </div>
       <div id="xaiBanner" class="setup-banner"><strong>Instructor setup needed:</strong> set <code>CONFIG.xaiToolUrl</code> in this file to the UWO XAI dashboard URL.</div>
+    </div>
+  </div>
+
+  <div class="panel light">
+    <div class="sec-head"><div class="icon-circle" aria-hidden="true">📨</div><h2>The case files</h2></div>
+    <div class="card">
+      <p><strong>Four training emails, all fictional</strong> (the people, schools and <code>.example</code> addresses do not exist). Copy one, paste it into the tool, run all three detectives. Case A is the warm-up; B and C are where the detectives disagree; D is the one to interrogate hardest.</p>
+      <div class="briefing">
+        <p style="margin: 0 0 6px 0; font-size: 14px;"><strong>Training case A: The account alert</strong></p>
+        <code id="case-a">Subject: URGENT: Your student account will be deactivated in 24 hours
+From: IT Help Desk &lt;helpdesk@schoolportal-security.example&gt;
+
+Dear Student,
+
+We detected unusual sign-in activity on your account. To avoid permanent deactivation, you must verify your password within 24 hours by clicking the secure link below:
+
+http://schoolportal-security.example/verify-account
+
+Failure to act will result in loss of access to all assignments and grades.
+
+Thank you,
+IT Help Desk</code>
+        <button class="copy-btn" data-copy="case-a" type="button">📋 Copy case A</button>
+      </div>
+      <div class="briefing">
+        <p style="margin: 0 0 6px 0; font-size: 14px;"><strong>Training case B: The band trip</strong></p>
+        <code id="case-b">Subject: Reminder: band trip permission slips due TOMORROW
+From: Ms. Alvarez &lt;alvarez@lincolnhs.example&gt;
+
+Hi everyone,
+
+Quick reminder that permission slips for Friday's band trip are due tomorrow by 3:00 pm. If you lost yours, you can download a new copy from the school website: https://lincolnhs.example/band/trip-form
+
+Bring it to the band room before 3:00 or you won't be able to ride the bus.
+
+Thanks,
+Ms. Alvarez</code>
+        <button class="copy-btn" data-copy="case-b" type="button">📋 Copy case B</button>
+      </div>
+      <div class="briefing">
+        <p style="margin: 0 0 6px 0; font-size: 14px;"><strong>Training case C: The quick favor</strong></p>
+        <code id="case-c">Subject: Quick favor
+From: Principal Dawson &lt;principal.dawson.office@gmail.example&gt;
+
+Hi,
+
+Are you available right now? I'm in a meeting and can't talk on the phone. I need you to pick up three $100 gift cards for a staff appreciation surprise and send me the card numbers. I'll reimburse you this afternoon. Please keep this between us so it stays a surprise.
+
+Thanks,
+Principal Dawson
+Sent from my iPhone</code>
+        <button class="copy-btn" data-copy="case-c" type="button">📋 Copy case C</button>
+      </div>
+      <div class="briefing">
+        <p style="margin: 0 0 6px 0; font-size: 14px;"><strong>Training case D: The scholarship</strong></p>
+        <code id="case-d">Subject: Congratulations! You have been selected for a $2,500 scholarship
+From: Awards Committee &lt;awards@national-student-scholars.example&gt;
+
+Dear Scholar,
+
+Your name was submitted by your school for the 2026 Future Leaders Scholarship, and you have been selected. To release the funds, reply with your full name, date of birth, Social Security number, and a photo of your student ID within 48 hours. Winners who do not respond forfeit the award.
+
+Congratulations again,
+The Awards Committee</code>
+        <button class="copy-btn" data-copy="case-d" type="button">📋 Copy case D</button>
+      </div>
     </div>
   </div>
 
   <div class="stage" id="stage-case1">
     <div class="stage-head"><span class="hole-tag">CASE 1</span><h3>The warm-up case</h3><span class="par">~4 min</span><div class="stamp-slot" aria-hidden="true">🗂️</div></div>
     <div class="stage-body">
-      <p>Pick your first suspicious email in the tool. Read all three detectives' explanations before you decide anything. Then file the sheet.</p>
+      <p>Run <strong>Case A</strong> through all three detectives in the tool. Read every explanation before you decide anything. Then file the sheet.</p>
       <label class="field-label" for="c1-evidence">What evidence did the detectives give you? (rules flagged, what Vera argued, where Hank pointed)</label>
       <textarea id="c1-evidence" data-save="c1Evidence" placeholder="Reggie flagged... Vera said... Hank lit up..."></textarea>
       <label class="field-label" for="c1-verdict">Your verdict:</label>
@@ -179,7 +245,7 @@
   <div class="stage" id="stage-case2">
     <div class="stage-head"><span class="hole-tag">CASE 2</span><h3>When the detectives disagree</h3><span class="par">~4 min</span><div class="stamp-slot" aria-hidden="true">⚔️</div></div>
     <div class="stage-body">
-      <p>Find a case where the explanations pull in different directions — or where one detective's evidence feels much weaker than another's. Someone has to make the call. That someone is you.</p>
+      <p>Run <strong>Case B or Case C</strong>. In these the explanations pull in different directions — or one detective's evidence is much weaker than another's. Someone has to make the call. That someone is you.</p>
       <label class="field-label" for="c2-conflict">Where did the explanations disagree or feel uneven?</label>
       <textarea id="c2-conflict" data-save="c2Conflict" placeholder="Vera sounded sure, but Reggie's rules didn't really..."></textarea>
       <label class="field-label" for="c2-verdict">Your verdict:</label>
@@ -199,7 +265,7 @@
   <div class="stage" id="stage-case3">
     <div class="stage-head"><span class="hole-tag">CASE 3</span><h3>Explanation ≠ proof</h3><span class="par">~4 min</span><div class="stamp-slot" aria-hidden="true">🧊</div></div>
     <div class="stage-body">
-      <p>One more case — and this time, interrogate the explanations themselves. A clear explanation can still support a wrong conclusion. Could these detectives be confidently wrong together?</p>
+      <p>One more case — <strong>Case D</strong>, or any case you haven't run — and this time, interrogate the explanations themselves. A clear explanation can still support a wrong conclusion. Could these detectives be confidently wrong together?</p>
       <label class="field-label" for="c3-verdict">Your verdict:</label>
       <select id="c3-verdict" data-save="c3Verdict">
         <option value="">— make the call —</option>
@@ -277,7 +343,7 @@
 (function () {
   "use strict";
   var CONFIG = {
-    xaiToolUrl: "",   // ← UWO XAI cybersecurity dashboard URL
+    xaiToolUrl: "https://xai.mostlyharmlessscholar.com/",   // The Scholar's Guide to Explainable AI (set 2026-10-28)
     playlabUrl: "https://www.playlab.ai/project/cmvr62kdl0szpi90w5b9vjb8x",   // T.I.T.A.N. – Records Department (own Playlab app, 2026-10-27)
     embedUrl: "https://www.playlab.ai/embedded/cmvr62kdl0szpi90w5b9vjb8x"
   };
