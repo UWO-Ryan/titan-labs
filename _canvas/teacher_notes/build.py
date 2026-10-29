@@ -15,7 +15,7 @@ OUT.mkdir(exist_ok=True)
 
 BANNER = ('<div style="border-left: 6px solid #fcb414; background: #fff7db; padding: 12px 18px; margin: 0 0 18px 0;">'
           '<p style="margin: 0; font-size: 15px;"><strong>Teacher-only page.</strong> Leave it unpublished; students never see unpublished items. '
-          'Drafted 2026-10-28; anything in [square brackets] still needs the course team.</p></div>')
+          'Drafted 2026-10-28. The Playlab facts are sourced on Read Me First; the one bracket in the parent note is your school&rsquo;s own permission step.</p></div>')
 HEAD = '<p style="font-size: 13px; color: #4a5160; margin: 0 0 6px 0;">AI Ready Wisconsin for Students · Teacher Notes</p>'
 
 

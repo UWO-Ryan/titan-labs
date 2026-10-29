@@ -9,6 +9,12 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from build import canvas_page
 from content import TITLES
 from cv import call, get_all
+import html as _html
+
+
+def norm(b):
+    """Canvas decodes entities (&rsquo;, &#9744;) and re-escapes & on save; compare decoded text."""
+    return _html.unescape(b).replace(" ", " ").strip()
 
 sys.stdout.reconfigure(encoding="utf-8")
 COURSES = {"SB-stu": 880098, "CE-stu": 127220000000011513}
@@ -41,7 +47,7 @@ for n in sorted(TITLES):
     else:
         p, _ = call("POST", f"/courses/{cid}/pages", data)
     chk, _ = call("GET", f"/courses/{cid}/pages/{p['page_id']}")
-    ok = chk["title"] == title and not chk["published"] and (chk["body"] or "").strip() == html.strip()
+    ok = chk["title"] == title and not chk["published"] and norm(chk["body"] or "") == norm(html)
     if not ok:
         errors += 1
         print("  ERROR page verify", title, chk["published"], len(chk["body"] or ""), len(html))

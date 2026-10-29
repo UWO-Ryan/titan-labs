@@ -36,14 +36,14 @@ PAGES = {}
 PAGES[0] = """
 These notes are for the teacher running **IS002: AI for Wisconsin High School Students**. Each module also has its own Teacher Notes page at the top of the module. Everything here is unpublished, so students never see it.
 
-**Before the first class:** open Module 01's lab on a student Chromebook, on the school network, signed in as a student would be. Confirm the chat loads inside the page and that T.I.T.A.N. answers. If either fails, nothing else in this course works yet; see "Network" below.
+**Before the first class:** open Module 01's lab on a student Chromebook, on the school network, signed in as a student would be. Confirm the chat loads inside the page and that T.I.T.A.N. answers. If either fails, nothing else in this course works yet; see "Network" below. Then send the parent note and collect permission; see "Permission and the parent note."
 
 ## How the course works
 
 - Every module has the same eight items: Start Here, Learn, Explore, Do (the AI Lab), a discussion, a practice quiz, Wrap-Up, Resources. Start Here lists the module's objectives in student language.
 - **Explore** pages are predict-then-reveal reels of real, unedited chats with the course's AI. Students guess what the AI will do, then see it. Nothing to set up.
 - **Do** pages embed a lab from the course's lab site. Each lab is a themed set of mission cards. Students copy a mission line into the chat, do the work, and bring back a **code** that stamps their "AI Operator's License" on the page. Some cards stamp when the student files their written answers instead.
-- **T.I.T.A.N.** is the course's AI assistant. It runs on Playlab, an AI platform built for schools. Students do not create accounts or sign in; the chat is embedded in the lab page, with a button to open it in its own tab. Every lab repeats the one rule that does not bend: no personal information in the chat, ever. Invented details are fine.
+- **T.I.T.A.N.** is the course's AI assistant. It runs on Playlab, an AI platform built for schools. Students do not create accounts or sign in; the chat is embedded in the lab page, with a button to open it in its own tab. Every lab repeats the one rule that does not bend: no personal information in the chat, ever. Invented details are fine. No account does not mean no permission: Playlab's own terms require a parent's or guardian's permission for users under 18.
 - Students do **not** need ChatGPT, Gemini, Copilot or any paid tool. Those appear only on the optional Resources pages, which say so.
 - The discussions are where the work becomes visible. Every lab ends with a **Copy my Field Notes** button that formats the student's answers for the module's discussion. Treat the Field Notes post as the deliverable; stamps are motivation, not a grade.
 
@@ -102,14 +102,21 @@ Day 1: Start Here, Learn, Explore, start the lab. Day 2: finish the lab, post Fi
 
 - T.I.T.A.N. is instructed to keep everything school-appropriate, to refuse personal information, to coach rather than do graded work, and to step out of the game and point a student in distress to a trusted adult. If a student reports any of those triggers, follow your school's normal process.
 - Off-script, stuck, or stubborn: the student says what is not working ("that analogy lost me, try a sports one"). That is the skill the course teaches, so let them try first. Then: re-paste the mission line; then reload for a fresh chat.
-- Anything that looks like a real failure (a code that never comes after a real attempt, a chat that refuses to play, an embed that will not load) is worth a note to the course team: what the student pasted, what came back, which lab. [Course contact: Ryan to add.]
+- Anything that looks like a real failure (a code that never comes after a real attempt, a chat that refuses to play, an embed that will not load) is worth a note to the course team: what the student pasted, what came back, which lab. Send it to Ryan Van Scyoc, vanscyocr@uwosh.edu.
 - The Fail Museum in Module 01 exists so that "the AI was confidently wrong" is a trophy, not a problem. Say so.
 
-## The parent note
+## Permission and the parent note
 
-Paste or adapt this if families ask what the course uses. One sentence is still waiting on a check of Playlab's privacy policy.
+Playlab's own rules decide what goes home. Its [Terms of Use](https://www.playlab.ai/policies/terms-of-use) (updated March 18, 2026) and [Privacy Policy](https://www.playlab.ai/policies/privacy) (updated January 20, 2025) say:
 
-> AI Ready Wisconsin uses a course-built AI assistant called T.I.T.A.N., which runs on Playlab, an AI platform built for schools. Students do not create accounts or sign in, and every lab tells them never to enter personal information such as full names, school names or private details; invented details are fine. Nothing students type to the AI is graded; the work the class sees is the Field Notes each student chooses to post in Canvas. Module 4 also uses a public research demonstration that explains why a sample email looks suspicious; students paste in training emails supplied by the lab, never real messages. No paid subscription, no ChatGPT account and no account-consent form is needed to complete the course. [One sentence on what Playlab does with chat text, to be confirmed against Playlab's privacy policy before this goes home.]
+- Playlab is not for children under 13. Users from 13 to 17 need a parent's or guardian's permission to use it.
+- When students use it for school, the school or teacher is responsible for giving families notice and collecting any consent required (Terms, "School Use").
+- Playlab does not sell personal information or show ads, and uses student data only for educational purposes at the direction of an educator, school or parent. It may use de-identified, aggregated data for research and to train educational AI models.
+- Families can ask Playlab to delete personal information by emailing dsar@playlab.ai.
+
+So before Module 01: send the note below and collect permission the way your district handles any approved online tool. If your district keeps an approved-tools list or signs data privacy agreements, check whether Playlab is on it. A student without permission can still do every lab's written cards and the discussions; pair them with a classmate's screen for the chat, with no typing of their own.
+
+> AI Ready Wisconsin uses a course-built AI assistant called T.I.T.A.N., which runs on Playlab, an AI platform built for education. Students do not create accounts or sign in, and every lab tells them never to enter personal information such as full names, school names or private details; invented details are fine. Playlab does not sell personal information or show ads; it may use de-identified, combined data for research and to improve educational AI. Playlab asks that students under 18 have a parent's or guardian's permission to use it, so please [your school's permission step: sign and return the form, or reply to this message]. Nothing students type to the AI is graded; the work the class sees is the Field Notes each student chooses to post in Canvas. Module 4 also uses a public research demonstration that explains why a sample email looks suspicious; students paste in training emails supplied by the lab, never real messages. No paid subscription and no ChatGPT account are needed.
 
 ## Accessibility
 
@@ -135,6 +142,7 @@ PAGES[1] = f"""
 - [ ] Open the lab on a student Chromebook on the school network; confirm the chat loads inside the page and answers.
 - [ ] Decide where Field Notes go (the Fail Museum discussion is the default) and whether replies are Day 2 bell work.
 - [ ] Say the device rule out loud: same Chromebook, same way, Copy my Field Notes before the bell.
+- [ ] Permission is in for every student. Playlab's terms require a parent's or guardian's permission under 18; the parent note is on Read Me First.
 
 **What this module is.** The big question is what AI actually is and how you know when to trust it. The through-line, which every later module leans on, is that AI sounds exactly as confident when it is wrong as when it is right. The lab, **Stump the Machine**, has students make T.I.T.A.N. impress them with something real, then hunt for an error with evidence. Every caught error is "+1 HUMAN."
 
@@ -283,7 +291,7 @@ What the detectives do with them, from our test run on 2026-10-28:
 **Watch for**
 
 - Phishing is personal for some families. Keep the cases on the fictional training emails and steer students who want to analyze "the email my mom got" to the Resources page's STOP, SPOT, CHECK, DECIDE habit instead.
-- The lab's button caption says the tool was "built at UW Oshkosh." The tool's own page credits The Mostly Harmless Scholar. [Ryan to confirm the credit line before launch.]
+- The tool is Steve Schilhabel's research demonstration (UW Oshkosh), published as The Scholar's Guide to Explainable AI on his site, The Mostly Harmless Scholar. That is what the lab's "built at UW Oshkosh" caption refers to.
 
 **Links**
 
